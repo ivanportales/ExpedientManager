@@ -8,8 +8,11 @@
 import Foundation
 import UserNotifications
 
-class UserNotificationService {
-    let notificationCenter : UNUserNotificationCenter
+final class UserNotificationService: UserNotificationServiceProtocol {
+    
+    // MARK: - Private Properties
+    
+    private let notificationCenter : UNUserNotificationCenter
     
     struct Constants {
         static let appName = "iScale"
@@ -18,6 +21,8 @@ class UserNotificationService {
         static let notificationBody = ""
         static let categoryId = "myCategory"
     }
+    
+    // MARK: - Init
     
     init() {
         self.notificationCenter = UNUserNotificationCenter.current()
@@ -34,6 +39,8 @@ class UserNotificationService {
         
         notificationCenter.setNotificationCategories([category])
     }
+    
+    // MARK: - Exposed Functions
     
     func setNotificationIn(minutes : Int) {
         let content = UNMutableNotificationContent()
@@ -125,36 +132,5 @@ class UserNotificationService {
                 print(error.localizedDescription)
             }
         }
-    }
-}
-
-struct ScheduledNotification {
-    var uid: String
-    var title: String
-    var description: String
-    var date: Date
-    var scaleUid: String
-    var colorHex: String
-    
-    static func from(json: [String: Any]) -> ScheduledNotification {
-        return ScheduledNotification(
-            uid: json["uid"] as! String,
-            title: json["title"] as! String,
-            description: json["description"] as! String,
-            date: json["date"] as? Date ?? .init(),
-            scaleUid: json["scaleUid"] as! String,
-            colorHex: json["colorHex"] as! String
-        )
-    }
-    
-    func toJson() -> [String: Any] {
-        return [
-            "uid": self.uid ,
-            "title": self.title,
-            "description": self.description,
-            "date": self.date,
-            "scaleUid": self.scaleUid,
-            "colorHex": self.colorHex
-        ]
     }
 }

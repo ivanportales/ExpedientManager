@@ -24,7 +24,7 @@ final class ScaleDetailsViewModel {
     
     // MARK: - Private Properties
     
-    private let scheduler: UserNotificationService
+    private let scheduler: UserNotificationServiceProtocol
     private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
     private let fixedScaleRepository: FixedScaleRepositoryProtocol
     private let onDutyRepository: OnDutyRepositoryProtocol
@@ -34,7 +34,7 @@ final class ScaleDetailsViewModel {
     init(state: ViewStates,
          selectedFixedScale: FixedScale?,
          selectedOnDuty: OnDuty?,
-         scheduler: UserNotificationService,
+         scheduler: UserNotificationServiceProtocol,
          scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
          fixedScaleRepository: FixedScaleRepositoryProtocol,
          onDutyRepository: OnDutyRepositoryProtocol) {

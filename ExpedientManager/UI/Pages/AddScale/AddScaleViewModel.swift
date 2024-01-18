@@ -26,14 +26,14 @@ final class AddScaleViewModel: ObservableObject {
     
     // MARK: - Private Properties
     
-    private let scheduler: UserNotificationService
+    private let scheduler: UserNotificationServiceProtocol
     private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
     private let fixedScaleRepository: FixedScaleRepositoryProtocol
     private let onDutyRepository: OnDutyRepositoryProtocol
     
     // MARK: - Init
     
-    init(scheduler: UserNotificationService,
+    init(scheduler: UserNotificationServiceProtocol,
          scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
          fixedScaleRepository: FixedScaleRepositoryProtocol,
          onDutyRepository: OnDutyRepositoryProtocol) {
