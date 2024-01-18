@@ -23,6 +23,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let urlContext = URLContexts.first else {
             return
         }
-        router?.handle(openURLContext: urlContext)
     }
 }
