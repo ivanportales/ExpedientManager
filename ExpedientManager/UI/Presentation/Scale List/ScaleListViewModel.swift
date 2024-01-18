@@ -7,24 +7,39 @@
 
 import Foundation
 
-class ScaleListViewModel {
+final class ScalesListViewModel {
+    
+    // MARK: - Binding Properties
+    
     @Published var fixedScales: [FixedScale] = []
     @Published var onDuties: [OnDuty] = []
     @Published var errorText: String = ""
     
-    private let fixedScaleRepository: CoreDataFixedScaleRepository = .init()
-    private let onDutyRepository: CoreDataOnDutyRepository = .init()
+    // MARK: - Private Properties
     
-    func load() {
+    private let fixedScaleRepository: FixedScaleRepositoryProtocol
+    private let onDutyRepository: OnDutyRepositoryProtocol
+    
+    // MARK: - Init
+    
+    init(fixedScaleRepository: FixedScaleRepositoryProtocol,
+         onDutyRepository: OnDutyRepositoryProtocol) {
+        self.fixedScaleRepository = fixedScaleRepository
+        self.onDutyRepository = onDutyRepository
+    }
+    
+    // MARK: - Exposed Functions
+    
+    func getAllScales() {
         fixedScaleRepository.getAllFixedScales { [weak self] result in
-            guard let self = self else {return}
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 self.errorText = error.localizedDescription
             case .success(let scales):
                 self.fixedScales = scales
                 self.onDutyRepository.getAllOnDuty { [weak self] result in
-                    guard let self = self else {return}
+                    guard let self = self else { return }
                     switch result {
                     case .failure(let error):
                         self.errorText = error.localizedDescription

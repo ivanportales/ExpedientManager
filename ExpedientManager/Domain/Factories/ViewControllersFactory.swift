@@ -17,18 +17,49 @@ final class ViewControllersFactory {
         self.router = router
     }
     
-    func makeHomeViewController() -> HomeViewController {
-        let repository = CoreDataScheduledNotificationsRepository()
-        let viewModel = HomeVideModel(repository: repository,
-                                      router: router,
-                                      localStorage: localStorage)
-
-        return HomeViewController(viewModel: viewModel)
-    }
-    
     func makeOnboardingViewController() -> OnboardingViewController {
         return OnboardingViewController(router: router,
                                         localStorage: localStorage)
+    }
+    
+    func makeHomeViewController() -> HomeViewController {
+        let repository = CoreDataScheduledNotificationsRepository()
+        let viewModel = HomeVideModel(repository: repository,
+                                      localStorage: localStorage)
+
+        return HomeViewController(viewModel: viewModel, router: router)
+    }
+    
+    func makeAddScaleViewController() -> AddScaleViewController {
+        let viewModel = AddScaleViewModel(scheduler: UserNotificationService(),
+                                          repository: CoreDataScheduledNotificationsRepository(),
+                                          fixedScaleRepository: CoreDataFixedScaleRepository(),
+                                          onDutyRepository: CoreDataOnDutyRepository())
+
+        return AddScaleViewController(viewModel: viewModel, router: router)
+    }
+    
+    func makeScalesListViewController() -> ScalesListViewController {
+        let viewModel = ScalesListViewModel(fixedScaleRepository: CoreDataFixedScaleRepository(),
+                                            onDutyRepository: CoreDataOnDutyRepository())
+
+        return ScalesListViewController(viewModel: viewModel, 
+                                        router: router)
+    }
+    
+    func makeScalesDetailViewController(viewState: ViewStates,
+                                        selectedFixedScale: FixedScale?,
+                                        selectedOnDuty: OnDuty?) -> ScaleDetailsViewController {
+        let viewModel = ScaleDetailsViewModel(state: viewState,
+                                              selectedFixedScale: selectedFixedScale,
+                                              selectedOnDuty: selectedOnDuty,
+                                              scheduler: UserNotificationService(),
+                                              repository: CoreDataScheduledNotificationsRepository(),
+                                              fixedScaleRepository: CoreDataFixedScaleRepository(),
+                                              onDutyRepository: CoreDataOnDutyRepository())
+
+        return ScaleDetailsViewController(viewModel: viewModel,
+                                          router: router)
     }
     
     func makeWebView(with url: URL) -> SFSafariViewController {

@@ -7,26 +7,47 @@
 
 import Foundation
 
-class ScaleDetailsViewModel {
+final class ScaleDetailsViewModel {
+    
+    // MARK: - Bindings
+    
     @Published private(set) var isLoading = false
     @Published private(set) var initialDutyDate: Date = .init()
     @Published private(set) var finalDutyDate: Date = .init()
     
+    // MARK: - Exposed Properties
+    
     private(set) var errorText = ""
     let state: ViewStates
-    private let scheduler = UserNotificationService()
-    private let repository: CoreDataScheduledNotificationsRepository = CoreDataScheduledNotificationsRepository()
-    private let fixedScaleRepository: FixedScaleRepository = CoreDataFixedScaleRepository()
-    private let onDutyRepository: OnDutyRepository = CoreDataOnDutyRepository()
-    
     var selectedFixedScale: FixedScale?
     var selectedOnDuty: OnDuty?
     
-    init(state: ViewStates, selectedFixedScale: FixedScale?, selectedOnDuty: OnDuty?) {
+    // MARK: - Private Properties
+    
+    private let scheduler: UserNotificationService
+    private let repository: CoreDataScheduledNotificationsRepository
+    private let fixedScaleRepository: FixedScaleRepositoryProtocol
+    private let onDutyRepository: OnDutyRepositoryProtocol
+    
+    // MARK: - Init
+    
+    init(state: ViewStates,
+         selectedFixedScale: FixedScale?,
+         selectedOnDuty: OnDuty?,
+         scheduler: UserNotificationService,
+         repository: CoreDataScheduledNotificationsRepository,
+         fixedScaleRepository: FixedScaleRepositoryProtocol,
+         onDutyRepository: OnDutyRepositoryProtocol) {
         self.selectedFixedScale = selectedFixedScale
         self.selectedOnDuty = selectedOnDuty
         self.state = state
+        self.scheduler = scheduler
+        self.repository = repository
+        self.fixedScaleRepository = fixedScaleRepository
+        self.onDutyRepository = onDutyRepository
     }
+    
+    // MARK: - Exposed Properties
     
     func update() {
         if state == .fixedScale {
@@ -55,6 +76,8 @@ class ScaleDetailsViewModel {
     func calculateFinalDutyDateFrom(date: Date, withDuration duration: Int) {
         finalDutyDate = Calendar.current.date(byAdding: .hour, value: duration, to: date) ?? Date()
     }
+    
+    // MARK: - Private Functions
     
     private func delete(fixedScale: FixedScale) {
         let _ = fixedScaleRepository.delete(fixedScale: fixedScale)

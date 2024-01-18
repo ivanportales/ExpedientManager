@@ -72,9 +72,9 @@
 		AED250D42B57558100290E42 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED2508B2B57558100290E42 /* OnboardingViewController.xib */; };
 		AED250D52B57558100290E42 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2508C2B57558100290E42 /* OnboardingViewController.swift */; };
 		AED250D62B57558100290E42 /* RotinaApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AED2508F2B57558100290E42 /* RotinaApp.xcdatamodeld */; };
-		AED250D72B57558100290E42 /* FixedScaleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250922B57558100290E42 /* FixedScaleRepository.swift */; };
+		AED250D72B57558100290E42 /* FixedScaleRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250922B57558100290E42 /* FixedScaleRepositoryProtocol.swift */; };
 		AED250D82B57558100290E42 /* CoreDataFixedScaleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250932B57558100290E42 /* CoreDataFixedScaleRepository.swift */; };
-		AED250D92B57558100290E42 /* OnDutyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250952B57558100290E42 /* OnDutyRepository.swift */; };
+		AED250D92B57558100290E42 /* OnDutyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250952B57558100290E42 /* OnDutyRepositoryProtocol.swift */; };
 		AED250DA2B57558100290E42 /* CoreDataOnDutyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250962B57558100290E42 /* CoreDataOnDutyRepository.swift */; };
 		AED250DB2B57558100290E42 /* ScheduledNotificationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250982B57558100290E42 /* ScheduledNotificationsRepository.swift */; };
 		AED250DC2B57558100290E42 /* OnDuty.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2509A2B57558100290E42 /* OnDuty.swift */; };
@@ -180,9 +180,9 @@
 		AED2508B2B57558100290E42 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		AED2508C2B57558100290E42 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		AED250902B57558100290E42 /* RotinaApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RotinaApp.xcdatamodel; sourceTree = "<group>"; };
-		AED250922B57558100290E42 /* FixedScaleRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedScaleRepository.swift; sourceTree = "<group>"; };
+		AED250922B57558100290E42 /* FixedScaleRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedScaleRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AED250932B57558100290E42 /* CoreDataFixedScaleRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataFixedScaleRepository.swift; sourceTree = "<group>"; };
-		AED250952B57558100290E42 /* OnDutyRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnDutyRepository.swift; sourceTree = "<group>"; };
+		AED250952B57558100290E42 /* OnDutyRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnDutyRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AED250962B57558100290E42 /* CoreDataOnDutyRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOnDutyRepository.swift; sourceTree = "<group>"; };
 		AED250982B57558100290E42 /* ScheduledNotificationsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepository.swift; sourceTree = "<group>"; };
 		AED2509A2B57558100290E42 /* OnDuty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnDuty.swift; sourceTree = "<group>"; };
@@ -529,7 +529,7 @@
 		AED250912B57558100290E42 /* FixedScaleRepository */ = {
 			isa = PBXGroup;
 			children = (
-				AED250922B57558100290E42 /* FixedScaleRepository.swift */,
+				AED250922B57558100290E42 /* FixedScaleRepositoryProtocol.swift */,
 				AED250932B57558100290E42 /* CoreDataFixedScaleRepository.swift */,
 			);
 			path = FixedScaleRepository;
@@ -538,7 +538,7 @@
 		AED250942B57558100290E42 /* OnDutyRepository */ = {
 			isa = PBXGroup;
 			children = (
-				AED250952B57558100290E42 /* OnDutyRepository.swift */,
+				AED250952B57558100290E42 /* OnDutyRepositoryProtocol.swift */,
 				AED250962B57558100290E42 /* CoreDataOnDutyRepository.swift */,
 			);
 			path = OnDutyRepository;
@@ -874,7 +874,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AED250D92B57558100290E42 /* OnDutyRepository.swift in Sources */,
+				AED250D92B57558100290E42 /* OnDutyRepositoryProtocol.swift in Sources */,
 				AED250D02B57558100290E42 /* ScaleDetailsViewModel.swift in Sources */,
 				AED250DB2B57558100290E42 /* ScheduledNotificationsRepository.swift in Sources */,
 				AE7DE7B22B58946F00F57E42 /* ViewControllersFactory.swift in Sources */,
@@ -905,7 +905,7 @@
 				AED250D52B57558100290E42 /* OnboardingViewController.swift in Sources */,
 				AE7DE7B32B58946F00F57E42 /* AppMainFactory.swift in Sources */,
 				AED250BD2B57558100290E42 /* LocalizedString.swift in Sources */,
-				AED250D72B57558100290E42 /* FixedScaleRepository.swift in Sources */,
+				AED250D72B57558100290E42 /* FixedScaleRepositoryProtocol.swift in Sources */,
 				AED250C12B57558100290E42 /* EmptyTableViewCell.swift in Sources */,
 				AED250C92B57558100290E42 /* ScaleSelectType.swift in Sources */,
 				AED250DA2B57558100290E42 /* CoreDataOnDutyRepository.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CoreDataOnDutyRepository: OnDutyRepository {
+class CoreDataOnDutyRepository: OnDutyRepositoryProtocol {
     private let container: NSPersistentContainer
     
     struct Constants {

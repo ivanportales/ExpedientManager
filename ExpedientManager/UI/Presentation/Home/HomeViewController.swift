@@ -62,12 +62,15 @@ final class HomeViewController: UIViewController {
     // MARK: - Private Properties
     
     private let viewModel: HomeVideModel
+    private let router: DeeplinkRouterProtocol
     private var subscribers = Set<AnyCancellable>()
     
     // MARK: - Inits
     
-    init(viewModel: HomeVideModel) {
+    init(viewModel: HomeVideModel,
+         router: DeeplinkRouterProtocol) {
         self.viewModel = viewModel
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -84,7 +87,7 @@ final class HomeViewController: UIViewController {
         setupViewHierarchy()
         setupConstraints()
         setupBindings()
-        viewModel.verifyFirstAccessOnApp()
+        verifyFirstAccessOnApp()
         //viewModel.deletAll()
     }
     
@@ -276,14 +279,18 @@ extension HomeViewController {
         viewModel.filterScheduledDatesWith(date: date)
     }
     
+    private func verifyFirstAccessOnApp() {
+        viewModel.verifyFirstAccessOnApp { [weak self] in
+            self?.router.route(to: .onboard, withParams: [:])
+        }
+    }
+    
     @objc func showAddScaleScreen() {
-        let viewController = AddScaleViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+        router.route(to: .addScale, withParams: [:])
     }
     
     @objc func showScalesListScreen() {
-        let viewController = ScalesListViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+        router.route(to: .scaleList, withParams: [:])
     }
 }
 

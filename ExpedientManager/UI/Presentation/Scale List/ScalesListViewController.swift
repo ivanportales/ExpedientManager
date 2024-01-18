@@ -5,10 +5,12 @@
 //  Created by Gonzalo Ivan Santos Portales on 01/12/24.
 //
 
-import UIKit
 import Combine
+import UIKit
 
-class ScalesListViewController: UIViewController {
+final class ScalesListViewController: UIViewController {
+    
+    // MARK: - UI
     
     private lazy var fixedScalesLAbel: UILabel = {
         let label = UILabel()
@@ -53,14 +55,30 @@ class ScalesListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-//        tableView.sele
-        //tableView.backgroundColor = .blue
         
         return tableView
     }()
+    
+    // MARK: - Private Properties
 
     private var subscribers: Set<AnyCancellable> = []
-    private let viewModel = ScaleListViewModel()
+    private let viewModel: ScalesListViewModel
+    private let router: DeeplinkRouterProtocol
+    
+    // MARK: - Inis
+    
+    init(viewModel: ScalesListViewModel,
+         router: DeeplinkRouterProtocol) {
+        self.viewModel = viewModel
+        self.router = router
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - ViewController Lifecycle functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +90,7 @@ class ScalesListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.load()
+        viewModel.getAllScales()
     }
 }
 
@@ -241,13 +259,13 @@ extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
             state = .onDuty
             onDuty = viewModel.onDuties[indexPath.section]
         }
-
-        let viewController = ScaleDetailsViewController(
-            viewModel: .init(
-                state: state,
-                selectedFixedScale: fixedScale,
-                selectedOnDuty: onDuty))
         
-        self.navigationController?.pushViewController(viewController, animated: true)
+        router.route(to: .scaleDetails,
+                     withParams: [
+                        "viewState": state,
+                        "selectedFixedScale": fixedScale as Any,
+                        "selectedOnDuty": onDuty as Any
+                     ]
+        )
     }
 }

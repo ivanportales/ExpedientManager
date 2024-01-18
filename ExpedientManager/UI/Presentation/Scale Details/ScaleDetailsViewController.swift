@@ -5,10 +5,12 @@
 //  Created by Gonzalo Ivan Santos Portales on 01/12/24.
 //
 
-import UIKit
 import Combine
+import UIKit
 
-class ScaleDetailsViewController: UIViewController {
+final class ScaleDetailsViewController: UIViewController {
+    
+    // MARK: - UI
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var scaleSelectType: ScaleSelectType!
@@ -27,11 +29,18 @@ class ScaleDetailsViewController: UIViewController {
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     
+    // MARK: - Private Properties
+    
     private let viewModel: ScaleDetailsViewModel
+    private let router: DeeplinkRouterProtocol
     private var subscribers = Set<AnyCancellable>()
+    
+    // MARK: - Inits
 
-    init(viewModel: ScaleDetailsViewModel) {
+    init(viewModel: ScaleDetailsViewModel,
+         router: DeeplinkRouterProtocol) {
         self.viewModel = viewModel
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -54,6 +63,7 @@ class ScaleDetailsViewController: UIViewController {
     }
 }
 
+// MARK: - Setup Extensions
 
 extension ScaleDetailsViewController {
     private func setupUI(){
@@ -107,7 +117,7 @@ extension ScaleDetailsViewController {
         let alert = UIAlertController(title: LocalizedString.deleteAlertTitle, message: LocalizedString.deleteAlertMsg, preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: LocalizedString.yesText, style: .destructive) { [weak self] _ in
             self?.viewModel.delete()
-            self?.navigationController?.popViewController(animated: true)
+            self?.router.pop()
         }
         let cancelAction = UIAlertAction(title: LocalizedString.noText, style: .default) { [weak self] _ in
         }
@@ -159,7 +169,7 @@ extension ScaleDetailsViewController {
         }
         
         viewModel.update()
-        navigationController?.popViewController(animated: true)
+        router.pop()
     }
     
     private func setupBindings() {
@@ -173,7 +183,7 @@ extension ScaleDetailsViewController {
                     self.showSpinner(onView: self.view)
                 } else {
                     self.removeSpinner()
-                    self.navigationController?.popViewController(animated: true)
+                    self.router.pop()
                 }
             }.store(in: &subscribers)
         

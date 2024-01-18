@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol FixedScaleRepository {
+protocol FixedScaleRepositoryProtocol {
     func save(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ())
     func getAllFixedScales(completionHandler: @escaping (Result<[FixedScale], Error>) -> ())
     func delete(fixedScale: FixedScale) -> Result<Bool, Error>

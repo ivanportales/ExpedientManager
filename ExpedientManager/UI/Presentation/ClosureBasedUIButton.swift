@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class ClosureBasedUIButton: UIButton {
+public final class ClosureBasedUIButton: UIButton {
     
     public var touchDownCompletion: ((ClosureBasedUIButton) -> Void)?
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HomeVideModel: ObservableObject {
+final class HomeVideModel: ObservableObject {
     
     // MARK: - Binding Properties
     
@@ -21,16 +21,13 @@ class HomeVideModel: ObservableObject {
     // MARK: - Private Properties
     
     private let repository: CoreDataScheduledNotificationsRepository
-    private let router: DeeplinkRouterProtocol
     private let localStorage: LocalStorageRepositoryProtocol
     
     // MARK: - Init
     
     init(repository: CoreDataScheduledNotificationsRepository,
-         router: DeeplinkRouterProtocol,
          localStorage: LocalStorageRepositoryProtocol) {
         self.repository = repository
-        self.router = router
         self.localStorage = localStorage
     }
     
@@ -65,9 +62,9 @@ class HomeVideModel: ObservableObject {
         }
     }
     
-    func verifyFirstAccessOnApp() {
+    func verifyFirstAccessOnApp(routeToOnboardingCallback: @escaping (() -> Void)) {
         if localStorage.getValue(forKey: .hasOnboarded) == nil {
-            router.route(to: .onboard, withParams: [:])
+            routeToOnboardingCallback()
         }
     }
 }

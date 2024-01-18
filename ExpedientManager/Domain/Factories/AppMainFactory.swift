@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppMainFactory {
+final class AppMainFactory {
     
     private let navigationController: UINavigationController = UINavigationController()
     

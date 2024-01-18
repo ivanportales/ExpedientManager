@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CoreDataFixedScaleRepository: FixedScaleRepository {
+class CoreDataFixedScaleRepository: FixedScaleRepositoryProtocol {
     private let container: NSPersistentContainer
     
     struct Constants {

@@ -5,11 +5,14 @@
 //  Created by Gonzalo Ivan Santos Portales on 10/28/24.
 //
 
+import Combine
 import Foundation
 import UIKit
-import Combine
 
-class AddScaleViewController: UIViewController {
+final class AddScaleViewController: UIViewController {
+    
+    // MARK: - UI
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var scaleSelectType: ScaleSelectType!
     @IBOutlet weak var begginingDurationView: ScaleDurationView!
@@ -20,15 +23,32 @@ class AddScaleViewController: UIViewController {
     @IBOutlet weak var onDutyButton: UIButton!
     @IBOutlet weak var scaleSelectTypeHeight: NSLayoutConstraint!
     @IBOutlet weak var scaleSetColorView: ScaleSetColorView!
-    
     @IBOutlet weak var shiftLabel: UILabel!
     @IBOutlet weak var activitiesLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     
+    // MARK: - Private Properties
+    
     private var subscribers = Set<AnyCancellable>()
-    private let viewModel = AddScaleViewModel()
+    private let viewModel: AddScaleViewModel
+    private let router: DeeplinkRouterProtocol
+    
+    // MARK: - Inits
+    
+    init(viewModel: AddScaleViewModel,
+         router: DeeplinkRouterProtocol) {
+        self.viewModel = viewModel
+        self.router = router
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - ViewController Lifecycle functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +64,8 @@ class AddScaleViewController: UIViewController {
         viewModel.requestAuthorizationToSendNotifications()
     }
 }
+
+// MARK: - Setup Functions
 
 extension AddScaleViewController {
     private func setupUI(){
@@ -140,7 +162,7 @@ extension AddScaleViewController {
                     self.showSpinner(onView: self.view)
                 } else {
                     self.removeSpinner()
-                    self.navigationController?.popViewController(animated: true)
+                    self.router.pop()
                 }
             }.store(in: &subscribers)
         

@@ -10,9 +10,12 @@ import UIKit
 enum Deeplink: String {
     case home = "expedientManager://home"
     case onboard = "expedientManager://onboard"
+    case addScale = "expedientManager://add_scale"
+    case scaleList = "expedientManager://scale_list"
+    case scaleDetails = "expedientManager://scale_details"
 }
 
-protocol DeeplinkRouterProtocol: class {
+protocol DeeplinkRouterProtocol {
     func route(to deeplink: Deeplink, withParams params: [String: Any])
     func pop()
 }
@@ -38,10 +41,16 @@ final class DeeplinkRouter: DeeplinkRouterProtocol {
     
     func route(to deeplink: Deeplink, withParams params: [String: Any] = [:]) {
         switch deeplink {
-        case .home:
-            showHomeScreen()
         case .onboard:
             showOnboardingScreen()
+        case .home:
+            showHomeScreen()
+        case .addScale:
+            showAddScaleScreen()
+        case .scaleList:
+            showScalesListScreen()
+        case .scaleDetails:
+            showScalesDetailsScreen(params: params)
         }
     }
     
@@ -51,28 +60,38 @@ final class DeeplinkRouter: DeeplinkRouterProtocol {
     
     // MARK: - Private Functions
     
+    private func showOnboardingScreen() {
+        guard let viewController = factory?.makeOnboardingViewController() else { return }
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     private func showHomeScreen() {
         guard let viewController = factory?.makeHomeViewController() else { return }
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    private func showOnboardingScreen() {
-        guard let viewController = factory?.makeOnboardingViewController() else { return }
+    private func showAddScaleScreen() {
+        guard let viewController = factory?.makeAddScaleViewController() else { return }
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    private func showScalesListScreen() {
+        guard let viewController = factory?.makeScalesListViewController() else { return }
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    private func showScalesDetailsScreen(params: [String: Any]) {
+        guard let viewState = params["viewState"] as? ViewStates else { return }
+        let selectedFixedScale = params["selectedFixedScale"] as? FixedScale
+        let selectedOnDuty = params["selectedOnDuty"] as? OnDuty
+    
+        guard let viewController = factory?.makeScalesDetailViewController(viewState: viewState,
+                                                                           selectedFixedScale: selectedFixedScale,
+                                                                           selectedOnDuty: selectedOnDuty) else {
+            return
+        }
         
-    func handle(openURLContext: UIOpenURLContext) {
-//        authService.handleURLFromDeepLink(openURLContext.url) { [weak self] result in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let token):
-//                    self?.pop()
-//                    self?.showHomeScreen(token: token)
-//                case .failure(let error):
-//                    self?.showErrorScreen(with: error)
-//                }
-//            }
-//        }
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     private func setupNavigationBar() {

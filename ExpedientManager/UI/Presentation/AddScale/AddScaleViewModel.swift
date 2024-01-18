@@ -11,18 +11,39 @@ public enum ViewStates {
     case onDuty, fixedScale
 }
 
-class AddScaleViewModel: ObservableObject {
+final class AddScaleViewModel: ObservableObject {
+    
+    // MARK: - Bindings Properties
     
     @Published private(set) var isLoading = false
     @Published private(set) var initialDutyDate: Date = .init()
     @Published private(set) var finalDutyDate: Date = .init()
     
+    // MARK: - Exposed Properties
+    
     private(set) var errorText = ""
     private(set) var state: ViewStates = .fixedScale
-    private let scheduler = UserNotificationService()
-    private let repository: CoreDataScheduledNotificationsRepository = CoreDataScheduledNotificationsRepository()
-    private let fixedScaleRepository: FixedScaleRepository = CoreDataFixedScaleRepository()
-    private let onDutyRepository: OnDutyRepository = CoreDataOnDutyRepository()
+    
+    // MARK: - Private Properties
+    
+    private let scheduler: UserNotificationService
+    private let repository: CoreDataScheduledNotificationsRepository
+    private let fixedScaleRepository: FixedScaleRepositoryProtocol
+    private let onDutyRepository: OnDutyRepositoryProtocol
+    
+    // MARK: - Init
+    
+    init(scheduler: UserNotificationService,
+         repository: CoreDataScheduledNotificationsRepository,
+         fixedScaleRepository: FixedScaleRepositoryProtocol,
+         onDutyRepository: OnDutyRepositoryProtocol) {
+        self.scheduler = scheduler
+        self.repository = repository
+        self.fixedScaleRepository = fixedScaleRepository
+        self.onDutyRepository = onDutyRepository
+    }
+    
+    // MARK: - Exposed Properties
     
     func changeViewStateTo(state: ViewStates) {
         self.state = state
@@ -69,6 +90,8 @@ class AddScaleViewModel: ObservableObject {
             }
         }
     }
+    
+    // MARK: - Private Properties
     
     private func calculateScaleOf(fixedScale: FixedScale) {
         let calendar = Calendar.current
