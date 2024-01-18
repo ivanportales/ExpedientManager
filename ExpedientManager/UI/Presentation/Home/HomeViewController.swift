@@ -61,9 +61,19 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private let repository = CoreDataFixedScaleRepository()
-    private let viewModel = HomeVideModel()
+    private let viewModel: HomeVideModel
     private var subscribers = Set<AnyCancellable>()
+    
+    // MARK: - Inits
+    
+    init(viewModel: HomeVideModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - ViewController Lifecycle functions
     
@@ -74,6 +84,7 @@ final class HomeViewController: UIViewController {
         setupViewHierarchy()
         setupConstraints()
         setupBindings()
+        viewModel.verifyFirstAccessOnApp()
         //viewModel.deletAll()
     }
     
@@ -113,19 +124,9 @@ extension HomeViewController {
     }
     
     private func setupNavigationBar() {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [
-            .font: UIFont.poppinsSemiboldOf(size: 34)
-        ]
+        displayLargeNavigationBarTitle(true)
         setNavigationBarMonthTitle()
-        
-        navigationItem.setHidesBackButton(true, animated: true)
-        
-        let backButton = UIBarButtonItem(title: LocalizedString.backTitlebutton, style: UIBarButtonItem.Style.plain, target: self, action: nil)
-        backButton.setTitleTextAttributes([.font: UIFont.poppinsSemiboldOf(size: 16)], for: .normal)
-        navigationItem.backBarButtonItem = backButton
-        
+                
         setupNavigationBarItemOn(position: .right,
                                  withIcon: UIImage(systemName: "plus"),
                                  color: .appLightBlue) { [weak self] _ in

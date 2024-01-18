@@ -14,15 +14,23 @@ public enum NavigationItemPosition {
 }
 
 public extension UIViewController {
+    
+    func displayLargeNavigationBarTitle(_ showLargeTitle: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = showLargeTitle
+    }
+    
     func setupNavigationBarItemOn(position: NavigationItemPosition,
-                                  withIcon icon: UIImage?,
-                                  withText text: String?,
+                                  withIcon icon: UIImage? = nil,
+                                  withTitle title: String? = nil,
                                   color: UIColor,
                                   and completion: @escaping (ClosureBasedUIButton) -> Void) {
-        guard icon != nil, text != nil else { return }
+        guard icon != nil || title != nil else { return }
         let button = ClosureBasedUIButton()
-        
-        button.setImage(icon ?? .actions, for: .normal)
+        if let icon = icon {
+            button.setImage(icon, for: .normal)
+        } else {
+            button.setTitle(title, for: .normal)
+        }
         button.imageView?.tintColor = color
         button.touchDownCompletion = completion
         

@@ -8,24 +8,21 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    var router: DeeplinkRouter?
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        var navigationController: UINavigationController!
-        
-        if UserDefaults.standard.hasOnboarded {
-            navigationController = UINavigationController(rootViewController: HomeViewController())
-        } else {
-            navigationController = UINavigationController(rootViewController: OnboardingViewController())
+        let factory = AppMainFactory()
+        window = factory.makeMainAppWindowWith(appScene: windowScene)
+        router = factory.makeAppRouter()
+        router?.route(to: .home)
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let urlContext = URLContexts.first else {
+            return
         }
-        
-        let safeWindow = UIWindow(windowScene: windowScene)
-        safeWindow.frame = UIScreen.main.bounds
-        safeWindow.rootViewController = navigationController
-        safeWindow.makeKeyAndVisible()
-        
-        window = safeWindow
+        router?.handle(openURLContext: urlContext)
     }
 }

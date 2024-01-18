@@ -13,15 +13,34 @@ class OnboardingViewController: UIViewController {
     
     let scrollView: UIScrollView = UIScrollView()
     
+    private let router: DeeplinkRouterProtocol
+    private let localStorage: LocalStorageRepositoryProtocol
+    
     let descriptions: [String] = [
         LocalizedString.onboardingMsg1,
         LocalizedString.onboardingMsg2, 
         LocalizedString.onboardingMsg3
     ]
     
+    init(router: DeeplinkRouterProtocol,
+         localStorage: LocalStorageRepositoryProtocol) {
+        self.router = router
+        self.localStorage = localStorage
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -37,9 +56,8 @@ extension OnboardingViewController {
     
     @objc func didTapButton(_ button: UIButton) {
         guard button.tag < 3 else {
-            let vc = HomeViewController()
-            UserDefaults.standard.hasOnboarded = true
-            self.navigationController?.pushViewController(vc, animated: true)
+            router.pop()
+            localStorage.save(value: true, forKey: .hasOnboarded)
             return
         }
         

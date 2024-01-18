@@ -20,7 +20,19 @@ class HomeVideModel: ObservableObject {
     
     // MARK: - Private Properties
     
-    private let repository = CoreDataScheduledNotificationsRepository()
+    private let repository: CoreDataScheduledNotificationsRepository
+    private let router: DeeplinkRouterProtocol
+    private let localStorage: LocalStorageRepositoryProtocol
+    
+    // MARK: - Init
+    
+    init(repository: CoreDataScheduledNotificationsRepository,
+         router: DeeplinkRouterProtocol,
+         localStorage: LocalStorageRepositoryProtocol) {
+        self.repository = repository
+        self.router = router
+        self.localStorage = localStorage
+    }
     
     // MARK: - Exposed Functions
     
@@ -53,10 +65,10 @@ class HomeVideModel: ObservableObject {
         }
     }
     
-    func deletAll() {
-        CoreDataOnDutyRepository()
-        CoreDataFixedScaleRepository().deleteAllShifts()
-        let _ = repository.deleteAllScheduledNotifications()
+    func verifyFirstAccessOnApp() {
+        if localStorage.getValue(forKey: .hasOnboarded) == nil {
+            router.route(to: .onboard, withParams: [:])
+        }
     }
 }
 
