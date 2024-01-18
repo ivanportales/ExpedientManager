@@ -20,14 +20,14 @@ final class HomeVideModel: ObservableObject {
     
     // MARK: - Private Properties
     
-    private let repository: CoreDataScheduledNotificationsRepository
+    private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
     private let localStorage: LocalStorageRepositoryProtocol
     
     // MARK: - Init
     
-    init(repository: CoreDataScheduledNotificationsRepository,
+    init(scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
          localStorage: LocalStorageRepositoryProtocol) {
-        self.repository = repository
+        self.scheduledNotificationsRepository = scheduledNotificationsRepository
         self.localStorage = localStorage
     }
     
@@ -38,7 +38,7 @@ final class HomeVideModel: ObservableObject {
     }
     
     func load() {
-        repository.getAllScheduledNotifications { [weak self] result in
+        scheduledNotificationsRepository.getAllScheduledNotifications { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)

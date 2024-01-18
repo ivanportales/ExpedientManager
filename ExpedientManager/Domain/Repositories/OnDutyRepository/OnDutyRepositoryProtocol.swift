@@ -10,6 +10,6 @@ import Foundation
 protocol OnDutyRepositoryProtocol {
     func save(onDuty: OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ())
     func getAllOnDuty(completionHandler: @escaping (Result<[OnDuty], Error>) -> ())
-    func delete(onDuty: OnDuty) -> Result<Bool, Error>
-    func update(onDuty: OnDuty) -> Result<Bool, Error>
+    func delete(onDuty: OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ())
+    func update(onDuty: OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ())
 }

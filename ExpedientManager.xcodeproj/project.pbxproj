@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1ABCAF6551EA9E1C9F9F5103 /* Pods_ExpedientManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */; };
 		718C3D3D2B73F7C372F63ED4 /* Pods_ExpedientManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */; };
+		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE7DE7AB2B58814400F57E42 /* ClosureBasedUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AA2B58814400F57E42 /* ClosureBasedUIButton.swift */; };
 		AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */; };
 		AE7DE7B22B58946F00F57E42 /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */; };
@@ -112,6 +113,7 @@
 		7C3A28BED89E90818C58226B /* Pods-ExpedientManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManager.release.xcconfig"; path = "Target Support Files/Pods-ExpedientManager/Pods-ExpedientManager.release.xcconfig"; sourceTree = "<group>"; };
 		A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpedientManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A834456D8495583D56D1EE96 /* Pods-ExpedientManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-ExpedientManagerTests/Pods-ExpedientManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE7DE7AA2B58814400F57E42 /* ClosureBasedUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureBasedUIButton.swift; sourceTree = "<group>"; };
 		AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkRouter.swift; sourceTree = "<group>"; };
 		AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
@@ -307,7 +309,7 @@
 			children = (
 				AED250462B57558000290E42 /* Resources */,
 				AED2505D2B57558000290E42 /* Utils */,
-				AED250682B57558000290E42 /* Presentation */,
+				AED250682B57558000290E42 /* Pages */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -373,7 +375,7 @@
 			path = Localizable;
 			sourceTree = "<group>";
 		};
-		AED250682B57558000290E42 /* Presentation */ = {
+		AED250682B57558000290E42 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
 				AE7DE7AA2B58814400F57E42 /* ClosureBasedUIButton.swift */,
@@ -383,7 +385,7 @@
 				AED250872B57558100290E42 /* Scale List */,
 				AED2508A2B57558100290E42 /* Onboarding */,
 			);
-			path = Presentation;
+			path = Pages;
 			sourceTree = "<group>";
 		};
 		AED250692B57558000290E42 /* Home */ = {
@@ -548,6 +550,7 @@
 			isa = PBXGroup;
 			children = (
 				AED250982B57558100290E42 /* ScheduledNotificationsRepository.swift */,
+				AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */,
 			);
 			path = ScheduledNotificationsRepository;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 				AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */,
 				AED250D32B57558100290E42 /* ScalesListViewController.swift in Sources */,
 				AED250C62B57558100290E42 /* AddScaleViewModel.swift in Sources */,
+				AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */,
 				AED250C02B57558100290E42 /* ScheduledScalesTableViewCell.swift in Sources */,
 				AED250CE2B57558100290E42 /* ScaleSetColorView.swift in Sources */,
 				AED250C82B57558100290E42 /* ScaleDurationView.swift in Sources */,

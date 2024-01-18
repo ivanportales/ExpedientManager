@@ -27,18 +27,18 @@ final class AddScaleViewModel: ObservableObject {
     // MARK: - Private Properties
     
     private let scheduler: UserNotificationService
-    private let repository: CoreDataScheduledNotificationsRepository
+    private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
     private let fixedScaleRepository: FixedScaleRepositoryProtocol
     private let onDutyRepository: OnDutyRepositoryProtocol
     
     // MARK: - Init
     
     init(scheduler: UserNotificationService,
-         repository: CoreDataScheduledNotificationsRepository,
+         scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
          fixedScaleRepository: FixedScaleRepositoryProtocol,
          onDutyRepository: OnDutyRepositoryProtocol) {
         self.scheduler = scheduler
-        self.repository = repository
+        self.scheduledNotificationsRepository = scheduledNotificationsRepository
         self.fixedScaleRepository = fixedScaleRepository
         self.onDutyRepository = onDutyRepository
     }
@@ -172,7 +172,7 @@ final class AddScaleViewModel: ObservableObject {
     }
     
     private func set(scheduledNotification: ScheduledNotification) {
-        repository.save(scheduledNotification: scheduledNotification) { [weak self] result in
+        scheduledNotificationsRepository.save(scheduledNotification: scheduledNotification) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)

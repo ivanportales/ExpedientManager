@@ -8,13 +8,18 @@
 import Foundation
 import CoreData
 
-class CoreDataScheduledNotificationsRepository {
+final class CoreDataScheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol {
+    
+    // MARK: - Private Properties
+    
     private let container: NSPersistentContainer
     
     struct Constants {
         static let storage = "RotinaApp"
         static let typeIdentifier = "CDScheduledNotification"
     }
+    
+    // MARK: - Inits
     
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: Constants.storage)
@@ -41,7 +46,10 @@ class CoreDataScheduledNotificationsRepository {
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
     
-    func save(scheduledNotification: ScheduledNotification, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+    // MARK: - Exposed Functions
+    
+    func save(scheduledNotification: ScheduledNotification, 
+              completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
         
         let newScheduledNotification = NSEntityDescription.insertNewObject(forEntityName: Constants.typeIdentifier, into: context) as! CDScheduledNotification
@@ -85,7 +93,8 @@ class CoreDataScheduledNotificationsRepository {
         }
     }
     
-    func delete(scheduledNotification: ScheduledNotification) -> Result<Bool, Error> {
+    func delete(scheduledNotification: ScheduledNotification,
+                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
         
         let fetchRequest = self.configFetchRequestFor(scheduledNotification: scheduledNotification)
@@ -96,14 +105,20 @@ class CoreDataScheduledNotificationsRepository {
                 context.delete(shiftToBeDeleted)
                 try context.save()
             }
-        } catch let fetchError {
-            return .failure(fetchError)
+        } catch {
+            DispatchQueue.main.async {
+                completionHandler(.failure(error))
+            }
+            return
         }
         
-        return .success(true)
+        DispatchQueue.main.async {
+            completionHandler(.success(true))
+        }
     }
     
-    func update(scheduledNotification: ScheduledNotification) -> Result<Bool, Error> {
+    func update(scheduledNotification: ScheduledNotification,
+                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
         
         let fetchRequest = self.configFetchRequestFor(scheduledNotification: scheduledNotification)
@@ -120,11 +135,16 @@ class CoreDataScheduledNotificationsRepository {
                 
                 try context.save()
             }
-        } catch let fetchError {
-            return .failure(fetchError)
+        } catch {
+            DispatchQueue.main.async {
+                completionHandler(.failure(error))
+            }
+            return
         }
         
-        return .success(true)
+        DispatchQueue.main.async {
+            completionHandler(.success(true))
+        }
     }
 
     
@@ -153,21 +173,27 @@ class CoreDataScheduledNotificationsRepository {
 //        return .success(true)
 //    }
     
-    func deleteAllScheduledNotifications() -> Result<Bool, Error> {
+    func deleteAllScheduledNotifications(completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.typeIdentifier)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
             try context.execute(batchDeleteRequest)
-        } catch  {
-            return .failure(error)
+        } catch {
+            DispatchQueue.main.async {
+                completionHandler(.failure(error))
+            }
+            return
         }
         
-        return .success(true)
+        DispatchQueue.main.async {
+            completionHandler(.success(true))
+        }
     }
     
-    func deleteAllScheduledNotificationsWhere(scaleUid: String) -> Result<Bool, Error> {
+    func deleteAllScheduledNotificationsWhere(scaleUid: String,
+                                              completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.typeIdentifier)
@@ -177,12 +203,19 @@ class CoreDataScheduledNotificationsRepository {
         
         do {
             try context.execute(batchDeleteRequest)
-        } catch  {
-            return .failure(error)
+        } catch {
+            DispatchQueue.main.async {
+                completionHandler(.failure(error))
+            }
+            return
         }
         
-        return .success(true)
+        DispatchQueue.main.async {
+            completionHandler(.success(true))
+        }
     }
+    
+    // MARK: - Private Functions
     
     private func configFetchRequestFor(scheduledNotification: ScheduledNotification) -> NSFetchRequest<CDScheduledNotification> {
         let fetchRequest = NSFetchRequest<CDScheduledNotification>(entityName: Constants.typeIdentifier)

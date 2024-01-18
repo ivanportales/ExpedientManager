@@ -23,8 +23,8 @@ final class ViewControllersFactory {
     }
     
     func makeHomeViewController() -> HomeViewController {
-        let repository = CoreDataScheduledNotificationsRepository()
-        let viewModel = HomeVideModel(repository: repository,
+        let scheduledNotificationsRepository = CoreDataScheduledNotificationsRepository()
+        let viewModel = HomeVideModel(scheduledNotificationsRepository: scheduledNotificationsRepository,
                                       localStorage: localStorage)
 
         return HomeViewController(viewModel: viewModel, router: router)
@@ -32,7 +32,7 @@ final class ViewControllersFactory {
     
     func makeAddScaleViewController() -> AddScaleViewController {
         let viewModel = AddScaleViewModel(scheduler: UserNotificationService(),
-                                          repository: CoreDataScheduledNotificationsRepository(),
+                                          scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository(),
                                           fixedScaleRepository: CoreDataFixedScaleRepository(),
                                           onDutyRepository: CoreDataOnDutyRepository())
 
@@ -54,7 +54,7 @@ final class ViewControllersFactory {
                                               selectedFixedScale: selectedFixedScale,
                                               selectedOnDuty: selectedOnDuty,
                                               scheduler: UserNotificationService(),
-                                              repository: CoreDataScheduledNotificationsRepository(),
+                                              scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository(),
                                               fixedScaleRepository: CoreDataFixedScaleRepository(),
                                               onDutyRepository: CoreDataOnDutyRepository())
 

@@ -9,12 +9,17 @@ import Foundation
 import CoreData
 
 class CoreDataFixedScaleRepository: FixedScaleRepositoryProtocol {
+    
+    // MARK: - Private Properties
+    
     private let container: NSPersistentContainer
     
     struct Constants {
         static let storage = "RotinaApp"
         static let typeIdentifier = "CDFixedScale"
     }
+    
+    // MARK: - Init
     
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: Constants.storage)
@@ -40,6 +45,8 @@ class CoreDataFixedScaleRepository: FixedScaleRepositoryProtocol {
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
+    
+    // MARK: - Exposed Functions
     
     func save(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
@@ -86,7 +93,8 @@ class CoreDataFixedScaleRepository: FixedScaleRepositoryProtocol {
         }
     }
     
-    func delete(fixedScale: FixedScale) -> Result<Bool, Error> {
+    func delete(fixedScale: FixedScale,
+                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
         
         let fetchRequest = self.configFetchRequestFor(fixedScale: fixedScale)
@@ -97,14 +105,20 @@ class CoreDataFixedScaleRepository: FixedScaleRepositoryProtocol {
                 context.delete(shiftToBeDeleted)
                 try context.save()
             }
-        } catch let fetchError {
-            return .failure(fetchError)
+        } catch {
+            DispatchQueue.main.async {
+                completionHandler(.failure(error))
+            }
+            return
         }
         
-        return .success(true)
+        DispatchQueue.main.async {
+            completionHandler(.success(true))
+        }
     }
     
-    func update(fixedScale: FixedScale) -> Result<Bool, Error> {
+    func update(fixedScale: FixedScale,
+                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
         
         let fetchRequest = self.configFetchRequestFor(fixedScale: fixedScale)
@@ -122,26 +136,38 @@ class CoreDataFixedScaleRepository: FixedScaleRepositoryProtocol {
                 
                 try context.save()
             }
-        } catch let fetchError {
-            return .failure(fetchError)
+        }catch {
+            DispatchQueue.main.async {
+                completionHandler(.failure(error))
+            }
+            return
         }
         
-        return .success(true)
+        DispatchQueue.main.async {
+            completionHandler(.success(true))
+        }
     }
     
-    func deleteAllShifts() -> Result<Bool, Error> {
+    func deleteAllShifts(completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.typeIdentifier)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
             try context.execute(batchDeleteRequest)
-        } catch  {
-            return .failure(error)
+        } catch {
+            DispatchQueue.main.async {
+                completionHandler(.failure(error))
+            }
+            return
         }
         
-        return .success(true)
+        DispatchQueue.main.async {
+            completionHandler(.success(true))
+        }
     }
+    
+    // MARK: - Private Functions
     
     private func configFetchRequestFor(fixedScale: FixedScale) -> NSFetchRequest<CDFixedScale> {
         let fetchRequest = NSFetchRequest<CDFixedScale>(entityName: Constants.typeIdentifier)
