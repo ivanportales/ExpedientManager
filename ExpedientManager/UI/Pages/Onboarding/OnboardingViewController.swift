@@ -8,19 +8,34 @@
 import UIKit
 
 final class OnboardingViewController: UIViewController {
-
-    @IBOutlet weak var holderView: UIView!
     
-    let scrollView: UIScrollView = UIScrollView()
+    // MARK: - UI
+    
+    lazy var carouselView: CarouselView = {
+        return CarouselView(models: models,
+                            userInteractionIsEnabled: false)
+    }()
+    
+    lazy var advanceButton: ClosureBasedUIButton = {
+        let advanceButton = ClosureBasedUIButton(title: "Avançar") { [weak self] _ in
+            self?.didTapButton()
+        }
+        advanceButton.backgroundColor = .appLightBlue
+        
+        return advanceButton
+    }()
+    
+    // MARK: - Private Properties
     
     private let router: DeeplinkRouterProtocol
     private let localStorage: LocalStorageRepositoryProtocol
-    
-    let descriptions: [String] = [
-        LocalizedString.onboardingMsg1,
-        LocalizedString.onboardingMsg2, 
-        LocalizedString.onboardingMsg3
+    private let models: [OnboardingCarouselItem] = [
+        OnboardingCarouselItem(image: "onboarding0", message: LocalizedString.onboardingMsg1),
+        OnboardingCarouselItem(image: "onboarding1", message: LocalizedString.onboardingMsg2),
+        OnboardingCarouselItem(image: "onboarding2", message: LocalizedString.onboardingMsg3),
     ]
+    
+    // MARK: - Init
     
     init(router: DeeplinkRouterProtocol,
          localStorage: LocalStorageRepositoryProtocol) {
@@ -33,85 +48,60 @@ final class OnboardingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - ViewController Lifecycle functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setupNavigationBar()
+        setupViewHierarchy()
+        setupConstraints()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        configureView()
+}
+
+// "nextButton"
+
+extension OnboardingViewController {
+    func didTapButton() {
+        if carouselView.canScrollToNextItem() {
+            carouselView.scrollToNextItem()
+            if !carouselView.canScrollToNextItem() {
+                advanceButton.setTitle(LocalizedString.getStartButton, for: .normal)
+            }
+        } else {
+            router.pop()
+            localStorage.save(value: true, forKey: .hasOnboarded)
+        }
     }
 }
+
+// MARK: - Setup Functions
 
 extension OnboardingViewController {
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    @objc func didTapButton(_ button: UIButton) {
-        guard button.tag < 3 else {
-            router.pop()
-            localStorage.save(value: true, forKey: .hasOnboarded)
-            return
-        }
-        
-        scrollView.setContentOffset(CGPoint(x: holderView.frame.size.width * CGFloat(button.tag), y: 0), animated: true)
+    private func setupViewHierarchy() {
+        view.addSubview(carouselView)
+        view.addSubview(advanceButton)
     }
-}
-
-extension OnboardingViewController {
     
-    private func configureView() {
-        scrollView.frame = holderView.bounds
-        scrollView.showsHorizontalScrollIndicator = false
-        holderView.addSubview(scrollView)
-        
-        for x in 0..<3 {
-            let pageView = UIView(frame: CGRect(x: CGFloat(x) * holderView.frame.size.width, y: 0, width: holderView.frame.size.width, height: holderView.frame.size.height))
-            scrollView.addSubview(pageView)
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            carouselView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            carouselView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            carouselView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            let button = UIButton(frame: CGRect(x: (pageView.frame.size.width/2)-40, y: 0, width: pageView.frame.size.width - 20, height: 50))
-        
-            let imageView = UIImageView(frame: CGRect(x: 10, y: pageView.frame.size.height/6, width: pageView.frame.size.width - 20, height: pageView.frame.size.height/2))
-            
-            let label = UILabel(frame: CGRect(x: 50, y: pageView.frame.size.height/1.45, width: pageView.frame.size.width-100, height: 120))
-            
-            label.textAlignment = .center
-            label.text = descriptions[x]
-            label.font = UIFont(name: "Poppins-Regular", size: 16)
-            label.numberOfLines = 0
-            pageView.addSubview(label)
-            
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = UIImage(named: "onboarding\(x)")
-            pageView.addSubview(imageView)
-            
-            button.setTitleColor(.appLightBlue, for: .normal)
-            button.setTitle(LocalizedString.nextButton, for: .normal)
-            button.titleLabel?.font = UIFont(name: "Poppins-Semibold", size: 16)
-            if x == 2 {
-                button.setTitle(LocalizedString.getStartButton, for: .normal)
-                
-                let toplabel = UILabel(frame: CGRect(x: 65, y:60, width: pageView.frame.size.width-120, height: 120))
-                toplabel.textAlignment = .center
-                toplabel.text = "Escolha entre dois tipos de escala:"
-                toplabel.font = UIFont(name: "Poppins-Regular", size: 16)
-                toplabel.numberOfLines = 0
-                pageView.addSubview(toplabel)
-            }
-            button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-            button.tag = x+1
-            pageView.addSubview(button)
-            
-        }
-        
-        scrollView.contentSize = CGSize(width: holderView.frame.size.width*3, height: 0)
-        scrollView.isPagingEnabled = true
+            advanceButton.topAnchor.constraint(equalTo: carouselView.bottomAnchor, constant: 20),
+            advanceButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            advanceButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            advanceButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+        ])
     }
 }

@@ -12,6 +12,9 @@
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
+		AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D702B59F49400B2389B /* CarouselView.swift */; };
+		AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */; };
+		AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */; };
 		AE7DE7AB2B58814400F57E42 /* ClosureBasedUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AA2B58814400F57E42 /* ClosureBasedUIButton.swift */; };
 		AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */; };
 		AE7DE7B22B58946F00F57E42 /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */; };
@@ -72,7 +75,6 @@
 		AED250D12B57558100290E42 /* ScaleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250862B57558100290E42 /* ScaleDetailsViewController.swift */; };
 		AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250882B57558100290E42 /* ScaleListViewModel.swift */; };
 		AED250D32B57558100290E42 /* ScalesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250892B57558100290E42 /* ScalesListViewController.swift */; };
-		AED250D42B57558100290E42 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED2508B2B57558100290E42 /* OnboardingViewController.xib */; };
 		AED250D52B57558100290E42 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2508C2B57558100290E42 /* OnboardingViewController.swift */; };
 		AED250D62B57558100290E42 /* RotinaApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AED2508F2B57558100290E42 /* RotinaApp.xcdatamodeld */; };
 		AED250D72B57558100290E42 /* FixedScaleRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250922B57558100290E42 /* FixedScaleRepositoryProtocol.swift */; };
@@ -118,6 +120,9 @@
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationServiceProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
+		AE6E6D702B59F49400B2389B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCarouselItem.swift; sourceTree = "<group>"; };
+		AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellView.swift; sourceTree = "<group>"; };
 		AE7DE7AA2B58814400F57E42 /* ClosureBasedUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureBasedUIButton.swift; sourceTree = "<group>"; };
 		AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkRouter.swift; sourceTree = "<group>"; };
 		AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
@@ -183,7 +188,6 @@
 		AED250862B57558100290E42 /* ScaleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleDetailsViewController.swift; sourceTree = "<group>"; };
 		AED250882B57558100290E42 /* ScaleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleListViewModel.swift; sourceTree = "<group>"; };
 		AED250892B57558100290E42 /* ScalesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalesListViewController.swift; sourceTree = "<group>"; };
-		AED2508B2B57558100290E42 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		AED2508C2B57558100290E42 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		AED250902B57558100290E42 /* RotinaApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RotinaApp.xcdatamodel; sourceTree = "<group>"; };
 		AED250922B57558100290E42 /* FixedScaleRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedScaleRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -230,6 +234,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE6E6D6F2B59F43600B2389B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE6E6D722B59F4B100B2389B /* Models */,
+				AE6E6D702B59F49400B2389B /* CarouselView.swift */,
+				AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AE6E6D722B59F4B100B2389B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		AE7DE7AC2B58946700F57E42 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,7 +523,7 @@
 		AED2508A2B57558100290E42 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				AED2508B2B57558100290E42 /* OnboardingViewController.xib */,
+				AE6E6D6F2B59F43600B2389B /* Views */,
 				AED2508C2B57558100290E42 /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
@@ -740,7 +762,6 @@
 				AED250CC2B57558100290E42 /* ScaleSelectTypeView.xib in Resources */,
 				AED250C32B57558100290E42 /* ScheduledScalesTableViewCell.xib in Resources */,
 				AED250CF2B57558100290E42 /* ScaleDetailsViewController.xib in Resources */,
-				AED250D42B57558100290E42 /* OnboardingViewController.xib in Resources */,
 				AED250A82B57558100290E42 /* Poppins-Light.ttf in Resources */,
 				AED250B22B57558100290E42 /* Poppins-Black.ttf in Resources */,
 				AED250B52B57558100290E42 /* Poppins-Italic.ttf in Resources */,
@@ -921,10 +942,13 @@
 				AED250C12B57558100290E42 /* EmptyTableViewCell.swift in Sources */,
 				AED250C92B57558100290E42 /* ScaleSelectType.swift in Sources */,
 				AED250DA2B57558100290E42 /* CoreDataOnDutyRepository.swift in Sources */,
+				AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */,
 				AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */,
 				AED250D62B57558100290E42 /* RotinaApp.xcdatamodeld in Sources */,
+				AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */,
 				AED250CB2B57558100290E42 /* ScaleSelectTypeView.swift in Sources */,
 				AED250DE2B57558100290E42 /* UIFont+Extensions.swift in Sources */,
+				AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */,
 				AED250DC2B57558100290E42 /* OnDuty.swift in Sources */,
 				AE7DE7AB2B58814400F57E42 /* ClosureBasedUIButton.swift in Sources */,
 			);
