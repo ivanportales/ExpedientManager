@@ -1,5 +1,5 @@
 //
-//  ClosureBasedUIButton.swift
+//  ClosureButtonView.swift
 //  eveEchoesCompanionApp
 //
 //  Created by Gonzalo Ivan Santos Portales on 16/05/22.
@@ -7,16 +7,22 @@
 
 import UIKit
 
-public final class ClosureBasedUIButton: UIButton {
+public class ClosureButtonView: UIButton {
     
-    public var touchDownCompletion: ((ClosureBasedUIButton) -> Void)?
+    // MARK: - Exposed Properties
+    
+    public var touchDownCompletion: ((ClosureButtonView) -> Void)?
+    
+    // MARK: - Inits
     
     init(title: String,
-         touchDownCompletion: ((ClosureBasedUIButton) -> Void)?) {
+         color: UIColor,
+         touchDownCompletion: ((ClosureButtonView) -> Void)?) {
         super.init(frame: .zero)
+        self.touchDownCompletion = touchDownCompletion
         translatesAutoresizingMaskIntoConstraints = false
         setTitle(title, for: .normal)
-        self.touchDownCompletion = touchDownCompletion
+        backgroundColor = color
         setupCompletion()
     }
     
@@ -32,6 +38,8 @@ public final class ClosureBasedUIButton: UIButton {
     private func setupCompletion() {
         addTarget(self, action: #selector(touchDownTarget), for: .touchDown)
     }
+    
+    // MARK: - Private Functions
     
     @objc private func touchDownTarget() {
         touchDownCompletion?(self)

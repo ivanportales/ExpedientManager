@@ -16,12 +16,12 @@ final class OnboardingViewController: UIViewController {
                             userInteractionIsEnabled: false)
     }()
     
-    lazy var advanceButton: ClosureBasedUIButton = {
-        let advanceButton = ClosureBasedUIButton(title: LocalizedString.nextButton) { [weak self] _ in
+    lazy var advanceButton: ButtonView = {
+        let advanceButton = ButtonView(title: LocalizedString.nextButton,
+                                       color: .appDarkBlue) { [weak self] _ in
             self?.didTapButton()
         }
-        advanceButton.backgroundColor = .appDarkBlue
-        advanceButton.cornerRadius = 10
+        
         
         return advanceButton
     }()

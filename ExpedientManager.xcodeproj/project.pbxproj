@@ -15,7 +15,7 @@
 		AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D702B59F49400B2389B /* CarouselView.swift */; };
 		AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */; };
 		AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */; };
-		AE7DE7AB2B58814400F57E42 /* ClosureBasedUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AA2B58814400F57E42 /* ClosureBasedUIButton.swift */; };
+		AE7DE7AB2B58814400F57E42 /* ClosureButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */; };
 		AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */; };
 		AE7DE7B22B58946F00F57E42 /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */; };
 		AE7DE7B32B58946F00F57E42 /* AppMainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B12B58946F00F57E42 /* AppMainFactory.swift */; };
@@ -89,6 +89,7 @@
 		AED250E02B57558100290E42 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2509F2B57558100290E42 /* UIColor+Extensions.swift */; };
 		AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A02B57558100290E42 /* Calendar+Extensions.swift */; };
 		AED250E22B57558100290E42 /* UserNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A22B57558100290E42 /* UserNotificationsService.swift */; };
+		AEE16A432B5C7C2A0000F2C4 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */; };
 		E82AE93921E858A4441ACACD /* Pods_ExpedientManager_ExpedientManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA90B4CC1AFA6C3DE2919DC /* Pods_ExpedientManager_ExpedientManagerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,7 +124,7 @@
 		AE6E6D702B59F49400B2389B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCarouselItem.swift; sourceTree = "<group>"; };
 		AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellView.swift; sourceTree = "<group>"; };
-		AE7DE7AA2B58814400F57E42 /* ClosureBasedUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureBasedUIButton.swift; sourceTree = "<group>"; };
+		AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureButtonView.swift; sourceTree = "<group>"; };
 		AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkRouter.swift; sourceTree = "<group>"; };
 		AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
 		AE7DE7B12B58946F00F57E42 /* AppMainFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMainFactory.swift; sourceTree = "<group>"; };
@@ -202,6 +203,7 @@
 		AED2509F2B57558100290E42 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AED250A02B57558100290E42 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		AED250A22B57558100290E42 /* UserNotificationsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationsService.swift; sourceTree = "<group>"; };
+		AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpedientManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E73F5A643FE912918DB430C5 /* Pods-ExpedientManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManagerTests.release.xcconfig"; path = "Target Support Files/Pods-ExpedientManagerTests/Pods-ExpedientManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -333,6 +335,7 @@
 		AED250452B57558000290E42 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AEE16A3F2B5C7BEC0000F2C4 /* Views */,
 				AED250462B57558000290E42 /* Resources */,
 				AED2505D2B57558000290E42 /* Utils */,
 				AED250682B57558000290E42 /* Pages */,
@@ -404,7 +407,6 @@
 		AED250682B57558000290E42 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				AE7DE7AA2B58814400F57E42 /* ClosureBasedUIButton.swift */,
 				AED250692B57558000290E42 /* Home */,
 				AED250712B57558000290E42 /* AddScale */,
 				AED250832B57558000290E42 /* Scale Details */,
@@ -612,6 +614,31 @@
 				AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		AEE16A3F2B5C7BEC0000F2C4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AEE16A412B5C7C130000F2C4 /* ButtonView */,
+				AEE16A402B5C7BFC0000F2C4 /* ClosureButtonView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AEE16A402B5C7BFC0000F2C4 /* ClosureButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */,
+			);
+			path = ClosureButtonView;
+			sourceTree = "<group>";
+		};
+		AEE16A412B5C7C130000F2C4 /* ButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */,
+			);
+			path = ButtonView;
 			sourceTree = "<group>";
 		};
 		EBBE64592D4B19578B7459EB /* Pods */ = {
@@ -906,6 +933,7 @@
 			files = (
 				AED250D92B57558100290E42 /* OnDutyRepositoryProtocol.swift in Sources */,
 				AED250D02B57558100290E42 /* ScaleDetailsViewModel.swift in Sources */,
+				AEE16A432B5C7C2A0000F2C4 /* ButtonView.swift in Sources */,
 				AED250DB2B57558100290E42 /* ScheduledNotificationsRepository.swift in Sources */,
 				AE7DE7B22B58946F00F57E42 /* ViewControllersFactory.swift in Sources */,
 				AED250B72B57558100290E42 /* String+Extensions.swift in Sources */,
@@ -950,7 +978,7 @@
 				AED250DE2B57558100290E42 /* UIFont+Extensions.swift in Sources */,
 				AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */,
 				AED250DC2B57558100290E42 /* OnDuty.swift in Sources */,
-				AE7DE7AB2B58814400F57E42 /* ClosureBasedUIButton.swift in Sources */,
+				AE7DE7AB2B58814400F57E42 /* ClosureButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

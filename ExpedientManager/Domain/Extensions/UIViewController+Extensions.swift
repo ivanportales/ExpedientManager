@@ -23,9 +23,9 @@ public extension UIViewController {
                                   withIcon icon: UIImage? = nil,
                                   withTitle title: String? = nil,
                                   color: UIColor,
-                                  and completion: @escaping (ClosureBasedUIButton) -> Void) {
+                                  and completion: @escaping (ClosureButtonView) -> Void) {
         guard icon != nil || title != nil else { return }
-        let button = ClosureBasedUIButton()
+        let button = ClosureButtonView()
         if let icon = icon {
             button.setImage(icon, for: .normal)
         } else {
