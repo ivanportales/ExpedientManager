@@ -15,6 +15,8 @@ public enum NavigationItemPosition {
 
 public extension UIViewController {
     
+    // MARK: - Exposed Functions
+    
     func displayLargeNavigationBarTitle(_ showLargeTitle: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = showLargeTitle
     }
@@ -28,10 +30,10 @@ public extension UIViewController {
         let button = ClosureButtonView()
         if let icon = icon {
             button.setImage(icon, for: .normal)
+            button.imageView?.tintColor = color
         } else {
             button.setTitle(title, for: .normal)
         }
-        button.imageView?.tintColor = color
         button.touchDownCompletion = completion
         
         let barButton = UIBarButtonItem(customView: button)
@@ -52,34 +54,34 @@ public extension UIViewController {
         }
     }
     
+    func showNavigationBarButtonFrom(position: NavigationItemPosition, andIndex index: Int) {
+        toggleNavigationBarButton(at: position, andIndex: index, isEnabled: true, isHidden: false)
+    }
+
     func hideNavigationBarButtonFrom(position: NavigationItemPosition, andIndex index: Int) {
-        switch position {
-        case .left:
-            guard navigationItem.leftBarButtonItems != nil,
-                  navigationItem.leftBarButtonItems!.count > index else { return }
-            navigationItem.leftBarButtonItems![index].isEnabled = false
-            navigationItem.leftBarButtonItems![index].isHidden = true
-        case .right:
-            guard navigationItem.rightBarButtonItems != nil,
-                  navigationItem.rightBarButtonItems!.count > index else { return }
-            navigationItem.rightBarButtonItems![index].isEnabled = false
-            navigationItem.rightBarButtonItems![index].isHidden = true
-        }
+        toggleNavigationBarButton(at: position, andIndex: index, isEnabled: false, isHidden: true)
     }
     
-    func showNavigationBarButtonFrom(position: NavigationItemPosition, andIndex index: Int) {
+    // MARK: - Private Functions
+    
+    private func toggleNavigationBarButton(at position: NavigationItemPosition,
+                                           andIndex index: Int,
+                                           isEnabled: Bool,
+                                           isHidden: Bool) {
+        var barButtonItems: [UIBarButtonItem]?
+
         switch position {
         case .left:
-            guard navigationItem.leftBarButtonItems != nil,
-                  navigationItem.leftBarButtonItems!.count > index else { return }
-            navigationItem.leftBarButtonItems![index].isEnabled = true
-            navigationItem.leftBarButtonItems![index].isHidden = false
+            barButtonItems = navigationItem.leftBarButtonItems
         case .right:
-            guard navigationItem.rightBarButtonItems != nil,
-                  navigationItem.rightBarButtonItems!.count > index else { return }
-            navigationItem.rightBarButtonItems![index].isEnabled = true
-            navigationItem.rightBarButtonItems![index].isHidden = false
+            barButtonItems = navigationItem.rightBarButtonItems
         }
+
+        guard let items = barButtonItems, items.indices.contains(index) else { return }
+
+        let item = items[index]
+        item.isEnabled = isEnabled
+        item.isHidden = isHidden
     }
 }
 
