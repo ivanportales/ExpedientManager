@@ -17,7 +17,7 @@ final class OnboardingViewController: UIViewController {
     }()
     
     lazy var advanceButton: ClosureBasedUIButton = {
-        let advanceButton = ClosureBasedUIButton(title: "Avançar") { [weak self] _ in
+        let advanceButton = ClosureBasedUIButton(title: LocalizedString.nextButton) { [weak self] _ in
             self?.didTapButton()
         }
         advanceButton.backgroundColor = .appLightBlue
@@ -64,22 +64,6 @@ final class OnboardingViewController: UIViewController {
     }
 }
 
-// "nextButton"
-
-extension OnboardingViewController {
-    func didTapButton() {
-        if carouselView.canScrollToNextItem() {
-            carouselView.scrollToNextItem()
-            if !carouselView.canScrollToNextItem() {
-                advanceButton.setTitle(LocalizedString.getStartButton, for: .normal)
-            }
-        } else {
-            router.pop()
-            localStorage.save(value: true, forKey: .hasOnboarded)
-        }
-    }
-}
-
 // MARK: - Setup Functions
 
 extension OnboardingViewController {
@@ -103,5 +87,21 @@ extension OnboardingViewController {
             advanceButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             advanceButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
         ])
+    }
+}
+
+// MARK: - Private Functions
+
+private extension OnboardingViewController {
+    func didTapButton() {
+        if carouselView.canScrollToNextItem() {
+            carouselView.scrollToNextItem()
+            if !carouselView.canScrollToNextItem() {
+                advanceButton.setTitle(LocalizedString.getStartButton, for: .normal)
+            }
+        } else {
+            router.pop()
+            localStorage.save(value: true, forKey: .hasOnboarded)
+        }
     }
 }
