@@ -20,7 +20,8 @@ final class OnboardingViewController: UIViewController {
         let advanceButton = ClosureBasedUIButton(title: LocalizedString.nextButton) { [weak self] _ in
             self?.didTapButton()
         }
-        advanceButton.backgroundColor = .appLightBlue
+        advanceButton.backgroundColor = .appDarkBlue
+        advanceButton.cornerRadius = 10
         
         return advanceButton
     }()
@@ -77,15 +78,16 @@ extension OnboardingViewController {
     }
     
     private func setupConstraints() {
+        let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            carouselView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            carouselView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            carouselView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            carouselView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 40),
+            carouselView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+            carouselView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
             
-            advanceButton.topAnchor.constraint(equalTo: carouselView.bottomAnchor, constant: 20),
-            advanceButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            advanceButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            advanceButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            advanceButton.topAnchor.constraint(equalTo: carouselView.bottomAnchor, constant: 30),
+            advanceButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+            advanceButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
+            advanceButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -40),
         ])
     }
 }
