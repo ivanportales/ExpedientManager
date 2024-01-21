@@ -27,14 +27,12 @@ public extension UIViewController {
                                   color: UIColor,
                                   and completion: @escaping (ClosureButtonView) -> Void) {
         guard icon != nil || title != nil else { return }
-        let button = ClosureButtonView()
+        var button: ClosureButtonView!
         if let icon = icon {
-            button.setImage(icon, for: .normal)
-            button.imageView?.tintColor = color
-        } else {
-            button.setTitle(title, for: .normal)
+            button = ClosureButtonView(icon: icon, color: color, touchDownCompletion: completion)
+        } else if let title = title {
+            button = ClosureButtonView(title: title, color: color, touchDownCompletion: completion)
         }
-        button.touchDownCompletion = completion
         
         let barButton = UIBarButtonItem(customView: button)
         

@@ -21,8 +21,17 @@ public class ClosureButtonView: UIButton {
         super.init(frame: .zero)
         self.touchDownCompletion = touchDownCompletion
         translatesAutoresizingMaskIntoConstraints = false
-        setTitle(title, for: .normal)
-        backgroundColor = color
+        setupStyleWith(title: title, color: color)
+        setupCompletion()
+    }
+    
+    init(icon: UIImage,
+         color: UIColor,
+         touchDownCompletion: ((ClosureButtonView) -> Void)?) {
+        super.init(frame: .zero)
+        self.touchDownCompletion = touchDownCompletion
+        translatesAutoresizingMaskIntoConstraints = false
+        setupStyleWith(icon: icon, color: color)
         setupCompletion()
     }
     
@@ -35,11 +44,33 @@ public class ClosureButtonView: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupCompletion() {
-        addTarget(self, action: #selector(touchDownTarget), for: .touchDown)
+    // MARK: - Internal Functions
+    
+    internal func setupStyleWith(title: String,
+                                 color: UIColor) {
+        var buttonConfig = UIButton.Configuration.plain()
+
+        buttonConfig.title = title
+        buttonConfig.baseBackgroundColor = color
+        
+        configuration = buttonConfig
+    }
+    
+    internal func setupStyleWith(icon: UIImage,
+                                 color: UIColor) {
+        var buttonConfig = UIButton.Configuration.plain()
+
+        buttonConfig.image = icon
+        buttonConfig.baseForegroundColor = color
+        
+        configuration = buttonConfig
     }
     
     // MARK: - Private Functions
+    
+    private func setupCompletion() {
+        addTarget(self, action: #selector(touchDownTarget), for: .touchDown)
+    }
     
     @objc private func touchDownTarget() {
         touchDownCompletion?(self)
