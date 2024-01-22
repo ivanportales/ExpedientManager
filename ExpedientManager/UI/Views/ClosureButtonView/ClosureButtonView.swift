@@ -13,6 +13,10 @@ public class ClosureButtonView: UIButton {
     
     public var touchDownCompletion: ((ClosureButtonView) -> Void)?
     
+    // MARK: - Internal Properties
+    
+    internal var privateTextAttributes: [NSAttributedString.Key: Any] = [:]
+    
     // MARK: - Inits
     
     init(title: String,
@@ -21,7 +25,7 @@ public class ClosureButtonView: UIButton {
         super.init(frame: .zero)
         self.touchDownCompletion = touchDownCompletion
         translatesAutoresizingMaskIntoConstraints = false
-        setupStyleWith(title: title, color: color)
+        setupStyleWith(title: title, backgroundColor: color)
         setupCompletion()
     }
     
@@ -44,14 +48,28 @@ public class ClosureButtonView: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Exposed Functions
+    
+    public func change(text: String) {
+        configuration?.attributedTitle = .init(text, attributes: AttributeContainer(privateTextAttributes))
+
+    }
+    
     // MARK: - Internal Functions
     
     internal func setupStyleWith(title: String,
-                                 color: UIColor) {
+                                 backgroundColor: UIColor,
+                                 textColor: UIColor = .white,
+                                 font: UIFont = .poppinsRegularOf(size: 16)) {
+        privateTextAttributes = [
+            .font: font,
+            .foregroundColor: textColor
+        ]
+        
         var buttonConfig = UIButton.Configuration.plain()
 
-        buttonConfig.title = title
-        buttonConfig.baseBackgroundColor = color
+        buttonConfig.attributedTitle = .init(title, attributes: AttributeContainer(privateTextAttributes))
+        buttonConfig.baseBackgroundColor = backgroundColor
         
         configuration = buttonConfig
     }
@@ -62,7 +80,7 @@ public class ClosureButtonView: UIButton {
 
         buttonConfig.image = icon
         buttonConfig.baseForegroundColor = color
-        
+
         configuration = buttonConfig
     }
     

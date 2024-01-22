@@ -99,7 +99,7 @@ private extension OnboardingViewController {
         if carouselView.canScrollToNextItem() {
             carouselView.scrollToNextItem()
             if !carouselView.canScrollToNextItem() {
-                advanceButton.setTitle(LocalizedString.getStartButton, for: .normal)
+                advanceButton.change(text: LocalizedString.getStartButton)
             }
         } else {
             router.pop()

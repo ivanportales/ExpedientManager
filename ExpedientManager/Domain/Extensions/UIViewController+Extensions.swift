@@ -35,7 +35,7 @@ public extension UIViewController {
         }
         
         let barButton = UIBarButtonItem(customView: button)
-        
+
         switch position {
         case .left:
             if navigationItem.leftBarButtonItems != nil {
