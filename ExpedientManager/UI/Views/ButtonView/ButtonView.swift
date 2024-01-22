@@ -12,9 +12,14 @@ public final class ButtonView: ClosureButtonView {
     // MARK: -  UI
     
     override init(title: String,
-                  color: UIColor,
+                  textColor: UIColor = .white,
+                  backgroundColor: UIColor = .clear,
+                  font: UIFont = .poppinsRegularOf(size: 16),
                   touchDownCompletion: ((ClosureButtonView) -> Void)?) {
-        super.init(title: title, color: color, touchDownCompletion: touchDownCompletion)
+        super.init(title: title,
+                   textColor: textColor,
+                   backgroundColor: backgroundColor,
+                   touchDownCompletion: touchDownCompletion)
     }
     
     required init?(coder: NSCoder) {

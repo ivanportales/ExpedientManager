@@ -20,12 +20,14 @@ public class ClosureButtonView: UIButton {
     // MARK: - Inits
     
     init(title: String,
-         color: UIColor,
+         textColor: UIColor = .white,
+         backgroundColor: UIColor = .clear,
+         font: UIFont = .poppinsRegularOf(size: 16),
          touchDownCompletion: ((ClosureButtonView) -> Void)?) {
         super.init(frame: .zero)
         self.touchDownCompletion = touchDownCompletion
         translatesAutoresizingMaskIntoConstraints = false
-        setupStyleWith(title: title, backgroundColor: color)
+        setupStyleWith(title: title, backgroundColor: backgroundColor, textColor: textColor, font: font)
         setupCompletion()
     }
     
@@ -70,6 +72,8 @@ public class ClosureButtonView: UIButton {
 
         buttonConfig.attributedTitle = .init(title, attributes: AttributeContainer(privateTextAttributes))
         buttonConfig.baseBackgroundColor = backgroundColor
+        buttonConfig.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+
         
         configuration = buttonConfig
     }
@@ -80,6 +84,7 @@ public class ClosureButtonView: UIButton {
 
         buttonConfig.image = icon
         buttonConfig.baseForegroundColor = color
+        buttonConfig.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
 
         configuration = buttonConfig
     }

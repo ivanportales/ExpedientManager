@@ -31,7 +31,7 @@ public extension UIViewController {
         if let icon = icon {
             button = ClosureButtonView(icon: icon, color: color, touchDownCompletion: completion)
         } else if let title = title {
-            button = ClosureButtonView(title: title, color: color, touchDownCompletion: completion)
+            button = ClosureButtonView(title: title, textColor: color, font: .poppinsSemiboldOf(size: 16), touchDownCompletion: completion)
         }
         
         let barButton = UIBarButtonItem(customView: button)
