@@ -82,9 +82,11 @@ extension AddScaleViewController {
     
     private func setupNavigationBar() {
         self.title = LocalizedString.addTitle
-        let saveButton = UIBarButtonItem(title: LocalizedString.saveButton, style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveScale))
-        saveButton.setTitleTextAttributes([.font: UIFont(name: "Poppins-SemiBold", size: 16)!], for: .normal)
-        navigationItem.setRightBarButtonItems([saveButton], animated: true)
+        setupNavigationBarItemOn(position: .right,
+                                 withTitle: LocalizedString.saveButton,
+                                 color: .appDarkBlue) { [weak self] _ in
+            self?.saveScale()
+        }
     }
     
     private func localizeLabels() {

@@ -83,15 +83,17 @@ extension ScaleDetailsViewController {
     private func setupNavigationBar() {
         self.title = viewModel.state == .fixedScale ? LocalizedString.editShiftTitle : LocalizedString.editOndutyTitle
         
-        let saveButton = UIBarButtonItem(title: LocalizedString.saveButton, style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveScale))
-        saveButton.setTitleTextAttributes([.font: UIFont(name: "Poppins-SemiBold", size: 16)!], for: .normal)
+        setupNavigationBarItemOn(position: .right,
+                                 withTitle: LocalizedString.saveButton,
+                                 color: .appDarkBlue) { [weak self] _ in
+            self?.saveScale()
+        }
         
-        let deleteButton = UIBarButtonItem(title: LocalizedString.deleteTitleText, style: UIBarButtonItem.Style.plain, target: self, action: #selector(deleteScale))
-        deleteButton.setTitleTextAttributes([
-            .foregroundColor: UIColor.red,
-            .font: UIFont(name: "Poppins-SemiBold", size: 16)!], for: .normal)
-        
-        navigationItem.setRightBarButtonItems([saveButton, deleteButton], animated: false)
+        setupNavigationBarItemOn(position: .right,
+                                 withTitle: LocalizedString.deleteTitleText,
+                                 color: .red) { [weak self] _ in
+            self?.deleteScale()
+        }
     }
     
     private func localizeLabels() {

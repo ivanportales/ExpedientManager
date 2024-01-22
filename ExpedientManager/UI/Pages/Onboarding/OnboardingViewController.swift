@@ -18,7 +18,7 @@ final class OnboardingViewController: UIViewController {
     
     lazy var advanceButton: ButtonView = {
         let advanceButton = ButtonView(title: LocalizedString.nextButton,
-                                       color: .appDarkBlue) { [weak self] _ in
+                                       backgroundColor: .appDarkBlue) { [weak self] _ in
             self?.didTapButton()
         }
         

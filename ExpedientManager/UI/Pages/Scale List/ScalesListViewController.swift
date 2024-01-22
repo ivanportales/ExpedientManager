@@ -98,11 +98,6 @@ extension ScalesListViewController {
     
     private func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .always
-        
-        let backButton = UIBarButtonItem(title: LocalizedString.backTitlebutton, style: UIBarButtonItem.Style.plain, target: self, action: nil)
-        backButton.setTitleTextAttributes([.font: UIFont(name: "Poppins-SemiBold", size: 16)!], for: .normal)
-        navigationItem.backBarButtonItem = backButton
-        
         title = LocalizedString.listTitleView
     }
     
