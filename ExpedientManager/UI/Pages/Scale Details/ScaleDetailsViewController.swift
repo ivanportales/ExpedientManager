@@ -248,7 +248,6 @@ extension ScaleDetailsViewController {
             scaleSelectTypeHeight.constant = 45
             scaleSelectType.workDurationTypeTxtField.isEnabled = false
             scaleSelectType.workDurationTypeTxtField.textColor = .textColor
-
             
             endingDurationView.dateTextField.isEnabled = false
             endingDurationView.dateTextField.textColor = UIColor(named: "textAddShiftColor")

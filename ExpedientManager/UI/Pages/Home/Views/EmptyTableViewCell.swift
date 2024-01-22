@@ -14,6 +14,8 @@ class EmptyTableViewCell: UITableViewCell {
     
     @IBOutlet weak var messageLabel: UILabel!
     
+    // MARK: - Init
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.clipsToBounds = true

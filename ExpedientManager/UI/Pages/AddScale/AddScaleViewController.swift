@@ -56,7 +56,6 @@ final class AddScaleViewController: UIViewController {
         setupNavigationBar()
         setupBindings()
         setupUI()
-//        endingDurationView.datePicker.datePickerMode = .date
     }
     
     override func viewWillAppear(_ animated: Bool) {

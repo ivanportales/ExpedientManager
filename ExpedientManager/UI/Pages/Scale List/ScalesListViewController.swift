@@ -12,17 +12,17 @@ final class ScalesListViewController: UIViewController {
     
     // MARK: - UI
     
-    private lazy var fixedScalesLAbel: UILabel = {
+    lazy var fixedScalesLAbel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-       // label.backgroundColor = .green
         label.text = LocalizedString.fixedButton
         label.font = .poppinsMediumOf(size: 16)
         label.textColor = .textColor
+        
         return label
     }()
     
-    private lazy var scalesTableView: UITableView = {
+    lazy var scalesTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UINib(nibName: "ScheduledScalesTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduledScalesTableViewCell.cellIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,22 +32,21 @@ final class ScalesListViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.sectionHeaderHeight = 0
         
-        //tableView.backgroundColor = .blue
-        
         return tableView
     }()
     
-    private lazy var onDutyLabel: UILabel = {
+    lazy var onDutyLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
        // label.backgroundColor = .green
         label.text = LocalizedString.ondutyButton
         label.font = .poppinsMediumOf(size: 16)
         label.textColor = .textColor
+        
         return label
     }()
     
-    private lazy var onDutyTableView: UITableView = {
+    lazy var onDutyTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UINib(nibName: "ScheduledScalesTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduledScalesTableViewCell.cellIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,11 +60,11 @@ final class ScalesListViewController: UIViewController {
     
     // MARK: - Private Properties
 
-    private var subscribers: Set<AnyCancellable> = []
     private let viewModel: ScalesListViewModel
     private let router: DeeplinkRouterProtocol
+    private var subscribers: Set<AnyCancellable> = []
     
-    // MARK: - Inis
+    // MARK: - Inits
     
     init(viewModel: ScalesListViewModel,
          router: DeeplinkRouterProtocol) {
@@ -95,7 +94,6 @@ final class ScalesListViewController: UIViewController {
 }
 
 extension ScalesListViewController {
-    
     private func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .always
         title = LocalizedString.listTitleView
@@ -203,6 +201,8 @@ extension ScalesListViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         tableView == scalesTableView ? viewModel.fixedScales.count : viewModel.onDuties.count
@@ -213,7 +213,6 @@ extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
         let cell = tableView.dequeueReusableCell(withIdentifier: ScheduledScalesTableViewCell.cellIdentifier) as! ScheduledScalesTableViewCell
         
         if tableView == scalesTableView {
@@ -240,6 +239,7 @@ extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setDataOf(scheduledNotification: model)
         }
         cell.selectionStyle = .none
+        
         return cell
     }
     

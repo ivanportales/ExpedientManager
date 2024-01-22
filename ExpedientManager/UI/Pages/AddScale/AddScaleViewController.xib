@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddScaleViewController" customModule="RotinaApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddScaleViewController" customModule="ExpedientManager" customModuleProvider="target">
             <connections>
                 <outlet property="activitiesLabel" destination="sbj-ZP-h1Q" id="O9u-SD-0CZ"/>
                 <outlet property="begginingDurationView" destination="yPg-bq-MhN" id="r2Y-Vx-zMP"/>
@@ -43,8 +43,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-PM-abG" customClass="ScrollToKeyboardAvoiding" customModule="RotinaApp" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-PM-abG" customClass="ScrollToKeyboardAvoiding" customModule="ExpedientManager" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IbG-mD-gGx">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="683"/>
@@ -225,7 +225,7 @@
                                                             <color key="textColor" name="textAddShiftColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1id-Ew-WT6" customClass="ScaleSelectType" customModule="RotinaApp" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1id-Ew-WT6" customClass="ScaleSelectType" customModule="ExpedientManager" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="30" width="343" height="91"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="91" id="UJR-5v-jwe"/>
@@ -245,7 +245,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TtM-jI-h4O">
                                                             <rect key="frame" x="0.0" y="30" width="343" height="106"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPg-bq-MhN" customClass="ScaleDurationView" customModule="RotinaApp" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPg-bq-MhN" customClass="ScaleDurationView" customModule="ExpedientManager" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="166.5" height="106"/>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <constraints>
@@ -255,7 +255,7 @@
                                                                         <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Início"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVh-Al-bvI" customClass="ScaleDurationView" customModule="RotinaApp" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVh-Al-bvI" customClass="ScaleDurationView" customModule="ExpedientManager" customModuleProvider="target">
                                                                     <rect key="frame" x="176.5" y="0.0" width="166.5" height="106"/>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <constraints>
@@ -279,7 +279,7 @@
                                                             <color key="textColor" name="textAddShiftColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrP-DJ-z6H" customClass="ScaleSetColorView" customModule="RotinaApp" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrP-DJ-z6H" customClass="ScaleSetColorView" customModule="ExpedientManager" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="30" width="343" height="60"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="60" id="KXt-bo-uwK"/>

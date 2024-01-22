@@ -13,7 +13,7 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Views
     
-    private lazy var calendarView: FSCalendar = {
+    lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         calendarView.backgroundColor = .clear
@@ -35,7 +35,7 @@ final class HomeViewController: UIViewController {
         return calendarView
     }()
     
-    private lazy var activityLabelView: UILabel = {
+    lazy var activityLabelView: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = LocalizedString.activitiesLabel
@@ -44,7 +44,7 @@ final class HomeViewController: UIViewController {
         return label
     }()
     
-    private lazy var activitiesListTableView: UITableView = {
+    lazy var activitiesListTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UINib(nibName: "ScheduledScalesTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduledScalesTableViewCell.cellIdentifier)
         tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: nil), forCellReuseIdentifier: EmptyTableViewCell.cellIdentifier)
@@ -94,7 +94,7 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.load()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        displayLargeNavigationBarTitle(true)
     }
 }
 
@@ -144,7 +144,7 @@ extension HomeViewController {
     }
     
     private func setNavigationBarMonthTitle() {
-        navigationItem.title = Calendar.current.getMonthDescriptionOf(date: calendarView.currentPage).firstUppercased
+       title = Calendar.current.getMonthDescriptionOf(date: calendarView.currentPage).firstUppercased
     }
     
     private func setupBindings() {
@@ -183,8 +183,8 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
         if let scheduledNotifications = viewModel.scheduledScalesDict[date.dateString] {
             var colors: [UIColor] = []
             
-            for ntf in scheduledNotifications {
-                colors.append(.init(hex: ntf.colorHex))
+            for scheduledNotification in scheduledNotifications {
+                colors.append(.init(hex: scheduledNotification.colorHex))
             }
             
             cell.eventIndicator.isHidden = false
@@ -231,17 +231,6 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
         }
         return nil
     }
-    
-//    private func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventColorFor date: Date) -> UIColor? {
-//         //Do some checks and return whatever color you want to.
-//        for scheduledNotification in viewModel.scheduledScales {
-//            if Calendar.current.isDate(date: scheduledNotification.date, inSameDayAs: date)! {
-//                return UIColor(hex: scheduledNotification.colorHex)
-//            }
-//        }
-//
-//        return UIColor.purple
-//    }
 }
 
 // MARK: - UITableViewDataSource

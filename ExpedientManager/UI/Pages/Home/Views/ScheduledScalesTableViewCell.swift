@@ -8,6 +8,7 @@
 import UIKit
 
 class ScheduledScalesTableViewCell: UITableViewCell {
+    
     static let cellIdentifier = "scheduledScalesTableViewCell"
     
     // MARK: - UI
@@ -22,6 +23,8 @@ class ScheduledScalesTableViewCell: UITableViewCell {
     // MARK: - Private Properties
     
     private let calendar = Calendar.current
+    
+    // MARK: - Init
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -38,10 +41,10 @@ class ScheduledScalesTableViewCell: UITableViewCell {
     // MARK: - Exposed Functions
     
     func setDataOf(scheduledNotification: ScheduledNotification) {
-        self.hourLabel.text = calendar.getHourAndMinuteFrom(date: scheduledNotification.date)
-        self.dayAndMonthLabel.text = calendar.getDayAndMonthFrom(date: scheduledNotification.date)
-        self.titleLabel.text = scheduledNotification.title
-        self.descriptionLabel.text = scheduledNotification.description
+        hourLabel.text = calendar.getHourAndMinuteFrom(date: scheduledNotification.date)
+        dayAndMonthLabel.text = calendar.getDayAndMonthFrom(date: scheduledNotification.date)
+        titleLabel.text = scheduledNotification.title
+        descriptionLabel.text = scheduledNotification.description
         scaleColorView.backgroundColor = UIColor(hex: scheduledNotification.colorHex)
     }
     
