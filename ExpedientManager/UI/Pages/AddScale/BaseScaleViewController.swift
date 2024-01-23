@@ -8,30 +8,70 @@
 import Combine
 import UIKit
 
-final class BaseScaleViewController: UIViewController {
+class BaseScaleViewController: UIViewController {
     
     // MARK: - UI
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
+        scrollView.backgroundColor = .white
+
         return scrollView
     }()
     
     lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .green
+        contentView.backgroundColor = .white
         
         return contentView
     }()
     
-//    @IBOutlet weak var titleTextField: UITextField!
+    lazy var scaleTypeSegmentControll: UISegmentedControl = {
+        let segmentControll = UISegmentedControl()
+        segmentControll.translatesAutoresizingMaskIntoConstraints = false
+        segmentControll.insertSegment(withTitle: "Escala Fixa", at: 0, animated: false)
+        segmentControll.insertSegment(withTitle: "Plantão", at: 1, animated: false)
+        
+        return segmentControll
+    }()
+    
+    lazy var titleLabel: UILabel = {
+        return UIView.makeLabelWith(text: "Título",
+                                    font: .poppinsSemiboldOf(size: 16),
+                                    color: .textAddShift)
+    }()
+    
+    lazy var titleTextField: TextField = {
+        return TextField(placeholder: LocalizedString.nameLabel, 
+                         textColor: .textAddShift)
+    }()
+    
+    lazy var notesLabel: UILabel = {
+        return UIView.makeLabelWith(text: "Notas",
+                                    font: .poppinsSemiboldOf(size: 16),
+                                    color: .textAddShift)
+    }()
+    
+    lazy var notesTextView: TextView = {
+        let textView = TextView(placeholder: "Descreva Aqui...",
+                                textColor: .textAddShift)
+        textView.constraintView(height: 85)
+        
+        return textView
+    }()
+    
+    lazy var durationLabel: UILabel = {
+        return UIView.makeLabelWith(text: "Duração",
+                                    font: .poppinsSemiboldOf(size: 16),
+                                    color: .textAddShift)
+    }()
+    
+    
 //    @IBOutlet weak var scaleSelectType: ScaleSelectType!
 //    @IBOutlet weak var begginingDurationView: ScaleDurationView!
 //    @IBOutlet weak var endingDurationView: ScaleDurationView!
-//    @IBOutlet weak var notesTextView: UITextView!
 //    @IBOutlet weak var scrollView: ScrollToKeyboardAvoiding!
 //    @IBOutlet weak var scaleButton: UIButton!
 //    @IBOutlet weak var onDutyButton: UIButton!
@@ -42,7 +82,6 @@ final class BaseScaleViewController: UIViewController {
 //    @IBOutlet weak var activitiesLabel: UILabel!
 //    @IBOutlet weak var durationLabel: UILabel!
 //    @IBOutlet weak var colorLabel: UILabel!
-//    @IBOutlet weak var notesLabel: UILabel!
     
     // MARK: - Private Properties
     
@@ -70,8 +109,9 @@ final class BaseScaleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.hideKeyboardWhenTappedAround()
-        //setupNavigationBar()
+        setupNavigationBar()
         setupViewHierarchy()
+        setupConstraints()
 //        setupBindings()
 //        setupUI()
         
@@ -89,36 +129,79 @@ extension BaseScaleViewController {
     func setupViewHierarchy() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        contentView.addSubview(scaleTypeSegmentControll)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(titleTextField)
+        contentView.addSubview(notesLabel)
+        contentView.addSubview(notesTextView)
+        contentView.addSubview(durationLabel)
     }
     
     func setupConstraints() {
-        let safeArea = view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+        scrollView.constraintViewToSuperview()
+        contentView.constraintViewToSuperview()
         
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            
+        NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 2),
+            
+            scaleTypeSegmentControll.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            scaleTypeSegmentControll.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            scaleTypeSegmentControll.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            titleLabel.topAnchor.constraint(equalTo: scaleTypeSegmentControll.bottomAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            titleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            titleTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            titleTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+
+            notesLabel.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 20),
+            notesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            notesLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            notesTextView.topAnchor.constraint(equalTo: notesLabel.bottomAnchor, constant: 10),
+            notesTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            notesTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            durationLabel.topAnchor.constraint(equalTo: notesTextView.bottomAnchor, constant: 20),
+            durationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            durationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            durationLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20),
+
         ])
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension BaseScaleViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if notesTextView.textColor == UIColor.init(named: "placeholderColor") {
+            notesTextView.text = nil
+            notesTextView.textColor = UIColor.init(named: "textAddShiftColor")
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if notesTextView.text.isEmpty {
+            notesTextView.text = LocalizedString.describeHerePlaceholder
+            notesTextView.textColor = UIColor.init(named: "placeholderColor")
+        }
     }
 }
 
 //// MARK: - Setup Extensions
 //
-//extension BaseScaleViewController {
+extension BaseScaleViewController {
+    internal func setupNavigationBar() {
+        title = "Adicionar"
+    }
+}
 //    private func setupUI(){
-//        
-////        notesTextView.delegate = self
-////        notesTextView.text = LocalizedString.describeHerePlaceholder
-////        notesTextView.autocapitalizationType = .sentences
-////        notesTextView.textColor = .textColor
+//        r
 ////        
 ////        scaleSelectType.delegate = self
 ////        begginingDurationView.delegate = self
@@ -127,21 +210,7 @@ extension BaseScaleViewController {
 //        setupRightScaleUI()
 //    }
 //    
-//    private func setupNavigationBar() {
-//        title = viewModel.state == .fixedScale ? LocalizedString.editShiftTitle : LocalizedString.editOndutyTitle
-//        
-//        setupNavigationBarItemOn(position: .right,
-//                                 withTitle: LocalizedString.saveButton,
-//                                 color: .appDarkBlue) { [weak self] _ in
-//            self?.saveScale()
-//        }
-//        
-//        setupNavigationBarItemOn(position: .right,
-//                                 withTitle: LocalizedString.deleteTitleText,
-//                                 color: .red) { [weak self] _ in
-//            self?.deleteScale()
-//        }
-//    }
+
 //    
 //    private func localizeLabels() {
 //        shiftLabel.text = LocalizedString.shiftLabel
@@ -258,21 +327,6 @@ extension BaseScaleViewController {
 //    }
 //}
 //
-//extension BaseScaleViewController: UITextViewDelegate {
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        if notesTextView.textColor == UIColor.init(named: "placeholderColor") {
-//            notesTextView.text = nil
-//            notesTextView.textColor = UIColor.init(named: "textAddShiftColor")
-//        }
-//    }
-//    
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        if notesTextView.text.isEmpty {
-//            notesTextView.text = LocalizedString.describeHerePlaceholder
-//            notesTextView.textColor = UIColor.init(named: "placeholderColor")
-//        }
-//    }
-//}
 //
 //extension BaseScaleViewController {
 //    private func setupRightScaleUI(){
@@ -365,6 +419,7 @@ extension BaseScaleViewController {
 //    }
 //}
 //
+
 //extension BaseScaleViewController: ScaleDurationViewDelegate {
 //    func hourChangedTo(date: Date) {
 //        if viewModel.state == .onDuty {
