@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 enum ScaleType: Codable {
-    case day,hour
+    case day, hour
 }
 
 class Scale: Codable {

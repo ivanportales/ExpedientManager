@@ -73,7 +73,6 @@ extension AddScaleViewController {
         notesTextView.autocapitalizationType = .sentences
         notesTextView.textColor = UIColor.init(named: "placeholderColor")
         
-        scaleSelectType.delegate = self
         begginingDurationView.delegate = self
         
         localizeLabels()
@@ -271,15 +270,5 @@ extension AddScaleViewController: ScaleDurationViewDelegate {
         if viewModel.state == .onDuty {
             viewModel.setInitialDutyDate(date)
         }
-    }
-}
-
-extension AddScaleViewController: ScaleSelectTypeDelegate {
-    func workDurarionValueChanged() {
-        print("")
-    }
-    
-    func workDurationTypeChanged() {
-        print("")
     }
 }

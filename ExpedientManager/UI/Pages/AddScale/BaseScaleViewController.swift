@@ -28,9 +28,10 @@ class BaseScaleViewController: UIViewController {
         return contentView
     }()
     
-    lazy var scaleTypeSegmentControll: ScaleTypeSelectionSegmentedControl = {
-        let segmentControll = ScaleTypeSelectionSegmentedControl(segmentsTitles: ["Escala Fixa", "Plantão"])
-
+    lazy var scaleTypeSegmentControll: SelectionSegmentedControl = {
+        let segmentControll = SelectionSegmentedControl(segmentsTitles: ["Escala Fixa", "Plantão"])
+        segmentControll.delegate = self
+        
         return segmentControll
     }()
     
@@ -106,17 +107,10 @@ class BaseScaleViewController: UIViewController {
         return scaleColorView
     }()
     
-//    @IBOutlet weak var scaleSelectTypeHeight: NSLayoutConstraint!
-//    @IBOutlet weak var scaleSetColorView: ScaleSetColorView!
-//    
-//    @IBOutlet weak var shiftLabel: UILabel!
-//    @IBOutlet weak var activitiesLabel: UILabel!
-//    @IBOutlet weak var colorLabel: UILabel!
-    
     // MARK: - Private Properties
     
 //    private let viewModel: ScaleDetailsViewModel
-//    private let router: DeeplinkRouterProtocol
+
     private var subscribers = Set<AnyCancellable>()
     
     // MARK: - Inits
@@ -212,7 +206,7 @@ extension BaseScaleViewController {
             scaleSelectTypeView.topAnchor.constraint(equalTo: durationLabel.bottomAnchor, constant: 10),
             scaleSelectTypeView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             scaleSelectTypeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            scaleSelectTypeView.heightAnchor.constraint(equalToConstant: 90),
+            
             
             shiftLabel.topAnchor.constraint(equalTo: scaleSelectTypeView.bottomAnchor, constant: 20),
             shiftLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
@@ -267,13 +261,9 @@ extension BaseScaleViewController: ScaleDurationViewDelegate {
     }
 }
 
-extension BaseScaleViewController: ScaleSelectTypeDelegate {
-    func workDurarionValueChanged() {
-        print("")
-    }
-    
-    func workDurationTypeChanged() {
-        print("")
+extension BaseScaleViewController: SelectionSegmentedControlDelegate {
+    func didChangeSelectedIndex(_ view: SelectionSegmentedControl, selectedIndex: Int) {
+        scaleSelectTypeView.selectedWorkScale = WorkScaleType.allCases[selectedIndex]
     }
 }
 

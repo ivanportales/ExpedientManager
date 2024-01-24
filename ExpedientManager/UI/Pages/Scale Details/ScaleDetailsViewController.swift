@@ -73,7 +73,6 @@ extension ScaleDetailsViewController {
         notesTextView.autocapitalizationType = .sentences
         notesTextView.textColor = .textColor
         
-        scaleSelectType.delegate = self
         begginingDurationView.delegate = self
         
         localizeLabels()
@@ -81,7 +80,7 @@ extension ScaleDetailsViewController {
     }
     
     private func setupNavigationBar() {
-        self.title = viewModel.state == .fixedScale ? LocalizedString.editShiftTitle : LocalizedString.editOndutyTitle
+        title = viewModel.state == .fixedScale ? LocalizedString.editShiftTitle : LocalizedString.editOndutyTitle
         
         setupNavigationBarItemOn(position: .right,
                                  withTitle: LocalizedString.saveButton,
@@ -329,15 +328,5 @@ extension ScaleDetailsViewController: ScaleDurationViewDelegate {
         if viewModel.state == .onDuty {
             viewModel.setInitialDutyDate(date)
         }
-    }
-}
-
-extension ScaleDetailsViewController: ScaleSelectTypeDelegate {
-    func workDurarionValueChanged() {
-        print("")
-    }
-    
-    func workDurationTypeChanged() {
-        print("")
     }
 }

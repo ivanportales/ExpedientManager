@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1ABCAF6551EA9E1C9F9F5103 /* Pods_ExpedientManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */; };
 		718C3D3D2B73F7C372F63ED4 /* Pods_ExpedientManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */; };
+		AE5410532B617B3D0039BD11 /* SelectionSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
@@ -121,6 +122,7 @@
 		7C3A28BED89E90818C58226B /* Pods-ExpedientManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManager.release.xcconfig"; path = "Target Support Files/Pods-ExpedientManager/Pods-ExpedientManager.release.xcconfig"; sourceTree = "<group>"; };
 		A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpedientManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A834456D8495583D56D1EE96 /* Pods-ExpedientManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-ExpedientManagerTests/Pods-ExpedientManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSegmentedControl.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationServiceProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
@@ -242,6 +244,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE5410512B617B0D0039BD11 /* SelectionSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */,
+			);
+			path = SelectionSegmentedControl;
+			sourceTree = "<group>";
+		};
 		AE6E6D6F2B59F43600B2389B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +492,7 @@
 		AED250762B57558000290E42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AE5410512B617B0D0039BD11 /* SelectionSegmentedControl */,
 				AED250772B57558000290E42 /* ScaleDurationView */,
 				AED2507A2B57558000290E42 /* ScaleSelectType */,
 				AED2507D2B57558000290E42 /* ScaleSelectTypeView */,
@@ -988,6 +999,7 @@
 				AE7DE7B62B589BFF00F57E42 /* LocalStorageRepository.swift in Sources */,
 				AED250D12B57558100290E42 /* ScaleDetailsViewController.swift in Sources */,
 				AED250B82B57558100290E42 /* UserDefaults+Extensions.swift in Sources */,
+				AE5410532B617B3D0039BD11 /* SelectionSegmentedControl.swift in Sources */,
 				AED250182B57552C00290E42 /* SceneDelegate.swift in Sources */,
 				AED250D52B57558100290E42 /* OnboardingViewController.swift in Sources */,
 				AE7DE7B32B58946F00F57E42 /* AppMainFactory.swift in Sources */,

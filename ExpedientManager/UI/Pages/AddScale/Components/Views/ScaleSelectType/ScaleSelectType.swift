@@ -9,43 +9,127 @@ import Foundation
 import UIKit
 
 protocol ScaleSelectTypeDelegate: AnyObject {
-    func workDurarionValueChanged()
-    func workDurationTypeChanged()
+    func workDurarionValueChanged(_ view: ScaleSelectType, workDuration: Int, restDuration: Int)
+    func workScaleTypeChanged(_ view: ScaleSelectType, scaleType: WorkScaleType)
+}
+
+public enum WorkScaleType: String, CaseIterable{
+    case fixedScale, onDuty
 }
 
 @IBDesignable
 class ScaleSelectType: UIView {
+    
+    // MARK: - UI
+    
+    @IBOutlet weak var workTitleLabel: UILabel!
     @IBOutlet weak var workDurantionTxtField: UITextField!
     @IBOutlet weak var workDurationTypeTxtField: UITextField!
+    @IBOutlet weak var lineSeparatorView: UIView!
+    @IBOutlet weak var restLineStackContainer: UIStackView!
+    @IBOutlet weak var restTitleLabel: UILabel!
     @IBOutlet weak var restDurationTxtField: UITextField!
     @IBOutlet weak var restDurationTypeLabel: UILabel!
-    @IBOutlet weak var restTitleLabel: UILabel!
-    @IBOutlet weak var workTitleLabel: UILabel!
-    @IBOutlet weak var lineSeparatorView: UIView!
     
-    let workDurationArray = [LocalizedString.hoursLabel, LocalizedString.daysLabel]
-    let pickerView: UIPickerView = UIPickerView()
+    lazy var pickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.dataSource = self
+        pickerView.delegate = self
+
+        return pickerView
+    }()
+    
+    // MARK: - Exposed Properties
+    
     weak var delegate: ScaleSelectTypeDelegate?
+    
+    var selectedScaleType: ScaleType = .hour
+    
+    var selectedWorkScale: WorkScaleType = .fixedScale {
+        didSet {
+            didChangeWorkScale()
+        }
+    }
+    
+    var workDuration: Int {
+        return getIntValue(from: workDurantionTxtField)
+    }
+    var restDuration: Int {
+        return getIntValue(from: restDurationTxtField)
+    }
+    
+    // MARK: - Private Properties
+    
+    private let workDurationArray = [LocalizedString.hoursLabel, LocalizedString.daysLabel]
+    
+    // MARK: - Inits
     
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         loadView()
-        setupUI()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadView()
-        setupUI()
+        setupView()
+    }
+    
+    // MARK: - Private Functions
+    
+    private func didChangeWorkScale() {
+        switch selectedWorkScale {
+        case .fixedScale:
+            restLineStackContainer.isHidden = false
+            
+            workDurationTypeTxtField.isEnabled = true
+            workDurationTypeTxtField.textColor = .appDarkBlue
+            restDurationTypeLabel.text = workDurationTypeTxtField.text
+
+            lineSeparatorView.isHidden = false
+            
+            break
+        case .onDuty:
+            restLineStackContainer.isHidden = true
+            
+            workDurationTypeTxtField.isEnabled = false
+            workDurationTypeTxtField.textColor = .textColor
+            workDurationTypeTxtField.text = LocalizedString.hoursLabel
+            
+            lineSeparatorView.isHidden = true
+            
+            pickerView.selectRow(0, inComponent: 0, animated: false)
+            
+            selectedScaleType = .hour
+            
+            break
+        }
+    }
+    
+    private func getIntValue(from textField: UITextField) -> Int {
+        guard let valueString = textField.text else {
+            return 0
+        }
+        
+        return Int(valueString) ?? 0
     }
 }
 
+// MARK: - Setup Functions
+
 extension ScaleSelectType {
-    private func setupUI() {
-        setupPickerView()
+    private func loadView() {
+        let bundle = Bundle(for: ScaleSelectType.self)
+        let nib = UINib(nibName: "ScaleSelectType", bundle: bundle)
+        let view = nib.instantiate(withOwner: self).first as! UIView
+        view.frame = self.bounds
+        addSubview(view)
+    }
+    
+    private func setupView() {
         setupTextFields()
-        setupKeyboard()
         setupToolbar()
         
         restTitleLabel.text = LocalizedString.restForLabel
@@ -54,6 +138,7 @@ extension ScaleSelectType {
         restDurationTypeLabel.text = LocalizedString.hoursLabel
     }
     
+    // verificar uma forma melhor de fazer isso
     private func setupToolbar() {
         let toolBar: UIToolbar = UIToolbar()
         toolBar.barStyle = .default
@@ -71,32 +156,18 @@ extension ScaleSelectType {
         self.workDurationTypeTxtField.resignFirstResponder()
     }
     
-    private func loadView() {
-        let bundle = Bundle(for: ScaleSelectType.self)
-        let nib = UINib(nibName: "ScaleSelectType", bundle: bundle)
-        let view = nib.instantiate(withOwner: self).first as! UIView
-        view.frame = self.bounds
-        addSubview(view)
-    }
-    
-    private func setupPickerView() {
-        pickerView.dataSource = self
-        pickerView.delegate = self
-    }
-    
     private func setupTextFields() {
-        workDurantionTxtField.delegate = self
-        restDurationTxtField.delegate = self
-        
-        workDurationTypeTxtField.inputView = pickerView
         workDurationTypeTxtField.tintColor = .clear
-    }
-    
-    private func setupKeyboard() {
+        workDurationTypeTxtField.inputView = pickerView
         workDurantionTxtField.keyboardType = .numberPad
+        workDurantionTxtField.delegate = self
+        
         restDurationTxtField.keyboardType = .numberPad
+        restDurationTxtField.delegate = self
     }
 }
+
+// MARK: - UIPickerViewDataSource
 
 extension ScaleSelectType: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -112,21 +183,20 @@ extension ScaleSelectType: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedScaleType = row == 0 ? .hour : .day
         workDurationTypeTxtField.text = workDurationArray[row]
         restDurationTypeLabel.text = workDurationArray[row]
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension ScaleSelectType: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let maxLength = 2
         let currentString: NSString = (textField.text ?? "") as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        
         return newString.length <= maxLength
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.workDurarionValueChanged()
     }
 }
