@@ -28,12 +28,9 @@ class BaseScaleViewController: UIViewController {
         return contentView
     }()
     
-    lazy var scaleTypeSegmentControll: UISegmentedControl = {
-        let segmentControll = UISegmentedControl()
-        segmentControll.translatesAutoresizingMaskIntoConstraints = false
-        segmentControll.insertSegment(withTitle: "Escala Fixa", at: 0, animated: false)
-        segmentControll.insertSegment(withTitle: "Plantão", at: 1, animated: false)
-        
+    lazy var scaleTypeSegmentControll: ScaleTypeSelectionSegmentedControl = {
+        let segmentControll = ScaleTypeSelectionSegmentedControl(segmentsTitles: ["Escala Fixa", "Plantão"])
+
         return segmentControll
     }()
     
