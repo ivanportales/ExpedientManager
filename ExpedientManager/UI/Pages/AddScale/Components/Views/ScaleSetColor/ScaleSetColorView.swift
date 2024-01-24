@@ -87,6 +87,13 @@ class ScaleSetColorView: UIView {
     let brandingColor: String = "brandingColor"
     var selectedColor: UIColor = .clear
     
+    init() {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        loadView()
+        setupUI()
+    }
+    
     required init?(coder: NSCoder) {
          super.init(coder: coder)
         loadView()

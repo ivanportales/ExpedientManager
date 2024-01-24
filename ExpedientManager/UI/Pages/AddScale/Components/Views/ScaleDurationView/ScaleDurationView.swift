@@ -45,6 +45,15 @@ class ScaleDurationView: UIView {
     let datePicker: UIDatePicker = UIDatePicker()
     let timePicker: UIDatePicker = UIDatePicker()
     
+    
+    init() {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        loadView()
+        setupUI()
+        date = Calendar.current.combineTimeFrom(date: timePicker.date, andDateFrom: datePicker.date)
+    }
+    
     required init?(coder: NSCoder) {
          super.init(coder: coder)
         loadView()

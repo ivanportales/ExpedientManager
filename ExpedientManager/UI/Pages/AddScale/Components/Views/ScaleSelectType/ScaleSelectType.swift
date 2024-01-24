@@ -27,6 +27,13 @@ class ScaleSelectType: UIView {
     let pickerView: UIPickerView = UIPickerView()
     weak var delegate: ScaleSelectTypeDelegate?
     
+    init() {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        loadView()
+        setupUI()
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadView()

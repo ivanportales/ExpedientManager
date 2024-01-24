@@ -68,19 +68,52 @@ class BaseScaleViewController: UIViewController {
                                     color: .textAddShift)
     }()
     
+    lazy var scaleSelectTypeView: ScaleSelectType = {
+        return ScaleSelectType()
+    }()
     
-//    @IBOutlet weak var scaleSelectType: ScaleSelectType!
-//    @IBOutlet weak var begginingDurationView: ScaleDurationView!
-//    @IBOutlet weak var endingDurationView: ScaleDurationView!
-//    @IBOutlet weak var scrollView: ScrollToKeyboardAvoiding!
-//    @IBOutlet weak var scaleButton: UIButton!
-//    @IBOutlet weak var onDutyButton: UIButton!
+    lazy var shiftLabel: UILabel = {
+        return UIView.makeLabelWith(text: "Período",
+                                    font: .poppinsSemiboldOf(size: 16),
+                                    color: .textAddShift)
+    }()
+    
+    lazy var scalesSelectionStackContainer: UIStackView = {
+        return UIView.makeStackWith(axis: .horizontal,
+                                    distribution: .fillEqually)
+    }()
+    
+    lazy var begginingDurationView: ScaleDurationView = {
+        let scaleView = ScaleDurationView()
+        scaleView.constraintView(height: 100)
+        
+        return scaleView
+    }()
+    
+    lazy var endingDurationView: ScaleDurationView = {
+        let scaleView = ScaleDurationView()
+        scaleView.constraintView(height: 100)
+        
+        return scaleView
+    }()
+    
+    lazy var colorSelectionLabel: UILabel = {
+        return UIView.makeLabelWith(text: "Selecione uma Cor",
+                                    font: .poppinsSemiboldOf(size: 16),
+                                    color: .textAddShift)
+    }()
+    
+    lazy var scaleSetColorView: ScaleSetColorView = {
+        let scaleColorView = ScaleSetColorView()
+        
+        return scaleColorView
+    }()
+    
 //    @IBOutlet weak var scaleSelectTypeHeight: NSLayoutConstraint!
 //    @IBOutlet weak var scaleSetColorView: ScaleSetColorView!
 //    
 //    @IBOutlet weak var shiftLabel: UILabel!
 //    @IBOutlet weak var activitiesLabel: UILabel!
-//    @IBOutlet weak var durationLabel: UILabel!
 //    @IBOutlet weak var colorLabel: UILabel!
     
     // MARK: - Private Properties
@@ -135,15 +168,25 @@ extension BaseScaleViewController {
         contentView.addSubview(notesLabel)
         contentView.addSubview(notesTextView)
         contentView.addSubview(durationLabel)
+        contentView.addSubview(scaleSelectTypeView)
+        contentView.addSubview(scalesSelectionStackContainer)
+        contentView.addSubview(shiftLabel)
+        scalesSelectionStackContainer.addArrangedSubview(begginingDurationView)
+        scalesSelectionStackContainer.addArrangedSubview(endingDurationView)
+        contentView.addSubview(colorSelectionLabel)
+        contentView.addSubview(scaleSetColorView)
     }
     
     func setupConstraints() {
         scrollView.constraintViewToSuperview()
         contentView.constraintViewToSuperview()
         
+        let contentViewHeightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+        contentViewHeightAnchor.priority = .defaultLow
+        
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 2),
+            contentViewHeightAnchor,
             
             scaleTypeSegmentControll.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             scaleTypeSegmentControll.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
@@ -169,8 +212,28 @@ extension BaseScaleViewController {
             durationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             durationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            durationLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20),
-
+            scaleSelectTypeView.topAnchor.constraint(equalTo: durationLabel.bottomAnchor, constant: 10),
+            scaleSelectTypeView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            scaleSelectTypeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            scaleSelectTypeView.heightAnchor.constraint(equalToConstant: 90),
+            
+            shiftLabel.topAnchor.constraint(equalTo: scaleSelectTypeView.bottomAnchor, constant: 20),
+            shiftLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            shiftLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            scalesSelectionStackContainer.topAnchor.constraint(equalTo: shiftLabel.bottomAnchor, constant: 10),
+            scalesSelectionStackContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            scalesSelectionStackContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            colorSelectionLabel.topAnchor.constraint(equalTo: scalesSelectionStackContainer.bottomAnchor, constant: 20),
+            colorSelectionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            colorSelectionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            scaleSetColorView.topAnchor.constraint(equalTo: colorSelectionLabel.bottomAnchor, constant: 10),
+            scaleSetColorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            scaleSetColorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            scaleSetColorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
         ])
     }
 }
@@ -190,6 +253,30 @@ extension BaseScaleViewController: UITextViewDelegate {
             notesTextView.text = LocalizedString.describeHerePlaceholder
             notesTextView.textColor = UIColor.init(named: "placeholderColor")
         }
+    }
+}
+
+extension BaseScaleViewController: ScaleDurationViewDelegate {
+    func hourChangedTo(date: Date) {
+//        if viewModel.state == .onDuty {
+//            viewModel.setInitialDutyDate(date)
+//        }
+    }
+    
+    func dateChangedTo(date: Date) {
+//        if viewModel.state == .onDuty {
+//            viewModel.setInitialDutyDate(date)
+//        }
+    }
+}
+
+extension BaseScaleViewController: ScaleSelectTypeDelegate {
+    func workDurarionValueChanged() {
+        print("")
+    }
+    
+    func workDurationTypeChanged() {
+        print("")
     }
 }
 
@@ -419,27 +506,3 @@ extension BaseScaleViewController {
 //    }
 //}
 //
-
-//extension BaseScaleViewController: ScaleDurationViewDelegate {
-//    func hourChangedTo(date: Date) {
-//        if viewModel.state == .onDuty {
-//            viewModel.setInitialDutyDate(date)
-//        }
-//    }
-//    
-//    func dateChangedTo(date: Date) {
-//        if viewModel.state == .onDuty {
-//            viewModel.setInitialDutyDate(date)
-//        }
-//    }
-//}
-//
-//extension BaseScaleViewController: ScaleSelectTypeDelegate {
-//    func workDurarionValueChanged() {
-//        print("")
-//    }
-//    
-//    func workDurationTypeChanged() {
-//        print("")
-//    }
-//}
