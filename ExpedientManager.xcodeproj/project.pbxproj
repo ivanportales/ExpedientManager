@@ -24,6 +24,7 @@
 		AE7DE7B62B589BFF00F57E42 /* LocalStorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */; };
 		AE7DE7B82B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */; };
 		AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */; };
+		AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C902B631E690070A9CE /* CalendarManager.swift */; };
 		AECC38462B607D9200439C97 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38452B607D9200439C97 /* TextField.swift */; };
 		AECC38492B60808800439C97 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38482B60808800439C97 /* TextView.swift */; };
 		AED250162B57552C00290E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250152B57552C00290E42 /* AppDelegate.swift */; };
@@ -137,6 +138,7 @@
 		AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepository.swift; sourceTree = "<group>"; };
 		AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		AE9D5C902B631E690070A9CE /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		AECC38452B607D9200439C97 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		AECC38482B60808800439C97 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		AED250122B57552C00290E42 /* ExpedientManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpedientManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +296,24 @@
 				AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */,
 			);
 			path = LocalStorageRepository;
+			sourceTree = "<group>";
+		};
+		AE9D5C8E2B631CDF0070A9CE /* NotificationsManager */ = {
+			isa = PBXGroup;
+			children = (
+				AED250A22B57558100290E42 /* UserNotificationsService.swift */,
+				AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */,
+				AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */,
+			);
+			path = NotificationsManager;
+			sourceTree = "<group>";
+		};
+		AE9D5C8F2B631CF10070A9CE /* CalendarManager */ = {
+			isa = PBXGroup;
+			children = (
+				AE9D5C902B631E690070A9CE /* CalendarManager.swift */,
+			);
+			path = CalendarManager;
 			sourceTree = "<group>";
 		};
 		AECC38442B607D8200439C97 /* TextField */ = {
@@ -635,9 +655,8 @@
 		AED250A12B57558100290E42 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AED250A22B57558100290E42 /* UserNotificationsService.swift */,
-				AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */,
-				AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */,
+				AE9D5C8F2B631CF10070A9CE /* CalendarManager */,
+				AE9D5C8E2B631CDF0070A9CE /* NotificationsManager */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1001,6 +1020,7 @@
 				AED250C12B57558100290E42 /* EmptyTableViewCell.swift in Sources */,
 				AED250C92B57558100290E42 /* ScaleSelectType.swift in Sources */,
 				AED250DA2B57558100290E42 /* CoreDataOnDutyRepository.swift in Sources */,
+				AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */,
 				AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */,
 				AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */,
 				AED250D62B57558100290E42 /* RotinaApp.xcdatamodeld in Sources */,

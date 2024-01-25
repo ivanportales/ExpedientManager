@@ -64,14 +64,17 @@ class ScaleDurationView: UIView {
     
     // MARK: - Private Properties
     
+    private let calendarManager: CalendarManagerProtocol
     
     // MARK: - Inits
     
     init(durationType: ScaleDurationType,
          presentationType: ScaleDurationViewPresentationType = .editable,
+         calendarManager: CalendarManagerProtocol = Calendar.current,
          initialTime: Date = .init()) {
         self.durationType = durationType
         self.presentationType = presentationType
+        self.calendarManager = calendarManager
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         loadViewFromNib()
@@ -79,12 +82,8 @@ class ScaleDurationView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        self.durationType = .startingTime
-        self.presentationType = .editable
-        super.init(coder: coder)
-        loadViewFromNib()
-        setupView(with: .init())
-     }
+        fatalError("Only usable via viewCode")
+    }
 }
 
 // MARK: - Setup Functions
@@ -135,8 +134,8 @@ private extension ScaleDurationView {
     }
     
     func setupLabels() {
-        date = Calendar.current.combineTimeFrom(date: timePicker.date,
-                                                andDateFrom: datePicker.date)
+        date = calendarManager.combineTimeFrom(date: timePicker.date,
+                                               andDateFrom: datePicker.date)
         label.text = durationType == .startingTime ? LocalizedString.startLabel : LocalizedString.endLabel
     }
     
@@ -162,13 +161,15 @@ private extension ScaleDurationView {
     }
     
     @objc func datePickerDoneTapped() {
-        date = Calendar.current.combineTimeFrom(date: timePicker.date, andDateFrom: datePicker.date)
+        date = calendarManager.combineTimeFrom(date: timePicker.date, 
+                                               andDateFrom: datePicker.date)
         dateTextField.resignFirstResponder()
         delegate?.dateChangedTo(date: date)
     }
     
     @objc func timePickerDoneTapped(){
-        date = Calendar.current.combineTimeFrom(date: timePicker.date, andDateFrom: datePicker.date)
+        date = calendarManager.combineTimeFrom(date: timePicker.date, 
+                                               andDateFrom: datePicker.date)
         timeTextField.resignFirstResponder()
         delegate?.hourChangedTo(date: date)
     }
