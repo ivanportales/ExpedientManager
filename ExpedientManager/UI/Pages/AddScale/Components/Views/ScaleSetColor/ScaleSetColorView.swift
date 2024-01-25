@@ -90,13 +90,13 @@ class ScaleSetColorView: UIView {
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        loadView()
+        loadViewFromNib()
         setupUI()
     }
     
     required init?(coder: NSCoder) {
          super.init(coder: coder)
-        loadView()
+        loadViewFromNib()
         setupUI()
      }
 }
@@ -185,13 +185,5 @@ extension ScaleSetColorView {
             selectedPurpleView.isHidden = true
             selectedOrangeView.isHidden = false
         }
-    }
-    
-    private func loadView() {
-        let bundle = Bundle(for: ScaleSetColorView.self)
-        let nib = UINib(nibName: "ScaleSetColorView", bundle: bundle)
-        let view = nib.instantiate(withOwner: self).first as! UIView
-        view.frame = self.bounds
-        addSubview(view)
     }
 }

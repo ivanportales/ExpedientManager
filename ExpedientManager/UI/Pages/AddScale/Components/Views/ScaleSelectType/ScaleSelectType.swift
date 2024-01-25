@@ -67,13 +67,13 @@ class ScaleSelectType: UIView {
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        loadView()
+        loadViewFromNib()
         setupView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        loadView()
+        loadViewFromNib()
         setupView()
     }
     
@@ -120,14 +120,6 @@ class ScaleSelectType: UIView {
 // MARK: - Setup Functions
 
 extension ScaleSelectType {
-    private func loadView() {
-        let bundle = Bundle(for: ScaleSelectType.self)
-        let nib = UINib(nibName: "ScaleSelectType", bundle: bundle)
-        let view = nib.instantiate(withOwner: self).first as! UIView
-        view.frame = self.bounds
-        addSubview(view)
-    }
-    
     private func setupView() {
         setupTextFields()
         setupToolbar()

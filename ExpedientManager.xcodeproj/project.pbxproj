@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1ABCAF6551EA9E1C9F9F5103 /* Pods_ExpedientManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */; };
 		718C3D3D2B73F7C372F63ED4 /* Pods_ExpedientManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */; };
+		AE4BF7242B62D38900CC69D7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */; };
 		AE5410532B617B3D0039BD11 /* SelectionSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */; };
@@ -69,8 +70,6 @@
 		AED250C82B57558100290E42 /* ScaleDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250792B57558000290E42 /* ScaleDurationView.swift */; };
 		AED250C92B57558100290E42 /* ScaleSelectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2507B2B57558000290E42 /* ScaleSelectType.swift */; };
 		AED250CA2B57558100290E42 /* ScaleSelectType.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED2507C2B57558000290E42 /* ScaleSelectType.xib */; };
-		AED250CB2B57558100290E42 /* ScaleSelectTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2507E2B57558000290E42 /* ScaleSelectTypeView.swift */; };
-		AED250CC2B57558100290E42 /* ScaleSelectTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED2507F2B57558000290E42 /* ScaleSelectTypeView.xib */; };
 		AED250CD2B57558100290E42 /* ScaleSetColorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED250812B57558000290E42 /* ScaleSetColorView.xib */; };
 		AED250CE2B57558100290E42 /* ScaleSetColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250822B57558000290E42 /* ScaleSetColorView.swift */; };
 		AED250CF2B57558100290E42 /* ScaleDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED250842B57558000290E42 /* ScaleDetailsViewController.xib */; };
@@ -122,6 +121,7 @@
 		7C3A28BED89E90818C58226B /* Pods-ExpedientManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManager.release.xcconfig"; path = "Target Support Files/Pods-ExpedientManager/Pods-ExpedientManager.release.xcconfig"; sourceTree = "<group>"; };
 		A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpedientManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A834456D8495583D56D1EE96 /* Pods-ExpedientManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-ExpedientManagerTests/Pods-ExpedientManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSegmentedControl.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationServiceProtocol.swift; sourceTree = "<group>"; };
@@ -187,8 +187,6 @@
 		AED250792B57558000290E42 /* ScaleDurationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleDurationView.swift; sourceTree = "<group>"; };
 		AED2507B2B57558000290E42 /* ScaleSelectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleSelectType.swift; sourceTree = "<group>"; };
 		AED2507C2B57558000290E42 /* ScaleSelectType.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleSelectType.xib; sourceTree = "<group>"; };
-		AED2507E2B57558000290E42 /* ScaleSelectTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleSelectTypeView.swift; sourceTree = "<group>"; };
-		AED2507F2B57558000290E42 /* ScaleSelectTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleSelectTypeView.xib; sourceTree = "<group>"; };
 		AED250812B57558000290E42 /* ScaleSetColorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleSetColorView.xib; sourceTree = "<group>"; };
 		AED250822B57558000290E42 /* ScaleSetColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleSetColorView.swift; sourceTree = "<group>"; };
 		AED250842B57558000290E42 /* ScaleDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleDetailsViewController.xib; sourceTree = "<group>"; };
@@ -495,7 +493,6 @@
 				AE5410512B617B0D0039BD11 /* SelectionSegmentedControl */,
 				AED250772B57558000290E42 /* ScaleDurationView */,
 				AED2507A2B57558000290E42 /* ScaleSelectType */,
-				AED2507D2B57558000290E42 /* ScaleSelectTypeView */,
 				AED250802B57558000290E42 /* ScaleSetColor */,
 			);
 			path = Views;
@@ -517,15 +514,6 @@
 				AED2507C2B57558000290E42 /* ScaleSelectType.xib */,
 			);
 			path = ScaleSelectType;
-			sourceTree = "<group>";
-		};
-		AED2507D2B57558000290E42 /* ScaleSelectTypeView */ = {
-			isa = PBXGroup;
-			children = (
-				AED2507E2B57558000290E42 /* ScaleSelectTypeView.swift */,
-				AED2507F2B57558000290E42 /* ScaleSelectTypeView.xib */,
-			);
-			path = ScaleSelectTypeView;
 			sourceTree = "<group>";
 		};
 		AED250802B57558000290E42 /* ScaleSetColor */ = {
@@ -636,6 +624,7 @@
 				AED2509E2B57558100290E42 /* UIViewController+Extensions.swift */,
 				AED2509F2B57558100290E42 /* UIColor+Extensions.swift */,
 				AED250A02B57558100290E42 /* Calendar+Extensions.swift */,
+				AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -822,7 +811,6 @@
 				AED250B42B57558100290E42 /* Poppins-SemiBold.ttf in Resources */,
 				AED250A72B57558100290E42 /* Poppins-BoldItalic.ttf in Resources */,
 				AED250C22B57558100290E42 /* EmptyTableViewCell.xib in Resources */,
-				AED250CC2B57558100290E42 /* ScaleSelectTypeView.xib in Resources */,
 				AED250C32B57558100290E42 /* ScheduledScalesTableViewCell.xib in Resources */,
 				AED250CF2B57558100290E42 /* ScaleDetailsViewController.xib in Resources */,
 				AED250A82B57558100290E42 /* Poppins-Light.ttf in Resources */,
@@ -985,6 +973,7 @@
 				AED250E22B57558100290E42 /* UserNotificationsService.swift in Sources */,
 				AED250DD2B57558100290E42 /* Scale.swift in Sources */,
 				AED250E02B57558100290E42 /* UIColor+Extensions.swift in Sources */,
+				AE4BF7242B62D38900CC69D7 /* UIView+Extensions.swift in Sources */,
 				AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */,
 				AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */,
 				AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */,
@@ -1014,7 +1003,6 @@
 				AECC38462B607D9200439C97 /* TextField.swift in Sources */,
 				AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */,
 				AECC38492B60808800439C97 /* TextView.swift in Sources */,
-				AED250CB2B57558100290E42 /* ScaleSelectTypeView.swift in Sources */,
 				AED250DE2B57558100290E42 /* UIFont+Extensions.swift in Sources */,
 				AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */,
 				AED250DC2B57558100290E42 /* OnDuty.swift in Sources */,
