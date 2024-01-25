@@ -11,8 +11,12 @@ extension Calendar {
     func combineTimeFrom(date firstDate: Date, andDateFrom secondDate: Date) -> Date {
         let firstDateComponents = self.dateComponents([.hour, .minute,.second], from: firstDate)
         
-        var newDate = self.date(from: firstDateComponents)!
-        newDate = self.date(bySettingHour: firstDateComponents.hour!, minute: firstDateComponents.minute!, second: firstDateComponents.second!, of: secondDate)!
+        var newDate = self.date(from: firstDateComponents)! // o que isso faz ?
+        
+        newDate = self.date(bySettingHour: firstDateComponents.hour!,
+                            minute: firstDateComponents.minute!,
+                            second: firstDateComponents.second!,
+                            of: secondDate)!
         
         return newDate
     }

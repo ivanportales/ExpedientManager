@@ -82,14 +82,14 @@ class BaseScaleViewController: UIViewController {
     }()
     
     lazy var begginingDurationView: ScaleDurationView = {
-        let scaleView = ScaleDurationView()
+        let scaleView = ScaleDurationView(durationType: .startingTime)
         scaleView.constraintView(height: 100)
         
         return scaleView
     }()
     
     lazy var endingDurationView: ScaleDurationView = {
-        let scaleView = ScaleDurationView()
+        let scaleView = ScaleDurationView(durationType: .endingTime, presentationType: .viewOnly)
         scaleView.constraintView(height: 100)
         
         return scaleView
@@ -207,7 +207,6 @@ extension BaseScaleViewController {
             scaleSelectTypeView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             scaleSelectTypeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            
             shiftLabel.topAnchor.constraint(equalTo: scaleSelectTypeView.bottomAnchor, constant: 20),
             shiftLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             shiftLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
@@ -226,24 +225,6 @@ extension BaseScaleViewController {
             
             scaleSetColorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
         ])
-    }
-}
-
-// MARK: - UITextViewDelegate
-
-extension BaseScaleViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if notesTextView.textColor == UIColor.init(named: "placeholderColor") {
-            notesTextView.text = nil
-            notesTextView.textColor = UIColor.init(named: "textAddShiftColor")
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if notesTextView.text.isEmpty {
-            notesTextView.text = LocalizedString.describeHerePlaceholder
-            notesTextView.textColor = UIColor.init(named: "placeholderColor")
-        }
     }
 }
 

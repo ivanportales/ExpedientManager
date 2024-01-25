@@ -23,6 +23,7 @@
 		AE7DE7B32B58946F00F57E42 /* AppMainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B12B58946F00F57E42 /* AppMainFactory.swift */; };
 		AE7DE7B62B589BFF00F57E42 /* LocalStorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */; };
 		AE7DE7B82B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */; };
+		AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */; };
 		AECC38462B607D9200439C97 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38452B607D9200439C97 /* TextField.swift */; };
 		AECC38492B60808800439C97 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38482B60808800439C97 /* TextView.swift */; };
 		AED250162B57552C00290E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250152B57552C00290E42 /* AppDelegate.swift */; };
@@ -135,6 +136,7 @@
 		AE7DE7B12B58946F00F57E42 /* AppMainFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMainFactory.swift; sourceTree = "<group>"; };
 		AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepository.swift; sourceTree = "<group>"; };
 		AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
+		AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AECC38452B607D9200439C97 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		AECC38482B60808800439C97 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		AED250122B57552C00290E42 /* ExpedientManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpedientManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -625,6 +627,7 @@
 				AED2509F2B57558100290E42 /* UIColor+Extensions.swift */,
 				AED250A02B57558100290E42 /* Calendar+Extensions.swift */,
 				AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */,
+				AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -978,6 +981,7 @@
 				AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */,
 				AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */,
 				AE6D4BCD2B59D54200C18696 /* UserNotificationServiceProtocol.swift in Sources */,
+				AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */,
 				AED250D32B57558100290E42 /* ScalesListViewController.swift in Sources */,
 				AED250C62B57558100290E42 /* AddScaleViewModel.swift in Sources */,
 				AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */,
