@@ -21,7 +21,7 @@ final class ScaleDetailsViewController: UIViewController {
     @IBOutlet weak var scaleButton: UIButton!
     @IBOutlet weak var onDutyButton: UIButton!
     @IBOutlet weak var scaleSelectTypeHeight: NSLayoutConstraint!
-    @IBOutlet weak var scaleSetColorView: ScaleSetColorView!
+    //@IBOutlet weak var scaleSetColorView: ScaleSetColorView!
     
     @IBOutlet weak var shiftLabel: UILabel!
     @IBOutlet weak var activitiesLabel: UILabel!
@@ -142,11 +142,12 @@ extension ScaleDetailsViewController {
             return
         }
         
-        let selectedColor = scaleSetColorView.selectedColor
+        //let selectedColor = scaleSetColorView.selectedColor
         let initialDate = begginingDurationView.date
         let finalDate = endingDurationView.date
             
-        if title.isEmpty || selectedColor == .clear {
+        //if title.isEmpty || selectedColor == .clear {
+        if title.isEmpty {
             showAlertWith(title: LocalizedString.alertErrorTitle, andMesssage: LocalizedString.alertErrorMsg)
             return
         }
@@ -155,7 +156,7 @@ extension ScaleDetailsViewController {
         if viewModel.state == .fixedScale {
             viewModel.selectedFixedScale!.title = title
             viewModel.selectedFixedScale!.annotation = notes
-            viewModel.selectedFixedScale!.colorHex = selectedColor.hex
+            //viewModel.selectedFixedScale!.colorHex = selectedColor.hex
             viewModel.selectedFixedScale!.initialDate = initialDate
             viewModel.selectedFixedScale!.finalDate = finalDate
             viewModel.selectedFixedScale!.scale!.type = scaleType
@@ -164,7 +165,7 @@ extension ScaleDetailsViewController {
         } else {
             viewModel.selectedOnDuty!.titlo = title
             viewModel.selectedOnDuty!.annotation = notes
-            viewModel.selectedOnDuty!.colorHex = selectedColor.hex
+            //viewModel.selectedOnDuty!.colorHex = selectedColor.hex
             viewModel.selectedOnDuty!.initialDate = initialDate
             viewModel.selectedOnDuty!.hoursDuration = scaleOfWork
         }
@@ -204,8 +205,8 @@ extension ScaleDetailsViewController {
             .dropFirst()
             .sink { [weak self] date in
                 guard let self = self else {return}
-                self.endingDurationView.setDateLabelWith(date: date)
-                self.endingDurationView.setTimeLabelWith(date: date)
+                //self.endingDurationView.setDateLabelWith(date: date)
+                //self.endingDurationView.setTimeLabelWith(date: date)
             }.store(in: &subscribers)
     }
 }
@@ -256,14 +257,14 @@ extension ScaleDetailsViewController {
             scaleSelectType.workDurantionTxtField.text = String(viewModel.selectedOnDuty!.hoursDuration)
             
             let selecteddColor = UIColor(hex: viewModel.selectedOnDuty!.colorHex!)
-            scaleSetColorView.selectedColor = UIColor(hex: viewModel.selectedOnDuty!.colorHex!)
-            scaleSetColorView.setColor(.init(rawValue: selecteddColor)!)
+//            scaleSetColorView.selectedColor = UIColor(hex: viewModel.selectedOnDuty!.colorHex!)
+//            scaleSetColorView.setColor(.init(rawValue: selecteddColor)!)
             
-            begginingDurationView.date = viewModel.selectedOnDuty!.initialDate
-            begginingDurationView.datePicker.date = viewModel.selectedOnDuty!.initialDate
-            begginingDurationView.timePicker.date = viewModel.selectedOnDuty!.initialDate
-            begginingDurationView.setDateLabelWith(date: viewModel.selectedOnDuty!.initialDate)
-            begginingDurationView.setTimeLabelWith(date: viewModel.selectedOnDuty!.initialDate)
+            //begginingDurationView.date = viewModel.selectedOnDuty!.initialDate
+//            begginingDurationView.datePicker.date = viewModel.selectedOnDuty!.initialDate
+//            begginingDurationView.timePicker.date = viewModel.selectedOnDuty!.initialDate
+//            begginingDurationView.setDateLabelWith(date: viewModel.selectedOnDuty!.initialDate)
+//            begginingDurationView.setTimeLabelWith(date: viewModel.selectedOnDuty!.initialDate)
             
         } else if viewModel.state == .fixedScale {
             //ScaleButton
@@ -296,20 +297,20 @@ extension ScaleDetailsViewController {
             scaleSelectType.restDurationTxtField.text = String(viewModel.selectedFixedScale!.scale!.scaleOfRest)
             
             let selecteddColor = UIColor(hex: viewModel.selectedFixedScale!.colorHex!)
-            scaleSetColorView.setColor(.init(rawValue: selecteddColor)!)
-            scaleSetColorView.selectedColor = UIColor(hex: viewModel.selectedFixedScale!.colorHex!)
+//            scaleSetColorView.setColor(.init(rawValue: selecteddColor)!)
+//            scaleSetColorView.selectedColor = UIColor(hex: viewModel.selectedFixedScale!.colorHex!)
            
-            begginingDurationView.date = viewModel.selectedFixedScale!.initialDate!
-            begginingDurationView.datePicker.date = viewModel.selectedFixedScale!.initialDate!
-            begginingDurationView.timePicker.date = viewModel.selectedFixedScale!.initialDate!
-            begginingDurationView.setDateLabelWith(date: viewModel.selectedFixedScale!.initialDate!)
-            begginingDurationView.setTimeLabelWith(date: viewModel.selectedFixedScale!.initialDate!)
+            //begginingDurationView.date = viewModel.selectedFixedScale!.initialDate!
+//            begginingDurationView.datePicker.date = viewModel.selectedFixedScale!.initialDate!
+//            begginingDurationView.timePicker.date = viewModel.selectedFixedScale!.initialDate!
+//            begginingDurationView.setDateLabelWith(date: viewModel.selectedFixedScale!.initialDate!)
+//            begginingDurationView.setTimeLabelWith(date: viewModel.selectedFixedScale!.initialDate!)
             
-            endingDurationView.date = viewModel.selectedFixedScale!.finalDate!
-            endingDurationView.datePicker.date = viewModel.selectedFixedScale!.finalDate!
-            endingDurationView.timePicker.date = viewModel.selectedFixedScale!.finalDate!
-            endingDurationView.setDateLabelWith(date: viewModel.selectedFixedScale!.finalDate!)
-            endingDurationView.setTimeLabelWith(date: viewModel.selectedFixedScale!.finalDate!)
+            //endingDurationView.date = viewModel.selectedFixedScale!.finalDate!
+//            endingDurationView.datePicker.date = viewModel.selectedFixedScale!.finalDate!
+//            endingDurationView.timePicker.date = viewModel.selectedFixedScale!.finalDate!
+//            endingDurationView.setDateLabelWith(date: viewModel.selectedFixedScale!.finalDate!)
+//            endingDurationView.setTimeLabelWith(date: viewModel.selectedFixedScale!.finalDate!)
         }
     }
     

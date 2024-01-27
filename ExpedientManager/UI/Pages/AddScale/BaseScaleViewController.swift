@@ -101,8 +101,9 @@ class BaseScaleViewController: UIViewController {
                                     color: .textAddShift)
     }()
     
-    lazy var scaleSetColorView: ScaleSetColorView = {
-        let scaleColorView = ScaleSetColorView()
+    lazy var scaleSetColorView: ScaleColorSelectionView = {
+        let scaleColorView = ScaleColorSelectionView()
+       // scaleColorView.constraintView(height: 50)
         
         return scaleColorView
     }()

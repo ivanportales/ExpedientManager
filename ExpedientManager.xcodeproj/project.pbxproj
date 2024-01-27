@@ -11,6 +11,7 @@
 		718C3D3D2B73F7C372F63ED4 /* Pods_ExpedientManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */; };
 		AE4BF7242B62D38900CC69D7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */; };
 		AE5410532B617B3D0039BD11 /* SelectionSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */; };
+		AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
@@ -25,6 +26,8 @@
 		AE7DE7B82B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */; };
 		AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */; };
 		AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C902B631E690070A9CE /* CalendarManager.swift */; };
+		AE9D5C932B6328550070A9CE /* ScaleColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */; };
+		AE9D5C952B632A430070A9CE /* ScaleColorSelectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */; };
 		AECC38462B607D9200439C97 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38452B607D9200439C97 /* TextField.swift */; };
 		AECC38492B60808800439C97 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38482B60808800439C97 /* TextView.swift */; };
 		AED250162B57552C00290E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250152B57552C00290E42 /* AppDelegate.swift */; };
@@ -72,8 +75,6 @@
 		AED250C82B57558100290E42 /* ScaleDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250792B57558000290E42 /* ScaleDurationView.swift */; };
 		AED250C92B57558100290E42 /* ScaleSelectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2507B2B57558000290E42 /* ScaleSelectType.swift */; };
 		AED250CA2B57558100290E42 /* ScaleSelectType.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED2507C2B57558000290E42 /* ScaleSelectType.xib */; };
-		AED250CD2B57558100290E42 /* ScaleSetColorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED250812B57558000290E42 /* ScaleSetColorView.xib */; };
-		AED250CE2B57558100290E42 /* ScaleSetColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250822B57558000290E42 /* ScaleSetColorView.swift */; };
 		AED250CF2B57558100290E42 /* ScaleDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED250842B57558000290E42 /* ScaleDetailsViewController.xib */; };
 		AED250D02B57558100290E42 /* ScaleDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250852B57558000290E42 /* ScaleDetailsViewModel.swift */; };
 		AED250D12B57558100290E42 /* ScaleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250862B57558100290E42 /* ScaleDetailsViewController.swift */; };
@@ -125,6 +126,7 @@
 		A834456D8495583D56D1EE96 /* Pods-ExpedientManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-ExpedientManagerTests/Pods-ExpedientManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSegmentedControl.swift; sourceTree = "<group>"; };
+		AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedCollectionViewCell.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationServiceProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
@@ -139,6 +141,8 @@
 		AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AE9D5C902B631E690070A9CE /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleColorSelectionView.swift; sourceTree = "<group>"; };
+		AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleColorSelectionCellView.swift; sourceTree = "<group>"; };
 		AECC38452B607D9200439C97 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		AECC38482B60808800439C97 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		AED250122B57552C00290E42 /* ExpedientManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpedientManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,8 +195,6 @@
 		AED250792B57558000290E42 /* ScaleDurationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleDurationView.swift; sourceTree = "<group>"; };
 		AED2507B2B57558000290E42 /* ScaleSelectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleSelectType.swift; sourceTree = "<group>"; };
 		AED2507C2B57558000290E42 /* ScaleSelectType.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleSelectType.xib; sourceTree = "<group>"; };
-		AED250812B57558000290E42 /* ScaleSetColorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleSetColorView.xib; sourceTree = "<group>"; };
-		AED250822B57558000290E42 /* ScaleSetColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleSetColorView.swift; sourceTree = "<group>"; };
 		AED250842B57558000290E42 /* ScaleDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleDetailsViewController.xib; sourceTree = "<group>"; };
 		AED250852B57558000290E42 /* ScaleDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleDetailsViewModel.swift; sourceTree = "<group>"; };
 		AED250862B57558100290E42 /* ScaleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleDetailsViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +254,14 @@
 				AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */,
 			);
 			path = SelectionSegmentedControl;
+			sourceTree = "<group>";
+		};
+		AE5477ED2B649402000679AC /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		AE6E6D6F2B59F43600B2389B /* Views */ = {
@@ -515,7 +525,7 @@
 				AE5410512B617B0D0039BD11 /* SelectionSegmentedControl */,
 				AED250772B57558000290E42 /* ScaleDurationView */,
 				AED2507A2B57558000290E42 /* ScaleSelectType */,
-				AED250802B57558000290E42 /* ScaleSetColor */,
+				AED250802B57558000290E42 /* ScaleColorSelectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -538,13 +548,13 @@
 			path = ScaleSelectType;
 			sourceTree = "<group>";
 		};
-		AED250802B57558000290E42 /* ScaleSetColor */ = {
+		AED250802B57558000290E42 /* ScaleColorSelectionView */ = {
 			isa = PBXGroup;
 			children = (
-				AED250812B57558000290E42 /* ScaleSetColorView.xib */,
-				AED250822B57558000290E42 /* ScaleSetColorView.swift */,
+				AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */,
+				AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */,
 			);
-			path = ScaleSetColor;
+			path = ScaleColorSelectionView;
 			sourceTree = "<group>";
 		};
 		AED250832B57558000290E42 /* Scale Details */ = {
@@ -664,6 +674,7 @@
 		AEE16A3F2B5C7BEC0000F2C4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AE5477ED2B649402000679AC /* CollectionView */,
 				AECC38472B60807900439C97 /* TextView */,
 				AECC38442B607D8200439C97 /* TextField */,
 				AEE16A412B5C7C130000F2C4 /* ButtonView */,
@@ -843,7 +854,6 @@
 				AED250CA2B57558100290E42 /* ScaleSelectType.xib in Resources */,
 				AED250222B57552E00290E42 /* LaunchScreen.storyboard in Resources */,
 				AED250AA2B57558100290E42 /* Poppins-SemiBoldItalic.ttf in Resources */,
-				AED250CD2B57558100290E42 /* ScaleSetColorView.xib in Resources */,
 				AED250AF2B57558100290E42 /* Poppins-Regular.ttf in Resources */,
 				AED250AB2B57558100290E42 /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				AED250B12B57558100290E42 /* Poppins-Bold.ttf in Resources */,
@@ -993,6 +1003,7 @@
 				AED250BF2B57558100290E42 /* HomeViewController.swift in Sources */,
 				AED250D82B57558100290E42 /* CoreDataFixedScaleRepository.swift in Sources */,
 				AED250E22B57558100290E42 /* UserNotificationsService.swift in Sources */,
+				AE9D5C932B6328550070A9CE /* ScaleColorSelectionView.swift in Sources */,
 				AED250DD2B57558100290E42 /* Scale.swift in Sources */,
 				AED250E02B57558100290E42 /* UIColor+Extensions.swift in Sources */,
 				AE4BF7242B62D38900CC69D7 /* UIView+Extensions.swift in Sources */,
@@ -1005,7 +1016,6 @@
 				AED250C62B57558100290E42 /* AddScaleViewModel.swift in Sources */,
 				AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */,
 				AED250C02B57558100290E42 /* ScheduledScalesTableViewCell.swift in Sources */,
-				AED250CE2B57558100290E42 /* ScaleSetColorView.swift in Sources */,
 				AED250C82B57558100290E42 /* ScaleDurationView.swift in Sources */,
 				AE7DE7B82B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift in Sources */,
 				AE7DE7B62B589BFF00F57E42 /* LocalStorageRepository.swift in Sources */,
@@ -1027,7 +1037,9 @@
 				AECC38462B607D9200439C97 /* TextField.swift in Sources */,
 				AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */,
 				AECC38492B60808800439C97 /* TextView.swift in Sources */,
+				AE9D5C952B632A430070A9CE /* ScaleColorSelectionCellView.swift in Sources */,
 				AED250DE2B57558100290E42 /* UIFont+Extensions.swift in Sources */,
+				AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */,
 				AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */,
 				AED250DC2B57558100290E42 /* OnDuty.swift in Sources */,
 				AE7DE7AB2B58814400F57E42 /* ClosureButtonView.swift in Sources */,
@@ -1218,7 +1230,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ExpedientManager/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Gerenciador de ";
+				INFOPLIST_KEY_CFBundleDisplayName = "Gerenciador de Escalas";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1249,7 +1261,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ExpedientManager/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Gerenciador de ";
+				INFOPLIST_KEY_CFBundleDisplayName = "Gerenciador de Escalas";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

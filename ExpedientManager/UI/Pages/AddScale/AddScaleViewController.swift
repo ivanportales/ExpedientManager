@@ -22,7 +22,7 @@ final class AddScaleViewController: UIViewController {
     @IBOutlet weak var scaleButton: UIButton!
     @IBOutlet weak var onDutyButton: UIButton!
     @IBOutlet weak var scaleSelectTypeHeight: NSLayoutConstraint!
-    @IBOutlet weak var scaleSetColorView: ScaleSetColorView!
+    //@IBOutlet weak var scaleSetColorView: ScaleSetColorView!
     @IBOutlet weak var shiftLabel: UILabel!
     @IBOutlet weak var activitiesLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
@@ -118,11 +118,12 @@ extension AddScaleViewController {
             return
         }
         
-        let selectedColor = scaleSetColorView.selectedColor
+       // let selectedColor = scaleSetColorView.selectedColor
         let initialDate = begginingDurationView.date
         let finalDate = endingDurationView.date
             
-        if title.isEmpty || selectedColor == .clear {
+       // if title.isEmpty || selectedColor == .clear {
+        if title.isEmpty {
             showAlertWith(title: LocalizedString.alertErrorTitle, andMesssage: LocalizedString.alertErrorMsg)
             return 
         }
@@ -136,7 +137,8 @@ extension AddScaleViewController {
                     initialDate: initialDate,
                     finalDate: finalDate,
                     annotation: notes,
-                    colorHex: selectedColor.hex
+                    colorHex: ""
+                    //colorHex: selectedColor.hex
                 ))
         } else {
             viewModel.save(
@@ -146,7 +148,8 @@ extension AddScaleViewController {
                     initialDate: initialDate,
                     hoursDuration: scaleOfWork,
                     annotation: notes,
-                    colorHex: selectedColor.hex
+                    colorHex: ""
+                   // colorHex: selectedColor.hex
                 ))
         }
     }
@@ -182,8 +185,8 @@ extension AddScaleViewController {
             .dropFirst()
             .sink { [weak self] date in
                 guard let self = self else {return}
-                self.endingDurationView.setDateLabelWith(date: date)
-                self.endingDurationView.setTimeLabelWith(date: date)
+               // self.endingDurationView.setDateLabelWith(date: date)
+               // self.endingDurationView.setTimeLabelWith(date: date)
             }.store(in: &subscribers)
     }
 }
