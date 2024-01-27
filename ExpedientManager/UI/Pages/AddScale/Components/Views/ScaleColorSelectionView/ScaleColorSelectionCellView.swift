@@ -16,7 +16,7 @@ final class ScaleColorSelectionCellView: SelfSizedCollectionViewCell {
     lazy var colorView: UIView = {
         let colorView = UIView()
         colorView.translatesAutoresizingMaskIntoConstraints = false
-        colorView.layer.cornerRadius = 5
+        colorView.layer.cornerRadius = 8
         
         return colorView
     }()
@@ -26,7 +26,7 @@ final class ScaleColorSelectionCellView: SelfSizedCollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                self.layer.borderWidth = 2
+                self.layer.borderWidth = 3
                 self.layer.borderColor = UIColor.appDarkBlue.cgColor
             } else {
                 self.layer.borderWidth = 0
