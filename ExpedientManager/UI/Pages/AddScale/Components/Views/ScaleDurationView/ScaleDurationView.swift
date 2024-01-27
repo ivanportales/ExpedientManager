@@ -16,10 +16,6 @@ enum ScaleDurationType {
     case startingTime, endingTime
 }
 
-enum ScaleDurationViewPresentationType {
-    case editable, viewOnly
-}
-
 private enum PickerType {
     case date, time
 }
@@ -53,8 +49,6 @@ class ScaleDurationView: UIView {
     // MARK: - Exposed Properties
     
     weak var delegate: ScaleDurationViewDelegate?
-    let durationType: ScaleDurationType
-    var presentationType: ScaleDurationViewPresentationType
     private(set) var date: Date = .init() {
         didSet {
             self.dateTextField.text = date.getFormattedDateString()
@@ -65,15 +59,17 @@ class ScaleDurationView: UIView {
     // MARK: - Private Properties
     
     private let calendarManager: CalendarManagerProtocol
-    
+    private var isEditable: Bool
+    private let durationType: ScaleDurationType
+
     // MARK: - Inits
     
     init(durationType: ScaleDurationType,
-         presentationType: ScaleDurationViewPresentationType = .editable,
+         isEditable: Bool = true,
          calendarManager: CalendarManagerProtocol = Calendar.current,
          initialTime: Date = .init()) {
         self.durationType = durationType
-        self.presentationType = presentationType
+        self.isEditable = isEditable
         self.calendarManager = calendarManager
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -83,6 +79,14 @@ class ScaleDurationView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("Only usable via viewCode")
+        
+    }
+    
+    // MARK: - Exposed Functions
+    
+    func set(isEditable: Bool) {
+        self.isEditable = isEditable
+        setupDateTextField()
     }
 }
 
@@ -92,14 +96,15 @@ private extension ScaleDurationView {
     func setupView(with initialTime: Date) {
         setupDatePicker(initialTime: initialTime)
         setupTimePicker(initialTime: initialTime)
-        setupViewStyle()
+        setupDateTextField()
+        setupTimeTextField()
         setupLabels()
     }
 
     func setupDatePicker(initialTime: Date) {
         datePicker.date = initialTime
 
-        dateTextField.inputView = datePicker
+        dateTextField.inputView = datePicker        
         dateTextField.inputAccessoryView = setupToolbar(forType: .date)
         dateTextField.tintColor = .clear
     }
@@ -112,24 +117,19 @@ private extension ScaleDurationView {
         timeTextField.tintColor = .clear
     }
     
-    func setupViewStyle() {
-        guard presentationType == .editable else {
-            timeTextField.isEnabled = false
-            timeTextField.textColor = .textAddShift
-            
-            dateTextField.isEnabled = false
-            dateTextField.textColor = .textAddShift
-            return
-        }
+    func setupDateTextField() {
+        dateTextField.isEnabled = isEditable
+        dateTextField.textColor = isEditable ? .appDarkBlue : .textAddShift
+    }
+    
+    func setupTimeTextField() {
         switch durationType {
         case .startingTime:
-            timeTextField.isEnabled = true
-            timeTextField.textColor = .appDarkBlue
-            break
+            timeTextField.isEnabled = isEditable
+            timeTextField.textColor = isEditable ? .appDarkBlue : .textAddShift
         case .endingTime:
             timeTextField.isEnabled = false
             timeTextField.textColor = .textAddShift
-            break
         }
     }
     

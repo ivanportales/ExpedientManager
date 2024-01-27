@@ -89,7 +89,8 @@ class BaseScaleViewController: UIViewController {
     }()
     
     lazy var endingDurationView: ScaleDurationView = {
-        let scaleView = ScaleDurationView(durationType: .endingTime, presentationType: .viewOnly)
+        let scaleView = ScaleDurationView(durationType: .endingTime, 
+                                          isEditable: true)
         scaleView.constraintView(height: 100)
         
         return scaleView
@@ -103,7 +104,6 @@ class BaseScaleViewController: UIViewController {
     
     lazy var scaleSetColorView: ScaleColorSelectionView = {
         let scaleColorView = ScaleColorSelectionView()
-       // scaleColorView.constraintView(height: 50)
         
         return scaleColorView
     }()
@@ -245,7 +245,9 @@ extension BaseScaleViewController: ScaleDurationViewDelegate {
 
 extension BaseScaleViewController: SelectionSegmentedControlDelegate {
     func didChangeSelectedIndex(_ view: SelectionSegmentedControl, selectedIndex: Int) {
-        scaleSelectTypeView.selectedWorkScale = WorkScaleType.allCases[selectedIndex]
+        let workScale = WorkScaleType.allCases[selectedIndex]
+        scaleSelectTypeView.selectedWorkScale = workScale
+        endingDurationView.set(isEditable: workScale == .fixedScale)
     }
 }
 
