@@ -244,7 +244,7 @@ extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var state: ViewStates = .fixedScale
+        var state: WorkScaleType = .fixedScale
         var fixedScale: FixedScale? = nil
         var onDuty: OnDuty? = nil
         
@@ -257,7 +257,7 @@ extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
         
         router.route(to: .scaleDetails,
                      withParams: [
-                        "viewState": state,
+                        "workScaleType": state,
                         "selectedFixedScale": fixedScale as Any,
                         "selectedOnDuty": onDuty as Any
                      ]

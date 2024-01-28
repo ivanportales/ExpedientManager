@@ -13,7 +13,7 @@ protocol ScaleSelectTypeDelegate: AnyObject {
     func workScaleTypeChanged(_ view: ScaleSelectType, scaleType: WorkScaleType)
 }
 
-public enum WorkScaleType: String, CaseIterable{
+public enum WorkScaleType: String, CaseIterable {
     case fixedScale, onDuty
 }
 

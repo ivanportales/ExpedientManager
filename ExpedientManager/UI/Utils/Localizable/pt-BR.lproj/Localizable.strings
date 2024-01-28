@@ -6,8 +6,8 @@
 "deleteTitleText" = "Apagar";
 
 //AddShiftView
+"titleLabel" = "Título";
 "nameLabel" = "Nome";
-"shiftLabel" = "Título";
 "durationLabel" = "Duração";
 "colorLabel" = "Cor";
 "notesLabel" = "Notas";

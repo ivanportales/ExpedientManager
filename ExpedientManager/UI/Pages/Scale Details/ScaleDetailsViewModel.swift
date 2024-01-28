@@ -18,7 +18,7 @@ final class ScaleDetailsViewModel {
     // MARK: - Exposed Properties
     
     private(set) var errorText = ""
-    let state: ViewStates
+    let state: WorkScaleType
     var selectedFixedScale: FixedScale?
     var selectedOnDuty: OnDuty?
     
@@ -31,7 +31,7 @@ final class ScaleDetailsViewModel {
     
     // MARK: - Init
     
-    init(state: ViewStates,
+    init(state: WorkScaleType,
          selectedFixedScale: FixedScale?,
          selectedOnDuty: OnDuty?,
          scheduler: UserNotificationServiceProtocol,

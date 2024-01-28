@@ -20,8 +20,8 @@ extension LocalizedString {
     static let deleteTitleText = localized(for: "deleteTitleText")
     
     //AddShiftView
+    static let titleLabel = localized(for: "titleLabel")
     static let nameLabel = localized(for: "nameLabel")
-    static let shiftLabel = localized(for: "shiftLabel")
     static let durationLabel = localized(for: "durationLabel")
     static let colorLabel = localized(for: "colorLabel")
     static let notesLabel = localized(for: "notesLabel")

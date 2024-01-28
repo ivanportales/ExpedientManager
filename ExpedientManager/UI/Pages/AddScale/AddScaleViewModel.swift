@@ -7,22 +7,15 @@
 
 import Foundation
 
-public enum ViewStates {
-    case onDuty, fixedScale
-}
-
 final class AddScaleViewModel: ObservableObject {
     
     // MARK: - Bindings Properties
     
     @Published private(set) var isLoading = false
-    @Published private(set) var initialDutyDate: Date = .init()
-    @Published private(set) var finalDutyDate: Date = .init()
     
     // MARK: - Exposed Properties
     
     private(set) var errorText = ""
-    private(set) var state: ViewStates = .fixedScale
     
     // MARK: - Private Properties
     
@@ -45,21 +38,13 @@ final class AddScaleViewModel: ObservableObject {
     
     // MARK: - Exposed Properties
     
-    func changeViewStateTo(state: ViewStates) {
-        self.state = state
-    }
-    
-    func setInitialDutyDate(_ date: Date) {
-        initialDutyDate = date
-    }
-    
     func requestAuthorizationToSendNotifications() {
         scheduler.askUserNotificationPermission()
     }
     
-    func calculateFinalDutyDateFrom(date: Date, withDuration duration: Int) {
-        finalDutyDate = Calendar.current.date(byAdding: .hour, value: duration, to: date) ?? Date()
-    }
+//    func calculateFinalDutyDateFrom(date: Date, withDuration duration: Int) {
+//        finalDutyDate = Calendar.current.date(byAdding: .hour, value: duration, to: date) ?? Date()
+//    }
     
     func save(fixedScale: FixedScale) {
         isLoading = true
@@ -144,30 +129,13 @@ final class AddScaleViewModel: ObservableObject {
         }
     }
     
-//    private func calculateScaleOf(fixedScale: FixedScale) {
-//        let calendar = Calendar.current
-//        let finalDate = fixedScale.finalDate!
-//        let scale = fixedScale.scale!
-//        let dateComponent: Calendar.Component = (scale.type == ScaleType.hour) ? .hour : .day
-//
-//        var currentDate = fixedScale.initialDate!
-//
-//        set(scheduledNotification: .init(uid: UUID().uuidString, title: fixedScale.title ?? "", description: fixedScale.annotation ?? "", date: currentDate, scaleUid: fixedScale.id))
-//
-//        currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfWork, to: currentDate)!
-//
-//        while(!calendar.isDate(date: currentDate, inSameDayOrAfter: finalDate)!) {
-//            currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfRest, to: currentDate)!
-//            if(calendar.isDate(date: currentDate, inSameDayOrAfter: finalDate)!) { break }
-//            set(scheduledNotification: .init(uid: UUID().uuidString, title: fixedScale.title ?? "", description: fixedScale.annotation ?? "", date: currentDate, scaleUid: fixedScale.id))
-//            currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfWork, to: currentDate)!
-//        }
-//
-//        isLoading = false
-//    }
-    
     private func calculateScaleOf(onDuty: OnDuty) {
-        set(scheduledNotification: .init(uid: UUID().uuidString, title: onDuty.titlo, description: onDuty.annotation ?? "", date: onDuty.initialDate, scaleUid: onDuty.id, colorHex: onDuty.colorHex!))
+        set(scheduledNotification: .init(uid: UUID().uuidString, 
+                                         title: onDuty.titlo,
+                                         description: onDuty.annotation ?? "",
+                                         date: onDuty.initialDate,
+                                         scaleUid: onDuty.id,
+                                         colorHex: onDuty.colorHex!))
         isLoading = false
     }
     
@@ -183,28 +151,3 @@ final class AddScaleViewModel: ObservableObject {
         }
     }
 }
-
-//func calculateScaleOf(fixedScale: FixedScale) {
-//    let calendar = Calendar.current
-//    let finalDate = fixedScale.finalDate!
-//    let scale = fixedScale.scale!
-//    let dateComponent: Calendar.Component = (scale.type == ScaleType.hour) ? .hour : .day
-//
-//    var currentDate = fixedScale.initialDate!
-//    print("Initial date = \(calendar.getDescriptionOf(date: currentDate) )")
-//    print("Final date = \(calendar.getDescriptionOf(date: finalDate) )\n")
-//
-//    print("scale started on: \(calendar.getDescriptionOf(date: currentDate))") //scheduler.set(scheduledNotification: .init(uid: UUID().uuidString, title: "", description: "", date: currentDate))
-//    currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfWork, to: currentDate)!
-//    print("scale finished on: \(calendar.getDescriptionOf(date: currentDate))\n")
-//
-//    while(!calendar.isDate(date: currentDate, inSameDayOrAfter: finalDate)!) {
-//        print("scale rested on: \(calendar.getDescriptionOf(date: currentDate))") //scheduler.set(scheduledNotification: .init(uid: UUID().uuidString, title: "", description: "", date: currentDate))
-//        currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfRest, to: currentDate)!
-//        print("scale rested finished on: \(calendar.getDescriptionOf(date: currentDate))\n")
-//
-//        print("scale started on: \(calendar.getDescriptionOf(date: currentDate))") //scheduler.set(scheduledNotification: .init(uid: UUID().uuidString, title: "", description: "", date: currentDate))
-//        currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfWork, to: currentDate)!
-//        print("scale finished on: \(calendar.getDescriptionOf(date: currentDate))\n")
-//    }
-//}

@@ -8,8 +8,8 @@
 import UIKit
 
 enum Deeplink: String {
-    case home = "expedientManager://home"
     case onboard = "expedientManager://onboard"
+    case home = "expedientManager://home"
     case addScale = "expedientManager://add_scale"
     case scaleList = "expedientManager://scale_list"
     case scaleDetails = "expedientManager://scale_details"
@@ -81,11 +81,11 @@ final class DeeplinkRouter: DeeplinkRouterProtocol {
     }
     
     private func showScalesDetailsScreen(params: [String: Any]) {
-        guard let viewState = params["viewState"] as? ViewStates else { return }
+        guard let workScaleType = params["workScaleType"] as? WorkScaleType else { return }
         let selectedFixedScale = params["selectedFixedScale"] as? FixedScale
         let selectedOnDuty = params["selectedOnDuty"] as? OnDuty
     
-        guard let viewController = factory?.makeScalesDetailViewController(viewState: viewState,
+        guard let viewController = factory?.makeScalesDetailViewController(workScaleType: workScaleType,
                                                                            selectedFixedScale: selectedFixedScale,
                                                                            selectedOnDuty: selectedOnDuty) else {
             return

@@ -68,8 +68,6 @@
 		AED250C12B57558100290E42 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2506E2B57558000290E42 /* EmptyTableViewCell.swift */; };
 		AED250C22B57558100290E42 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED2506F2B57558000290E42 /* EmptyTableViewCell.xib */; };
 		AED250C32B57558100290E42 /* ScheduledScalesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED250702B57558000290E42 /* ScheduledScalesTableViewCell.xib */; };
-		AED250C42B57558100290E42 /* AddScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250722B57558000290E42 /* AddScaleViewController.swift */; };
-		AED250C52B57558100290E42 /* AddScaleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED250732B57558000290E42 /* AddScaleViewController.xib */; };
 		AED250C62B57558100290E42 /* AddScaleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250742B57558000290E42 /* AddScaleViewModel.swift */; };
 		AED250C72B57558100290E42 /* ScaleDurationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED250782B57558000290E42 /* ScaleDurationView.xib */; };
 		AED250C82B57558100290E42 /* ScaleDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250792B57558000290E42 /* ScaleDurationView.swift */; };
@@ -188,8 +186,6 @@
 		AED2506E2B57558000290E42 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		AED2506F2B57558000290E42 /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
 		AED250702B57558000290E42 /* ScheduledScalesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduledScalesTableViewCell.xib; sourceTree = "<group>"; };
-		AED250722B57558000290E42 /* AddScaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScaleViewController.swift; sourceTree = "<group>"; };
-		AED250732B57558000290E42 /* AddScaleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddScaleViewController.xib; sourceTree = "<group>"; };
 		AED250742B57558000290E42 /* AddScaleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScaleViewModel.swift; sourceTree = "<group>"; };
 		AED250782B57558000290E42 /* ScaleDurationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleDurationView.xib; sourceTree = "<group>"; };
 		AED250792B57558000290E42 /* ScaleDurationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleDurationView.swift; sourceTree = "<group>"; };
@@ -502,8 +498,6 @@
 		AED250712B57558000290E42 /* AddScale */ = {
 			isa = PBXGroup;
 			children = (
-				AED250722B57558000290E42 /* AddScaleViewController.swift */,
-				AED250732B57558000290E42 /* AddScaleViewController.xib */,
 				AED250742B57558000290E42 /* AddScaleViewModel.swift */,
 				AED250752B57558000290E42 /* Components */,
 				AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */,
@@ -835,7 +829,6 @@
 				AED250B32B57558100290E42 /* Poppins-Thin.ttf in Resources */,
 				AED250B62B57558100290E42 /* Poppins-MediumItalic.ttf in Resources */,
 				AED250BC2B57558100290E42 /* Localizable.strings in Resources */,
-				AED250C52B57558100290E42 /* AddScaleViewController.xib in Resources */,
 				AED250C72B57558100290E42 /* ScaleDurationView.xib in Resources */,
 				AED250AE2B57558100290E42 /* OFL.txt in Resources */,
 				AED250A62B57558100290E42 /* Poppins-ExtraLightItalic.ttf in Resources */,
@@ -999,7 +992,6 @@
 				AED250BA2B57558100290E42 /* ScrollToKeyboardAvoiding.swift in Sources */,
 				AED250162B57552C00290E42 /* AppDelegate.swift in Sources */,
 				AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */,
-				AED250C42B57558100290E42 /* AddScaleViewController.swift in Sources */,
 				AED250BF2B57558100290E42 /* HomeViewController.swift in Sources */,
 				AED250D82B57558100290E42 /* CoreDataFixedScaleRepository.swift in Sources */,
 				AED250E22B57558100290E42 /* UserNotificationsService.swift in Sources */,

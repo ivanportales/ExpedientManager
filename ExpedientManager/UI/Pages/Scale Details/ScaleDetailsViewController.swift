@@ -96,8 +96,7 @@ extension ScaleDetailsViewController {
     }
     
     private func localizeLabels() {
-        shiftLabel.text = LocalizedString.shiftLabel
-        activitiesLabel.text = LocalizedString.durationLabel 
+        activitiesLabel.text = LocalizedString.durationLabel
         durationLabel.text = LocalizedString.periodLabel
         colorLabel.text = LocalizedString.colorLabel
         notesLabel.text = LocalizedString.notesLabel

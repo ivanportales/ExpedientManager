@@ -30,13 +30,13 @@ final class ViewControllersFactory {
         return HomeViewController(viewModel: viewModel, router: router)
     }
     
-    func makeAddScaleViewController() -> AddScaleViewController {
+    func makeAddScaleViewController() -> BaseScaleViewController {
         let viewModel = AddScaleViewModel(scheduler: UserNotificationService(),
                                           scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository(),
                                           fixedScaleRepository: CoreDataFixedScaleRepository(),
                                           onDutyRepository: CoreDataOnDutyRepository())
 
-        return AddScaleViewController(viewModel: viewModel, router: router)
+        return BaseScaleViewController(viewModel: viewModel, router: router)
     }
     
     func makeScalesListViewController() -> ScalesListViewController {
@@ -47,10 +47,10 @@ final class ViewControllersFactory {
                                         router: router)
     }
     
-    func makeScalesDetailViewController(viewState: ViewStates,
+    func makeScalesDetailViewController(workScaleType: WorkScaleType,
                                         selectedFixedScale: FixedScale?,
                                         selectedOnDuty: OnDuty?) -> ScaleDetailsViewController {
-        let viewModel = ScaleDetailsViewModel(state: viewState,
+        let viewModel = ScaleDetailsViewModel(state: workScaleType,
                                               selectedFixedScale: selectedFixedScale,
                                               selectedOnDuty: selectedOnDuty,
                                               scheduler: UserNotificationService(),
