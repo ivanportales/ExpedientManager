@@ -73,7 +73,6 @@
 		AED250C82B57558100290E42 /* ScaleDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250792B57558000290E42 /* ScaleDurationView.swift */; };
 		AED250C92B57558100290E42 /* ScaleSelectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2507B2B57558000290E42 /* ScaleSelectType.swift */; };
 		AED250CA2B57558100290E42 /* ScaleSelectType.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED2507C2B57558000290E42 /* ScaleSelectType.xib */; };
-		AED250CF2B57558100290E42 /* ScaleDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED250842B57558000290E42 /* ScaleDetailsViewController.xib */; };
 		AED250D02B57558100290E42 /* ScaleDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250852B57558000290E42 /* ScaleDetailsViewModel.swift */; };
 		AED250D12B57558100290E42 /* ScaleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250862B57558100290E42 /* ScaleDetailsViewController.swift */; };
 		AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250882B57558100290E42 /* ScaleListViewModel.swift */; };
@@ -191,7 +190,6 @@
 		AED250792B57558000290E42 /* ScaleDurationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleDurationView.swift; sourceTree = "<group>"; };
 		AED2507B2B57558000290E42 /* ScaleSelectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleSelectType.swift; sourceTree = "<group>"; };
 		AED2507C2B57558000290E42 /* ScaleSelectType.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleSelectType.xib; sourceTree = "<group>"; };
-		AED250842B57558000290E42 /* ScaleDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleDetailsViewController.xib; sourceTree = "<group>"; };
 		AED250852B57558000290E42 /* ScaleDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleDetailsViewModel.swift; sourceTree = "<group>"; };
 		AED250862B57558100290E42 /* ScaleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleDetailsViewController.swift; sourceTree = "<group>"; };
 		AED250882B57558100290E42 /* ScaleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleListViewModel.swift; sourceTree = "<group>"; };
@@ -554,7 +552,6 @@
 		AED250832B57558000290E42 /* Scale Details */ = {
 			isa = PBXGroup;
 			children = (
-				AED250842B57558000290E42 /* ScaleDetailsViewController.xib */,
 				AED250852B57558000290E42 /* ScaleDetailsViewModel.swift */,
 				AED250862B57558100290E42 /* ScaleDetailsViewController.swift */,
 			);
@@ -838,7 +835,6 @@
 				AED250A72B57558100290E42 /* Poppins-BoldItalic.ttf in Resources */,
 				AED250C22B57558100290E42 /* EmptyTableViewCell.xib in Resources */,
 				AED250C32B57558100290E42 /* ScheduledScalesTableViewCell.xib in Resources */,
-				AED250CF2B57558100290E42 /* ScaleDetailsViewController.xib in Resources */,
 				AED250A82B57558100290E42 /* Poppins-Light.ttf in Resources */,
 				AED250B22B57558100290E42 /* Poppins-Black.ttf in Resources */,
 				AED250B52B57558100290E42 /* Poppins-Italic.ttf in Resources */,
