@@ -246,8 +246,10 @@ private extension BaseScaleViewController {
     
     func saveScale() {
         guard let title = titleTextField.text,
-              let notes = notesTextView.text else {
-            showAlertWith(title: LocalizedString.alertErrorTitle, andMesssage: "")
+              let notes = notesTextView.text,
+              !title.isEmpty else {
+            showAlertWith(title: LocalizedString.alertErrorTitle,
+                          andMesssage: LocalizedString.alertErrorMsg)
             return
         }
         
@@ -262,11 +264,6 @@ private extension BaseScaleViewController {
         
         let selectedColor = scaleSetColorView.selectedColor
 
-        if title.isEmpty {
-            showAlertWith(title: LocalizedString.alertErrorTitle, andMesssage: LocalizedString.alertErrorMsg)
-            return
-        }
-        
         if selectedWorkScale == .fixedScale {
             viewModel.save(
                 fixedScale: .init(

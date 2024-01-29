@@ -97,9 +97,9 @@ final class AddScaleViewModel: ObservableObject {
         
         currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfWork, to: currentDate)!
     
-        while(calendar.isDate(date: currentDate, before: finalDate)) {
+        while(calendar.isDate(currentDate, before: finalDate)) {
             currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfRest, to: currentDate)!
-            if(!calendar.isDate(date: currentDate, before: finalDate)) { break }
+            if(!calendar.isDate(currentDate, before: finalDate)) { break }
             
             print("Work on: \(calendar.getDescriptionOf(date: currentDate))")
             set(scheduledNotification: .init(uid: UUID().uuidString, title: fixedScale.title ?? "", description: fixedScale.annotation ?? "", date: currentDate, scaleUid: fixedScale.id, colorHex: fixedScale.colorHex!))
@@ -119,11 +119,11 @@ final class AddScaleViewModel: ObservableObject {
         var currentDate = fixedScale.initialDate!
         
         set(scheduledNotification: .init(uid: UUID().uuidString, title: fixedScale.title ?? "", description: fixedScale.annotation ?? "", date: currentDate, scaleUid: fixedScale.id, colorHex: fixedScale.colorHex!))
-        while(calendar.isDate(date: currentDate, before: finalDate)) {
+        while(calendar.isDate(currentDate, before: finalDate)) {
             for _ in 1..<fixedScale.scale!.scaleOfWork {
                 currentDate = calendar.date(byAdding: dateComponent, value: 1, to: currentDate)!
                 set(scheduledNotification: .init(uid: UUID().uuidString, title: fixedScale.title ?? "", description: fixedScale.annotation ?? "", date: currentDate, scaleUid: fixedScale.id, colorHex: fixedScale.colorHex!))
-                if(!calendar.isDate(date: currentDate, before: finalDate)) { return }
+                if(!calendar.isDate(currentDate, before: finalDate)) { return }
             }
             currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfRest, to: currentDate)!
         }

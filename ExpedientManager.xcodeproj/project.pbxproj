@@ -24,6 +24,7 @@
 		AE7DE7B32B58946F00F57E42 /* AppMainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B12B58946F00F57E42 /* AppMainFactory.swift */; };
 		AE7DE7B62B589BFF00F57E42 /* LocalStorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */; };
 		AE7DE7B82B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */; };
+		AE9B5A262B670C9D00F6A561 /* SaveFixedScaleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */; };
 		AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */; };
 		AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C902B631E690070A9CE /* CalendarManager.swift */; };
 		AE9D5C932B6328550070A9CE /* ScaleColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */; };
@@ -136,6 +137,7 @@
 		AE7DE7B12B58946F00F57E42 /* AppMainFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMainFactory.swift; sourceTree = "<group>"; };
 		AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepository.swift; sourceTree = "<group>"; };
 		AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
+		AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCase.swift; sourceTree = "<group>"; };
 		AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AE9D5C902B631E690070A9CE /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleColorSelectionView.swift; sourceTree = "<group>"; };
@@ -300,6 +302,14 @@
 				AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */,
 			);
 			path = LocalStorageRepository;
+			sourceTree = "<group>";
+		};
+		AE9B5A232B670A1800F6A561 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		AE9D5C8E2B631CDF0070A9CE /* NotificationsManager */ = {
@@ -579,6 +589,7 @@
 		AED2508D2B57558100290E42 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				AE9B5A232B670A1800F6A561 /* UseCases */,
 				AE7DE7AF2B58946F00F57E42 /* Factories */,
 				AE7DE7AC2B58946700F57E42 /* Navigation */,
 				AED2508E2B57558100290E42 /* Repositories */,
@@ -982,6 +993,7 @@
 				AED250DB2B57558100290E42 /* ScheduledNotificationsRepository.swift in Sources */,
 				AE7DE7B22B58946F00F57E42 /* ViewControllersFactory.swift in Sources */,
 				AED250B72B57558100290E42 /* String+Extensions.swift in Sources */,
+				AE9B5A262B670C9D00F6A561 /* SaveFixedScaleUseCase.swift in Sources */,
 				AED250DF2B57558100290E42 /* UIViewController+Extensions.swift in Sources */,
 				AED250BB2B57558100290E42 /* UIButton+Extensions.swift in Sources */,
 				AED250BE2B57558100290E42 /* HomeViewModel.swift in Sources */,

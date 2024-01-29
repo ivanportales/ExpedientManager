@@ -88,7 +88,6 @@ final class HomeViewController: UIViewController {
         setupConstraints()
         setupBindings()
         verifyFirstAccessOnApp()
-        //viewModel.deletAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {

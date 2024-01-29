@@ -150,9 +150,9 @@ final class ScaleDetailsViewModel {
         
         currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfWork, to: currentDate)!
     
-        while(calendar.isDate(date: currentDate, before: finalDate)) {
+        while(calendar.isDate(currentDate, before: finalDate)) {
             currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfRest, to: currentDate)!
-            if(!calendar.isDate(date: currentDate, before: finalDate)) { break }
+            if(!calendar.isDate(currentDate, before: finalDate)) { break }
             
             print("Work on: \(calendar.getDescriptionOf(date: currentDate))")
             set(scheduledNotification: .init(uid: UUID().uuidString, title: fixedScale.title ?? "", description: fixedScale.annotation ?? "", date: currentDate, scaleUid: fixedScale.id, colorHex: fixedScale.colorHex!))

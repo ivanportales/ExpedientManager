@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CalendarManagerProtocol {
-    func combineTimeFrom(date firstDate: Date, andDateFrom secondDate: Date) -> Date
+    func combineTimeFrom(_ firstDate: Date, andDateFrom secondDate: Date) -> Date
 }
 
 extension Calendar: CalendarManagerProtocol {}

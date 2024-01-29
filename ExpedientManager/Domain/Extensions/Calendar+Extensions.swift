@@ -8,22 +8,21 @@
 import Foundation
 
 extension Calendar {
-    func combineTimeFrom(date firstDate: Date, andDateFrom secondDate: Date) -> Date {
-        let firstDateComponents = self.dateComponents([.hour, .minute,.second], from: firstDate)
-        
-        return self.date(bySettingHour: firstDateComponents.hour!,
-                         minute: firstDateComponents.minute!,
-                         second: firstDateComponents.second!,
+    func combineTimeFrom(_ firstDate: Date, andDateFrom secondDate: Date) -> Date {
+        let firstTimeComponents = self.dateComponents([.hour, .minute, .second], from: firstDate)
+        return self.date(bySettingHour: firstTimeComponents.hour ?? 0,
+                         minute: firstTimeComponents.minute ?? 0,
+                         second: firstTimeComponents.second ?? 0,
                          of: secondDate)!
     }
     
-    func isDate(date firstDate: Date, before secondDate: Date) -> Bool {
+    func isDate(_ firstDate: Date, before secondDate: Date) -> Bool {
         return firstDate.compare(secondDate) == .orderedAscending
     }
 
     
-    func isDate(date firstDate: Date, inSameDayOrAfter secondDate: Date) -> Bool? {
-        return !isDate(date: firstDate, before: secondDate)
+    func isDate(_ firstDate: Date, inSameDayOrAfter secondDate: Date) -> Bool? {
+        return !isDate(firstDate, before: secondDate)
     }
     
     func getWeekDayDescriptionFrom(date : Date) -> String {
@@ -32,8 +31,7 @@ extension Calendar {
     }
     
     func getDescriptionOf(date: Date) -> String {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.weekday, .day, .month, .hour, .minute], from: date)
+        let components = self.dateComponents([.weekday, .day, .month, .hour, .minute], from: date)
         
         guard let weekDayIndex = components.weekday, 
               let monthIndex = components.month,
@@ -43,8 +41,8 @@ extension Calendar {
             return "Invalid Date"
         }
 
-        let weekDayDescription = calendar.weekdaySymbols[weekDayIndex - 1].capitalized
-        let monthDescription = calendar.monthSymbols[monthIndex - 1]
+        let weekDayDescription = self.weekdaySymbols[weekDayIndex - 1].capitalized
+        let monthDescription = self.monthSymbols[monthIndex - 1]
         
         let ofConnective = NSLocalizedString("of", comment: "")
         let atConnective = NSLocalizedString("at", comment: "")

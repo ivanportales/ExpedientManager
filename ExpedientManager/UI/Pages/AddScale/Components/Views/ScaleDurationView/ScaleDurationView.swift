@@ -134,7 +134,7 @@ private extension ScaleDurationView {
     }
     
     func setupLabels() {
-        date = calendarManager.combineTimeFrom(date: timePicker.date,
+        date = calendarManager.combineTimeFrom(timePicker.date,
                                                andDateFrom: datePicker.date)
         label.text = durationType == .startingTime ? LocalizedString.startLabel : LocalizedString.endLabel
     }
@@ -161,14 +161,14 @@ private extension ScaleDurationView {
     }
     
     @objc func datePickerDoneTapped() {
-        date = calendarManager.combineTimeFrom(date: timePicker.date, 
+        date = calendarManager.combineTimeFrom(timePicker.date,
                                                andDateFrom: datePicker.date)
         dateTextField.resignFirstResponder()
         delegate?.dateChangedTo(date: date)
     }
     
     @objc func timePickerDoneTapped(){
-        date = calendarManager.combineTimeFrom(date: timePicker.date, 
+        date = calendarManager.combineTimeFrom(timePicker.date, 
                                                andDateFrom: datePicker.date)
         timeTextField.resignFirstResponder()
         delegate?.hourChangedTo(date: date)
