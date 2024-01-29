@@ -1,5 +1,5 @@
 //
-//  UserNotificationsService.swift
+//  UserNotificationsManager.swift
 //  ExpedientManager
 //
 //  Created by Gonzalo Ivan Santos Portales on 20/01/24.
@@ -8,7 +8,7 @@
 import Foundation
 import UserNotifications
 
-final class UserNotificationService: UserNotificationServiceProtocol {
+final class UserNotificationsManager: UserNotificationsManagerProtocol {
     
     // MARK: - Private Properties
     

@@ -13,7 +13,7 @@
 		AE5410532B617B3D0039BD11 /* SelectionSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */; };
 		AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
-		AE6D4BCD2B59D54200C18696 /* UserNotificationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */; };
+		AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
 		AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D702B59F49400B2389B /* CarouselView.swift */; };
 		AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */; };
@@ -91,7 +91,7 @@
 		AED250DF2B57558100290E42 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2509E2B57558100290E42 /* UIViewController+Extensions.swift */; };
 		AED250E02B57558100290E42 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2509F2B57558100290E42 /* UIColor+Extensions.swift */; };
 		AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A02B57558100290E42 /* Calendar+Extensions.swift */; };
-		AED250E22B57558100290E42 /* UserNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A22B57558100290E42 /* UserNotificationsService.swift */; };
+		AED250E22B57558100290E42 /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A22B57558100290E42 /* UserNotificationsManager.swift */; };
 		AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */; };
 		AEE16A432B5C7C2A0000F2C4 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */; };
 		E82AE93921E858A4441ACACD /* Pods_ExpedientManager_ExpedientManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA90B4CC1AFA6C3DE2919DC /* Pods_ExpedientManager_ExpedientManagerUITests.framework */; };
@@ -126,7 +126,7 @@
 		AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSegmentedControl.swift; sourceTree = "<group>"; };
 		AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedCollectionViewCell.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
-		AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationServiceProtocol.swift; sourceTree = "<group>"; };
+		AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
 		AE6E6D702B59F49400B2389B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCarouselItem.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		AED2509E2B57558100290E42 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		AED2509F2B57558100290E42 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AED250A02B57558100290E42 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
-		AED250A22B57558100290E42 /* UserNotificationsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationsService.swift; sourceTree = "<group>"; };
+		AED250A22B57558100290E42 /* UserNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
 		AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScaleViewController.swift; sourceTree = "<group>"; };
 		AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpedientManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -315,8 +315,8 @@
 		AE9D5C8E2B631CDF0070A9CE /* NotificationsManager */ = {
 			isa = PBXGroup;
 			children = (
-				AED250A22B57558100290E42 /* UserNotificationsService.swift */,
-				AE6D4BCC2B59D54200C18696 /* UserNotificationServiceProtocol.swift */,
+				AED250A22B57558100290E42 /* UserNotificationsManager.swift */,
+				AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */,
 				AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */,
 			);
 			path = NotificationsManager;
@@ -1002,7 +1002,7 @@
 				AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */,
 				AED250BF2B57558100290E42 /* HomeViewController.swift in Sources */,
 				AED250D82B57558100290E42 /* CoreDataFixedScaleRepository.swift in Sources */,
-				AED250E22B57558100290E42 /* UserNotificationsService.swift in Sources */,
+				AED250E22B57558100290E42 /* UserNotificationsManager.swift in Sources */,
 				AE9D5C932B6328550070A9CE /* ScaleColorSelectionView.swift in Sources */,
 				AED250DD2B57558100290E42 /* Scale.swift in Sources */,
 				AED250E02B57558100290E42 /* UIColor+Extensions.swift in Sources */,
@@ -1010,7 +1010,7 @@
 				AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */,
 				AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */,
 				AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */,
-				AE6D4BCD2B59D54200C18696 /* UserNotificationServiceProtocol.swift in Sources */,
+				AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */,
 				AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */,
 				AED250D32B57558100290E42 /* ScalesListViewController.swift in Sources */,
 				AED250C62B57558100290E42 /* AddScaleViewModel.swift in Sources */,

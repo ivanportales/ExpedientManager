@@ -31,7 +31,7 @@ final class ViewControllersFactory {
     }
     
     func makeAddScaleViewController() -> BaseScaleViewController {
-        let viewModel = AddScaleViewModel(scheduler: UserNotificationService(),
+        let viewModel = AddScaleViewModel(scheduler: UserNotificationsManager(),
                                           scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository(),
                                           fixedScaleRepository: CoreDataFixedScaleRepository(),
                                           onDutyRepository: CoreDataOnDutyRepository())
@@ -53,7 +53,7 @@ final class ViewControllersFactory {
         let viewModel = ScaleDetailsViewModel(state: workScaleType,
                                               selectedFixedScale: selectedFixedScale,
                                               selectedOnDuty: selectedOnDuty,
-                                              scheduler: UserNotificationService(),
+                                              scheduler: UserNotificationsManager(),
                                               scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository(),
                                               fixedScaleRepository: CoreDataFixedScaleRepository(),
                                               onDutyRepository: CoreDataOnDutyRepository())
