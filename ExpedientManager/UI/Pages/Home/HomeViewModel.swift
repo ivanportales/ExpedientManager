@@ -34,7 +34,7 @@ final class HomeVideModel: ObservableObject {
     // MARK: - Exposed Functions
     
     func filterScheduledDatesWith(date: Date) {
-        filteredScheduledDates = scheduledScales.filter({Calendar.current.isDate(date: $0.date, inSameDayAs: date)!})
+        filteredScheduledDates = scheduledScales.filter({Calendar.current.isDate($0.date, inSameDayAs: date)})
     }
     
     func load() {
