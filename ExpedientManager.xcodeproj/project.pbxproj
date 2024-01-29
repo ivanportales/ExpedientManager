@@ -12,6 +12,8 @@
 		AE4BF7242B62D38900CC69D7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */; };
 		AE5410532B617B3D0039BD11 /* SelectionSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */; };
 		AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */; };
+		AE595A982B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */; };
+		AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
@@ -125,6 +127,8 @@
 		AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSegmentedControl.swift; sourceTree = "<group>"; };
 		AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedCollectionViewCell.swift; sourceTree = "<group>"; };
+		AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseProtocol.swift; sourceTree = "<group>"; };
+		AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseError.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
@@ -260,6 +264,14 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		AE595A992B686DF600B439CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		AE6E6D6F2B59F43600B2389B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,7 +319,9 @@
 		AE9B5A232B670A1800F6A561 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				AE595A992B686DF600B439CE /* Models */,
 				AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */,
+				AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1013,6 +1027,7 @@
 				AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */,
 				AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */,
 				AED250D32B57558100290E42 /* ScalesListViewController.swift in Sources */,
+				AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */,
 				AED250C62B57558100290E42 /* AddScaleViewModel.swift in Sources */,
 				AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */,
 				AED250C02B57558100290E42 /* ScheduledScalesTableViewCell.swift in Sources */,
@@ -1037,6 +1052,7 @@
 				AECC38462B607D9200439C97 /* TextField.swift in Sources */,
 				AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */,
 				AECC38492B60808800439C97 /* TextView.swift in Sources */,
+				AE595A982B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift in Sources */,
 				AE9D5C952B632A430070A9CE /* ScaleColorSelectionCellView.swift in Sources */,
 				AED250DE2B57558100290E42 /* UIFont+Extensions.swift in Sources */,
 				AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */,

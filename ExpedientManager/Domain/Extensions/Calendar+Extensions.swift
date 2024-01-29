@@ -21,8 +21,12 @@ extension Calendar {
     }
 
     
-    func isDate(_ firstDate: Date, inSameDayOrAfter secondDate: Date) -> Bool? {
+    func isDate(_ firstDate: Date, inSameDayOrAfter secondDate: Date) -> Bool {
         return !isDate(firstDate, before: secondDate)
+    }
+    
+    func add(_ value: Int, to component: Calendar.Component, ofDate date: Date) -> Date {
+        return self.date(byAdding: component, value: value, to: date)!
     }
     
     func getWeekDayDescriptionFrom(date : Date) -> String {

@@ -7,26 +7,25 @@
 
 import Foundation
 
-protocol SaveFixedScaleUseCaseProtocol {
-    func save(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ())
-}
-
 final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
     
     // MARK: - Private Properties
     
-    private let notificationManager: UserNotificationsManagerProtocol
     private let fixedScaleRepository: FixedScaleRepositoryProtocol
     private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
+    private let calendarManager: CalendarManagerProtocol
+    private let notificationManager: UserNotificationsManagerProtocol
     
     // MARK: - Init
     
     init(fixedScaleRepository: FixedScaleRepositoryProtocol,
+         scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
          notificationManager: UserNotificationsManagerProtocol,
-         scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol) {
+         calendarManager: CalendarManagerProtocol) {
         self.fixedScaleRepository = fixedScaleRepository
-        self.notificationManager = notificationManager
         self.scheduledNotificationsRepository = scheduledNotificationsRepository
+        self.notificationManager = notificationManager
+        self.calendarManager = calendarManager
     }
     
     // MARK: - Exposed Functions
@@ -46,48 +45,61 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
     // MARK: - Private Properties
     
     private func calculateScaleOf(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let calendar = Calendar.current
-        let finalDate = fixedScale.finalDate!
-        let scale = fixedScale.scale!
-        let dateComponent: Calendar.Component = (scale.type == ScaleType.hour) ? .hour : .day
-        
-        if dateComponent == .day {
-            days(fixedScale: fixedScale, completionHandler: completionHandler)
+        guard let scale = fixedScale.scale else {
+            completionHandler(.failure(SaveFixedScaleUseCaseError.corruptedData))
             return
         }
         
-        var currentDate = fixedScale.initialDate!
+        if scale.type == .hour {
+            setupHoursScales(of: fixedScale, completionHandler: completionHandler)
+        } else {
+            setupDaysScales(of: fixedScale, completionHandler: completionHandler)
+        }
+    }
+    
+    private func setupHoursScales(of fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+        guard let finalDate = fixedScale.finalDate,
+              let scale = fixedScale.scale,
+              var currentDate = fixedScale.initialDate else {
+            completionHandler(.failure(SaveFixedScaleUseCaseError.corruptedData))
+            return
+        }
         
         set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
-        currentDate = add(scale.scaleOfWork, to: .hour, ofDate: currentDate)
+        currentDate = calendarManager.add(scale.scaleOfWork, to: .hour, ofDate: currentDate)
     
-        while(calendar.isDate(currentDate, before: finalDate)) {
-            currentDate = add(scale.scaleOfRest, to: .hour, ofDate: currentDate)
+        while(calendarManager.isDate(currentDate, before: finalDate)) {
+            currentDate = calendarManager.add(scale.scaleOfRest, to: .hour, ofDate: currentDate)
             
-            if(!calendar.isDate(currentDate, before: finalDate)) { break }
+            if(!calendarManager.isDate(currentDate, before: finalDate)) {
+                break
+            }
             
             set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
-            currentDate = add(scale.scaleOfWork, to: .hour, ofDate: currentDate)
+            currentDate = calendarManager.add(scale.scaleOfWork, to: .hour, ofDate: currentDate)
         }
+        
         completionHandler(.success(true))
     }
     
-    private func days(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let calendar = Calendar.current
-        let finalDate = fixedScale.finalDate!
-        let scale = fixedScale.scale!
-        
-        var currentDate = fixedScale.initialDate!
+    private func setupDaysScales(of fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+        guard let finalDate = fixedScale.finalDate,
+              let scale = fixedScale.scale,
+              var currentDate = fixedScale.initialDate else {
+            completionHandler(.failure(SaveFixedScaleUseCaseError.corruptedData))
+            return
+        }
         
         set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
-        while(calendar.isDate(currentDate, before: finalDate)) {
-            for _ in 1..<fixedScale.scale!.scaleOfWork {
-                currentDate = add(scale.scaleOfWork, to: .day, ofDate: currentDate)
+        while(calendarManager.isDate(currentDate, before: finalDate)) {
+            for _ in 1..<scale.scaleOfWork {
+                currentDate = calendarManager.add(scale.scaleOfWork, to: .day, ofDate: currentDate)
                 set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
-                if(!calendar.isDate(currentDate, before: finalDate)) { return }
+                if(!calendarManager.isDate(currentDate, before: finalDate)) { return }
             }
-            currentDate = add(scale.scaleOfRest, to: .hour, ofDate: currentDate)
+            currentDate = calendarManager.add(scale.scaleOfRest, to: .hour, ofDate: currentDate)
         }
+        
         completionHandler(.success(true))
     }
     
@@ -101,10 +113,5 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
                 self.notificationManager.set(scheduledNotification: scheduledNotification)
             }
         }
-    }
-    
-    private func add(_ value: Int, to component: Calendar.Component, ofDate date: Date) -> Date {
-        let calendar = Calendar.current
-        return calendar.date(byAdding: component, value: value, to: date)!
     }
 }
