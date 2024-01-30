@@ -14,6 +14,8 @@
 		AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */; };
 		AE595A982B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */; };
 		AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */; };
+		AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */; };
+		AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
@@ -129,6 +131,8 @@
 		AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedCollectionViewCell.swift; sourceTree = "<group>"; };
 		AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseError.swift; sourceTree = "<group>"; };
+		AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
+		AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCase.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
@@ -272,6 +276,25 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		AE595A9C2B6877D800B439CE /* SaveFixedScaleUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AE595A992B686DF600B439CE /* Models */,
+				AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */,
+				AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */,
+			);
+			path = SaveFixedScaleUseCase;
+			sourceTree = "<group>";
+		};
+		AE595A9D2B6877E500B439CE /* SaveOnDutyUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */,
+				AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */,
+			);
+			path = SaveOnDutyUseCase;
+			sourceTree = "<group>";
+		};
 		AE6E6D6F2B59F43600B2389B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,9 +342,8 @@
 		AE9B5A232B670A1800F6A561 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				AE595A992B686DF600B439CE /* Models */,
-				AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */,
-				AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */,
+				AE595A9D2B6877E500B439CE /* SaveOnDutyUseCase */,
+				AE595A9C2B6877D800B439CE /* SaveFixedScaleUseCase */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1022,8 +1044,10 @@
 				AED250E02B57558100290E42 /* UIColor+Extensions.swift in Sources */,
 				AE4BF7242B62D38900CC69D7 /* UIView+Extensions.swift in Sources */,
 				AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */,
+				AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */,
 				AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */,
 				AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */,
+				AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */,
 				AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */,
 				AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */,
 				AED250D32B57558100290E42 /* ScalesListViewController.swift in Sources */,

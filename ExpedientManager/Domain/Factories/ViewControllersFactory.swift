@@ -10,12 +10,18 @@ import SafariServices
 
 final class ViewControllersFactory {
     
+    // MARK: - Private Fucntion
+    
     private let localStorage: LocalStorageRepositoryProtocol = LocalStorageRepository()
     private let router: DeeplinkRouterProtocol
+    
+    // MARK: - Init
     
     init(router: DeeplinkRouterProtocol) {
         self.router = router
     }
+    
+    // MARK: - Exposed Functions
     
     func makeOnboardingViewController() -> OnboardingViewController {
         return OnboardingViewController(router: router,
@@ -31,10 +37,18 @@ final class ViewControllersFactory {
     }
     
     func makeAddScaleViewController() -> BaseScaleViewController {
-        let viewModel = AddScaleViewModel(scheduler: UserNotificationsManager(),
-                                          scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository(),
-                                          fixedScaleRepository: CoreDataFixedScaleRepository(),
-                                          onDutyRepository: CoreDataOnDutyRepository())
+        let scheduledNotificationsRepository = CoreDataScheduledNotificationsRepository()
+        let notificationManager = UserNotificationsManager()
+        let saveFixedScaleUseCase = SaveFixedScaleUseCase(fixedScaleRepository: CoreDataFixedScaleRepository(),
+                                                          scheduledNotificationsRepository: scheduledNotificationsRepository,
+                                                          notificationManager: notificationManager,
+                                                          calendarManager: Calendar.current)
+        let saveOnDutyUseCase = SaveOnDutyUseCase(onDutyRepository: CoreDataOnDutyRepository(), 
+                                                  scheduledNotificationsRepository: scheduledNotificationsRepository,
+                                                  notificationManager: notificationManager)
+        let viewModel = AddScaleViewModel(notificationManager: notificationManager,
+                                          saveFixedScaleUseCase: saveFixedScaleUseCase,
+                                          saveOnDutyUseCase: saveOnDutyUseCase)
 
         return BaseScaleViewController(viewModel: viewModel, router: router)
     }

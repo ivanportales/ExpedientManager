@@ -47,4 +47,13 @@ extension ScheduledNotification {
                                      scaleUid: fixedScale.id,
                                      colorHex: fixedScale.colorHex!)
     }
+    
+    static func from(onDuty: OnDuty) -> ScheduledNotification {
+        return ScheduledNotification(uid: UUID().uuidString,
+                                     title: onDuty.titlo,
+                                     description: onDuty.annotation ?? "",
+                                     date: onDuty.initialDate,
+                                     scaleUid: onDuty.id,
+                                     colorHex: onDuty.colorHex!)
+    }
 }

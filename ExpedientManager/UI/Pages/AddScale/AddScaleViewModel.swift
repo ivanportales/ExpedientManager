@@ -19,27 +19,24 @@ final class AddScaleViewModel: ObservableObject {
     
     // MARK: - Private Properties
     
-    private let scheduler: UserNotificationsManagerProtocol
-    private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
-    private let fixedScaleRepository: FixedScaleRepositoryProtocol
-    private let onDutyRepository: OnDutyRepositoryProtocol
+    private let notificationManager: UserNotificationsManagerProtocol
+    private let saveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol
+    private let saveOnDutyUseCase: SaveOnDutyUseCaseProtocol
     
     // MARK: - Init
     
-    init(scheduler: UserNotificationsManagerProtocol,
-         scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
-         fixedScaleRepository: FixedScaleRepositoryProtocol,
-         onDutyRepository: OnDutyRepositoryProtocol) {
-        self.scheduler = scheduler
-        self.scheduledNotificationsRepository = scheduledNotificationsRepository
-        self.fixedScaleRepository = fixedScaleRepository
-        self.onDutyRepository = onDutyRepository
+    init(notificationManager: UserNotificationsManagerProtocol,
+         saveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol,
+         saveOnDutyUseCase: SaveOnDutyUseCaseProtocol) {
+        self.notificationManager = notificationManager
+        self.saveFixedScaleUseCase = saveFixedScaleUseCase
+        self.saveOnDutyUseCase = saveOnDutyUseCase
     }
     
     // MARK: - Exposed Properties
     
     func requestAuthorizationToSendNotifications() {
-        scheduler.askUserNotificationPermission()
+        notificationManager.askUserNotificationPermission()
     }
     
 //    func calculateFinalDutyDateFrom(date: Date, withDuration duration: Int) {
@@ -48,106 +45,30 @@ final class AddScaleViewModel: ObservableObject {
     
     func save(fixedScale: FixedScale) {
         isLoading = true
-        fixedScaleRepository.save(fixedScale: fixedScale) { [weak self] result in
+        saveFixedScaleUseCase.save(fixedScale: fixedScale) { [weak self] result in
+            guard let self = self else {return}
             switch result {
             case .failure(let error):
-                guard let self = self else {return}
-                self.isLoading = false
                 self.errorText = error.localizedDescription
             case .success(_):
-                guard let self = self else {return}
-                self.calculateScaleOf(fixedScale: fixedScale)
+                break
             }
+            self.isLoading = false
         }
     }
     
     func save(onDuty: OnDuty) {
         isLoading = true
-        onDutyRepository.save(onDuty: onDuty) { [weak self] result in
+        saveOnDutyUseCase.save(onDuty: onDuty) { [weak self] result in
+            guard let self = self else {return}
             switch result {
             case .failure(let error):
-                guard let self = self else {return}
                 self.isLoading = false
                 self.errorText = error.localizedDescription
             case .success(_):
-                guard let self = self else {return}
-                self.calculateScaleOf(onDuty: onDuty)
+                break
             }
-        }
-    }
-    
-    // MARK: - Private Properties
-    
-    private func calculateScaleOf(fixedScale: FixedScale) {
-        let calendar = Calendar.current
-        let finalDate = fixedScale.finalDate!
-        let scale = fixedScale.scale!
-        let dateComponent: Calendar.Component = (scale.type == ScaleType.hour) ? .hour : .day
-        
-        if dateComponent == .day {
-            days(fixedScale: fixedScale)
-            isLoading = false
-            return
-        }
-        
-        var currentDate = fixedScale.initialDate!
-        
-        print("Work on: \(calendar.getDescriptionOf(date: currentDate))")
-        set(scheduledNotification: .init(uid: UUID().uuidString, title: fixedScale.title ?? "", description: fixedScale.annotation ?? "", date: currentDate, scaleUid: fixedScale.id, colorHex: fixedScale.colorHex!))
-        
-        currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfWork, to: currentDate)!
-    
-        while(calendar.isDate(currentDate, before: finalDate)) {
-            currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfRest, to: currentDate)!
-            if(!calendar.isDate(currentDate, before: finalDate)) { break }
-            
-            print("Work on: \(calendar.getDescriptionOf(date: currentDate))")
-            set(scheduledNotification: .init(uid: UUID().uuidString, title: fixedScale.title ?? "", description: fixedScale.annotation ?? "", date: currentDate, scaleUid: fixedScale.id, colorHex: fixedScale.colorHex!))
-            
-            currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfWork, to: currentDate)!
-        }
-        
-        isLoading = false
-    }
-    
-    private func days(fixedScale: FixedScale) {
-        let calendar = Calendar.current
-        let finalDate = fixedScale.finalDate!
-        let scale = fixedScale.scale!
-        let dateComponent: Calendar.Component = .day
-        
-        var currentDate = fixedScale.initialDate!
-        
-        set(scheduledNotification: .init(uid: UUID().uuidString, title: fixedScale.title ?? "", description: fixedScale.annotation ?? "", date: currentDate, scaleUid: fixedScale.id, colorHex: fixedScale.colorHex!))
-        while(calendar.isDate(currentDate, before: finalDate)) {
-            for _ in 1..<fixedScale.scale!.scaleOfWork {
-                currentDate = calendar.date(byAdding: dateComponent, value: 1, to: currentDate)!
-                set(scheduledNotification: .init(uid: UUID().uuidString, title: fixedScale.title ?? "", description: fixedScale.annotation ?? "", date: currentDate, scaleUid: fixedScale.id, colorHex: fixedScale.colorHex!))
-                if(!calendar.isDate(currentDate, before: finalDate)) { return }
-            }
-            currentDate = calendar.date(byAdding: dateComponent, value: scale.scaleOfRest, to: currentDate)!
-        }
-    }
-    
-    private func calculateScaleOf(onDuty: OnDuty) {
-        set(scheduledNotification: .init(uid: UUID().uuidString, 
-                                         title: onDuty.titlo,
-                                         description: onDuty.annotation ?? "",
-                                         date: onDuty.initialDate,
-                                         scaleUid: onDuty.id,
-                                         colorHex: onDuty.colorHex!))
-        isLoading = false
-    }
-    
-    private func set(scheduledNotification: ScheduledNotification) {
-        scheduledNotificationsRepository.save(scheduledNotification: scheduledNotification) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(_):
-                guard let self = self else {return}
-                self.scheduler.set(scheduledNotification: scheduledNotification)
-            }
+            self.isLoading = false
         }
     }
 }
