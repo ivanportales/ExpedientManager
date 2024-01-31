@@ -15,6 +15,17 @@ protocol ScaleSelectTypeDelegate: AnyObject {
 
 public enum WorkScaleType: String, CaseIterable {
     case fixedScale, onDuty
+    
+    var description: String {
+        switch self {
+        case .fixedScale:
+            return LocalizedString.fixedButton
+        case .onDuty:
+            return LocalizedString.ondutyButton
+        }
+    }
+    
+    static let allDescriptions: [String] = allCases.map { $0.description }
 }
 
 @IBDesignable

@@ -67,9 +67,9 @@ final class AddScaleViewModel: ObservableObject {
             case .failure(let error):
                 self.state = .errorSavingScale(message: error.localizedDescription)
             case .success(_):
-                break
+                self.state = .successSavingScale
             }
-            self.state = .successSavingScale
+            
         }
     }
 }

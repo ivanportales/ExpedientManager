@@ -1,5 +1,5 @@
 //
-//  SelectionSegmentedControl.swift
+//  WorkScaleTypeSegmentedControl.swift
 //  ExpedientManager
 //
 //  Created by Gonzalo Ivan Santos Portales on 24/01/24.
@@ -9,23 +9,23 @@ import Foundation
 
 import UIKit
 
-protocol SelectionSegmentedControlDelegate: AnyObject {
-    func didChangeSelectedIndex(_ view: SelectionSegmentedControl, selectedIndex: Int)
+protocol WorkScaleTypeSegmentedControlDelegate: AnyObject {
+    func didChangeSelectedIndex(_ view: WorkScaleTypeSegmentedControl, selectedWorkScale: WorkScaleType)
 }
 
-final class SelectionSegmentedControl: UISegmentedControl {
+final class WorkScaleTypeSegmentedControl: UISegmentedControl {
     
     // MARK: - Exposed Properties
     
-    weak var delegate: SelectionSegmentedControlDelegate?
+    weak var delegate: WorkScaleTypeSegmentedControlDelegate?
 
     // MARK: - Inits
     
-    init(segmentsTitles: [String]) {
+    init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         setupViewAppearence()
-        setup(segmentsTitles: segmentsTitles)
+        setup(segmentsTitles: WorkScaleType.allDescriptions)
         setupValueChangeObserver()
     }
     
@@ -79,6 +79,7 @@ final class SelectionSegmentedControl: UISegmentedControl {
     }
     
     @objc private func valueDidChange() {
-        delegate?.didChangeSelectedIndex(self, selectedIndex: selectedSegmentIndex)
+        let selectedWorkScale = WorkScaleType.allCases[selectedSegmentIndex] 
+        delegate?.didChangeSelectedIndex(self, selectedWorkScale: selectedWorkScale)
     }
 }
