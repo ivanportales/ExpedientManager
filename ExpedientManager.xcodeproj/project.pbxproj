@@ -10,7 +10,7 @@
 		1ABCAF6551EA9E1C9F9F5103 /* Pods_ExpedientManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */; };
 		718C3D3D2B73F7C372F63ED4 /* Pods_ExpedientManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */; };
 		AE4BF7242B62D38900CC69D7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */; };
-		AE5410532B617B3D0039BD11 /* SelectionSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */; };
+		AE5410532B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5410522B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift */; };
 		AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */; };
 		AE595A982B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */; };
 		AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */; };
@@ -98,6 +98,10 @@
 		AED250E22B57558100290E42 /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A22B57558100290E42 /* UserNotificationsManager.swift */; };
 		AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */; };
 		AEE16A432B5C7C2A0000F2C4 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */; };
+		AEEC1A6F2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A6E2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift */; };
+		AEEC1A712B69D0BF00FA618E /* GetFixedScalesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A702B69D0BF00FA618E /* GetFixedScalesUseCase.swift */; };
+		AEEC1A742B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A732B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift */; };
+		AEEC1A762B69D1A500FA618E /* GetOnDutyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A752B69D1A500FA618E /* GetOnDutyUseCase.swift */; };
 		E82AE93921E858A4441ACACD /* Pods_ExpedientManager_ExpedientManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA90B4CC1AFA6C3DE2919DC /* Pods_ExpedientManager_ExpedientManagerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,7 +131,7 @@
 		A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpedientManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A834456D8495583D56D1EE96 /* Pods-ExpedientManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-ExpedientManagerTests/Pods-ExpedientManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSegmentedControl.swift; sourceTree = "<group>"; };
+		AE5410522B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkScaleTypeSegmentedControl.swift; sourceTree = "<group>"; };
 		AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedCollectionViewCell.swift; sourceTree = "<group>"; };
 		AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseError.swift; sourceTree = "<group>"; };
@@ -220,6 +224,10 @@
 		AED250A22B57558100290E42 /* UserNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
 		AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScaleViewController.swift; sourceTree = "<group>"; };
 		AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		AEEC1A6E2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFixedScalesUseCaseProtocol.swift; sourceTree = "<group>"; };
+		AEEC1A702B69D0BF00FA618E /* GetFixedScalesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFixedScalesUseCase.swift; sourceTree = "<group>"; };
+		AEEC1A732B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
+		AEEC1A752B69D1A500FA618E /* GetOnDutyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOnDutyUseCase.swift; sourceTree = "<group>"; };
 		C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpedientManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E73F5A643FE912918DB430C5 /* Pods-ExpedientManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManagerTests.release.xcconfig"; path = "Target Support Files/Pods-ExpedientManagerTests/Pods-ExpedientManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,7 +263,7 @@
 		AE5410512B617B0D0039BD11 /* SelectionSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
-				AE5410522B617B3D0039BD11 /* SelectionSegmentedControl.swift */,
+				AE5410522B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift */,
 			);
 			path = SelectionSegmentedControl;
 			sourceTree = "<group>";
@@ -342,6 +350,8 @@
 		AE9B5A232B670A1800F6A561 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				AEEC1A722B69D16200FA618E /* GetOnDutyUseCase */,
+				AEEC1A6D2B69D03D00FA618E /* GetFixedScalesUseCase */,
 				AE595A9D2B6877E500B439CE /* SaveOnDutyUseCase */,
 				AE595A9C2B6877D800B439CE /* SaveFixedScaleUseCase */,
 			);
@@ -737,6 +747,24 @@
 			path = ButtonView;
 			sourceTree = "<group>";
 		};
+		AEEC1A6D2B69D03D00FA618E /* GetFixedScalesUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AEEC1A6E2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift */,
+				AEEC1A702B69D0BF00FA618E /* GetFixedScalesUseCase.swift */,
+			);
+			path = GetFixedScalesUseCase;
+			sourceTree = "<group>";
+		};
+		AEEC1A722B69D16200FA618E /* GetOnDutyUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AEEC1A732B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift */,
+				AEEC1A752B69D1A500FA618E /* GetOnDutyUseCase.swift */,
+			);
+			path = GetOnDutyUseCase;
+			sourceTree = "<group>";
+		};
 		EBBE64592D4B19578B7459EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1052,7 +1080,9 @@
 				AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */,
 				AED250D32B57558100290E42 /* ScalesListViewController.swift in Sources */,
 				AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */,
+				AEEC1A762B69D1A500FA618E /* GetOnDutyUseCase.swift in Sources */,
 				AED250C62B57558100290E42 /* AddScaleViewModel.swift in Sources */,
+				AEEC1A712B69D0BF00FA618E /* GetFixedScalesUseCase.swift in Sources */,
 				AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */,
 				AED250C02B57558100290E42 /* ScheduledScalesTableViewCell.swift in Sources */,
 				AED250C82B57558100290E42 /* ScaleDurationView.swift in Sources */,
@@ -1060,9 +1090,10 @@
 				AE7DE7B62B589BFF00F57E42 /* LocalStorageRepository.swift in Sources */,
 				AED250D12B57558100290E42 /* ScaleDetailsViewController.swift in Sources */,
 				AED250B82B57558100290E42 /* UserDefaults+Extensions.swift in Sources */,
-				AE5410532B617B3D0039BD11 /* SelectionSegmentedControl.swift in Sources */,
+				AE5410532B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift in Sources */,
 				AED250182B57552C00290E42 /* SceneDelegate.swift in Sources */,
 				AED250D52B57558100290E42 /* OnboardingViewController.swift in Sources */,
+				AEEC1A6F2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift in Sources */,
 				AE7DE7B32B58946F00F57E42 /* AppMainFactory.swift in Sources */,
 				AED250BD2B57558100290E42 /* LocalizedString.swift in Sources */,
 				AED250D72B57558100290E42 /* FixedScaleRepositoryProtocol.swift in Sources */,
@@ -1073,6 +1104,7 @@
 				AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */,
 				AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */,
 				AED250D62B57558100290E42 /* RotinaApp.xcdatamodeld in Sources */,
+				AEEC1A742B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift in Sources */,
 				AECC38462B607D9200439C97 /* TextField.swift in Sources */,
 				AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */,
 				AECC38492B60808800439C97 /* TextView.swift in Sources */,
