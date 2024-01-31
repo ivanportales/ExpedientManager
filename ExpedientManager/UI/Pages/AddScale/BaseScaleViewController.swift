@@ -299,7 +299,7 @@ extension BaseScaleViewController {
     }
 }
 
-// MARK: - SelectionSegmentedControlDelegate
+// MARK: - WorkScaleTypeSegmentedControlDelegate
 
 extension BaseScaleViewController: WorkScaleTypeSegmentedControlDelegate {
     func didChangeSelectedIndex(_ view: WorkScaleTypeSegmentedControl, selectedWorkScale: WorkScaleType) {

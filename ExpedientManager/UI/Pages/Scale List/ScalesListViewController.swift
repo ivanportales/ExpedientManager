@@ -12,14 +12,11 @@ final class ScalesListViewController: UIViewController {
     
     // MARK: - UI
     
-    lazy var fixedScalesLAbel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = LocalizedString.fixedButton
-        label.font = .poppinsMediumOf(size: 16)
-        label.textColor = .textColor
+    lazy var scaleTypeSegmentControll: WorkScaleTypeSegmentedControl = {
+        let segmentControll = WorkScaleTypeSegmentedControl()
+        segmentControll.delegate = self
         
-        return label
+        return segmentControll
     }()
     
     lazy var scalesTableView: UITableView = {
@@ -31,29 +28,6 @@ final class ScalesListViewController: UIViewController {
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         tableView.sectionHeaderHeight = 0
-        
-        return tableView
-    }()
-    
-    lazy var onDutyLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-       // label.backgroundColor = .green
-        label.text = LocalizedString.ondutyButton
-        label.font = .poppinsMediumOf(size: 16)
-        label.textColor = .textColor
-        
-        return label
-    }()
-    
-    lazy var onDutyTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UINib(nibName: "ScheduledScalesTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduledScalesTableViewCell.cellIdentifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorColor = .clear
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.showsVerticalScrollIndicator = false
         
         return tableView
     }()
@@ -83,7 +57,8 @@ final class ScalesListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupNavigationBar()
-        setupUI()
+        setupViewHierarchy()
+        setupViewsConstraints()
         setupBindings()
     }
     
@@ -93,110 +68,60 @@ final class ScalesListViewController: UIViewController {
     }
 }
 
+// MARK: - Setup Functions
+
 extension ScalesListViewController {
     private func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .always
-        title = LocalizedString.listTitleView
-    }
-    
-    private func setupUI() {
-        setupViewHierarchy()
-        setupViewsConstraints()
+        title = ""
     }
     
     private func setupViewHierarchy() {
-        view.addSubview(fixedScalesLAbel)
+        view.addSubview(scaleTypeSegmentControll)
         view.addSubview(scalesTableView)
-        view.addSubview(onDutyLabel)
-        view.addSubview(onDutyTableView)
     }
     
     private func setupViewsConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            fixedScalesLAbel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 5),
-            fixedScalesLAbel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-            fixedScalesLAbel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
+            scaleTypeSegmentControll.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 5),
+            scaleTypeSegmentControll.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+            scaleTypeSegmentControll.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
             
-            scalesTableView.topAnchor.constraint(equalTo: fixedScalesLAbel.bottomAnchor, constant: 10),
+            scalesTableView.topAnchor.constraint(equalTo: scaleTypeSegmentControll.bottomAnchor, constant: 20),
             scalesTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
             scalesTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-            scalesTableView.bottomAnchor.constraint(equalTo: safeArea.centerYAnchor),
-            
-            onDutyLabel.topAnchor.constraint(equalTo: scalesTableView.bottomAnchor, constant: 5),
-            onDutyLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-            onDutyLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-            
-            onDutyTableView.topAnchor.constraint(equalTo: onDutyLabel.bottomAnchor, constant: 10),
-            onDutyTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-            onDutyTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-            onDutyTableView.bottomAnchor.constraint(greaterThanOrEqualTo: safeArea.bottomAnchor, constant: -8)
+            scalesTableView.bottomAnchor.constraint(greaterThanOrEqualTo: safeArea.bottomAnchor, constant: -8)
         ])
     }
     
-    private func updateUI() {
-        let safeArea = view.safeAreaLayoutGuide
-        
-        if viewModel.fixedScales.isEmpty {
-            fixedScalesLAbel.removeFromSuperview()
-            scalesTableView.removeFromSuperview()
-            onDutyLabel.removeFromSuperview()
-            onDutyTableView.removeFromSuperview()
-            
-            view.addSubview(onDutyLabel)
-            view.addSubview(onDutyTableView)
-            
-            NSLayoutConstraint.activate([
-                onDutyLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 5),
-                onDutyLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-                onDutyLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-                
-                onDutyTableView.topAnchor.constraint(equalTo: onDutyLabel.bottomAnchor, constant: 10),
-                onDutyTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-                onDutyTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-                onDutyTableView.bottomAnchor.constraint(greaterThanOrEqualTo: safeArea.bottomAnchor, constant: -8)
-            ])
-        } else if viewModel.onDuties.isEmpty {
-            fixedScalesLAbel.removeFromSuperview()
-            scalesTableView.removeFromSuperview()
-            onDutyLabel.removeFromSuperview()
-            onDutyTableView.removeFromSuperview()
-            
-            view.addSubview(fixedScalesLAbel)
-            view.addSubview(scalesTableView)
-            
-            NSLayoutConstraint.activate([
-                fixedScalesLAbel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 5),
-                fixedScalesLAbel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-                fixedScalesLAbel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-                
-                scalesTableView.topAnchor.constraint(equalTo: fixedScalesLAbel.bottomAnchor, constant: 10),
-                scalesTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-                scalesTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-                scalesTableView.bottomAnchor.constraint(greaterThanOrEqualTo: safeArea.bottomAnchor, constant: -8)
-            ])
-        }
-    }
-   
     private func setupBindings() {
         viewModel
-            .$fixedScales
+            .$state
             .dropFirst()
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                guard let self = self else {return}
-                self.scalesTableView.reloadData()
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .initial:
+                    break
+                case .loading:
+                    print("loading")
+                case .content:
+                    self.scalesTableView.reloadData()
+                case .error(message: let message):
+                    self.showAlertWith(title: LocalizedString.alertErrorTitle, andMesssage: message)
+                }
             }.store(in: &subscribers)
         
         viewModel
-            .$onDuties
-            .dropFirst()
+            .$selectedWorkScale
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                guard let self = self else {return}
-                self.onDutyTableView.reloadData()
-                self.updateUI()
+            .sink { [weak self] selectedWorkScale in
+                guard let self = self else { return }
+                self.title = selectedWorkScale.description
+                self.scalesTableView.reloadData()
             }.store(in: &subscribers)
     }
 }
@@ -205,18 +130,18 @@ extension ScalesListViewController {
 
 extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        tableView == scalesTableView ? viewModel.fixedScales.count : viewModel.onDuties.count
+        1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        viewModel.selectedWorkScale == .fixedScale ? viewModel.fixedScales.count : viewModel.onDuties.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ScheduledScalesTableViewCell.cellIdentifier) as! ScheduledScalesTableViewCell
         
-        if tableView == scalesTableView {
-            let scale = viewModel.fixedScales[indexPath.section]
+        if viewModel.selectedWorkScale == .fixedScale {
+            let scale = viewModel.fixedScales[indexPath.item]
             
             let model: ScheduledNotification = .init(
                 uid: scale.id,
@@ -228,7 +153,7 @@ extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setDataOf(scheduledNotification: model)
                     
         } else {
-            let scale = viewModel.onDuties[indexPath.section]
+            let scale = viewModel.onDuties[indexPath.item]
             let model: ScheduledNotification = .init(
                 uid: scale.id,
                 title: scale.titlo,
@@ -244,15 +169,14 @@ extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var state: WorkScaleType = .fixedScale
+        let state: WorkScaleType = viewModel.selectedWorkScale
         var fixedScale: FixedScale? = nil
         var onDuty: OnDuty? = nil
         
-        if tableView == scalesTableView {
-            fixedScale = viewModel.fixedScales[indexPath.section]
+        if state == .fixedScale {
+            fixedScale = viewModel.fixedScales[indexPath.item]
         } else {
-            state = .onDuty
-            onDuty = viewModel.onDuties[indexPath.section]
+            onDuty = viewModel.onDuties[indexPath.item]
         }
         
         router.route(to: .scaleDetails,
@@ -262,5 +186,14 @@ extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
                         "selectedOnDuty": onDuty as Any
                      ]
         )
+    }
+}
+
+
+// MARK: - WorkScaleTypeSegmentedControlDelegate
+
+extension ScalesListViewController: WorkScaleTypeSegmentedControlDelegate {
+    func didChangeSelectedIndex(_ view: WorkScaleTypeSegmentedControl, selectedWorkScale: WorkScaleType) {
+        viewModel.selectedWorkScale = selectedWorkScale
     }
 }
