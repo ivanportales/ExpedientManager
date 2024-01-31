@@ -16,6 +16,7 @@
 		AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */; };
 		AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */; };
 		AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */; };
+		AE5F19E32B6ADE7D0045C479 /* ScalesListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5F19E22B6ADE7D0045C479 /* ScalesListTableView.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
@@ -137,6 +138,7 @@
 		AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseError.swift; sourceTree = "<group>"; };
 		AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCase.swift; sourceTree = "<group>"; };
+		AE5F19E22B6ADE7D0045C479 /* ScalesListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalesListTableView.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
@@ -301,6 +303,14 @@
 				AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */,
 			);
 			path = SaveOnDutyUseCase;
+			sourceTree = "<group>";
+		};
+		AE5F19DF2B6ADE380045C479 /* ScalesListTableView */ = {
+			isa = PBXGroup;
+			children = (
+				AE5F19E22B6ADE7D0045C479 /* ScalesListTableView.swift */,
+			);
+			path = ScalesListTableView;
 			sourceTree = "<group>";
 		};
 		AE6E6D6F2B59F43600B2389B /* Views */ = {
@@ -722,6 +732,7 @@
 		AEE16A3F2B5C7BEC0000F2C4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AE5F19DF2B6ADE380045C479 /* ScalesListTableView */,
 				AE5477ED2B649402000679AC /* CollectionView */,
 				AECC38472B60807900439C97 /* TextView */,
 				AECC38442B607D8200439C97 /* TextField */,
@@ -1064,6 +1075,7 @@
 				AED250BA2B57558100290E42 /* ScrollToKeyboardAvoiding.swift in Sources */,
 				AED250162B57552C00290E42 /* AppDelegate.swift in Sources */,
 				AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */,
+				AE5F19E32B6ADE7D0045C479 /* ScalesListTableView.swift in Sources */,
 				AED250BF2B57558100290E42 /* HomeViewController.swift in Sources */,
 				AED250D82B57558100290E42 /* CoreDataFixedScaleRepository.swift in Sources */,
 				AED250E22B57558100290E42 /* UserNotificationsManager.swift in Sources */,
