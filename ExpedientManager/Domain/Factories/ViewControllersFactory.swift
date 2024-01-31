@@ -54,8 +54,11 @@ final class ViewControllersFactory {
     }
     
     func makeScalesListViewController() -> ScalesListViewController {
-        let viewModel = ScalesListViewModel(fixedScaleRepository: CoreDataFixedScaleRepository(),
-                                            onDutyRepository: CoreDataOnDutyRepository())
+        let getFixedScalesUseCase = GetFixedScalesUseCase(fixedScaleRepository: CoreDataFixedScaleRepository())
+        let getOnDutyUseCase = GetOnDutyUseCase(onDutyRepository: CoreDataOnDutyRepository())
+        
+        let viewModel = ScalesListViewModel(getFixedScalesUseCase: getFixedScalesUseCase,
+                                            getOnDutyUseCase: getOnDutyUseCase)
 
         return ScalesListViewController(viewModel: viewModel, 
                                         router: router)

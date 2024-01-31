@@ -28,15 +28,15 @@ final class ScalesListViewModel {
     
     // MARK: - Private Properties
     
-    private let fixedScaleRepository: FixedScaleRepositoryProtocol
-    private let onDutyRepository: OnDutyRepositoryProtocol
+    private let getFixedScalesUseCase: GetFixedScalesUseCaseProtocol
+    private let getOnDutyUseCase: GetOnDutyUseCaseProtocol
     
     // MARK: - Init
     
-    init(fixedScaleRepository: FixedScaleRepositoryProtocol,
-         onDutyRepository: OnDutyRepositoryProtocol) {
-        self.fixedScaleRepository = fixedScaleRepository
-        self.onDutyRepository = onDutyRepository
+    init(getFixedScalesUseCase: GetFixedScalesUseCaseProtocol,
+         getOnDutyUseCase: GetOnDutyUseCaseProtocol) {
+        self.getFixedScalesUseCase = getFixedScalesUseCase
+        self.getOnDutyUseCase = getOnDutyUseCase
     }
     
     // MARK: - Exposed Functions
@@ -46,7 +46,7 @@ final class ScalesListViewModel {
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        fixedScaleRepository.getAllFixedScales { [weak self] result in
+        getFixedScalesUseCase.getFixedScales { [weak self] result in
             guard let self = self else { return }
             defer {
                 dispatchGroup.leave()
@@ -57,11 +57,10 @@ final class ScalesListViewModel {
             case .success(let scales):
                 self.fixedScales = scales
             }
-            print("fechou o fixed")
         }
         
         dispatchGroup.enter()
-        onDutyRepository.getAllOnDuty { [weak self] result in
+        getOnDutyUseCase.getOnDuty { [weak self] result in
             guard let self = self else { return }
             defer {
                 dispatchGroup.leave()
@@ -72,13 +71,11 @@ final class ScalesListViewModel {
             case .success(let onDuties):
                 self.onDuties = onDuties
             }
-            print("fechou o duty")
         }
         
         dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
             self.state = .content
-            print("fechou o o notify")
         }
     }
 }
