@@ -28,8 +28,8 @@ class BaseScaleViewController: UIViewController {
         return contentView
     }()
     
-    lazy var scaleTypeSegmentControll: SelectionSegmentedControl = {
-        let segmentControll = SelectionSegmentedControl(segmentsTitles: [LocalizedString.fixedButton, LocalizedString.ondutyButton])
+    lazy var scaleTypeSegmentControll: WorkScaleTypeSegmentedControl = {
+        let segmentControll = WorkScaleTypeSegmentedControl()
         segmentControll.delegate = self
         
         return segmentControll
@@ -135,17 +135,73 @@ class BaseScaleViewController: UIViewController {
         setupNavigationBar()
         setupViewHierarchy()
         setupConstraints()
+        setupBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.requestAuthorizationToSendNotifications()
     }
+    
+    // MARK: - Private Functions
+    
+    private func saveScale() {
+        guard let title = titleTextField.text,
+              let notes = notesTextView.text,
+              !title.isEmpty else {
+            showAlertWith(title: LocalizedString.alertErrorTitle,
+                          andMesssage: LocalizedString.alertErrorMsg)
+            return
+        }
+        
+        let selectedWorkScale = scaleSelectTypeView.selectedWorkScale
+
+        let scaleOfWork = scaleSelectTypeView.workDuration
+        let scaleOfRest = scaleSelectTypeView.restDuration
+        let scaleType = scaleSelectTypeView.selectedScaleType
+
+        let initialDate = begginingDurationView.date
+        let finalDate = endingDurationView.date
+        
+        let selectedColor = scaleSetColorView.selectedColor
+
+        if selectedWorkScale == .fixedScale {
+            viewModel.save(
+                fixedScale: .init(
+                    id: UUID().uuidString,
+                    title: title,
+                    scale: .init(type: scaleType, scaleOfWork: scaleOfWork, scaleOfRest: scaleOfRest),
+                    initialDate: initialDate,
+                    finalDate: finalDate,
+                    annotation: notes,
+                    colorHex: selectedColor.hex
+                ))
+        } else {
+            viewModel.save(
+                onDuty: .init(
+                    id: UUID().uuidString,
+                    title: title,
+                    initialDate: initialDate,
+                    hoursDuration: scaleOfWork,
+                    annotation: notes,
+                    colorHex: selectedColor.hex
+                ))
+        }
+    }
 }
 
 // MARK: - Setup Extensions
 
 extension BaseScaleViewController {
+    func setupNavigationBar() {
+        title = LocalizedString.addTitle
+        setupNavigationBarItemOn(position: .right,
+                                 withTitle: LocalizedString.saveButton,
+                                 color: .appDarkBlue) { [weak self] _ in
+            self?.saveScale()
+        }
+    }
+    
     func setupViewHierarchy() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -222,69 +278,32 @@ extension BaseScaleViewController {
             scaleSetColorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
         ])
     }
-}
-
-extension BaseScaleViewController: SelectionSegmentedControlDelegate {
-    func didChangeSelectedIndex(_ view: SelectionSegmentedControl, selectedIndex: Int) {
-        let workScale = WorkScaleType.allCases[selectedIndex]
-        scaleSelectTypeView.selectedWorkScale = workScale
-        endingDurationView.set(isEditable: workScale == .fixedScale)
-    }
-}
-
-// MARK: - Setup Extensions
-
-private extension BaseScaleViewController {
-    func setupNavigationBar() {
-        self.title = LocalizedString.addTitle
-        setupNavigationBarItemOn(position: .right,
-                                 withTitle: LocalizedString.saveButton,
-                                 color: .appDarkBlue) { [weak self] _ in
-            self?.saveScale()
-        }
-    }
     
-    func saveScale() {
-        guard let title = titleTextField.text,
-              let notes = notesTextView.text,
-              !title.isEmpty else {
-            showAlertWith(title: LocalizedString.alertErrorTitle,
-                          andMesssage: LocalizedString.alertErrorMsg)
-            return
-        }
-        
-        let selectedWorkScale = scaleSelectTypeView.selectedWorkScale
+    func setupBindings() {
+        viewModel
+            .$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self = self else {return}
+                switch state {
+                case .initial:
+                    break
+                case .loading:
+                    print("laoding")
+                case .errorSavingScale(message: let message):
+                    self.showAlertWith(title: LocalizedString.alertErrorTitle, andMesssage: message)
+                case .successSavingScale:
+                    self.router.pop()
+                }
+            }.store(in: &subscribers)
+    }
+}
 
-        let scaleOfWork = scaleSelectTypeView.workDuration
-        let scaleOfRest = scaleSelectTypeView.restDuration
-        let scaleType = scaleSelectTypeView.selectedScaleType
+// MARK: - SelectionSegmentedControlDelegate
 
-        let initialDate = begginingDurationView.date
-        let finalDate = endingDurationView.date
-        
-        let selectedColor = scaleSetColorView.selectedColor
-
-        if selectedWorkScale == .fixedScale {
-            viewModel.save(
-                fixedScale: .init(
-                    id: UUID().uuidString,
-                    title: title,
-                    scale: .init(type: scaleType, scaleOfWork: scaleOfWork, scaleOfRest: scaleOfRest),
-                    initialDate: initialDate,
-                    finalDate: finalDate,
-                    annotation: notes,
-                    colorHex: selectedColor.hex
-                ))
-        } else {
-            viewModel.save(
-                onDuty: .init(
-                    id: UUID().uuidString,
-                    title: title,
-                    initialDate: initialDate,
-                    hoursDuration: scaleOfWork,
-                    annotation: notes,
-                    colorHex: selectedColor.hex
-                ))
-        }
+extension BaseScaleViewController: WorkScaleTypeSegmentedControlDelegate {
+    func didChangeSelectedIndex(_ view: WorkScaleTypeSegmentedControl, selectedWorkScale: WorkScaleType) {
+        scaleSelectTypeView.selectedWorkScale = selectedWorkScale
+        endingDurationView.set(isEditable: selectedWorkScale == .fixedScale)
     }
 }

@@ -7,15 +7,18 @@
 
 import Foundation
 
+enum AddScaleViewModelState {
+    case initial
+    case loading
+    case errorSavingScale(message: String)
+    case successSavingScale
+}
+
 final class AddScaleViewModel: ObservableObject {
     
     // MARK: - Bindings Properties
     
-    @Published private(set) var isLoading = false
-    
-    // MARK: - Exposed Properties
-    
-    private(set) var errorText = ""
+    @Published private(set) var state: AddScaleViewModelState = .initial
     
     // MARK: - Private Properties
     
@@ -44,31 +47,29 @@ final class AddScaleViewModel: ObservableObject {
 //    }
     
     func save(fixedScale: FixedScale) {
-        isLoading = true
+        state = .loading
         saveFixedScaleUseCase.save(fixedScale: fixedScale) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .failure(let error):
-                self.errorText = error.localizedDescription
+                self.state = .errorSavingScale(message: error.localizedDescription)
             case .success(_):
-                break
+                self.state = .successSavingScale
             }
-            self.isLoading = false
         }
     }
     
     func save(onDuty: OnDuty) {
-        isLoading = true
+        state = .loading
         saveOnDutyUseCase.save(onDuty: onDuty) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .failure(let error):
-                self.isLoading = false
-                self.errorText = error.localizedDescription
+                self.state = .errorSavingScale(message: error.localizedDescription)
             case .success(_):
                 break
             }
-            self.isLoading = false
+            self.state = .successSavingScale
         }
     }
 }
