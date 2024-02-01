@@ -23,11 +23,21 @@ final class ScalesListViewModel {
     
     // MARK: - Exposed Properties
     
-    private(set)var fixedScales: [FixedScale] = []
-    private(set) var onDuties: [OnDuty] = []
+    var scheduledNotifications: [ScheduledNotification] {
+        if selectedWorkScale == .fixedScale {
+            return fixedScales.map {
+                ScheduledNotification.from(fixedScale: $0, with: $0.initialDate ?? .init())
+            }
+        }
+        return onDuties.map {
+            ScheduledNotification.from(onDuty: $0)
+        }
+    }
     
     // MARK: - Private Properties
     
+    private var fixedScales: [FixedScale] = []
+    private var onDuties: [OnDuty] = []
     private let getFixedScalesUseCase: GetFixedScalesUseCaseProtocol
     private let getOnDutyUseCase: GetOnDutyUseCaseProtocol
     

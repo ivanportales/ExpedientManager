@@ -29,6 +29,7 @@ class ScheduledScalesTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         clipsToBounds = true
+        selectionStyle = .none
     }
     
     // MARK: - Override Functions

@@ -8,6 +8,7 @@
 import UIKit
 
 class EmptyTableViewCell: UITableViewCell {
+    
     static let cellIdentifier = "emptyTableViewCell"
     
     // MARK: - UI
@@ -18,7 +19,8 @@ class EmptyTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.clipsToBounds = true
+        clipsToBounds = true
+        selectionStyle = .none
     }
     
     // MARK: - Override Functions

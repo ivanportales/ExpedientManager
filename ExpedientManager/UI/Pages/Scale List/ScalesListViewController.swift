@@ -19,15 +19,9 @@ final class ScalesListViewController: UIViewController {
         return segmentControll
     }()
     
-    lazy var scalesTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UINib(nibName: "ScheduledScalesTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduledScalesTableViewCell.cellIdentifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorColor = .clear
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.showsVerticalScrollIndicator = false
-        tableView.sectionHeaderHeight = 0
+    lazy var scalesTableView: ScheduledNotificationListTableView = {
+        let tableView = ScheduledNotificationListTableView()
+        tableView.viewDelegate = self
         
         return tableView
     }()
@@ -109,7 +103,7 @@ extension ScalesListViewController {
                 case .loading:
                     print("loading")
                 case .content:
-                    self.scalesTableView.reloadData()
+                    self.scalesTableView.setup(scheduledNotifications: viewModel.scheduledNotifications)
                 case .error(message: let message):
                     self.showAlertWith(title: LocalizedString.alertErrorTitle, andMesssage: message)
                 }
@@ -121,74 +115,26 @@ extension ScalesListViewController {
             .sink { [weak self] selectedWorkScale in
                 guard let self = self else { return }
                 self.title = selectedWorkScale.description
-                self.scalesTableView.reloadData()
+                self.scalesTableView.setup(scheduledNotifications: viewModel.scheduledNotifications)
             }.store(in: &subscribers)
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - WorkScaleTypeSegmentedControlDelegate
 
-extension ScalesListViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.selectedWorkScale == .fixedScale ? viewModel.fixedScales.count : viewModel.onDuties.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduledScalesTableViewCell.cellIdentifier) as! ScheduledScalesTableViewCell
-        
-        if viewModel.selectedWorkScale == .fixedScale {
-            let scale = viewModel.fixedScales[indexPath.item]
-            
-            let model: ScheduledNotification = .init(
-                uid: scale.id,
-                title: scale.title!,
-                description: scale.annotation!,
-                date: scale.initialDate!,
-                scaleUid: scale.id,
-                colorHex: scale.colorHex!)
-            cell.setDataOf(scheduledNotification: model)
-                    
-        } else {
-            let scale = viewModel.onDuties[indexPath.item]
-            let model: ScheduledNotification = .init(
-                uid: scale.id,
-                title: scale.titlo,
-                description: scale.annotation!,
-                date: scale.initialDate,
-                scaleUid: scale.id,
-                colorHex: scale.colorHex!)
-            cell.setDataOf(scheduledNotification: model)
-        }
-        cell.selectionStyle = .none
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+extension ScalesListViewController: ScheduledNotificationListTableViewDelegate {
+    func didTapOnItem(_ view: ScheduledNotificationListTableView, item: ScheduledNotification, index: Int) {
         let state: WorkScaleType = viewModel.selectedWorkScale
-        var fixedScale: FixedScale? = nil
-        var onDuty: OnDuty? = nil
-        
-        if state == .fixedScale {
-            fixedScale = viewModel.fixedScales[indexPath.item]
-        } else {
-            onDuty = viewModel.onDuties[indexPath.item]
-        }
-        
-        router.route(to: .scaleDetails,
-                     withParams: [
-                        "workScaleType": state,
-                        "selectedFixedScale": fixedScale as Any,
-                        "selectedOnDuty": onDuty as Any
-                     ]
-        )
+
+         router.route(to: .scaleDetails,
+                      withParams: [
+                         "workScaleType": state,
+                         "selectedFixedScale": item,
+                         "selectedOnDuty": item
+                      ]
+         )
     }
 }
-
 
 // MARK: - WorkScaleTypeSegmentedControlDelegate
 
