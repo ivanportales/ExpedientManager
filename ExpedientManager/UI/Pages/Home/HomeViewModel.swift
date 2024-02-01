@@ -22,19 +22,23 @@ final class HomeVideModel: ObservableObject {
     
     private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
     private let localStorage: LocalStorageRepositoryProtocol
+    private let calendarManager: CalendarManagerProtocol
     
     // MARK: - Init
     
     init(scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
-         localStorage: LocalStorageRepositoryProtocol) {
+         localStorage: LocalStorageRepositoryProtocol,
+         calendarManager: CalendarManagerProtocol
+    ) {
         self.scheduledNotificationsRepository = scheduledNotificationsRepository
         self.localStorage = localStorage
+        self.calendarManager = calendarManager
     }
     
     // MARK: - Exposed Functions
     
     func filterScheduledDatesWith(date: Date) {
-        filteredScheduledDates = scheduledScales.filter({Calendar.current.isDate($0.date, inSameDayAs: date)})
+        filteredScheduledDates = scheduledScales.filter({ calendarManager.isDate($0.date, inSameDayAs: date) })
     }
     
     func load() {
@@ -60,6 +64,10 @@ final class HomeVideModel: ObservableObject {
                 self.filterScheduledDatesWith(date: .init())
             }
         }
+    }
+    
+    func getMonthDescriptionOf(date: Date) -> String {
+        return calendarManager.getMonthDescriptionOf(date: date)
     }
     
     func verifyFirstAccessOnApp(routeToOnboardingCallback: @escaping (() -> Void)) {

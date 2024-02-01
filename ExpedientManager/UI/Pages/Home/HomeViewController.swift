@@ -129,7 +129,7 @@ extension HomeViewController {
     }
     
     private func setNavigationBarMonthTitle() {
-       title = Calendar.current.getMonthDescriptionOf(date: calendarView.currentPage).firstUppercased
+       title = viewModel.getMonthDescriptionOf(date: calendarView.currentPage)
     }
     
     private func setupBindings() {

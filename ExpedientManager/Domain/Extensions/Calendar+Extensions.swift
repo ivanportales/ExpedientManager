@@ -54,23 +54,8 @@ extension Calendar {
         return "\(weekDayDescription), \(day) \(ofConnective) \(monthDescription) \(atConnective) \(hour):\(minute)"
     }
 
-    
-    func getHourAndMinuteFrom(date : Date) -> String {
-        let hour = self.component(.hour, from: date)
-        let minute = self.component(.minute, from: date)
-        
-        return String(format: "%02d:%02d", hour,minute)
-    }
-    
-    func getDayAndMonthFrom(date : Date) -> String {
-        let day = self.component(.day, from: date)
-        let month = self.component(.month, from: date)
-        
-        return String(format: "%02d/%02d", day,month)
-    }
-    
     func getMonthDescriptionOf(date: Date) -> String {
         let month = self.component(.month, from: date)
-        return self.monthSymbols[month - 1]
+        return self.monthSymbols[month - 1].firstUppercased
     }
 }

@@ -19,11 +19,7 @@ class ScheduledScalesTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var backgroundHourView: UIView!
     @IBOutlet weak var scaleColorView: UIView!
-    
-    // MARK: - Private Properties
-    
-    private let calendar = Calendar.current
-    
+        
     // MARK: - Init
     
     required init?(coder: NSCoder) {
@@ -42,8 +38,8 @@ class ScheduledScalesTableViewCell: UITableViewCell {
     // MARK: - Exposed Functions
     
     func setDataOf(scheduledNotification: ScheduledNotification) {
-        hourLabel.text = calendar.getHourAndMinuteFrom(date: scheduledNotification.date)
-        dayAndMonthLabel.text = calendar.getDayAndMonthFrom(date: scheduledNotification.date)
+        hourLabel.text = scheduledNotification.date.getFormattedTimeString(dateFormat: "h:mm a")
+        dayAndMonthLabel.text = scheduledNotification.date.getFormattedDateString(dateFormat: "d/MM")
         titleLabel.text = scheduledNotification.title
         descriptionLabel.text = scheduledNotification.description
         scaleColorView.backgroundColor = UIColor(hex: scheduledNotification.colorHex)
