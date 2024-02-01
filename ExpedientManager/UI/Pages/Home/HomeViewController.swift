@@ -36,27 +36,13 @@ final class HomeViewController: UIViewController {
     }()
     
     lazy var activityLabelView: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = LocalizedString.activitiesLabel
-        label.font = .poppinsSemiboldOf(size: 19)
-        
-        return label
+        return UIView.makeLabelWith(text: LocalizedString.activitiesLabel,
+                                    font: .poppinsSemiboldOf(size: 19),
+                                    color: .black)
     }()
     
-    lazy var activitiesListTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UINib(nibName: "ScheduledScalesTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduledScalesTableViewCell.cellIdentifier)
-        tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: nil), forCellReuseIdentifier: EmptyTableViewCell.cellIdentifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorColor = .clear
-        tableView.showsVerticalScrollIndicator = false
-        tableView.allowsSelection = false
-        tableView.rowHeight = 110
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        return tableView
+    lazy var activitiesListTableView: ScheduledNotificationListTableView = {
+        return ScheduledNotificationListTableView()
     }()
     
     // MARK: - Private Properties
@@ -166,7 +152,7 @@ extension HomeViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self = self else {return}
-                self.activitiesListTableView.reloadData()
+                self.activitiesListTableView.setup(scheduledNotifications: viewModel.filteredScheduledDates)
             }.store(in: &subscribers)
     }
 }
@@ -229,34 +215,6 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
             return colors
         }
         return nil
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension HomeViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.filteredScheduledDates.isEmpty ? 1 : viewModel.filteredScheduledDates.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if viewModel.filteredScheduledDates.isEmpty {
-            let cell = tableView.dequeueReusableCell(withIdentifier: EmptyTableViewCell.cellIdentifier, for: indexPath) as! EmptyTableViewCell
-            return cell
-        }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduledScalesTableViewCell.cellIdentifier) as! ScheduledScalesTableViewCell
-        cell.setDataOf(scheduledNotification: viewModel.filteredScheduledDates[indexPath.item])
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(viewModel.filteredScheduledDates[indexPath.section])")
     }
 }
 
