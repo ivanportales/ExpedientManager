@@ -15,8 +15,6 @@ protocol CalendarManagerProtocol {
     func add(_ value: Int, to component: Calendar.Component, ofDate date: Date) -> Date
     func getWeekDayDescriptionFrom(date : Date) -> String
     func getDescriptionOf(date: Date) -> String
-    func getHourAndMinuteFrom(date : Date) -> String
-    func getDayAndMonthFrom(date : Date) -> String
     func getMonthDescriptionOf(date: Date) -> String
 }
 
