@@ -13,11 +13,36 @@ class ScheduledScalesTableViewCell: UITableViewCell {
     
     // MARK: - UI
     
-    @IBOutlet weak var hourLabel: UILabel!
-    @IBOutlet weak var dayAndMonthLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var backgroundHourView: UIView!
+    @IBOutlet weak var hourLabel: UILabel! {
+        didSet {
+            hourLabel.font = .poppinsMediumOf(size: 17)
+        }
+    }
+    
+    @IBOutlet weak var dayAndMonthLabel: UILabel! {
+        didSet {
+            dayAndMonthLabel.font = .poppinsRegularOf(size: 13)
+        }
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel! {
+        didSet {
+            titleLabel.font = .poppinsSemiboldOf(size: 15)
+        }
+    }
+    
+    @IBOutlet weak var descriptionLabel: UILabel! {
+        didSet {
+            descriptionLabel.font = .poppinsRegularOf(size: 14)
+        }
+    }
+    
+    @IBOutlet weak var backgroundHourView: UIView! {
+        didSet {
+            backgroundHourView.layer.cornerRadius = 10
+        }
+    }
+    
     @IBOutlet weak var scaleColorView: UIView!
         
     // MARK: - Init
@@ -27,14 +52,7 @@ class ScheduledScalesTableViewCell: UITableViewCell {
         clipsToBounds = true
         selectionStyle = .none
     }
-    
-    // MARK: - Override Functions
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupFontsOfViews()
-    }
-    
+       
     // MARK: - Exposed Functions
     
     func setDataOf(scheduledNotification: ScheduledNotification) {
@@ -43,14 +61,5 @@ class ScheduledScalesTableViewCell: UITableViewCell {
         titleLabel.text = scheduledNotification.title
         descriptionLabel.text = scheduledNotification.description
         scaleColorView.backgroundColor = UIColor(hex: scheduledNotification.colorHex)
-    }
-    
-    // MARK: - Private Functions
-    
-    private func setupFontsOfViews() {
-        titleLabel.font = .poppinsSemiboldOf(size: 15)
-        hourLabel.font = .poppinsMediumOf(size: 17)
-        dayAndMonthLabel.font = .poppinsRegularOf(size: 13)
-        descriptionLabel.font = .poppinsRegularOf(size: 14)
     }
 }

@@ -278,6 +278,24 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		AE54E6DF2B6C6A6C008CDB82 /* ScheduledScalesTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AED250702B57558000290E42 /* ScheduledScalesTableViewCell.xib */,
+				AED2506D2B57558000290E42 /* ScheduledScalesTableViewCell.swift */,
+			);
+			path = ScheduledScalesTableViewCell;
+			sourceTree = "<group>";
+		};
+		AE54E6E02B6C6A94008CDB82 /* EmptyTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AED2506E2B57558000290E42 /* EmptyTableViewCell.swift */,
+				AED2506F2B57558000290E42 /* EmptyTableViewCell.xib */,
+			);
+			path = EmptyTableViewCell;
+			sourceTree = "<group>";
+		};
 		AE595A992B686DF600B439CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +326,8 @@
 		AE5F19DF2B6ADE380045C479 /* ScalesListTableView */ = {
 			isa = PBXGroup;
 			children = (
+				AE54E6E02B6C6A94008CDB82 /* EmptyTableViewCell */,
+				AE54E6DF2B6C6A6C008CDB82 /* ScheduledScalesTableViewCell */,
 				AE5F19E22B6ADE7D0045C479 /* ScalesListTableView.swift */,
 			);
 			path = ScalesListTableView;
@@ -457,7 +477,7 @@
 		AED250452B57558000290E42 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				AEE16A3F2B5C7BEC0000F2C4 /* Views */,
+				AEE16A3F2B5C7BEC0000F2C4 /* Shared Views */,
 				AED250462B57558000290E42 /* Resources */,
 				AED2505D2B57558000290E42 /* Utils */,
 				AED250682B57558000290E42 /* Pages */,
@@ -543,38 +563,18 @@
 			children = (
 				AED2506A2B57558000290E42 /* HomeViewModel.swift */,
 				AED2506B2B57558000290E42 /* HomeViewController.swift */,
-				AED2506C2B57558000290E42 /* Views */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		AED2506C2B57558000290E42 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AED2506D2B57558000290E42 /* ScheduledScalesTableViewCell.swift */,
-				AED2506E2B57558000290E42 /* EmptyTableViewCell.swift */,
-				AED2506F2B57558000290E42 /* EmptyTableViewCell.xib */,
-				AED250702B57558000290E42 /* ScheduledScalesTableViewCell.xib */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		AED250712B57558000290E42 /* AddScale */ = {
 			isa = PBXGroup;
 			children = (
+				AED250762B57558000290E42 /* Views */,
 				AED250742B57558000290E42 /* AddScaleViewModel.swift */,
-				AED250752B57558000290E42 /* Components */,
 				AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */,
 			);
 			path = AddScale;
-			sourceTree = "<group>";
-		};
-		AED250752B57558000290E42 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				AED250762B57558000290E42 /* Views */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		AED250762B57558000290E42 /* Views */ = {
@@ -729,7 +729,7 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		AEE16A3F2B5C7BEC0000F2C4 /* Views */ = {
+		AEE16A3F2B5C7BEC0000F2C4 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
 				AE5F19DF2B6ADE380045C479 /* ScalesListTableView */,
@@ -739,7 +739,7 @@
 				AEE16A412B5C7C130000F2C4 /* ButtonView */,
 				AEE16A402B5C7BFC0000F2C4 /* ClosureButtonView */,
 			);
-			path = Views;
+			path = "Shared Views";
 			sourceTree = "<group>";
 		};
 		AEE16A402B5C7BFC0000F2C4 /* ClosureButtonView */ = {

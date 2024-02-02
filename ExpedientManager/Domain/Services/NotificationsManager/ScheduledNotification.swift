@@ -7,6 +7,31 @@
 
 import Foundation
 
+//protocol ScheduledNotification {
+//    var uid: String { get }
+//    var title: String { get }
+//    var description: String { get }
+//    var date: Date { get }
+//    var scaleUid: String { get }
+//    var colorHex: String { get }
+//    
+//    func from(json: [String: Any]) -> ScheduledNotification
+//    func toJson() -> [String: Any]
+//}
+//
+//extension ScheduledNotification {
+//    func toJson() -> [String: Any] {
+//        return [
+//            "uid": self.uid ,
+//            "title": self.title,
+//            "description": self.description,
+//            "date": self.date,
+//            "scaleUid": self.scaleUid,
+//            "colorHex": self.colorHex
+//        ]
+//    }
+//}
+
 struct ScheduledNotification {
     var uid: String
     var title: String

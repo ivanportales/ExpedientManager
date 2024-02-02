@@ -13,7 +13,12 @@ class EmptyTableViewCell: UITableViewCell {
     
     // MARK: - UI
     
-    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel! {
+        didSet {
+            messageLabel.font = .poppinsRegularOf(size: 18)
+            messageLabel.text = LocalizedString.emptyTableViewMsg
+        }
+    }
     
     // MARK: - Init
     
@@ -28,7 +33,5 @@ class EmptyTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .systemBackground
-        messageLabel.font = .poppinsRegularOf(size: 18)
-        messageLabel.text = LocalizedString.emptyTableViewMsg
     }
 }
