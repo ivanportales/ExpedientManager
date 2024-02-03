@@ -167,7 +167,7 @@ class BaseScaleViewController: UIViewController {
 
         if selectedWorkScale == .fixedScale {
             viewModel.save(
-                fixedScale: .init(
+                fixedScale: FixedScale(
                     id: UUID().uuidString,
                     title: title,
                     scale: .init(type: scaleType, scaleOfWork: scaleOfWork, scaleOfRest: scaleOfRest),
@@ -178,7 +178,7 @@ class BaseScaleViewController: UIViewController {
                 ))
         } else {
             viewModel.save(
-                onDuty: .init(
+                onDuty: OnDuty(
                     id: UUID().uuidString,
                     title: title,
                     initialDate: initialDate,

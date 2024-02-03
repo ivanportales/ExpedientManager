@@ -9,8 +9,9 @@ import Foundation
 
 protocol UserNotificationsManagerProtocol {
     func setNotificationIn(minutes : Int)
-    func set(scheduledNotification: ScheduledNotification)
-    func getAllScheduledNotifications(completion: @escaping ([ScheduledNotification]) -> ())
+    func set(scheduledNotification: UserNotificationModel)
+    func getAllScheduledNotifications(mapperClosure: @escaping (([String: Any]) -> UserNotificationModel),
+                                      completion: @escaping ([UserNotificationModel]) -> ())
     func removeAllPendingNotifications()
     func removeAllPendingNotificationsWith(uid: String)
     func askUserNotificationPermission()

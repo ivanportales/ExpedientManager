@@ -56,7 +56,7 @@ final class UserNotificationsManager: UserNotificationsManagerProtocol {
         notificationCenter.add(request)
     }
     
-    func set(scheduledNotification: ScheduledNotification) {
+    func set(scheduledNotification: UserNotificationModel) {
         let content = UNMutableNotificationContent()
         content.categoryIdentifier = Constants.categoryId
         content.title = Constants.appName
@@ -64,10 +64,11 @@ final class UserNotificationsManager: UserNotificationsManagerProtocol {
         content.userInfo = scheduledNotification.toJson()
         content.sound = UNNotificationSound.default
         
-        let components = Calendar.current.dateComponents([.day,.hour,.month,.minute,.year], from: scheduledNotification.date)
+        let components = Calendar.current.dateComponents([.day,.hour,.month,.minute,.year], 
+                                                         from: scheduledNotification.date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components , repeats: false)
     
-        let request = UNNotificationRequest(identifier:  scheduledNotification.uid, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: scheduledNotification.uid, content: content, trigger: trigger)
         
         notificationCenter.add(request) { erro in
             if let message = erro?.localizedDescription {
@@ -76,26 +77,22 @@ final class UserNotificationsManager: UserNotificationsManagerProtocol {
         }
     }
     
-    func getAllScheduledNotifications(completion: @escaping ([ScheduledNotification]) -> ()) {
-        var scheduledNotifications = [ScheduledNotification]()
+    func getAllScheduledNotifications(mapperClosure: @escaping (([String: Any]) -> UserNotificationModel),
+                                      completion: @escaping ([UserNotificationModel]) -> ()) {
+        var scheduledNotifications = [UserNotificationModel]()
         
         notificationCenter.getPendingNotificationRequests(completionHandler: { notifications in
             if !notifications.isEmpty {
-                for notification in notifications {
-                    let content = notification.content.userInfo as! [String : Any]
-                    let trigger = notification.trigger as! UNCalendarNotificationTrigger
-                    let date = trigger.nextTriggerDate() ?? Date()
+                scheduledNotifications = notifications.compactMap { notification in
+                    guard var content = notification.content.userInfo as? [String : Any]
+//                          let trigger = notification.trigger as? UNCalendarNotificationTrigger,
+//                          let date = trigger.nextTriggerDate() 
+                    else {
+                        return nil
+                    }
+                   // content["triggerDate"] = date
                     
-                    scheduledNotifications.append(
-                        ScheduledNotification(
-                            uid: content["uid"] as? String ?? "",
-                            title: content["title"] as? String  ?? "",
-                            description: content["description"] as? String ?? "",
-                            date: date,
-                            scaleUid: content["scaleUid"] as! String,
-                            colorHex: content["colorHex"] as! String
-                        )
-                    )
+                    return mapperClosure(content)
                 }
             }
 
@@ -110,16 +107,16 @@ final class UserNotificationsManager: UserNotificationsManagerProtocol {
     func removeAllPendingNotificationsWith(uid: String) {
         notificationCenter.getPendingNotificationRequests { [weak self] notifications in
             if !notifications.isEmpty {
-                var notificationsUids: [String] = []
+                var notificationIdentifiers: [String] = []
                 for notification in notifications {
                     let content = notification.content.userInfo as! [String : Any]
-                    let scaleUid = content["scaleUid"] as? String ?? ""
-                    let notificationUid = notification.identifier
-                    if scaleUid == uid {
-                        notificationsUids.append(notificationUid)
+                    let contentUid = content["uid"] as? String ?? ""
+                    let notificationIdentifier = notification.identifier
+                    if contentUid == uid {
+                        notificationIdentifiers.append(notificationIdentifier)
                     }
                 }
-                self?.notificationCenter.removePendingNotificationRequests(withIdentifiers: notificationsUids)
+                self?.notificationCenter.removePendingNotificationRequests(withIdentifiers: notificationIdentifiers)
             }
         }
     }

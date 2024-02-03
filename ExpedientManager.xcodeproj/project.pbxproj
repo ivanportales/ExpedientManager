@@ -29,6 +29,7 @@
 		AE7DE7B32B58946F00F57E42 /* AppMainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B12B58946F00F57E42 /* AppMainFactory.swift */; };
 		AE7DE7B62B589BFF00F57E42 /* LocalStorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */; };
 		AE7DE7B82B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */; };
+		AE888CC92B6D3F5D00068558 /* UserNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE888CC82B6D3F5D00068558 /* UserNotificationModel.swift */; };
 		AE9B5A262B670C9D00F6A561 /* SaveFixedScaleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */; };
 		AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */; };
 		AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C902B631E690070A9CE /* CalendarManager.swift */; };
@@ -151,6 +152,7 @@
 		AE7DE7B12B58946F00F57E42 /* AppMainFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMainFactory.swift; sourceTree = "<group>"; };
 		AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepository.swift; sourceTree = "<group>"; };
 		AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
+		AE888CC82B6D3F5D00068558 /* UserNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationModel.swift; sourceTree = "<group>"; };
 		AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCase.swift; sourceTree = "<group>"; };
 		AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AE9D5C902B631E690070A9CE /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
@@ -393,7 +395,7 @@
 			children = (
 				AED250A22B57558100290E42 /* UserNotificationsManager.swift */,
 				AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */,
-				AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */,
+				AE888CC82B6D3F5D00068558 /* UserNotificationModel.swift */,
 			);
 			path = NotificationsManager;
 			sourceTree = "<group>";
@@ -698,6 +700,7 @@
 		AED250992B57558100290E42 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */,
 				AED2509A2B57558100290E42 /* OnDuty.swift */,
 				AED2509B2B57558100290E42 /* Scale.swift */,
 			);
@@ -1077,6 +1080,7 @@
 				AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */,
 				AE5F19E32B6ADE7D0045C479 /* ScalesListTableView.swift in Sources */,
 				AED250BF2B57558100290E42 /* HomeViewController.swift in Sources */,
+				AE888CC92B6D3F5D00068558 /* UserNotificationModel.swift in Sources */,
 				AED250D82B57558100290E42 /* CoreDataFixedScaleRepository.swift in Sources */,
 				AED250E22B57558100290E42 /* UserNotificationsManager.swift in Sources */,
 				AE9D5C932B6328550070A9CE /* ScaleColorSelectionView.swift in Sources */,
