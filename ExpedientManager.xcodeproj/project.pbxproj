@@ -35,6 +35,7 @@
 		AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C902B631E690070A9CE /* CalendarManager.swift */; };
 		AE9D5C932B6328550070A9CE /* ScaleColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */; };
 		AE9D5C952B632A430070A9CE /* ScaleColorSelectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */; };
+		AEBEE2952B6F351B005A0D73 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBEE2942B6F351B005A0D73 /* CoreDataRepository.swift */; };
 		AECC38462B607D9200439C97 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38452B607D9200439C97 /* TextField.swift */; };
 		AECC38492B60808800439C97 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38482B60808800439C97 /* TextView.swift */; };
 		AED250162B57552C00290E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250152B57552C00290E42 /* AppDelegate.swift */; };
@@ -158,6 +159,7 @@
 		AE9D5C902B631E690070A9CE /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleColorSelectionView.swift; sourceTree = "<group>"; };
 		AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleColorSelectionCellView.swift; sourceTree = "<group>"; };
+		AEBEE2942B6F351B005A0D73 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		AECC38452B607D9200439C97 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		AECC38482B60808800439C97 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		AED250122B57552C00290E42 /* ExpedientManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpedientManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -406,6 +408,14 @@
 				AE9D5C902B631E690070A9CE /* CalendarManager.swift */,
 			);
 			path = CalendarManager;
+			sourceTree = "<group>";
+		};
+		AEBEE2932B6F34F8005A0D73 /* CoreDataRepository */ = {
+			isa = PBXGroup;
+			children = (
+				AEBEE2942B6F351B005A0D73 /* CoreDataRepository.swift */,
+			);
+			path = CoreDataRepository;
 			sourceTree = "<group>";
 		};
 		AECC38442B607D8200439C97 /* TextField */ = {
@@ -661,6 +671,7 @@
 		AED2508E2B57558100290E42 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				AEBEE2932B6F34F8005A0D73 /* CoreDataRepository */,
 				AE7DE7B42B589B9700F57E42 /* LocalStorageRepository */,
 				AED2508F2B57558100290E42 /* ExpedientManager.xcdatamodeld */,
 				AED250912B57558100290E42 /* FixedScaleRepository */,
@@ -1121,6 +1132,7 @@
 				AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */,
 				AED250D62B57558100290E42 /* ExpedientManager.xcdatamodeld in Sources */,
 				AEEC1A742B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift in Sources */,
+				AEBEE2952B6F351B005A0D73 /* CoreDataRepository.swift in Sources */,
 				AECC38462B607D9200439C97 /* TextField.swift in Sources */,
 				AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */,
 				AECC38492B60808800439C97 /* TextView.swift in Sources */,
