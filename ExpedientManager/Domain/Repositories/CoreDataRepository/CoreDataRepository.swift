@@ -13,8 +13,8 @@ open class CoreDataRepository {
     // MARK: - Private Properties
     
     internal var container: NSPersistentContainer
-    internal var storage: String = ""
-    internal var typeIdentifier: String = ""
+    internal let storage: String
+    internal let typeIdentifier: String
     
     // MARK: - Inits
     
@@ -87,8 +87,31 @@ open class CoreDataRepository {
         }
     }
     
+    func update<ManagedObjectType: NSManagedObject>(withFetchRequest fetchRequest: NSFetchRequest<ManagedObjectType>,
+                                                    mapperClosure: (ManagedObjectType) -> Void,
+                                                    completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+        let context = container.viewContext
+        
+        do {
+            let coreDataModels = try context.fetch(fetchRequest)
+            if let firstModel = coreDataModels.first {
+                mapperClosure(firstModel)
+                try context.save()
+            }
+        } catch {
+            DispatchQueue.main.async {
+                completionHandler(.failure(error))
+            }
+            return
+        }
+        
+        DispatchQueue.main.async {
+            completionHandler(.success(true))
+        }
+    }
+    
     func delete<ManagedType: NSManagedObject>(withFetchRequest fetchRequest: NSFetchRequest<ManagedType>,
-                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+                                              completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
         
         do {
@@ -110,7 +133,7 @@ open class CoreDataRepository {
     }
     
     func deleteAll(withFetchRequest fetchRequest: NSFetchRequest<NSFetchRequestResult>,
-                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+                   completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let context = container.viewContext
         
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -129,26 +152,17 @@ open class CoreDataRepository {
         }
     }
     
-    func update<ManagedObjectType: NSManagedObject>(withFetchRequest fetchRequest: NSFetchRequest<ManagedObjectType>,
-                                              mapperClosure: (ManagedObjectType) -> Void,
-                                              completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let context = container.viewContext
+    // MARK: - Private Functions
+    
+    // I was thinking of using this, but for someone outside the project,it may be more confusing than it should, but i think its a good "idea" of code, maybe later
+    
+    private func makeFetchRequest<FetchRequestResult: NSFetchRequestResult>(withArguments requestArguments: [String: Any]) -> NSFetchRequest<FetchRequestResult> {
+        let argumentsStringQuery = requestArguments.keys.map { "\($0) = %@" }.joined(separator: "AND")
+        let argumentArray = requestArguments.values.map { $0 }
         
-        do {
-            let coreDataModels = try context.fetch(fetchRequest)
-            if let firstModel = coreDataModels.first {
-                mapperClosure(firstModel)
-                try context.save()
-            }
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
-            return
-        }
+        let fetchRequest = NSFetchRequest<FetchRequestResult>(entityName: typeIdentifier)
+        fetchRequest.predicate = NSPredicate(format: argumentsStringQuery, argumentArray: argumentArray)
         
-        DispatchQueue.main.async {
-            completionHandler(.success(true))
-        }
+        return fetchRequest
     }
 }
