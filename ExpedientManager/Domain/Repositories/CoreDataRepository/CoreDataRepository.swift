@@ -71,7 +71,6 @@ open class CoreDataRepository {
         let context = container.viewContext
         
         let fetchRequest = NSFetchRequest<ManagedObjectType>(entityName: typeIdentifier)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
         do {
             let coreDataModels = try context.fetch(fetchRequest)
@@ -154,7 +153,7 @@ open class CoreDataRepository {
     
     // MARK: - Private Functions
     
-    // I was thinking of using this, but for someone outside the project,it may be more confusing than it should, but i think its a good "idea" of code, maybe later
+    // I was thinking of using this, but for someone outside the project, it may be more confusing than it should, but i think its a good "idea" of code, maybe later
     
     private func makeFetchRequest<FetchRequestResult: NSFetchRequestResult>(withArguments requestArguments: [String: Any]) -> NSFetchRequest<FetchRequestResult> {
         let argumentsStringQuery = requestArguments.keys.map { "\($0) = %@" }.joined(separator: "AND")
