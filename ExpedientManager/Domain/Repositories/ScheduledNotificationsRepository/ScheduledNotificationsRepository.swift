@@ -15,7 +15,7 @@ final class CoreDataScheduledNotificationsRepository: ScheduledNotificationsRepo
     private let container: NSPersistentContainer
     
     struct Constants {
-        static let storage = "RotinaApp"
+        static let storage = "ExpedientManager"
         static let typeIdentifier = "CDScheduledNotification"
     }
     

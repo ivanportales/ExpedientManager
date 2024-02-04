@@ -15,7 +15,7 @@ class CoreDataFixedScaleRepository: FixedScaleRepositoryProtocol {
     private let container: NSPersistentContainer
     
     struct Constants {
-        static let storage = "RotinaApp"
+        static let storage = "ExpedientManager"
         static let typeIdentifier = "CDFixedScale"
     }
     

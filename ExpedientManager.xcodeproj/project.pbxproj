@@ -85,7 +85,7 @@
 		AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250882B57558100290E42 /* ScaleListViewModel.swift */; };
 		AED250D32B57558100290E42 /* ScalesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250892B57558100290E42 /* ScalesListViewController.swift */; };
 		AED250D52B57558100290E42 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2508C2B57558100290E42 /* OnboardingViewController.swift */; };
-		AED250D62B57558100290E42 /* RotinaApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AED2508F2B57558100290E42 /* RotinaApp.xcdatamodeld */; };
+		AED250D62B57558100290E42 /* ExpedientManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AED2508F2B57558100290E42 /* ExpedientManager.xcdatamodeld */; };
 		AED250D72B57558100290E42 /* FixedScaleRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250922B57558100290E42 /* FixedScaleRepositoryProtocol.swift */; };
 		AED250D82B57558100290E42 /* CoreDataFixedScaleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250932B57558100290E42 /* CoreDataFixedScaleRepository.swift */; };
 		AED250D92B57558100290E42 /* OnDutyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250952B57558100290E42 /* OnDutyRepositoryProtocol.swift */; };
@@ -662,7 +662,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7DE7B42B589B9700F57E42 /* LocalStorageRepository */,
-				AED2508F2B57558100290E42 /* RotinaApp.xcdatamodeld */,
+				AED2508F2B57558100290E42 /* ExpedientManager.xcdatamodeld */,
 				AED250912B57558100290E42 /* FixedScaleRepository */,
 				AED250942B57558100290E42 /* OnDutyRepository */,
 				AED250972B57558100290E42 /* ScheduledNotificationsRepository */,
@@ -1119,7 +1119,7 @@
 				AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */,
 				AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */,
 				AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */,
-				AED250D62B57558100290E42 /* RotinaApp.xcdatamodeld in Sources */,
+				AED250D62B57558100290E42 /* ExpedientManager.xcdatamodeld in Sources */,
 				AEEC1A742B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift in Sources */,
 				AECC38462B607D9200439C97 /* TextField.swift in Sources */,
 				AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */,
@@ -1490,13 +1490,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		AED2508F2B57558100290E42 /* RotinaApp.xcdatamodeld */ = {
+		AED2508F2B57558100290E42 /* ExpedientManager.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				AED250902B57558100290E42 /* RotinaApp.xcdatamodel */,
 			);
 			currentVersion = AED250902B57558100290E42 /* RotinaApp.xcdatamodel */;
-			path = RotinaApp.xcdatamodeld;
+			path = ExpedientManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

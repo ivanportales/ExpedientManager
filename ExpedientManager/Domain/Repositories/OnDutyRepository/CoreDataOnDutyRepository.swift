@@ -15,7 +15,7 @@ class CoreDataOnDutyRepository: OnDutyRepositoryProtocol {
     private let container: NSPersistentContainer
     
     struct Constants {
-        static let storage = "RotinaApp"
+        static let storage = "ExpedientManager"
         static let typeIdentifier = "CDOnDuty"
     }
     
@@ -80,7 +80,7 @@ class CoreDataOnDutyRepository: OnDutyRepositoryProtocol {
         
         do {
             let cdShifts = try context.fetch(fetchRequest)
-            let shifts = cdShifts.map {self.CDOnDutyToAppOnDuty(cdOnDuty: $0)}
+            let shifts = cdShifts.map {CDOnDutyToAppOnDuty(cdOnDuty: $0)}
             
             DispatchQueue.main.async {
                 completionHandler(.success(shifts))

@@ -82,7 +82,6 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
         
         var scheduledNotifications = [ScheduledNotification.from(fixedScale: fixedScale, with: currentDate)]
         
-        //set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
         currentDate = calendarManager.add(scale.scaleOfWork, to: .hour, ofDate: currentDate)
     
         while(calendarManager.isDate(currentDate, before: finalDate)) {
@@ -93,7 +92,7 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
             }
             
             scheduledNotifications.append(ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
-            //set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
+
             currentDate = calendarManager.add(scale.scaleOfWork, to: .hour, ofDate: currentDate)
         }
         
@@ -107,12 +106,13 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
             completionHandler(.failure(SaveFixedScaleUseCaseError.corruptedData))
             return []
         }
+        
         var scheduledNotifications = [ScheduledNotification.from(fixedScale: fixedScale, with: currentDate)]
-        //set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
+
         while(calendarManager.isDate(currentDate, before: finalDate)) {
             for _ in 1..<scale.scaleOfWork {
                 currentDate = calendarManager.add(scale.scaleOfWork, to: .day, ofDate: currentDate)
-                //set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
+
                 scheduledNotifications.append(ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
                 if(!calendarManager.isDate(currentDate, before: finalDate)) {
                     break

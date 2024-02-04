@@ -69,7 +69,6 @@ final class AddScaleViewModel: ObservableObject {
             case .success(_):
                 self.state = .successSavingScale
             }
-            
         }
     }
 }
