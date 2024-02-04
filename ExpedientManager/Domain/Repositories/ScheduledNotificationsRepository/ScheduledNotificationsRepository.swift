@@ -8,230 +8,86 @@
 import Foundation
 import CoreData
 
-final class CoreDataScheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol {
-    
-    // MARK: - Private Properties
-    
-    private let container: NSPersistentContainer
-    
-    struct Constants {
-        static let storage = "ExpedientManager"
-        static let typeIdentifier = "CDScheduledNotification"
-    }
+final class CoreDataScheduledNotificationsRepository: CoreDataRepository, ScheduledNotificationsRepositoryProtocol {
     
     // MARK: - Inits
     
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: Constants.storage)
-        
-        if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-        }
-        
-        guard let description = container.persistentStoreDescriptions.first else {
-            fatalError("###\(#function): Failed to retrieve a persistent store description")
-        }
-        
-        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-        //description.cloudKitContainerOptions?.databaseScope = .private
-        
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        
-        container.viewContext.automaticallyMergesChangesFromParent = true
-        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        super.init(inMemory: inMemory,
+                   storage: "ExpedientManager",
+                   typeIdentifier: "CDScheduledNotification")
     }
     
     // MARK: - Exposed Functions
     
     func save(scheduledNotification: ScheduledNotification, 
               completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let context = container.viewContext
         
-        let newScheduledNotification = NSEntityDescription.insertNewObject(forEntityName: Constants.typeIdentifier, into: context) as! CDScheduledNotification
-        
-        newScheduledNotification.uid = scheduledNotification.uid
-        newScheduledNotification.scaleUid = scheduledNotification.scaleUid
-        newScheduledNotification.title = scheduledNotification.title
-        newScheduledNotification.descriptions = scheduledNotification.description
-        newScheduledNotification.date = scheduledNotification.date
-        newScheduledNotification.colorHex = scheduledNotification.colorHex
-        
-        do {
-            try context.save()
-            DispatchQueue.main.async {
-                completionHandler(.success(true))
-            }
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
+        let mapperClosure: (CDScheduledNotification) -> Void = { newScheduledNotification in
+            newScheduledNotification.uid = scheduledNotification.uid
+            newScheduledNotification.scaleUid = scheduledNotification.scaleUid
+            newScheduledNotification.title = scheduledNotification.title
+            newScheduledNotification.descriptions = scheduledNotification.description
+            newScheduledNotification.date = scheduledNotification.date
+            newScheduledNotification.colorHex = scheduledNotification.colorHex
         }
+        
+        save(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
     func getAllScheduledNotifications(completionHandler: @escaping (Result<[ScheduledNotification], Error>) -> ()) {
-        let context = container.viewContext
-        
-        let fetchRequest = NSFetchRequest<CDScheduledNotification>(entityName: Constants.typeIdentifier)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        
-        do {
-            let cdShifts = try context.fetch(fetchRequest)
-            let shifts = cdShifts.map {self.CDScheduledNotificationsToScheudledNotifications(cdSchedulednotification: $0)}
-            
-            DispatchQueue.main.async {
-                completionHandler(.success(shifts))
-            }
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
-        }
-    }
-    
-    func delete(scheduledNotification: ScheduledNotification,
-                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let context = container.viewContext
-        
-        let fetchRequest = self.configFetchRequestFor(scheduledNotification: scheduledNotification)
-        
-        do {
-            let cdFixedScales = try context.fetch(fetchRequest)
-            if let shiftToBeDeleted = cdFixedScales.first {
-                context.delete(shiftToBeDeleted)
-                try context.save()
-            }
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
-            return
+        let mapperClosure: (CDScheduledNotification) -> ScheduledNotification = { scheduledNotification in
+            return ScheduledNotification(uid: scheduledNotification.uid!,
+                                         title: scheduledNotification.title!,
+                                         description: scheduledNotification.descriptions!,
+                                         date: scheduledNotification.date!,
+                                         scaleUid: scheduledNotification.scaleUid!,
+                                         colorHex: scheduledNotification.colorHex!)
         }
         
-        DispatchQueue.main.async {
-            completionHandler(.success(true))
-        }
+        getAllModels(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
     func update(scheduledNotification: ScheduledNotification,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let context = container.viewContext
+        let fetchRequest = makeFetchRequestFor(scheduledNotification: scheduledNotification)
         
-        let fetchRequest = self.configFetchRequestFor(scheduledNotification: scheduledNotification)
-        
-        do {
-            let cdShifts = try context.fetch(fetchRequest)
-            if let newScheduledNotification = cdShifts.first {
-                newScheduledNotification.uid = scheduledNotification.uid
-                newScheduledNotification.scaleUid = scheduledNotification.scaleUid
-                newScheduledNotification.title = scheduledNotification.title
-                newScheduledNotification.descriptions = scheduledNotification.description
-                newScheduledNotification.date = scheduledNotification.date
-                newScheduledNotification.colorHex = scheduledNotification.colorHex
-                
-                try context.save()
-            }
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
-            return
+        let mapperClosure: (CDScheduledNotification) -> Void = { newScheduledNotification in
+            newScheduledNotification.uid = scheduledNotification.uid
+            newScheduledNotification.scaleUid = scheduledNotification.scaleUid
+            newScheduledNotification.title = scheduledNotification.title
+            newScheduledNotification.descriptions = scheduledNotification.description
+            newScheduledNotification.date = scheduledNotification.date
+            newScheduledNotification.colorHex = scheduledNotification.colorHex
         }
         
-        DispatchQueue.main.async {
-            completionHandler(.success(true))
-        }
+        update(withFetchRequest: fetchRequest,
+               mapperClosure: mapperClosure,
+               completionHandler: completionHandler)
     }
-
     
-//    func update(whereScaleId scaleUid: String) -> Result<Bool, Error> {
-//        let context = container.viewContext
-//        
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.typeIdentifier)
-//        fetchRequest.predicate = NSPredicate(format: "scaleUid = %@", scaleUid)
-//        
-//        do {
-//            let cdShifts = try context.fetch(fetchRequest)
-//            if let newScheduledNotification = cdShifts.first {
-//                newScheduledNotification.uid = scheduledNotification.uid
-//                newScheduledNotification.scaleUid = scheduledNotification.scaleUid
-//                newScheduledNotification.title = scheduledNotification.title
-//                newScheduledNotification.descriptions = scheduledNotification.description
-//                newScheduledNotification.date = scheduledNotification.date
-//                newScheduledNotification.colorHex = scheduledNotification.colorHex
-//                
-//                try context.save()
-//            }
-//        } catch let fetchError {
-//            return .failure(fetchError)
-//        }
-//        
-//        return .success(true)
-//    }
-    
-    func deleteAllScheduledNotifications(completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let context = container.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.typeIdentifier)
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    func delete(scheduledNotification: ScheduledNotification,
+                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+        let fetchRequest = makeFetchRequestFor(scheduledNotification: scheduledNotification)
         
-        do {
-            try context.execute(batchDeleteRequest)
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
-            return
-        }
-        
-        DispatchQueue.main.async {
-            completionHandler(.success(true))
-        }
+        delete(withFetchRequest: fetchRequest, completionHandler: completionHandler)
     }
     
     func deleteAllScheduledNotificationsWhere(scaleUid: String,
                                               completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let context = container.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.typeIdentifier)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: typeIdentifier)
         fetchRequest.predicate = NSPredicate(format: "scaleUid = %@", scaleUid)
         
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try context.execute(batchDeleteRequest)
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
-            return
-        }
-        
-        DispatchQueue.main.async {
-            completionHandler(.success(true))
-        }
+        deleteAll(withFetchRequest: fetchRequest,
+                  completionHandler: completionHandler)
     }
     
     // MARK: - Private Functions
     
-    private func configFetchRequestFor(scheduledNotification: ScheduledNotification) -> NSFetchRequest<CDScheduledNotification> {
-        let fetchRequest = NSFetchRequest<CDScheduledNotification>(entityName: Constants.typeIdentifier)
-        
+    private func makeFetchRequestFor(scheduledNotification: ScheduledNotification) -> NSFetchRequest<CDScheduledNotification> {
+        let fetchRequest = NSFetchRequest<CDScheduledNotification>(entityName: typeIdentifier)
         fetchRequest.predicate = NSPredicate(format:"date = %@ AND uid = %@", scheduledNotification.date as NSDate, scheduledNotification.uid)
         
         return fetchRequest
-    }
-    
-    private func CDScheduledNotificationsToScheudledNotifications(cdSchedulednotification: CDScheduledNotification) -> ScheduledNotification {
-        ScheduledNotification(
-            uid: cdSchedulednotification.uid!,
-            title: cdSchedulednotification.title!,
-            description: cdSchedulednotification.descriptions!,
-            date: cdSchedulednotification.date!,
-            scaleUid: cdSchedulednotification.scaleUid!,
-            colorHex: cdSchedulednotification.colorHex!)
     }
 }
