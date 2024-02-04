@@ -29,26 +29,29 @@ final class SaveOnDutyUseCase: SaveOnDutyUseCaseProtocol {
     
     func save(onDuty: OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         onDutyRepository.save(onDuty: onDuty) { [weak self] result in
-            guard let self = self else {return}
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 completionHandler(.failure(error))
             case .success(_):
-                self.set(scheduledNotification: ScheduledNotification.from(onDuty: onDuty))
+                self.set(scheduledNotification: ScheduledNotification.from(onDuty: onDuty),
+                        completion: completionHandler)
             }
         }
     }
     
     // MARK: - Private Properties
     
-    private func set(scheduledNotification: ScheduledNotification) {
+    private func set(scheduledNotification: ScheduledNotification,
+                     completion: @escaping (Result<Bool, Error>) -> ()) {
         scheduledNotificationsRepository.save(scheduledNotification: scheduledNotification) { [weak self] result in
             switch result {
             case .failure(let error):
-                print(error.localizedDescription)
+                completion(.failure(error))
             case .success(_):
-                guard let self = self else {return}
-                self.notificationManager.set(scheduledNotification: scheduledNotification)
+                guard let self = self else { return }
+                self.notificationManager.set(scheduledNotification: scheduledNotification,
+                                             completion: completion)
             }
         }
     }

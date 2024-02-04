@@ -50,22 +50,39 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
             return
         }
         
+        var scheduledNotifications: [ScheduledNotification] = []
+        
         if scale.type == .hour {
-            setupHoursScales(of: fixedScale, completionHandler: completionHandler)
+            scheduledNotifications = setupHoursScales(of: fixedScale, completionHandler: completionHandler)
         } else {
-            setupDaysScales(of: fixedScale, completionHandler: completionHandler)
+            scheduledNotifications = setupDaysScales(of: fixedScale, completionHandler: completionHandler)
         }
+                
+        for scheduledNotification in scheduledNotifications {
+            set(scheduledNotification: scheduledNotification) { result in
+                switch result {
+                case .failure(let error):
+                    completionHandler(.failure(error))
+                case .success(_):
+                    return
+                }
+            }
+        }
+        
+        completionHandler(.success(true))
     }
     
-    private func setupHoursScales(of fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+    private func setupHoursScales(of fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) -> [ScheduledNotification] {
         guard let finalDate = fixedScale.finalDate,
               let scale = fixedScale.scale,
               var currentDate = fixedScale.initialDate else {
             completionHandler(.failure(SaveFixedScaleUseCaseError.corruptedData))
-            return
+            return []
         }
         
-        set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
+        var scheduledNotifications = [ScheduledNotification.from(fixedScale: fixedScale, with: currentDate)]
+        
+        //set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
         currentDate = calendarManager.add(scale.scaleOfWork, to: .hour, ofDate: currentDate)
     
         while(calendarManager.isDate(currentDate, before: finalDate)) {
@@ -75,42 +92,48 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
                 break
             }
             
-            set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
+            scheduledNotifications.append(ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
+            //set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
             currentDate = calendarManager.add(scale.scaleOfWork, to: .hour, ofDate: currentDate)
         }
         
-        completionHandler(.success(true))
+        return scheduledNotifications
     }
     
-    private func setupDaysScales(of fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+    private func setupDaysScales(of fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) -> [ScheduledNotification] {
         guard let finalDate = fixedScale.finalDate,
               let scale = fixedScale.scale,
               var currentDate = fixedScale.initialDate else {
             completionHandler(.failure(SaveFixedScaleUseCaseError.corruptedData))
-            return
+            return []
         }
-        
-        set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
+        var scheduledNotifications = [ScheduledNotification.from(fixedScale: fixedScale, with: currentDate)]
+        //set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
         while(calendarManager.isDate(currentDate, before: finalDate)) {
             for _ in 1..<scale.scaleOfWork {
                 currentDate = calendarManager.add(scale.scaleOfWork, to: .day, ofDate: currentDate)
-                set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
-                if(!calendarManager.isDate(currentDate, before: finalDate)) { return }
+                //set(scheduledNotification: ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
+                scheduledNotifications.append(ScheduledNotification.from(fixedScale: fixedScale, with: currentDate))
+                if(!calendarManager.isDate(currentDate, before: finalDate)) {
+                    break
+                }
             }
-            currentDate = calendarManager.add(scale.scaleOfRest, to: .hour, ofDate: currentDate)
+            currentDate = calendarManager.add(scale.scaleOfRest, to: .day, ofDate: currentDate)
         }
         
-        completionHandler(.success(true))
+        return scheduledNotifications
     }
     
-    private func set(scheduledNotification: ScheduledNotification) {
+    private func set(scheduledNotification: ScheduledNotification,
+                     completion: @escaping (Result<Bool, Error>) -> ()) {
         scheduledNotificationsRepository.save(scheduledNotification: scheduledNotification) { [weak self] result in
             switch result {
             case .failure(let error):
-                print(error.localizedDescription)
+                completion(.failure(error))
             case .success(_):
-                guard let self = self else {return}
-                self.notificationManager.set(scheduledNotification: scheduledNotification)
+                guard let self = self else { return }
+                self.notificationManager.set(scheduledNotification: scheduledNotification,
+                                             completion: completion)
             }
         }
     }

@@ -56,7 +56,8 @@ final class UserNotificationsManager: UserNotificationsManagerProtocol {
         notificationCenter.add(request)
     }
     
-    func set(scheduledNotification: UserNotificationModel) {
+    func set(scheduledNotification: UserNotificationModel,
+             completion: @escaping (Result<Bool, Error>) -> ()) {
         let content = UNMutableNotificationContent()
         content.categoryIdentifier = Constants.categoryId
         content.title = Constants.appName
@@ -70,9 +71,11 @@ final class UserNotificationsManager: UserNotificationsManagerProtocol {
     
         let request = UNNotificationRequest(identifier: scheduledNotification.uid, content: content, trigger: trigger)
         
-        notificationCenter.add(request) { erro in
-            if let message = erro?.localizedDescription {
-                print(message)
+        notificationCenter.add(request) { error in
+            if let error {
+                completion(.failure(error))
+            } else {
+                completion(.success(true))
             }
         }
     }

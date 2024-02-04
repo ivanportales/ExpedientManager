@@ -175,7 +175,7 @@ final class ScaleDetailsViewModel {
                 print(error.localizedDescription)
             case .success(_):
                 guard let self = self else {return}
-                self.scheduler.set(scheduledNotification: scheduledNotification)
+                self.scheduler.set(scheduledNotification: scheduledNotification, completion: { result in })
             }
         }
     }
