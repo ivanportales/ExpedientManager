@@ -5,187 +5,83 @@
 //  Created by Gonzalo Ivan Santos Portales on 21/01/24.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-class CoreDataFixedScaleRepository: FixedScaleRepositoryProtocol {
-    
-    // MARK: - Private Properties
-    
-    private let container: NSPersistentContainer
-    
-    struct Constants {
-        static let storage = "ExpedientManager"
-        static let typeIdentifier = "CDFixedScale"
-    }
+final class CoreDataFixedScaleRepository: CoreDataRepository, FixedScaleRepositoryProtocol {
     
     // MARK: - Init
     
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: Constants.storage)
-        
-        if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-        }
-        
-        guard let description = container.persistentStoreDescriptions.first else {
-            fatalError("###\(#function): Failed to retrieve a persistent store description")
-        }
-        
-        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-        //description.cloudKitContainerOptions?.databaseScope = .private
-        
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        
-        container.viewContext.automaticallyMergesChangesFromParent = true
-        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        super.init(inMemory: inMemory,
+                   storage: "ExpedientManager",
+                   typeIdentifier: "CDFixedScale")
     }
     
     // MARK: - Exposed Functions
     
     func save(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let context = container.viewContext
-        
-        let newFixedScale = NSEntityDescription.insertNewObject(forEntityName: Constants.typeIdentifier, into: context) as! CDFixedScale
-        
-        newFixedScale.id = fixedScale.id
-        newFixedScale.scale =  try! JSONEncoder().encode(fixedScale.scale)
-        newFixedScale.initialDate = fixedScale.initialDate
-        newFixedScale.finalDate = fixedScale.finalDate
-        newFixedScale.title = fixedScale.title
-        newFixedScale.annotation = fixedScale.annotation
-        newFixedScale.colorHex = fixedScale.colorHex
-        
-        do {
-            try context.save()
-            DispatchQueue.main.async {
-                completionHandler(.success(true))
-            }
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
+        let mapperClosure: (CDFixedScale) -> Void = { newFixedScale in
+            newFixedScale.id = fixedScale.id
+            newFixedScale.scale =  try! JSONEncoder().encode(fixedScale.scale)
+            newFixedScale.initialDate = fixedScale.initialDate
+            newFixedScale.finalDate = fixedScale.finalDate
+            newFixedScale.title = fixedScale.title
+            newFixedScale.annotation = fixedScale.annotation
+            newFixedScale.colorHex = fixedScale.colorHex
         }
+        
+        save(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
     func getAllFixedScales(completionHandler: @escaping (Result<[FixedScale], Error>) -> ()) {
-        let context = container.viewContext
-        
-        let fetchRequest = NSFetchRequest<CDFixedScale>(entityName: Constants.typeIdentifier)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "initialDate", ascending: false)]
-        
-        do {
-            let cdShifts = try context.fetch(fetchRequest)
-            let shifts = cdShifts.map {self.CDFixedScaleToAppFixedScale(cdFixedScale: $0)}
-            
-            DispatchQueue.main.async {
-                completionHandler(.success(shifts))
-            }
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
-        }
-    }
-    
-    func delete(fixedScale: FixedScale,
-                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let context = container.viewContext
-        
-        let fetchRequest = self.configFetchRequestFor(fixedScale: fixedScale)
-        
-        do {
-            let cdFixedScales = try context.fetch(fetchRequest)
-            if let shiftToBeDeleted = cdFixedScales.first {
-                context.delete(shiftToBeDeleted)
-                try context.save()
-            }
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
-            return
+        let mapperClosure: (CDFixedScale) -> FixedScale = { cdFixedScale in
+            return FixedScale(
+                id: cdFixedScale.id!,
+                title: cdFixedScale.title!,
+                scale: try! JSONDecoder().decode(Scale.self, from: cdFixedScale.scale!),
+                initialDate: cdFixedScale.initialDate!,
+                finalDate: cdFixedScale.finalDate!,
+                annotation: cdFixedScale.annotation!,
+                colorHex: cdFixedScale.colorHex!
+            )
         }
         
-        DispatchQueue.main.async {
-            completionHandler(.success(true))
-        }
+        getAllModels(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
     func update(fixedScale: FixedScale,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let context = container.viewContext
+        let fetchRequest = makeFetchRequestFor(fixedScale: fixedScale)
         
-        let fetchRequest = self.configFetchRequestFor(fixedScale: fixedScale)
-        
-        do {
-            let cdShifts = try context.fetch(fetchRequest)
-            if let shiftToBeUpdated = cdShifts.first {
-                shiftToBeUpdated.id = fixedScale.id
-                shiftToBeUpdated.title = fixedScale.title
-                shiftToBeUpdated.scale = try! JSONEncoder().encode(fixedScale.scale)
-                shiftToBeUpdated.initialDate = fixedScale.initialDate
-                shiftToBeUpdated.finalDate = shiftToBeUpdated.finalDate
-                shiftToBeUpdated.annotation = fixedScale.annotation
-                shiftToBeUpdated.colorHex = fixedScale.colorHex
-                
-                try context.save()
-            }
-        }catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
-            return
+        let mapperClosure: (CDFixedScale) -> Void = { shiftToBeUpdated in
+            shiftToBeUpdated.id = fixedScale.id
+            shiftToBeUpdated.title = fixedScale.title
+            shiftToBeUpdated.scale = try! JSONEncoder().encode(fixedScale.scale)
+            shiftToBeUpdated.initialDate = fixedScale.initialDate
+            shiftToBeUpdated.finalDate = shiftToBeUpdated.finalDate
+            shiftToBeUpdated.annotation = fixedScale.annotation
+            shiftToBeUpdated.colorHex = fixedScale.colorHex
         }
         
-        DispatchQueue.main.async {
-            completionHandler(.success(true))
-        }
+        update(withFetchRequest: fetchRequest,
+               mapperClosure: mapperClosure,
+               completionHandler: completionHandler)
     }
     
-    func deleteAllShifts(completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let context = container.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.typeIdentifier)
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try context.execute(batchDeleteRequest)
-        } catch {
-            DispatchQueue.main.async {
-                completionHandler(.failure(error))
-            }
-            return
-        }
-        
-        DispatchQueue.main.async {
-            completionHandler(.success(true))
-        }
+    func delete(fixedScale: FixedScale,
+                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+        let fetchRequest = makeFetchRequestFor(fixedScale: fixedScale)
+                
+        delete(withFetchRequest: fetchRequest, completionHandler: completionHandler)
     }
     
     // MARK: - Private Functions
     
-    private func configFetchRequestFor(fixedScale: FixedScale) -> NSFetchRequest<CDFixedScale> {
-        let fetchRequest = NSFetchRequest<CDFixedScale>(entityName: Constants.typeIdentifier)
-        
+    private func makeFetchRequestFor(fixedScale: FixedScale) -> NSFetchRequest<CDFixedScale> {
+        let fetchRequest = NSFetchRequest<CDFixedScale>(entityName: typeIdentifier)
         fetchRequest.predicate = NSPredicate(format:"initialDate = %@ AND id = %@", fixedScale.initialDate! as NSDate, fixedScale.id)
         
         return fetchRequest
-    }
-    
-    private func CDFixedScaleToAppFixedScale(cdFixedScale: CDFixedScale) -> FixedScale {
-        FixedScale(
-            id: cdFixedScale.id!,
-            title: cdFixedScale.title!,
-            scale: try! JSONDecoder().decode(Scale.self, from: cdFixedScale.scale!),
-            initialDate: cdFixedScale.initialDate!,
-            finalDate: cdFixedScale.finalDate!,
-            annotation: cdFixedScale.annotation!,
-            colorHex: cdFixedScale.colorHex!
-        )
     }
 }
