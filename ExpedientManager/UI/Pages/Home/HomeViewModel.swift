@@ -7,19 +7,28 @@
 
 import Foundation
 
+enum HomeVideModelState {
+    case initial
+    case loading
+    case content(scheduledNotificationsDict: [String: [ScheduledNotification]],
+                 filteredScheduledNotifications: [ScheduledNotification])
+    case filterContent(filteredScheduledNotifications: [ScheduledNotification])
+    case error(message: String)
+}
+
 final class HomeVideModel: ObservableObject {
     
     // MARK: - Binding Properties
     
-    @Published var scheduledScales: [ScheduledNotification] = []
-    @Published var filteredScheduledDates: [ScheduledNotification] = []
+    @Published private(set) var state: HomeVideModelState = .initial
     
     // MARK: - Exposed Properties
     
-    private(set) var scheduledScalesDict: [String: [ScheduledNotification]] = [:]
+    private(set) var scheduledNotificationsDict: [String: [ScheduledNotification]] = [:]
     
     // MARK: - Private Properties
     
+    private var dateOfFilter: Date = .init()
     private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
     private let localStorage: LocalStorageRepositoryProtocol
     private let calendarManager: CalendarManagerProtocol
@@ -28,8 +37,7 @@ final class HomeVideModel: ObservableObject {
     
     init(scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
          localStorage: LocalStorageRepositoryProtocol,
-         calendarManager: CalendarManagerProtocol
-    ) {
+         calendarManager: CalendarManagerProtocol) {
         self.scheduledNotificationsRepository = scheduledNotificationsRepository
         self.localStorage = localStorage
         self.calendarManager = calendarManager
@@ -38,30 +46,33 @@ final class HomeVideModel: ObservableObject {
     // MARK: - Exposed Functions
     
     func filterScheduledDatesWith(date: Date) {
-        filteredScheduledDates = scheduledScales.filter({ calendarManager.isDate($0.date, inSameDayAs: date) })
+        dateOfFilter = date
+        state = .filterContent(filteredScheduledNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
     }
     
     func load() {
+        state = .loading
         scheduledNotificationsRepository.getAllScheduledNotifications { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
-                print(error.localizedDescription)
+                self.state = .error(message: error.localizedDescription)
             case .success(let itens):
-                guard let self = self else {return}
-                
                 var newScheduledScaleDict: [String: [ScheduledNotification]] = [:]
                 
                 for scheduledScale in itens {
-                    if let _ = newScheduledScaleDict[scheduledScale.date.dateString] {
-                        newScheduledScaleDict[scheduledScale.date.dateString]!.append(scheduledScale)
+                    let key = scheduledScale.date.dateString
+                    if newScheduledScaleDict[key] != nil {
+                        newScheduledScaleDict[key]!.append(scheduledScale)
                     } else {
-                        newScheduledScaleDict[scheduledScale.date.dateString] = [scheduledScale]
+                        newScheduledScaleDict[key] = [scheduledScale]
                     }
                 }
                 
-                self.scheduledScalesDict = newScheduledScaleDict
-                self.scheduledScales = itens
-                self.filterScheduledDatesWith(date: .init())
+                self.scheduledNotificationsDict = newScheduledScaleDict
+                self.state = .content(
+                    scheduledNotificationsDict: newScheduledScaleDict,
+                    filteredScheduledNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
             }
         }
     }
@@ -74,6 +85,12 @@ final class HomeVideModel: ObservableObject {
         if localStorage.getValue(forKey: .hasOnboarded) == nil {
             routeToOnboardingCallback()
         }
+    }
+    
+    // MARK: - Private Functions
+    
+    private func getFilteredScheduledDatesWith(date: Date) -> [ScheduledNotification] {
+        return scheduledNotificationsDict[date.dateString] ?? []
     }
 }
 

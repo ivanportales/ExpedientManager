@@ -134,26 +134,38 @@ extension HomeViewController {
     
     private func setupBindings() {
         viewModel
-            .$scheduledScales
+            .$state
             .dropFirst()
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] scheduledScales in
-                guard let self = self else {return}
-                calendarView.reloadData()
-                if scheduledScales.isEmpty {
-                    self.hideNavigationBarButtonFrom(position: .right, andIndex: 1)
-                } else {
-                    self.showNavigationBarButtonFrom(position: .right, andIndex: 1)
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .initial:
+                    break
+                case .loading:
+                    print("loading")
+                case .error(let message):
+                    self.showAlertWith(title: LocalizedString.alertErrorTitle,
+                                       andMesssage: message)
+                case .content(let scheduledNotificationsDict, 
+                              let filteredScheduledNotifications):
+                    self.handleContentState(scheduledNotificationsDict,
+                                            filteredScheduledNotifications)
+                case .filterContent(let filteredScheduledNotifications):
+                    self.activitiesListTableView.setup(scheduledNotifications: filteredScheduledNotifications)
                 }
             }.store(in: &subscribers)
-        
-        viewModel
-            .$filteredScheduledDates
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                guard let self = self else {return}
-                self.activitiesListTableView.setup(scheduledNotifications: viewModel.filteredScheduledDates)
-            }.store(in: &subscribers)
+    }
+    
+    private func handleContentState(_ scheduledNotificationsDict: [String: [ScheduledNotification]],
+                                    _ filteredScheduledNotifications: [ScheduledNotification]) {
+        if scheduledNotificationsDict.isEmpty {
+            hideNavigationBarButtonFrom(position: .right, andIndex: 1)
+        } else {
+            showNavigationBarButtonFrom(position: .right, andIndex: 1)
+        }
+        calendarView.reloadData()
+        activitiesListTableView.setup(scheduledNotifications: filteredScheduledNotifications)
     }
 }
 
@@ -165,7 +177,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if let scheduledNotifications = viewModel.scheduledScalesDict[date.dateString] {
+        if let scheduledNotifications = viewModel.scheduledNotificationsDict[date.dateString] {
             var colors: [UIColor] = []
             
             for scheduledNotification in scheduledNotifications {
@@ -184,7 +196,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if let scheduledNotifications = viewModel.scheduledScalesDict[date.dateString] {
+        if let scheduledNotifications = viewModel.scheduledNotificationsDict[date.dateString] {
             return scheduledNotifications.count
         }
         
@@ -192,7 +204,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
-        if let scheduledScales = viewModel.scheduledScalesDict[date.dateString] {
+        if let scheduledScales = viewModel.scheduledNotificationsDict[date.dateString] {
             var colors: [UIColor] = []
             
             for scheduledScale in scheduledScales {
@@ -205,7 +217,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
-        if let scheduledScales = viewModel.scheduledScalesDict[date.dateString] {
+        if let scheduledScales = viewModel.scheduledNotificationsDict[date.dateString] {
             var colors: [UIColor] = []
             
             for scheduledScale in scheduledScales {
