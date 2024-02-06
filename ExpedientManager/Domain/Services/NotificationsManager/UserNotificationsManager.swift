@@ -15,7 +15,7 @@ final class UserNotificationsManager: UserNotificationsManagerProtocol {
     private let notificationCenter : UNUserNotificationCenter
     
     struct Constants {
-        static let appName = "iScale"
+        static let appName = "ExpedientManager"
         static let notificationTitle = "Hoje você tem escala de trabalho!"
         static let notificationSubtitle = ""
         static let notificationBody = ""
@@ -87,14 +87,9 @@ final class UserNotificationsManager: UserNotificationsManagerProtocol {
         notificationCenter.getPendingNotificationRequests(completionHandler: { notifications in
             if !notifications.isEmpty {
                 scheduledNotifications = notifications.compactMap { notification in
-                    guard var content = notification.content.userInfo as? [String : Any]
-//                          let trigger = notification.trigger as? UNCalendarNotificationTrigger,
-//                          let date = trigger.nextTriggerDate() 
-                    else {
+                    guard let content = notification.content.userInfo as? [String : Any] else {
                         return nil
-                    }
-                   // content["triggerDate"] = date
-                    
+                    }                    
                     return mapperClosure(content)
                 }
             }

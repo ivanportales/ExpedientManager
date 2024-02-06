@@ -48,13 +48,6 @@ final class CoreDataOnDutyRepository: CoreDataRepository, OnDutyRepositoryProtoc
         getAllModels(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func delete(onDuty: OnDuty,
-                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let fetchRequest = makeFetchRequestFor(onDuty: onDuty)
-        
-        delete(withFetchRequest: fetchRequest, completionHandler: completionHandler)
-    }
-    
     func update(onDuty: OnDuty,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let fetchRequest = makeFetchRequestFor(onDuty: onDuty)
@@ -71,6 +64,13 @@ final class CoreDataOnDutyRepository: CoreDataRepository, OnDutyRepositoryProtoc
         update(withFetchRequest: fetchRequest,
                mapperClosure: mapperClosure,
                completionHandler: completionHandler)
+    }
+    
+    func delete(onDuty: OnDuty,
+                completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+        let fetchRequest = makeFetchRequestFor(onDuty: onDuty)
+        
+        delete(withFetchRequest: fetchRequest, completionHandler: completionHandler)
     }
     
     // MARK: - Private Functions
