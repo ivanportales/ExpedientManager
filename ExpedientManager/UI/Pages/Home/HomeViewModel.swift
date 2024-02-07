@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HomeVideModelState {
+enum HomeViewModelState {
     case initial
     case loading
     case content(scheduledNotificationsDict: [String: [ScheduledNotification]],
@@ -16,11 +16,11 @@ enum HomeVideModelState {
     case error(message: String)
 }
 
-final class HomeVideModel: ObservableObject {
+final class HomeViewModel: ObservableObject {
     
     // MARK: - Binding Properties
     
-    @Published private(set) var state: HomeVideModelState = .initial
+    @Published private(set) var state: HomeViewModelState = .initial
     
     // MARK: - Exposed Properties
     
@@ -29,17 +29,17 @@ final class HomeVideModel: ObservableObject {
     // MARK: - Private Properties
     
     private var dateOfFilter: Date = .init()
-    private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
-    private let localStorage: LocalStorageRepositoryProtocol
+    private let getScheduledNotificationsUseCase: GetScheduledNotificationsUseCaseProtocol
+    private let getValueForKeyUseCase: GetValueForKeyUseCaseProtocol
     private let calendarManager: CalendarManagerProtocol
     
     // MARK: - Init
     
-    init(scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
-         localStorage: LocalStorageRepositoryProtocol,
+    init(getScheduledNotificationsUseCase: GetScheduledNotificationsUseCaseProtocol,
+         getValueForKeyUseCase: GetValueForKeyUseCaseProtocol,
          calendarManager: CalendarManagerProtocol) {
-        self.scheduledNotificationsRepository = scheduledNotificationsRepository
-        self.localStorage = localStorage
+        self.getScheduledNotificationsUseCase = getScheduledNotificationsUseCase
+        self.getValueForKeyUseCase = getValueForKeyUseCase
         self.calendarManager = calendarManager
     }
     
@@ -52,7 +52,7 @@ final class HomeVideModel: ObservableObject {
     
     func load() {
         state = .loading
-        scheduledNotificationsRepository.getAllScheduledNotifications { [weak self] result in
+        getScheduledNotificationsUseCase.getScheduledNotifications { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error):
@@ -82,7 +82,7 @@ final class HomeVideModel: ObservableObject {
     }
     
     func verifyFirstAccessOnApp(routeToOnboardingCallback: @escaping (() -> Void)) {
-        if localStorage.getValue(forKey: .hasOnboarded) == nil {
+        if getValueForKeyUseCase.getValue(forKey: .hasOnboarded) == nil {
             routeToOnboardingCallback()
         }
     }

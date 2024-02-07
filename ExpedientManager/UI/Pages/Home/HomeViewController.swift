@@ -47,13 +47,13 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private let viewModel: HomeVideModel
+    private let viewModel: HomeViewModel
     private let router: DeeplinkRouterProtocol
     private var subscribers = Set<AnyCancellable>()
     
     // MARK: - Inits
     
-    init(viewModel: HomeVideModel,
+    init(viewModel: HomeViewModel,
          router: DeeplinkRouterProtocol) {
         self.viewModel = viewModel
         self.router = router

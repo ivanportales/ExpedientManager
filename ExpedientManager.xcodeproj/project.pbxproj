@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1ABCAF6551EA9E1C9F9F5103 /* Pods_ExpedientManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */; };
 		718C3D3D2B73F7C372F63ED4 /* Pods_ExpedientManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */; };
+		AE4B4D042B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B4D032B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift */; };
+		AE4B4D062B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B4D052B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift */; };
+		AE4B4D0A2B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B4D092B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift */; };
+		AE4B4D0C2B72F9830034B971 /* GetValueForKeyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B4D0B2B72F9830034B971 /* GetValueForKeyUseCase.swift */; };
 		AE4BF7242B62D38900CC69D7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */; };
 		AE5410532B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5410522B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift */; };
 		AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */; };
@@ -133,6 +137,10 @@
 		7C3A28BED89E90818C58226B /* Pods-ExpedientManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManager.release.xcconfig"; path = "Target Support Files/Pods-ExpedientManager/Pods-ExpedientManager.release.xcconfig"; sourceTree = "<group>"; };
 		A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpedientManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A834456D8495583D56D1EE96 /* Pods-ExpedientManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-ExpedientManagerTests/Pods-ExpedientManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE4B4D032B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScheduledNotificationsUseCaseProtocol.swift; sourceTree = "<group>"; };
+		AE4B4D052B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScheduledNotificationsUseCase.swift; sourceTree = "<group>"; };
+		AE4B4D092B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetValueForKeyUseCaseProtocol.swift; sourceTree = "<group>"; };
+		AE4B4D0B2B72F9830034B971 /* GetValueForKeyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetValueForKeyUseCase.swift; sourceTree = "<group>"; };
 		AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		AE5410522B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkScaleTypeSegmentedControl.swift; sourceTree = "<group>"; };
 		AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -266,6 +274,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE4B4D022B72F0800034B971 /* GetScheduledNotificationsUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AE4B4D032B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift */,
+				AE4B4D052B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift */,
+			);
+			path = GetScheduledNotificationsUseCase;
+			sourceTree = "<group>";
+		};
+		AE4B4D072B72F92C0034B971 /* GetValueForKeyUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AE4B4D092B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift */,
+				AE4B4D0B2B72F9830034B971 /* GetValueForKeyUseCase.swift */,
+			);
+			path = GetValueForKeyUseCase;
+			sourceTree = "<group>";
+		};
 		AE5410512B617B0D0039BD11 /* SelectionSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +410,8 @@
 		AE9B5A232B670A1800F6A561 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				AE4B4D072B72F92C0034B971 /* GetValueForKeyUseCase */,
+				AE4B4D022B72F0800034B971 /* GetScheduledNotificationsUseCase */,
 				AEEC1A722B69D16200FA618E /* GetOnDutyUseCase */,
 				AEEC1A6D2B69D03D00FA618E /* GetFixedScalesUseCase */,
 				AE595A9D2B6877E500B439CE /* SaveOnDutyUseCase */,
@@ -1095,8 +1123,10 @@
 				AED250D82B57558100290E42 /* CoreDataFixedScaleRepository.swift in Sources */,
 				AED250E22B57558100290E42 /* UserNotificationsManager.swift in Sources */,
 				AE9D5C932B6328550070A9CE /* ScaleColorSelectionView.swift in Sources */,
+				AE4B4D042B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift in Sources */,
 				AED250DD2B57558100290E42 /* Scale.swift in Sources */,
 				AED250E02B57558100290E42 /* UIColor+Extensions.swift in Sources */,
+				AE4B4D0A2B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift in Sources */,
 				AE4BF7242B62D38900CC69D7 /* UIView+Extensions.swift in Sources */,
 				AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */,
 				AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */,
@@ -1113,6 +1143,8 @@
 				AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */,
 				AED250C02B57558100290E42 /* ScheduledScalesTableViewCell.swift in Sources */,
 				AED250C82B57558100290E42 /* ScaleDurationView.swift in Sources */,
+				AE4B4D0C2B72F9830034B971 /* GetValueForKeyUseCase.swift in Sources */,
+				AE4B4D062B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift in Sources */,
 				AE7DE7B82B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift in Sources */,
 				AE7DE7B62B589BFF00F57E42 /* LocalStorageRepository.swift in Sources */,
 				AED250D12B57558100290E42 /* ScaleDetailsViewController.swift in Sources */,

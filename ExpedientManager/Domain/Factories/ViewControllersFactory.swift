@@ -29,9 +29,10 @@ final class ViewControllersFactory {
     }
     
     func makeHomeViewController() -> HomeViewController {
-        let scheduledNotificationsRepository = CoreDataScheduledNotificationsRepository()
-        let viewModel = HomeVideModel(scheduledNotificationsRepository: scheduledNotificationsRepository,
-                                      localStorage: localStorage,
+        let getScheduledNotificationsUseCase = GetScheduledNotificationsUseCase(scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository())
+        let getValueForKeyUseCase = GetValueForKeyUseCase(localStorage: localStorage)
+        let viewModel = HomeViewModel(getScheduledNotificationsUseCase: getScheduledNotificationsUseCase,
+                                      getValueForKeyUseCase: getValueForKeyUseCase,
                                       calendarManager: Calendar.current)
 
         return HomeViewController(viewModel: viewModel, router: router)
