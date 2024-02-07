@@ -32,8 +32,7 @@ final class ViewControllersFactory {
         let getScheduledNotificationsUseCase = GetScheduledNotificationsUseCase(scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository())
         let getValueForKeyUseCase = GetValueForKeyUseCase(localStorage: localStorage)
         let viewModel = HomeViewModel(getScheduledNotificationsUseCase: getScheduledNotificationsUseCase,
-                                      getValueForKeyUseCase: getValueForKeyUseCase,
-                                      calendarManager: Calendar.current)
+                                      getValueForKeyUseCase: getValueForKeyUseCase)
 
         return HomeViewController(viewModel: viewModel, router: router)
     }

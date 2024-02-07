@@ -31,16 +31,13 @@ final class HomeViewModel: ObservableObject {
     private var dateOfFilter: Date = .init()
     private let getScheduledNotificationsUseCase: GetScheduledNotificationsUseCaseProtocol
     private let getValueForKeyUseCase: GetValueForKeyUseCaseProtocol
-    private let calendarManager: CalendarManagerProtocol
     
     // MARK: - Init
     
     init(getScheduledNotificationsUseCase: GetScheduledNotificationsUseCaseProtocol,
-         getValueForKeyUseCase: GetValueForKeyUseCaseProtocol,
-         calendarManager: CalendarManagerProtocol) {
+         getValueForKeyUseCase: GetValueForKeyUseCaseProtocol) {
         self.getScheduledNotificationsUseCase = getScheduledNotificationsUseCase
         self.getValueForKeyUseCase = getValueForKeyUseCase
-        self.calendarManager = calendarManager
     }
     
     // MARK: - Exposed Functions
@@ -50,7 +47,7 @@ final class HomeViewModel: ObservableObject {
         state = .filterContent(filteredScheduledNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
     }
     
-    func load() {
+    func getScheduledNotifications() {
         state = .loading
         getScheduledNotificationsUseCase.getScheduledNotifications { [weak self] result in
             guard let self = self else { return }
@@ -78,7 +75,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     func getMonthDescriptionOf(date: Date) -> String {
-        return calendarManager.getMonthDescriptionOf(date: date)
+        return date.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased
     }
     
     func verifyFirstAccessOnApp(routeToOnboardingCallback: @escaping (() -> Void)) {
@@ -96,8 +93,6 @@ final class HomeViewModel: ObservableObject {
 
 extension Date {
     var dateString: String {
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM dd,yyyy"
-        return dateFormatterPrint.string(from: self)
+        return formateDate(withFormat: "MMM dd,yyyy")
     }
 }

@@ -8,21 +8,21 @@
 import Foundation
 
 extension Date {
-    func getFormattedDateString(dateFormat: String = "d MMM yyyy",
-                                dateStyle: DateFormatter.Style = .medium) -> String {
+    func formateDate(withFormat format: String = "d MMM yyyy",
+                     dateStyle: DateFormatter.Style = .medium) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = dateStyle
         dateFormatter.timeZone = .none
-        dateFormatter.dateFormat = dateFormat
+        dateFormatter.dateFormat = format
         
         return dateFormatter.string(from: self)
     }
     
-    func getFormattedTimeString(dateFormat: String = "h:mm a",
-                                dateStyle: DateFormatter.Style = .medium) -> String {
+    func formatTime(withFormat format: String = "h:mm a",
+                    timeStyle: DateFormatter.Style = .medium) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = dateStyle
-        dateFormatter.dateFormat = dateFormat
+        dateFormatter.dateStyle = timeStyle
+        dateFormatter.dateFormat = format
         
         return dateFormatter.string(from: self)
     }
