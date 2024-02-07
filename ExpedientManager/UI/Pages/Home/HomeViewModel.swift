@@ -90,9 +90,3 @@ final class HomeViewModel: ObservableObject {
         return scheduledNotificationsDict[date.dateString] ?? []
     }
 }
-
-extension Date {
-    var dateString: String {
-        return formateDate(withFormat: "MMM dd,yyyy")
-    }
-}
