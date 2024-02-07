@@ -78,7 +78,7 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.load()
+        viewModel.getScheduledNotifications()
         displayLargeNavigationBarTitle(true)
     }
 }

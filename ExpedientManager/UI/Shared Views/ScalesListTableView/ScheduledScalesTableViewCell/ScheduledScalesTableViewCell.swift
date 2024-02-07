@@ -56,8 +56,8 @@ class ScheduledScalesTableViewCell: UITableViewCell {
     // MARK: - Exposed Functions
     
     func setDataOf(scheduledNotification: ScheduledNotification) {
-        hourLabel.text = scheduledNotification.date.getFormattedTimeString(dateFormat: "h:mm a")
-        dayAndMonthLabel.text = scheduledNotification.date.getFormattedDateString(dateFormat: "d/MM")
+        hourLabel.text = scheduledNotification.date.formatTime()
+        dayAndMonthLabel.text = scheduledNotification.date.formateDate(withFormat: "d/MM")
         titleLabel.text = scheduledNotification.title
         descriptionLabel.text = scheduledNotification.description
         scaleColorView.backgroundColor = UIColor(hex: scheduledNotification.colorHex)

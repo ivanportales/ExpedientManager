@@ -51,8 +51,8 @@ class ScaleDurationView: UIView {
     weak var delegate: ScaleDurationViewDelegate?
     private(set) var date: Date = .init() {
         didSet {
-            self.dateTextField.text = date.getFormattedDateString()
-            self.timeTextField.text = date.getFormattedTimeString()
+            self.dateTextField.text = date.formateDate()
+            self.timeTextField.text = date.formatTime()
         }
     }
     
