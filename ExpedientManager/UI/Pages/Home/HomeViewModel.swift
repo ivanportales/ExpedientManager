@@ -54,21 +54,11 @@ final class HomeViewModel: ObservableObject {
             switch result {
             case .failure(let error):
                 self.state = .error(message: error.localizedDescription)
-            case .success(let itens):
-                var newScheduledScaleDict: [String: [ScheduledNotification]] = [:]
-                
-                for scheduledScale in itens {
-                    let key = scheduledScale.date.dateString
-                    if newScheduledScaleDict[key] != nil {
-                        newScheduledScaleDict[key]!.append(scheduledScale)
-                    } else {
-                        newScheduledScaleDict[key] = [scheduledScale]
-                    }
-                }
-                
-                self.scheduledNotificationsDict = newScheduledScaleDict
+            case .success(let scheduledNotifications):
+                self.scheduledNotificationsDict = Dictionary(grouping: scheduledNotifications,
+                                                             by: { $0.date.dateString })
                 self.state = .content(
-                    scheduledNotificationsDict: newScheduledScaleDict,
+                    scheduledNotificationsDict: self.scheduledNotificationsDict,
                     filteredScheduledNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
             }
         }
