@@ -76,6 +76,19 @@ extension UIView {
         }
     }
     
+    func constraintViewToCenterOfSuperview() {
+        guard let superview = superview else { return }
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor),
+            leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor),
+            trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor),
+            bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor),
+            
+            centerYAnchor.constraint(equalTo: superview.centerYAnchor),
+            centerXAnchor.constraint(equalTo: superview.centerXAnchor)
+        ])
+    }
+    
     func constraintView(height: CGFloat, andWidth width: CGFloat) {
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: height),
