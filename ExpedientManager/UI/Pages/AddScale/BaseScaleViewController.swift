@@ -8,9 +8,11 @@
 import Combine
 import UIKit
 
-class BaseScaleViewController: UIViewController {
+class BaseScaleViewController: UIViewController, LoadingShowableViewControllerProtocol {
     
     // MARK: - UI
+    
+    var loadingView: UIActivityIndicatorView?
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -284,12 +286,13 @@ extension BaseScaleViewController {
             .$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
-                guard let self = self else {return}
+                guard let self = self else { return }
+                disableLoadingView()
                 switch state {
                 case .initial:
                     break
                 case .loading:
-                    print("laoding")
+                    self.showLoadingView()
                 case .errorSavingScale(message: let message):
                     self.showAlertWith(title: LocalizedString.alertErrorTitle, andMesssage: message)
                 case .successSavingScale:

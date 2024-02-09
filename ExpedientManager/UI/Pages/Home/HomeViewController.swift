@@ -9,9 +9,11 @@ import Combine
 import FSCalendar
 import UIKit
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, LoadingShowableViewControllerProtocol {
     
     // MARK: - Views
+    
+    var loadingView: UIActivityIndicatorView?
     
     lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
@@ -139,11 +141,12 @@ extension HomeViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self = self else { return }
+                self.disableLoadingView()
                 switch state {
                 case .initial:
                     break
                 case .loading:
-                    print("loading")
+                    self.showLoadingView()
                 case .error(let message):
                     self.showAlertWith(title: LocalizedString.alertErrorTitle,
                                        andMesssage: message)
@@ -178,7 +181,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
         if let scheduledNotifications = viewModel.scheduledNotificationsDict[date.dateString] {
-            var colors: [UIColor] = scheduledNotifications.map { UIColor(hex: $0.colorHex) }
+            let colors: [UIColor] = scheduledNotifications.map { UIColor(hex: $0.colorHex) }
             
             cell.eventIndicator.isHidden = false
             cell.eventIndicator.numberOfEvents = scheduledNotifications.count
