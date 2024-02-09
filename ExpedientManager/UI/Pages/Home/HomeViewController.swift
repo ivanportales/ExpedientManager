@@ -11,7 +11,7 @@ import UIKit
 
 final class HomeViewController: UIViewController, LoadingShowableViewControllerProtocol {
     
-    // MARK: - Views
+    // MARK: - UI
     
     var loadingView: UIActivityIndicatorView?
     
@@ -238,7 +238,3 @@ extension HomeViewController {
         router.route(to: .scaleList, withParams: [:])
     }
 }
-
-// MARK: - UITableViewDelegate
-
-extension HomeViewController: UITableViewDelegate {}

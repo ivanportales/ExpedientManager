@@ -8,9 +8,11 @@
 import Combine
 import UIKit
 
-final class ScalesListViewController: UIViewController {
+final class ScalesListViewController: UIViewController, LoadingShowableViewControllerProtocol {
     
     // MARK: - UI
+    
+    var loadingView: UIActivityIndicatorView?
     
     lazy var scaleTypeSegmentControll: WorkScaleTypeSegmentedControl = {
         let segmentControll = WorkScaleTypeSegmentedControl()
@@ -52,7 +54,7 @@ final class ScalesListViewController: UIViewController {
         view.backgroundColor = .systemBackground
         setupNavigationBar()
         setupViewHierarchy()
-        setupViewsConstraints()
+        setupConstraints()
         setupBindings()
     }
     
@@ -75,7 +77,7 @@ extension ScalesListViewController {
         view.addSubview(scalesTableView)
     }
     
-    private func setupViewsConstraints() {
+    private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
@@ -97,11 +99,12 @@ extension ScalesListViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self = self else { return }
+                self.disableLoadingView()
                 switch state {
                 case .initial:
                     break
                 case .loading:
-                    print("loading")
+                    self.showLoadingView()
                 case .content:
                     self.scalesTableView.setup(scheduledNotifications: viewModel.scheduledNotifications)
                 case .error(message: let message):
