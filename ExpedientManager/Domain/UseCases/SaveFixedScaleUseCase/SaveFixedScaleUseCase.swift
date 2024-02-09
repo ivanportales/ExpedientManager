@@ -57,19 +57,37 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
         } else {
             scheduledNotifications = setupDaysScales(of: fixedScale, completionHandler: completionHandler)
         }
-                
+        
+        setNotifications(for: scheduledNotifications, completionHandler: completionHandler)
+    }
+    
+    private func setNotifications(for scheduledNotifications: [ScheduledNotification],
+                                      completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+        let dispatchGroup = DispatchGroup()
+        var hasError = false
+        
         for scheduledNotification in scheduledNotifications {
+            dispatchGroup.enter()
+            if hasError {
+                break
+            }
             set(scheduledNotification: scheduledNotification) { result in
                 switch result {
                 case .failure(let error):
+                    hasError = true
                     completionHandler(.failure(error))
                 case .success(_):
-                    return
+                    break
                 }
+                dispatchGroup.leave()
             }
         }
         
-        completionHandler(.success(true))
+        dispatchGroup.notify(queue: .main) {
+            if !hasError {
+                completionHandler(.success(true))
+            }
+        }
     }
     
     private func setupHoursScales(of fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) -> [ScheduledNotification] {
