@@ -1,6 +1,0 @@
-framework module Pods_ExpedientManager {
-  umbrella header "Pods-ExpedientManager-umbrella.h"
-
-  export *
-  module * { export * }
-}
