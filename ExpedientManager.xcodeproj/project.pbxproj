@@ -36,6 +36,9 @@
 		AE7DE7B82B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */; };
 		AE7FA9872B75B4250079E9FD /* LoadingShowableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FA9862B75B4250079E9FD /* LoadingShowableViewController.swift */; };
 		AE888CC92B6D3F5D00068558 /* UserNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE888CC82B6D3F5D00068558 /* UserNotificationModel.swift */; };
+		AE8CB6EF2B784E6C00649368 /* CustomAlertTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6EE2B784E6C00649368 /* CustomAlertTransitionManager.swift */; };
+		AE8CB6F22B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6F12B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift */; };
+		AE8CB6F42B78570100649368 /* SetValueForKeyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6F32B78570100649368 /* SetValueForKeyUseCase.swift */; };
 		AE9B5A262B670C9D00F6A561 /* SaveFixedScaleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */; };
 		AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */; };
 		AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C902B631E690070A9CE /* CalendarManager.swift */; };
@@ -166,6 +169,9 @@
 		AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE7FA9862B75B4250079E9FD /* LoadingShowableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShowableViewController.swift; sourceTree = "<group>"; };
 		AE888CC82B6D3F5D00068558 /* UserNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationModel.swift; sourceTree = "<group>"; };
+		AE8CB6EE2B784E6C00649368 /* CustomAlertTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertTransitionManager.swift; sourceTree = "<group>"; };
+		AE8CB6F12B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueForKeyUseCaseProtocol.swift; sourceTree = "<group>"; };
+		AE8CB6F32B78570100649368 /* SetValueForKeyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueForKeyUseCase.swift; sourceTree = "<group>"; };
 		AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCase.swift; sourceTree = "<group>"; };
 		AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AE9D5C902B631E690070A9CE /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
@@ -427,9 +433,27 @@
 			path = "Helper Protocols";
 			sourceTree = "<group>";
 		};
+		AE8CB6ED2B784E5600649368 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				AE8CB6EE2B784E6C00649368 /* CustomAlertTransitionManager.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		AE8CB6F02B78568B00649368 /* SetValueForKeyUseCaseProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				AE8CB6F12B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift */,
+				AE8CB6F32B78570100649368 /* SetValueForKeyUseCase.swift */,
+			);
+			path = SetValueForKeyUseCaseProtocol;
+			sourceTree = "<group>";
+		};
 		AE9B5A232B670A1800F6A561 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				AE8CB6F02B78568B00649368 /* SetValueForKeyUseCaseProtocol */,
 				AE4B4D072B72F92C0034B971 /* GetValueForKeyUseCase */,
 				AE4B4D022B72F0800034B971 /* GetScheduledNotificationsUseCase */,
 				AEEC1A722B69D16200FA618E /* GetOnDutyUseCase */,
@@ -591,6 +615,7 @@
 		AED2505D2B57558000290E42 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AE8CB6ED2B784E5600649368 /* Transitions */,
 				AE7FA9852B75B4140079E9FD /* Helper Protocols */,
 				AED250612B57558000290E42 /* ScrollToKeyboardAvoiding.swift */,
 				AED250632B57558000290E42 /* Localizable */,
@@ -1155,6 +1180,7 @@
 				AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */,
 				AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */,
 				AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */,
+				AE8CB6F22B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift in Sources */,
 				AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */,
 				AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */,
 				AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */,
@@ -1186,8 +1212,10 @@
 				AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */,
 				AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */,
 				AED250D62B57558100290E42 /* ExpedientManager.xcdatamodeld in Sources */,
+				AE8CB6EF2B784E6C00649368 /* CustomAlertTransitionManager.swift in Sources */,
 				AEEC1A742B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift in Sources */,
 				AEBEE2952B6F351B005A0D73 /* CoreDataRepository.swift in Sources */,
+				AE8CB6F42B78570100649368 /* SetValueForKeyUseCase.swift in Sources */,
 				AECC38462B607D9200439C97 /* TextField.swift in Sources */,
 				AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */,
 				AE6731762B76E9D800169F66 /* LoadingView.swift in Sources */,

@@ -12,7 +12,6 @@ final class ViewControllersFactory {
     
     // MARK: - Private Fucntion
     
-    private let localStorage: LocalStorageRepositoryProtocol = LocalStorageRepository()
     private let router: DeeplinkRouterProtocol
     
     // MARK: - Init
@@ -24,13 +23,14 @@ final class ViewControllersFactory {
     // MARK: - Exposed Functions
     
     func makeOnboardingViewController() -> OnboardingViewController {
+        let setValueForKeyUseCase = SetValueForKeyUseCase(storage: UserDefaults.standard)
         return OnboardingViewController(router: router,
-                                        localStorage: localStorage)
+                                        setValueForKeyUseCase: setValueForKeyUseCase)
     }
     
     func makeHomeViewController() -> HomeViewController {
         let getScheduledNotificationsUseCase = GetScheduledNotificationsUseCase(scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository())
-        let getValueForKeyUseCase = GetValueForKeyUseCase(localStorage: localStorage)
+        let getValueForKeyUseCase = GetValueForKeyUseCase(storage: UserDefaults.standard)
         let viewModel = HomeViewModel(getScheduledNotificationsUseCase: getScheduledNotificationsUseCase,
                                       getValueForKeyUseCase: getValueForKeyUseCase)
 

@@ -11,17 +11,17 @@ final class GetValueForKeyUseCase: GetValueForKeyUseCaseProtocol {
     
     // MARK: - Private Properties
     
-    private let localStorage: LocalStorageRepositoryProtocol
+    private let storage: LocalStorageRepositoryProtocol
     
     // MARK: - Init
     
-    init(localStorage: LocalStorageRepositoryProtocol) {
-        self.localStorage = localStorage
+    init(storage: LocalStorageRepositoryProtocol) {
+        self.storage = storage
     }
     
     // MARK: - Exposed Properties
     
     func getValue(forKey key: LocalStorageKeys) -> Any? {
-        localStorage.getValue(forKey: key)
+        storage.getValue(forKey: key.rawValue)
     }
 }

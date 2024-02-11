@@ -7,23 +7,12 @@
 
 import Foundation
 
-enum LocalStorageKeys: String {
-    case hasOnboarded
-}
-
-final class LocalStorageRepository: LocalStorageRepositoryProtocol {
-    
-    private let storage: UserDefaults
-    
-    init(storage: UserDefaults = UserDefaults.standard) {
-        self.storage = storage
+extension UserDefaults: LocalStorageRepositoryProtocol {
+    func getValue(forKey key: String) -> Any? {
+        object(forKey: key)
     }
     
-    func getValue(forKey key: LocalStorageKeys) -> Any? {
-        storage.object(forKey: key.rawValue)
-    }
-    
-    func save(value: Any?, forKey key: LocalStorageKeys) {
-        storage.set(value, forKey: key.rawValue)
+    func save(value: Any?, forKey key: String) {
+        set(value, forKey: key)
     }
 }

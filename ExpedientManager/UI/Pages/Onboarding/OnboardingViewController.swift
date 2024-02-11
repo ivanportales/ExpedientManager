@@ -29,7 +29,7 @@ final class OnboardingViewController: UIViewController {
     // MARK: - Private Properties
     
     private let router: DeeplinkRouterProtocol
-    private let localStorage: LocalStorageRepositoryProtocol
+    private let setValueForKeyUseCase: SetValueForKeyUseCaseProtocol
     private let models: [OnboardingCarouselItem] = [
         OnboardingCarouselItem(image: "onboarding0", message: LocalizedString.onboardingMsg1),
         OnboardingCarouselItem(image: "onboarding1", message: LocalizedString.onboardingMsg2),
@@ -39,9 +39,9 @@ final class OnboardingViewController: UIViewController {
     // MARK: - Init
     
     init(router: DeeplinkRouterProtocol,
-         localStorage: LocalStorageRepositoryProtocol) {
+         setValueForKeyUseCase: SetValueForKeyUseCaseProtocol) {
         self.router = router
-        self.localStorage = localStorage
+        self.setValueForKeyUseCase = setValueForKeyUseCase
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -103,7 +103,7 @@ private extension OnboardingViewController {
             }
         } else {
             router.pop()
-            localStorage.save(value: true, forKey: .hasOnboarded)
+            setValueForKeyUseCase.save(value: true, forKey: .hasOnboarded)
         }
     }
 }

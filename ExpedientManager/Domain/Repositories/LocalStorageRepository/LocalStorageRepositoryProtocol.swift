@@ -8,6 +8,6 @@
 import Foundation
 
 protocol LocalStorageRepositoryProtocol {
-    func getValue(forKey key: LocalStorageKeys) -> Any?
-    func save(value: Any?, forKey key: LocalStorageKeys)
+    func getValue(forKey key: String) -> Any?
+    func save(value: Any?, forKey key: String)
 }
