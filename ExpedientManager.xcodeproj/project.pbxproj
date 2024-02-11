@@ -39,6 +39,7 @@
 		AE8CB6EF2B784E6C00649368 /* CustomAlertTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6EE2B784E6C00649368 /* CustomAlertTransitionManager.swift */; };
 		AE8CB6F22B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6F12B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift */; };
 		AE8CB6F42B78570100649368 /* SetValueForKeyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6F32B78570100649368 /* SetValueForKeyUseCase.swift */; };
+		AE8CB6F62B78601A00649368 /* LoadingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6F52B78601A00649368 /* LoadingContainerViewController.swift */; };
 		AE9B5A262B670C9D00F6A561 /* SaveFixedScaleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */; };
 		AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */; };
 		AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C902B631E690070A9CE /* CalendarManager.swift */; };
@@ -172,6 +173,7 @@
 		AE8CB6EE2B784E6C00649368 /* CustomAlertTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertTransitionManager.swift; sourceTree = "<group>"; };
 		AE8CB6F12B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueForKeyUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE8CB6F32B78570100649368 /* SetValueForKeyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueForKeyUseCase.swift; sourceTree = "<group>"; };
+		AE8CB6F52B78601A00649368 /* LoadingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingContainerViewController.swift; sourceTree = "<group>"; };
 		AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCase.swift; sourceTree = "<group>"; };
 		AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AE9D5C902B631E690070A9CE /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				AE6731752B76E9D800169F66 /* LoadingView.swift */,
+				AE8CB6F52B78601A00649368 /* LoadingContainerViewController.swift */,
 			);
 			path = LoadingView;
 			sourceTree = "<group>";
@@ -1162,6 +1165,7 @@
 				AED250BB2B57558100290E42 /* UIButton+Extensions.swift in Sources */,
 				AE7FA9872B75B4250079E9FD /* LoadingShowableViewController.swift in Sources */,
 				AED250BE2B57558100290E42 /* HomeViewModel.swift in Sources */,
+				AE8CB6F62B78601A00649368 /* LoadingContainerViewController.swift in Sources */,
 				AED250BA2B57558100290E42 /* ScrollToKeyboardAvoiding.swift in Sources */,
 				AED250162B57552C00290E42 /* AppDelegate.swift in Sources */,
 				AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */,

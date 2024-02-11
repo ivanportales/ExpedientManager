@@ -7,24 +7,16 @@
 
 import UIKit
 
-public protocol LoadingShowableViewControllerProtocol: UIViewController {
-    var loadingView: LoadingView? { get set }
-    
-//    func showLoadingView()
-//    func disableLoadingView()
-}
-
 extension UIViewController {
-    
     public func disableLoadingView() {
-        guard presentedViewController is UIAlertController else { return }
+        guard presentedViewController is LoadingContainerViewController else { return }
         dismiss(animated: true)
     }
     
     public func showLoadingView() {
         let alert = LoadingContainerViewController()
         alert.modalPresentationStyle = .custom
-        alert.transitioningDelegate = transitionsFactory.makeBottomSheetTransitionManager()
+        alert.transitioningDelegate = CustomAlertTransitionManager(duration: 0.5)
         present(alert, animated: true, completion: nil)
     }
 }

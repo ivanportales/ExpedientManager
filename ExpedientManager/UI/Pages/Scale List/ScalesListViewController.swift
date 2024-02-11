@@ -8,11 +8,9 @@
 import Combine
 import UIKit
 
-final class ScalesListViewController: UIViewController, LoadingShowableViewControllerProtocol {
+final class ScalesListViewController: UIViewController {
     
     // MARK: - UI
-    
-    var loadingView: LoadingView?
     
     lazy var scaleTypeSegmentControll: WorkScaleTypeSegmentedControl = {
         let segmentControll = WorkScaleTypeSegmentedControl()

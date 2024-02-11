@@ -8,11 +8,9 @@
 import Combine
 import UIKit
 
-class BaseScaleViewController: UIViewController, LoadingShowableViewControllerProtocol {
+class BaseScaleViewController: UIViewController {
     
     // MARK: - UI
-    
-    var loadingView: LoadingView?
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()

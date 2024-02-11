@@ -9,11 +9,9 @@ import Combine
 import FSCalendar
 import UIKit
 
-final class HomeViewController: UIViewController, LoadingShowableViewControllerProtocol {
+final class HomeViewController: UIViewController {
     
     // MARK: - UI
-    
-    var loadingView: LoadingView?
     
     lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
@@ -141,7 +139,7 @@ extension HomeViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self = self else { return }
-                //self.disableLoadingView()
+                self.disableLoadingView()
                 switch state {
                 case .initial:
                     break
