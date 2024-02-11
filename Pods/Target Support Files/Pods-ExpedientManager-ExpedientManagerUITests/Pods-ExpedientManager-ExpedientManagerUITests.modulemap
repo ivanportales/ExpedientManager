@@ -1,0 +1,6 @@
+framework module Pods_ExpedientManager_ExpedientManagerUITests {
+  umbrella header "Pods-ExpedientManager-ExpedientManagerUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
