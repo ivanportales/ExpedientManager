@@ -22,17 +22,9 @@ extension UIViewController {
     }
     
     public func showLoadingView() {
-        
-        let alert = UIAlertController(title: nil, message: "", preferredStyle: .alert)
-
-        let loadingIndicator = UIActivityIndicatorView()
-        loadingIndicator.style = .large
-        loadingIndicator.color = .white
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating();
-
-        alert.view.addSubview(loadingIndicator)
+        let alert = LoadingContainerViewController()
+        alert.modalPresentationStyle = .custom
+        alert.transitioningDelegate = transitionsFactory.makeBottomSheetTransitionManager()
         present(alert, animated: true, completion: nil)
     }
 }
