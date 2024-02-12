@@ -141,7 +141,7 @@ extension ScaleSelectType {
         restDurationTypeLabel.text = LocalizedString.hoursLabel
     }
     
-    // verificar uma forma melhor de fazer isso
+    // TODO: verificar uma forma melhor de fazer isso
     private func setupToolbar() {
         let toolBar: UIToolbar = UIToolbar()
         toolBar.barStyle = .default

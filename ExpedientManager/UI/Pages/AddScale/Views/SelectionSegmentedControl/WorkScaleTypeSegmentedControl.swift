@@ -41,8 +41,21 @@ final class WorkScaleTypeSegmentedControl: UISegmentedControl {
         setupValueChangeObserver()
     }
     
-    // MARK: - Setup Functions
+    // MARK: - Private Functions
+    
+    private func setupValueChangeObserver() {
+        addTarget(self, action: #selector(valueDidChange), for: .valueChanged)
+    }
+    
+    @objc private func valueDidChange() {
+        let selectedWorkScale = WorkScaleType.allCases[selectedSegmentIndex] 
+        delegate?.didChangeSelectedIndex(self, selectedWorkScale: selectedWorkScale)
+    }
+}
 
+// MARK: - Setup Functions
+
+private extension WorkScaleTypeSegmentedControl {
     private func setupViewAppearence() {
         tintColor = UIColor.white
         backgroundColor = UIColor.white
@@ -70,16 +83,5 @@ final class WorkScaleTypeSegmentedControl: UISegmentedControl {
             NSAttributedString.Key.font: UIFont.poppinsLightOf(size: 18)
         ]
         setTitleTextAttributes(textAttributes, for: state)
-    }
-    
-    // MARK: - Private Functions
-    
-    private func setupValueChangeObserver() {
-        addTarget(self, action: #selector(valueDidChange), for: .valueChanged)
-    }
-    
-    @objc private func valueDidChange() {
-        let selectedWorkScale = WorkScaleType.allCases[selectedSegmentIndex] 
-        delegate?.didChangeSelectedIndex(self, selectedWorkScale: selectedWorkScale)
     }
 }

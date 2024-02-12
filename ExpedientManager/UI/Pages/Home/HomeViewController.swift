@@ -86,14 +86,14 @@ final class HomeViewController: UIViewController, LoadingShowableViewControllerP
 
 // MARK: - Setup Functions
 
-extension HomeViewController {
-    private func setupViewHierarchy() {
+private extension HomeViewController {
+    func setupViewHierarchy() {
         view.addSubview(calendarView)
         view.addSubview(activityLabelView)
         view.addSubview(activitiesListTableView)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             calendarView.topAnchor.constraint(equalTo: safeArea.topAnchor),
@@ -112,9 +112,9 @@ extension HomeViewController {
         ])
     }
     
-    private func setupNavigationBar() {
+    func setupNavigationBar() {
         displayLargeNavigationBarTitle(true)
-        setNavigationBarMonthTitle()
+        setupNavigationBarMonthTitle()
                 
         setupNavigationBarItemOn(position: .right,
                                  withIcon: UIImage(systemName: "plus"),
@@ -129,11 +129,11 @@ extension HomeViewController {
         }
     }
     
-    private func setNavigationBarMonthTitle() {
+    func setupNavigationBarMonthTitle() {
        title = viewModel.getMonthDescriptionOf(date: calendarView.currentPage)
     }
     
-    private func setupBindings() {
+    func setupBindings() {
         viewModel
             .$state
             .dropFirst()
@@ -159,7 +159,7 @@ extension HomeViewController {
             }.store(in: &subscribers)
     }
     
-    private func handleContentState(_ scheduledNotificationsDict: [String: [ScheduledNotification]],
+    func handleContentState(_ scheduledNotificationsDict: [String: [ScheduledNotification]],
                                     _ filteredScheduledNotifications: [ScheduledNotification]) {
         if scheduledNotificationsDict.isEmpty {
             hideNavigationBarButtonFrom(position: .right, andIndex: 1)
@@ -175,7 +175,7 @@ extension HomeViewController {
 
 extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, FSCalendarDataSource {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        setNavigationBarMonthTitle()
+        setupNavigationBarMonthTitle()
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {

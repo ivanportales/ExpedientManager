@@ -17,7 +17,9 @@ final class ScheduledNotificationListTableView: UITableView {
     
     weak var viewDelegate: ScheduledNotificationListTableViewDelegate?
     
-    var scheduledNotifications: [ScheduledNotification] = [] {
+    // MARK: - Private Properties
+    
+    private var scheduledNotifications: [ScheduledNotification] = [] {
         didSet {
             reloadData()
         }

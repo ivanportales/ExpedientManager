@@ -54,18 +54,18 @@ public final class LoadingView: UIView {
 
 // MARK: - Setup Functions
 
-extension LoadingView {
-    private func setupView() {
+private extension LoadingView {
+    func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
     }
     
-    private func setupViewHierarchy() {
+    func setupViewHierarchy() {
         addSubview(blurBackgroundView)
         blurBackgroundView.contentView.addSubview(loadingView)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         blurBackgroundView.constraintViewToSuperview()
         loadingView.constraintViewToCenterOfSuperview()
     }
