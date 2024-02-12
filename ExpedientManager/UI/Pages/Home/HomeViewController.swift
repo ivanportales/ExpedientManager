@@ -9,7 +9,8 @@ import Combine
 import FSCalendar
 import UIKit
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, LoadingShowableViewControllerProtocol {
+    var loadingView: LoadingView?
     
     // MARK: - UI
     

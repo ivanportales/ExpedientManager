@@ -32,14 +32,14 @@ public final class ButtonView: ClosureButtonView {
                                  backgroundColor: UIColor,
                                  textColor: UIColor = .white,
                                  font: UIFont = .poppinsRegularOf(size: 16)) {
-        privateTextAttributes = [
+        enabledTextAttributes = [
             .font: font,
             .foregroundColor: textColor
         ]
         
         var buttonConfig = UIButton.Configuration.filled()
 
-        buttonConfig.attributedTitle = .init(title, attributes: AttributeContainer(privateTextAttributes))
+        buttonConfig.attributedTitle = .init(title, attributes: AttributeContainer(enabledTextAttributes))
         buttonConfig.baseBackgroundColor = backgroundColor
         buttonConfig.contentInsets = .init(top: 15, leading: 0, bottom: 15, trailing: 0)
         buttonConfig.cornerStyle = .capsule

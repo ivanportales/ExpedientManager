@@ -7,16 +7,47 @@
 
 import UIKit
 
-extension UIViewController {
+
+
+public protocol LoadingShowableViewControllerProtocol: UIViewController {
+    var loadingView: LoadingView? { get set }
+
+    func showLoadingView()
+    func disableLoadingView()
+}
+
+extension LoadingShowableViewControllerProtocol {
+
     public func disableLoadingView() {
-        guard presentedViewController is LoadingContainerViewController else { return }
-        dismiss(animated: true)
+        guard loadingView != nil else { return }
+        
+        setupNavigationBarTo(enableItems: true)
+        
+        loadingView?.stopLoadingAnimation()
+        loadingView?.removeFromSuperview()
+        
+        loadingView = nil
+    }
+
+    public func showLoadingView() {
+        guard loadingView == nil else { return }
+        
+        setupNavigationBarTo(enableItems: false)
+        
+        let loadingView = LoadingView()
+        loadingView.startLoadingAnimation()
+        
+        view.addSubview(loadingView)
+        loadingView.constraintViewToSuperview()
+        
+        self.loadingView = loadingView
     }
     
-    public func showLoadingView() {
-        let alert = LoadingContainerViewController()
-        alert.modalPresentationStyle = .custom
-        alert.transitioningDelegate = CustomAlertTransitionManager(duration: 0.5)
-        present(alert, animated: true, completion: nil)
+    private func setupNavigationBarTo(enableItems: Bool) {
+        if navigationItem.rightBarButtonItems != nil {
+            for barButtonItem in navigationItem.rightBarButtonItems! {
+                barButtonItem.isEnabled = enableItems
+            }
+        }
     }
 }

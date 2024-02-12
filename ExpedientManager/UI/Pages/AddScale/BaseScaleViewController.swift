@@ -8,9 +8,11 @@
 import Combine
 import UIKit
 
-class BaseScaleViewController: UIViewController {
+class BaseScaleViewController: UIViewController, LoadingShowableViewControllerProtocol {
     
     // MARK: - UI
+    
+    var loadingView: LoadingView?
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -286,7 +288,7 @@ extension BaseScaleViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self = self else { return }
-                disableLoadingView()
+                self.disableLoadingView()
                 switch state {
                 case .initial:
                     break
