@@ -7,7 +7,21 @@
 
 import UIKit
 
+
 public class ClosureButtonView: UIButton {
+    
+    // MARK: - Override Properties
+    
+    public override var isEnabled: Bool {
+        didSet {
+            guard let title = titleLabel?.text,
+                  !enabledTextAttributes.isEmpty else { return }
+            
+            let attributes = isEnabled ? enabledTextAttributes : disabledTextAttributes
+            configuration?.attributedTitle = .init(title,
+                                                   attributes: AttributeContainer(attributes))
+        }
+    }
     
     // MARK: - Exposed Properties
     
@@ -15,7 +29,8 @@ public class ClosureButtonView: UIButton {
     
     // MARK: - Internal Properties
     
-    internal var privateTextAttributes: [NSAttributedString.Key: Any] = [:]
+    internal var enabledTextAttributes: [NSAttributedString.Key: Any] = [:]
+    internal var disabledTextAttributes: [NSAttributedString.Key: Any] = [:]
     
     // MARK: - Inits
     
@@ -27,7 +42,10 @@ public class ClosureButtonView: UIButton {
         super.init(frame: .zero)
         self.touchDownCompletion = touchDownCompletion
         translatesAutoresizingMaskIntoConstraints = false
-        setupStyleWith(title: title, backgroundColor: backgroundColor, textColor: textColor, font: font)
+        setupStyleWith(title: title, 
+                       backgroundColor: backgroundColor,
+                       textColor: textColor,
+                       font: font)
         setupCompletion()
     }
     
@@ -53,7 +71,7 @@ public class ClosureButtonView: UIButton {
     // MARK: - Exposed Functions
     
     public func change(text: String) {
-        configuration?.attributedTitle = .init(text, attributes: AttributeContainer(privateTextAttributes))
+        configuration?.attributedTitle = .init(text, attributes: AttributeContainer(enabledTextAttributes))
 
     }
     
@@ -63,17 +81,21 @@ public class ClosureButtonView: UIButton {
                                  backgroundColor: UIColor,
                                  textColor: UIColor = .white,
                                  font: UIFont = .poppinsRegularOf(size: 16)) {
-        privateTextAttributes = [
+        enabledTextAttributes = [
             .font: font,
             .foregroundColor: textColor
         ]
         
+        disabledTextAttributes = [
+            .font: font,
+            .foregroundColor: UIColor.lightGray
+        ]
+        
         var buttonConfig = UIButton.Configuration.plain()
 
-        buttonConfig.attributedTitle = .init(title, attributes: AttributeContainer(privateTextAttributes))
+        buttonConfig.attributedTitle = .init(title, attributes: AttributeContainer(enabledTextAttributes))
         buttonConfig.baseBackgroundColor = backgroundColor
         buttonConfig.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
-
         
         configuration = buttonConfig
     }
