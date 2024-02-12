@@ -42,6 +42,8 @@ extension LoadingShowableViewControllerProtocol {
     }
     
     private func setupNavigationBarTo(enableItems: Bool) {
+        navigationItem.hidesBackButton = !enableItems
+        
         if let rightBarButtonItems = navigationItem.rightBarButtonItems {
             rightBarButtonItems.forEach { $0.isEnabled = enableItems }
         }
