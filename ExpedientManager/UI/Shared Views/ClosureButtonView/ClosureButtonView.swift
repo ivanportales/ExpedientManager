@@ -71,8 +71,8 @@ public class ClosureButtonView: UIButton {
     // MARK: - Exposed Functions
     
     public func change(text: String) {
-        configuration?.attributedTitle = .init(text, attributes: AttributeContainer(enabledTextAttributes))
-
+        let attributes = isEnabled ? enabledTextAttributes : disabledTextAttributes
+        configuration?.attributedTitle = .init(text, attributes: AttributeContainer(attributes))
     }
     
     // MARK: - Internal Functions
