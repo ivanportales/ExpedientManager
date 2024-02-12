@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 public protocol LoadingShowableViewControllerProtocol: UIViewController {
     var loadingView: LoadingView? { get set }
 
@@ -44,10 +42,8 @@ extension LoadingShowableViewControllerProtocol {
     }
     
     private func setupNavigationBarTo(enableItems: Bool) {
-        if navigationItem.rightBarButtonItems != nil {
-            for barButtonItem in navigationItem.rightBarButtonItems! {
-                barButtonItem.isEnabled = enableItems
-            }
+        if let rightBarButtonItems = navigationItem.rightBarButtonItems {
+            rightBarButtonItems.forEach { $0.isEnabled = enableItems }
         }
     }
 }

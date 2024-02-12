@@ -38,14 +38,16 @@ public extension UIViewController {
 
         switch position {
         case .left:
-            if navigationItem.leftBarButtonItems != nil {
-                navigationItem.leftBarButtonItems?.append(barButton)
+            if var leftBarButtonItems = navigationItem.leftBarButtonItems {
+                leftBarButtonItems.append(barButton)
+                navigationItem.leftBarButtonItems = leftBarButtonItems
             } else {
                 navigationItem.leftBarButtonItems = [barButton]
             }
         case .right:
-            if navigationItem.rightBarButtonItems != nil {
-                navigationItem.rightBarButtonItems?.append(barButton)
+            if var rightBarButtonItems = navigationItem.rightBarButtonItems {
+                rightBarButtonItems.append(barButton)
+                navigationItem.rightBarButtonItems = rightBarButtonItems
             } else {
                 navigationItem.rightBarButtonItems = [barButton]
             }
