@@ -49,13 +49,13 @@ final class HomeViewController: UIViewController, LoadingShowableViewControllerP
     
     // MARK: - Private Properties
     
-    private let viewModel: HomeViewModel
+    private let viewModel: HomeViewModelProtocol
     private let router: DeeplinkRouterProtocol
     private var subscribers = Set<AnyCancellable>()
     
     // MARK: - Inits
     
-    init(viewModel: HomeViewModel,
+    init(viewModel: HomeViewModelProtocol,
          router: DeeplinkRouterProtocol) {
         self.viewModel = viewModel
         self.router = router
@@ -80,7 +80,7 @@ final class HomeViewController: UIViewController, LoadingShowableViewControllerP
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.getScheduledNotifications()
+        viewModel.fetchScheduledNotifications()
         displayLargeNavigationBarTitle(true)
     }
 }
@@ -136,7 +136,7 @@ private extension HomeViewController {
     
     func setupBindings() {
         viewModel
-            .$state
+            .state
             .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
@@ -161,7 +161,7 @@ private extension HomeViewController {
     }
     
     func handleContentState(_ scheduledNotificationsDict: [String: [ScheduledNotification]],
-                                    _ filteredScheduledNotifications: [ScheduledNotification]) {
+                            _ filteredScheduledNotifications: [ScheduledNotification]) {
         if scheduledNotificationsDict.isEmpty {
             hideNavigationBarButtonFrom(position: .right, andIndex: 1)
         } else {
@@ -208,8 +208,8 @@ extension HomeViewController: FSCalendarDelegateAppearance {
 
 // MARK: - Helpers functions
 
-extension HomeViewController {
-    private func verifyFirstAccessOnApp() {
+private extension HomeViewController {
+    func verifyFirstAccessOnApp() {
         viewModel.verifyFirstAccessOnApp { [weak self] in
             self?.router.route(to: .onboard, withParams: [:])
         }

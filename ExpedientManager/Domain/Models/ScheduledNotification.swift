@@ -26,6 +26,7 @@ struct ScheduledNotification {
         ]
     }
 }
+
 extension ScheduledNotification {
     static func from(fixedScale: FixedScale, with currentDate: Date) -> ScheduledNotification {
         return ScheduledNotification(uid: UUID().uuidString,

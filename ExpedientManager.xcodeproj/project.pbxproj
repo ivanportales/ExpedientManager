@@ -29,6 +29,7 @@
 		AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */; };
 		AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */; };
 		AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE72749C2B7ADE2A009E479A /* HomeViewControllerTests.swift */; };
+		AE72749F2B7AFC1C009E479A /* HomeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE72749E2B7AFC1C009E479A /* HomeViewModelProtocol.swift */; };
 		AE7DE7AB2B58814400F57E42 /* ClosureButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */; };
 		AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */; };
 		AE7DE7B22B58946F00F57E42 /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */; };
@@ -163,6 +164,7 @@
 		AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCarouselItem.swift; sourceTree = "<group>"; };
 		AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellView.swift; sourceTree = "<group>"; };
 		AE72749C2B7ADE2A009E479A /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		AE72749E2B7AFC1C009E479A /* HomeViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelProtocol.swift; sourceTree = "<group>"; };
 		AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureButtonView.swift; sourceTree = "<group>"; };
 		AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkRouter.swift; sourceTree = "<group>"; };
 		AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 			children = (
 				AED2506A2B57558000290E42 /* HomeViewModel.swift */,
 				AED2506B2B57558000290E42 /* HomeViewController.swift */,
+				AE72749E2B7AFC1C009E479A /* HomeViewModelProtocol.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1251,6 +1254,7 @@
 				AE9D5C952B632A430070A9CE /* ScaleColorSelectionCellView.swift in Sources */,
 				AED250DE2B57558100290E42 /* UIFont+Extensions.swift in Sources */,
 				AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */,
+				AE72749F2B7AFC1C009E479A /* HomeViewModelProtocol.swift in Sources */,
 				AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */,
 				AED250DC2B57558100290E42 /* OnDuty.swift in Sources */,
 				AE7DE7AB2B58814400F57E42 /* ClosureButtonView.swift in Sources */,

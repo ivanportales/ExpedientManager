@@ -7,20 +7,12 @@
 
 import Foundation
 
-enum HomeViewModelState {
-    case initial
-    case loading
-    case content(scheduledNotificationsDict: [String: [ScheduledNotification]],
-                 filteredScheduledNotifications: [ScheduledNotification])
-    case filterContent(filteredScheduledNotifications: [ScheduledNotification])
-    case error(message: String)
-}
-
-final class HomeViewModel: ObservableObject {
+final class HomeViewModel: ObservableObject, HomeViewModelProtocol {
     
     // MARK: - Binding Properties
     
-    @Published private(set) var state: HomeViewModelState = .initial
+    @Published private(set) var statePublished: HomeViewModelState = .initial
+    var state: Published<HomeViewModelState>.Publisher { $statePublished }
     
     // MARK: - Private Properties
     
@@ -39,22 +31,17 @@ final class HomeViewModel: ObservableObject {
     
     // MARK: - Exposed Functions
     
-    func filterScheduledDatesWith(date: Date) {
-        dateOfFilter = date
-        state = .filterContent(filteredScheduledNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
-    }
-    
-    func getScheduledNotifications() {
-        state = .loading
+    func fetchScheduledNotifications() {
+        statePublished = .loading
         getScheduledNotificationsUseCase.getScheduledNotifications { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error):
-                self.state = .error(message: error.localizedDescription)
+                self.statePublished = .error(message: error.localizedDescription)
             case .success(let scheduledNotifications):
                 self.scheduledNotificationsDict = Dictionary(grouping: scheduledNotifications,
                                                              by: { $0.date.dateString })
-                self.state = .content(
+                self.statePublished = .content(
                     scheduledNotificationsDict: self.scheduledNotificationsDict,
                     filteredScheduledNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
             }
@@ -67,6 +54,11 @@ final class HomeViewModel: ObservableObject {
     
     func getMonthDescriptionOf(date: Date) -> String {
         return date.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased
+    }
+    
+    func filterScheduledDatesWith(date: Date) {
+        dateOfFilter = date
+        statePublished = .filterContent(filteredScheduledNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
     }
     
     func verifyFirstAccessOnApp(routeToOnboardingCallback: @escaping (() -> Void)) {
