@@ -149,7 +149,7 @@ private extension HomeViewController {
                 case .error(let message):
                     self.showAlertWith(title: LocalizedString.alertErrorTitle,
                                        andMesssage: message)
-                case .content(let scheduledNotificationsDict, 
+                case .content(let scheduledNotificationsDict,
                               let filteredScheduledNotifications):
                     self.handleContentState(scheduledNotificationsDict,
                                             filteredScheduledNotifications)
@@ -173,36 +173,32 @@ private extension HomeViewController {
 
 // MARK: - FSCalendarDelegate
 
-extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, FSCalendarDataSource {
+extension HomeViewController: FSCalendarDelegate {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         setupNavigationBarMonthTitle()
     }
     
-    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let scheduledNotifications = viewModel.getFilteredScheduledDatesWith(date: date)
-        if !scheduledNotifications.isEmpty {
-            let colors: [UIColor] = scheduledNotifications.map { UIColor(hex: $0.colorHex) }
-            
-            cell.eventIndicator.isHidden = false
-            cell.eventIndicator.numberOfEvents = scheduledNotifications.count
-            cell.preferredEventDefaultColors = colors
-            cell.preferredEventSelectionColors = colors
-        }
-    }
-    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        calendarViewDateChangedTo(date: date)
+        viewModel.filterScheduledDatesWith(date: date)
     }
-    
+}
+
+// MARK: - FSCalendarDataSource
+
+extension HomeViewController: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         return viewModel.getFilteredScheduledDatesWith(date: date).count
     }
-    
+}
+
+// MARK: - FSCalendarDelegateAppearance
+
+extension HomeViewController: FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
         let scheduledNotifications = viewModel.getFilteredScheduledDatesWith(date: date)
         return scheduledNotifications.map { UIColor(hex: $0.colorHex) }
     }
-        
+    
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
         let scheduledNotifications = viewModel.getFilteredScheduledDatesWith(date: date)
         return scheduledNotifications.map { UIColor(hex: $0.colorHex) }
@@ -212,10 +208,6 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
 // MARK: - Helpers functions
 
 extension HomeViewController {
-    private func calendarViewDateChangedTo(date: Date) {
-        viewModel.filterScheduledDatesWith(date: date)
-    }
-    
     private func verifyFirstAccessOnApp() {
         viewModel.verifyFirstAccessOnApp { [weak self] in
             self?.router.route(to: .onboard, withParams: [:])
