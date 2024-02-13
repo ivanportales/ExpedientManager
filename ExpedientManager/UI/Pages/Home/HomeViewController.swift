@@ -10,9 +10,10 @@ import FSCalendar
 import UIKit
 
 final class HomeViewController: UIViewController, LoadingShowableViewControllerProtocol {
-    var loadingView: LoadingView?
     
     // MARK: - UI
+    
+    var loadingView: LoadingView?
     
     lazy var calendarView: FSCalendar = {
         let calendarView = FSCalendar()
