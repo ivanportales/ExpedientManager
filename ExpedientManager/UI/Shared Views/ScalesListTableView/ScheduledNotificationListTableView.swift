@@ -1,5 +1,5 @@
 //
-//  ScalesListTableView.swift
+//  ScheduledNotificationListTableView.swift
 //  ExpedientManager
 //
 //  Created by Gonzalo Ivan Santos Portales on 31/01/24.
@@ -19,6 +19,8 @@ final class ScheduledNotificationListTableView: UITableView {
     
     // MARK: - Private Properties
     
+    private let emptyListMessage: String
+    
     private var scheduledNotifications: [ScheduledNotification] = [] {
         didSet {
             reloadData()
@@ -27,7 +29,9 @@ final class ScheduledNotificationListTableView: UITableView {
     
     // MARK: - Inits
     
-    init(scheduledNotifications: [ScheduledNotification] = []) {
+    init(scheduledNotifications: [ScheduledNotification] = [],
+         emptyListMessage: String) {
+        self.emptyListMessage = emptyListMessage
         super.init(frame: .zero, style: .plain)
         translatesAutoresizingMaskIntoConstraints = false
         setupView()
@@ -80,6 +84,8 @@ extension ScheduledNotificationListTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if scheduledNotifications.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: EmptyTableViewCell.cellIdentifier, for: indexPath) as! EmptyTableViewCell
+            cell.setupCell(withMessage: emptyListMessage)
+            
             return cell
         }
         

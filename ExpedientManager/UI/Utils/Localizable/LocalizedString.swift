@@ -45,7 +45,8 @@ extension LocalizedString {
     static let yesText = localized(for: "yesText")
     static let noText = localized(for: "noText")
     
-    static let emptyTableViewMsg = localized(for: "emptyTableViewMsg")
+    static let emptyScheduledNotificationsMessage = localized(for: "emptyScheduledNotificationsMessage")
+    static let emptyScheduledNotificationsForDayMessage = localized(for: "emptyScheduledNotificationsForDayMessage")
     static let periodLabel = localized(for: "periodLabel")
     static let addTitle = localized(for: "addTitle")
     

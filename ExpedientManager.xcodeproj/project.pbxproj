@@ -20,7 +20,7 @@
 		AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */; };
 		AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */; };
 		AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */; };
-		AE5F19E32B6ADE7D0045C479 /* ScalesListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5F19E22B6ADE7D0045C479 /* ScalesListTableView.swift */; };
+		AE5F19E32B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */; };
 		AE6731762B76E9D800169F66 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6731752B76E9D800169F66 /* LoadingView.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */; };
@@ -28,6 +28,7 @@
 		AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D702B59F49400B2389B /* CarouselView.swift */; };
 		AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */; };
 		AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */; };
+		AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE72749C2B7ADE2A009E479A /* HomeViewControllerTests.swift */; };
 		AE7DE7AB2B58814400F57E42 /* ClosureButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */; };
 		AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */; };
 		AE7DE7B22B58946F00F57E42 /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */; };
@@ -153,7 +154,7 @@
 		AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseError.swift; sourceTree = "<group>"; };
 		AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCase.swift; sourceTree = "<group>"; };
-		AE5F19E22B6ADE7D0045C479 /* ScalesListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalesListTableView.swift; sourceTree = "<group>"; };
+		AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationListTableView.swift; sourceTree = "<group>"; };
 		AE6731752B76E9D800169F66 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerProtocol.swift; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 		AE6E6D702B59F49400B2389B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCarouselItem.swift; sourceTree = "<group>"; };
 		AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellView.swift; sourceTree = "<group>"; };
+		AE72749C2B7ADE2A009E479A /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureButtonView.swift; sourceTree = "<group>"; };
 		AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkRouter.swift; sourceTree = "<group>"; };
 		AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
@@ -368,7 +370,7 @@
 			children = (
 				AE54E6E02B6C6A94008CDB82 /* EmptyTableViewCell */,
 				AE54E6DF2B6C6A6C008CDB82 /* ScheduledScalesTableViewCell */,
-				AE5F19E22B6ADE7D0045C479 /* ScalesListTableView.swift */,
+				AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */,
 			);
 			path = ScalesListTableView;
 			sourceTree = "<group>";
@@ -397,6 +399,30 @@
 				AE6E6D732B59F4CD00B2389B /* OnboardingCarouselItem.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AE7274992B7ADE00009E479A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AE72749A2B7ADE08009E479A /* Pages */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AE72749A2B7ADE08009E479A /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				AE72749B2B7ADE10009E479A /* Home */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		AE72749B2B7ADE10009E479A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AE72749C2B7ADE2A009E479A /* HomeViewControllerTests.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		AE7DE7AC2B58946700F57E42 /* Navigation */ = {
@@ -544,6 +570,7 @@
 		AED2502B2B57552E00290E42 /* ExpedientManagerTests */ = {
 			isa = PBXGroup;
 			children = (
+				AE7274992B7ADE00009E479A /* UI */,
 				AED2502C2B57552E00290E42 /* ExpedientManagerTests.swift */,
 			);
 			path = ExpedientManagerTests;
@@ -1165,7 +1192,7 @@
 				AED250BA2B57558100290E42 /* ScrollToKeyboardAvoiding.swift in Sources */,
 				AED250162B57552C00290E42 /* AppDelegate.swift in Sources */,
 				AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */,
-				AE5F19E32B6ADE7D0045C479 /* ScalesListTableView.swift in Sources */,
+				AE5F19E32B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift in Sources */,
 				AED250BF2B57558100290E42 /* HomeViewController.swift in Sources */,
 				AE888CC92B6D3F5D00068558 /* UserNotificationModel.swift in Sources */,
 				AED250D82B57558100290E42 /* CoreDataFixedScaleRepository.swift in Sources */,
@@ -1235,6 +1262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AED2502D2B57552E00290E42 /* ExpedientManagerTests.swift in Sources */,
+				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

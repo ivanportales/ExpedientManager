@@ -22,7 +22,7 @@ final class ScalesListViewController: UIViewController, LoadingShowableViewContr
     }()
     
     lazy var scalesTableView: ScheduledNotificationListTableView = {
-        let tableView = ScheduledNotificationListTableView()
+        let tableView = ScheduledNotificationListTableView(emptyListMessage: LocalizedString.emptyScheduledNotificationsMessage)
         tableView.viewDelegate = self
         
         return tableView

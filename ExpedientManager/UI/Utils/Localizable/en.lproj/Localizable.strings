@@ -22,7 +22,8 @@
 "daysLabel" = "Day(s)";
 "hoursLabel" = "Hour(s)";
 "doneButton" = "Done";
-"emptyTableViewMsg" = "There is nothing scheduled for the selected day.";
+"emptyScheduledNotificationsMessage" = "There are no items to show";
+"emptyScheduledNotificationsForDayMessage" = "There is nothing scheduled for the selected day.";
 "periodLabel" = "Period";
 "addTitle" = "Add shift";
 

@@ -16,7 +16,6 @@ class EmptyTableViewCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel! {
         didSet {
             messageLabel.font = .poppinsRegularOf(size: 18)
-            messageLabel.text = LocalizedString.emptyTableViewMsg
         }
     }
     
@@ -26,6 +25,12 @@ class EmptyTableViewCell: UITableViewCell {
         super.init(coder: coder)
         clipsToBounds = true
         selectionStyle = .none
+    }
+    
+    // MARK: - Exposed Functions
+    
+    func setupCell(withMessage message: String) {
+        messageLabel.text = message
     }
     
     // MARK: - Override Functions

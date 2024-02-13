@@ -22,7 +22,8 @@
 "daysLabel" = "Dia(s)";
 "hoursLabel" = "Hora(s)";
 "doneButton" = "Feito";
-"emptyTableViewMsg" = "Não tem nada agendado para o dia selecionado.";
+"emptyScheduledNotificationsMessage" = "Não tem items para serem mostrados";
+"emptyScheduledNotificationsForDayMessage" = "Não tem nada agendado para o dia selecionado.";
 "periodLabel" = "Período";
 "addTitle" = "Adicionar";
 
