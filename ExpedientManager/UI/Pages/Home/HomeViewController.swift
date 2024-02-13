@@ -43,7 +43,7 @@ final class HomeViewController: UIViewController, LoadingShowableViewControllerP
     }()
     
     lazy var activitiesListTableView: ScheduledNotificationListTableView = {
-        return ScheduledNotificationListTableView()
+        return ScheduledNotificationListTableView(emptyListMessage: LocalizedString.emptyScheduledNotificationsForDayMessage)
     }()
     
     // MARK: - Private Properties
