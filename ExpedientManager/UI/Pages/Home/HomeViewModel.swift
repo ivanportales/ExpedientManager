@@ -42,8 +42,8 @@ final class HomeViewModel: ObservableObject, HomeViewModelProtocol {
                 self.scheduledNotificationsDict = Dictionary(grouping: scheduledNotifications,
                                                              by: { $0.date.dateString })
                 self.statePublished = .content(
-                    scheduledNotificationsDict: self.scheduledNotificationsDict,
-                    filteredScheduledNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
+                    notificationsCount: self.scheduledNotificationsDict.values.count,
+                    filteredNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
             }
         }
     }
@@ -58,7 +58,7 @@ final class HomeViewModel: ObservableObject, HomeViewModelProtocol {
     
     func filterScheduledDatesWith(date: Date) {
         dateOfFilter = date
-        statePublished = .filterContent(filteredScheduledNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
+        statePublished = .filterContent(filteredNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
     }
     
     func verifyFirstAccessOnApp(routeToOnboardingCallback: @escaping (() -> Void)) {

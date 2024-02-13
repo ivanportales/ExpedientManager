@@ -10,9 +10,9 @@ import Foundation
 enum HomeViewModelState {
     case initial
     case loading
-    case content(scheduledNotificationsDict: [String: [ScheduledNotification]],
-                 filteredScheduledNotifications: [ScheduledNotification])
-    case filterContent(filteredScheduledNotifications: [ScheduledNotification])
+    case content(notificationsCount: Int,
+                 filteredNotifications: [ScheduledNotification])
+    case filterContent(filteredNotifications: [ScheduledNotification])
     case error(message: String)
 }
 

@@ -150,25 +150,25 @@ private extension HomeViewController {
                 case .error(let message):
                     self.showAlertWith(title: LocalizedString.alertErrorTitle,
                                        andMesssage: message)
-                case .content(let scheduledNotificationsDict,
-                              let filteredScheduledNotifications):
-                    self.handleContentState(scheduledNotificationsDict,
-                                            filteredScheduledNotifications)
-                case .filterContent(let filteredScheduledNotifications):
-                    self.activitiesListTableView.setup(scheduledNotifications: filteredScheduledNotifications)
+                case .content(let notificationsCount,
+                              let filteredNotifications):
+                    self.handleContentState(notificationsCount,
+                                            filteredNotifications)
+                case .filterContent(let filteredNotifications):
+                    self.activitiesListTableView.setup(scheduledNotifications: filteredNotifications)
                 }
             }.store(in: &subscribers)
     }
     
-    func handleContentState(_ scheduledNotificationsDict: [String: [ScheduledNotification]],
-                            _ filteredScheduledNotifications: [ScheduledNotification]) {
-        if scheduledNotificationsDict.isEmpty {
+    func handleContentState(_ notificationsCount: Int,
+                            _ filteredNotifications: [ScheduledNotification]) {
+        if notificationsCount == 0 {
             hideNavigationBarButtonFrom(position: .right, andIndex: 1)
         } else {
             showNavigationBarButtonFrom(position: .right, andIndex: 1)
         }
         calendarView.reloadData()
-        activitiesListTableView.setup(scheduledNotifications: filteredScheduledNotifications)
+        activitiesListTableView.setup(scheduledNotifications: filteredNotifications)
     }
 }
 
