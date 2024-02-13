@@ -22,12 +22,9 @@ final class HomeViewModel: ObservableObject {
     
     @Published private(set) var state: HomeViewModelState = .initial
     
-    // MARK: - Exposed Properties
-    
-    private(set) var scheduledNotificationsDict: [String: [ScheduledNotification]] = [:]
-    
     // MARK: - Private Properties
     
+    private var scheduledNotificationsDict: [String: [ScheduledNotification]] = [:]
     private var dateOfFilter: Date = .init()
     private let getScheduledNotificationsUseCase: GetScheduledNotificationsUseCaseProtocol
     private let getValueForKeyUseCase: GetValueForKeyUseCaseProtocol
@@ -64,6 +61,10 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
+    func getFilteredScheduledDatesWith(date: Date) -> [ScheduledNotification] {
+        return scheduledNotificationsDict[date.dateString] ?? []
+    }
+    
     func getMonthDescriptionOf(date: Date) -> String {
         return date.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased
     }
@@ -72,11 +73,5 @@ final class HomeViewModel: ObservableObject {
         if getValueForKeyUseCase.getValue(forKey: .hasOnboarded) == nil {
             routeToOnboardingCallback()
         }
-    }
-    
-    // MARK: - Private Functions
-    
-    private func getFilteredScheduledDatesWith(date: Date) -> [ScheduledNotification] {
-        return scheduledNotificationsDict[date.dateString] ?? []
     }
 }

@@ -179,7 +179,8 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if let scheduledNotifications = viewModel.scheduledNotificationsDict[date.dateString] {
+        let scheduledNotifications = viewModel.getFilteredScheduledDatesWith(date: date)
+        if !scheduledNotifications.isEmpty {
             let colors: [UIColor] = scheduledNotifications.map { UIColor(hex: $0.colorHex) }
             
             cell.eventIndicator.isHidden = false
@@ -194,25 +195,17 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDelegateAppearance, 
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if let scheduledNotifications = viewModel.scheduledNotificationsDict[date.dateString] {
-            return scheduledNotifications.count
-        }
-        
-        return 0
+        return viewModel.getFilteredScheduledDatesWith(date: date).count
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
-        if let scheduledNotifications = viewModel.scheduledNotificationsDict[date.dateString] {
-            return scheduledNotifications.map { UIColor(hex: $0.colorHex) }
-        }
-        return nil
+        let scheduledNotifications = viewModel.getFilteredScheduledDatesWith(date: date)
+        return scheduledNotifications.map { UIColor(hex: $0.colorHex) }
     }
-    
+        
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
-        if let scheduledNotifications = viewModel.scheduledNotificationsDict[date.dateString] {
-            return scheduledNotifications.map { UIColor(hex: $0.colorHex) }
-        }
-        return nil
+        let scheduledNotifications = viewModel.getFilteredScheduledDatesWith(date: date)
+        return scheduledNotifications.map { UIColor(hex: $0.colorHex) }
     }
 }
 
