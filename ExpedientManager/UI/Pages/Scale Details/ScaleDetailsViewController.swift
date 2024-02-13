@@ -2,7 +2,7 @@
 //  ScaleDetailsViewController.swift
 //  ExpedientManager
 //
-//  Created by Gonzalo Ivan Santos Portales on 01/12/24.
+//  Created by Gonzalo Ivan Santos Portales on 01/12/23.
 //
 
 import Combine

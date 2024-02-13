@@ -2,7 +2,7 @@
 //  OnboardingViewController.swift
 //  ExpedientManager
 //
-//  Created by Gonzalo Ivan Santos Portales on 11/25/24.
+//  Created by Gonzalo Ivan Santos Portales on 05/12/23.
 //
 
 import UIKit

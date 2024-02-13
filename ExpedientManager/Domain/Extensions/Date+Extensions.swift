@@ -8,10 +8,6 @@
 import Foundation
 
 extension Date {
-    var dateString: String {
-        return formateDate(withFormat: "MMM dd,yyyy")
-    }
-    
     func formateDate(withFormat format: String = "d MMM yyyy",
                      dateStyle: DateFormatter.Style = .medium) -> String {
         let dateFormatter = DateFormatter()

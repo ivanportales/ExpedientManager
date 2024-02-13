@@ -2,7 +2,7 @@
 //  EmptyTableViewCell.swift
 //  ExpedientManager
 //
-//  Created by Gonzalo Ivan Santos Portales on 10/11/24.
+//  Created by Gonzalo Ivan Santos Portales on 10/11/23.
 //
 
 import UIKit

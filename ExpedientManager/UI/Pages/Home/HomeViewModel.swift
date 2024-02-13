@@ -2,7 +2,7 @@
 //  HomeViewModel.swift
 //  ExpedientManager
 //
-//  Created by Gonzalo Ivan Santos Portales on 10/20/24.
+//  Created by Gonzalo Ivan Santos Portales on 01/11/23.
 //
 
 import Foundation
@@ -40,7 +40,7 @@ final class HomeViewModel: ObservableObject, HomeViewModelProtocol {
                 self.statePublished = .error(message: error.localizedDescription)
             case .success(let scheduledNotifications):
                 self.scheduledNotificationsDict = Dictionary(grouping: scheduledNotifications,
-                                                             by: { $0.date.dateString })
+                                                             by: { self.key(forDate:$0.date) })
                 self.statePublished = .content(
                     notificationsCount: self.scheduledNotificationsDict.values.count,
                     filteredNotifications: getFilteredScheduledDatesWith(date: dateOfFilter))
@@ -49,7 +49,7 @@ final class HomeViewModel: ObservableObject, HomeViewModelProtocol {
     }
     
     func getFilteredScheduledDatesWith(date: Date) -> [ScheduledNotification] {
-        return scheduledNotificationsDict[date.dateString] ?? []
+        return scheduledNotificationsDict[key(forDate: date)] ?? []
     }
     
     func getMonthDescriptionOf(date: Date) -> String {
@@ -65,5 +65,11 @@ final class HomeViewModel: ObservableObject, HomeViewModelProtocol {
         if getValueForKeyUseCase.getValue(forKey: .hasOnboarded) == nil {
             routeToOnboardingCallback()
         }
+    }
+    
+    // MARK: - Private Functions
+    
+    private func key(forDate date: Date) -> String {
+        return date.formateDate(withFormat: "MMM dd,yyyy")
     }
 }

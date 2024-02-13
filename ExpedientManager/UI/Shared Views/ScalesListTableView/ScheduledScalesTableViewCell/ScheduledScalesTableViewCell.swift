@@ -2,7 +2,7 @@
 //  ScheduledScalesTableViewCell.swift
 //  ExpedientManager
 //
-//  Created by Gonzalo Ivan Santos Portales on 08/11/24.
+//  Created by Gonzalo Ivan Santos Portales on 08/11/23.
 //
 
 import UIKit
