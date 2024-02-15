@@ -137,7 +137,6 @@ private extension HomeViewController {
     func setupBindings() {
         viewModel
             .state
-            .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self = self else { return }
