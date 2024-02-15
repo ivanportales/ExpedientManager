@@ -19,27 +19,18 @@ final class HomeViewControllerTests: XCTestCase {
     func testViewDidAppearCallToFetchFunction() {
         makeSUT()
         
-        viewController.loadViewIfNeeded()
-        viewController.viewWillAppear(false)
-        
         XCTAssertTrue(viewModel.didCallFetchScheduledNotifications)
     }
     
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCaseIsEmpty() {
         makeSUT()
         
-        let expectation = XCTestExpectation(description: "ViewModel fetches scheduled notifications")
+        let expectation = XCTestExpectation(description: "ViewController diplays empty event calendar")
         
-        viewController.loadViewIfNeeded()
-        viewController.viewWillAppear(false)
-        
-        viewModel.state
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] state in
-                XCTAssertEqual(self!.viewController.numberOfEventsForCurrentMonth(), 0)
-                expectation.fulfill()
-            }
-            .store(in: &subscribers)
+        listenToStateChange { [weak self] state in
+            XCTAssertEqual(self!.viewController.numberOfEventsForCurrentMonth(), 0)
+            expectation.fulfill()
+        }
         
         wait(for: [expectation], timeout: 1.0)
     }
@@ -48,29 +39,25 @@ final class HomeViewControllerTests: XCTestCase {
         let models = getModels()
         makeSUT(scheduledNotifications: models)
         
-        let expectation = XCTestExpectation(description: "ViewModel fetches scheduled notifications")
+        let expectation = XCTestExpectation(description: "ViewController diplays event calendar with 10 events")
         
-        viewController.loadViewIfNeeded()
-        viewController.viewWillAppear(false)
-        
-        viewModel.state
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] state in
-                XCTAssertEqual(self!.viewController.numberOfEventsForCurrentMonth(), models.count)
-                expectation.fulfill()
-            }
-            .store(in: &subscribers)
+        listenToStateChange { [weak self] state in
+            XCTAssertEqual(self!.viewController.numberOfEventsForCurrentMonth(), models.count)
+            expectation.fulfill()
+        }
         
         wait(for: [expectation], timeout: 1.0)
     }
 
-    
     private func makeSUT(scheduledNotifications: [ScheduledNotification] = []) {
         self.subscribers = Set<AnyCancellable>()
         self.viewModel = HomeViewModelStub(scheduledNotifications: scheduledNotifications)
         self.router = DeeplinkRouterStub()
         self.viewController = HomeViewController(viewModel: viewModel!,
                                                  router: router!)
+        
+        viewController.loadViewIfNeeded()
+        viewController.viewWillAppear(false)
     }
     
     private func getModels() -> [ScheduledNotification] {
@@ -86,6 +73,15 @@ final class HomeViewControllerTests: XCTestCase {
         }
         
         return items
+    }
+    
+    private func listenToStateChange(_ callback: @escaping (HomeViewModelState) -> Void) {
+        viewModel.state
+            .receive(on: DispatchQueue.main)
+            .sink { state in
+                callback(state)
+            }
+            .store(in: &subscribers)
     }
 }
 
