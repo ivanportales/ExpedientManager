@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1ABCAF6551EA9E1C9F9F5103 /* Pods_ExpedientManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */; };
 		718C3D3D2B73F7C372F63ED4 /* Pods_ExpedientManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */; };
+		AE4548652B7D92D400C8343C /* DeeplinkRouterStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4548642B7D92D400C8343C /* DeeplinkRouterStub.swift */; };
 		AE4B4D042B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B4D032B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift */; };
 		AE4B4D062B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B4D052B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift */; };
 		AE4B4D0A2B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B4D092B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift */; };
@@ -134,6 +135,7 @@
 		7C3A28BED89E90818C58226B /* Pods-ExpedientManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManager.release.xcconfig"; path = "Target Support Files/Pods-ExpedientManager/Pods-ExpedientManager.release.xcconfig"; sourceTree = "<group>"; };
 		A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpedientManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A834456D8495583D56D1EE96 /* Pods-ExpedientManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-ExpedientManagerTests/Pods-ExpedientManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE4548642B7D92D400C8343C /* DeeplinkRouterStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkRouterStub.swift; sourceTree = "<group>"; };
 		AE4B4D032B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScheduledNotificationsUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE4B4D052B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScheduledNotificationsUseCase.swift; sourceTree = "<group>"; };
 		AE4B4D092B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetValueForKeyUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -267,6 +269,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE4548622B7D929400C8343C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AE4548632B7D929C00C8343C /* Stubs */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		AE4548632B7D929C00C8343C /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				AE4548642B7D92D400C8343C /* DeeplinkRouterStub.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
 		AE4B4D022B72F0800034B971 /* GetScheduledNotificationsUseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +403,7 @@
 		AE7274992B7ADE00009E479A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AE4548622B7D929400C8343C /* Shared */,
 				AE72749A2B7ADE08009E479A /* Pages */,
 			);
 			path = UI;
@@ -1164,6 +1183,7 @@
 			files = (
 				AED2502D2B57552E00290E42 /* ExpedientManagerTests.swift in Sources */,
 				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
+				AE4548652B7D92D400C8343C /* DeeplinkRouterStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
