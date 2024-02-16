@@ -17,7 +17,7 @@ final class HomeViewControllerTests: XCTestCase {
     private var viewController: HomeViewController!
     var subscribers: Set<AnyCancellable>!
 
-    func testViewDidAppearCallToFetchFunction() {
+    func testCallToFetchFunctionWhenViewControllerLoads() {
         makeSUT()
         
         XCTAssertTrue(viewModel.didCallFetchScheduledNotifications)
@@ -38,12 +38,30 @@ final class HomeViewControllerTests: XCTestCase {
     
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCase() {
         let models = getModels()
+        let colorsDict = Dictionary(grouping: models) { $0.colorHex }
         makeSUT(scheduledNotifications: models)
         
         let expectation = XCTestExpectation(description: "ViewController diplays event calendar with 10 events")
         
         listenToStateChange { [weak self] state in
             XCTAssertEqual(self!.viewController.numberOfEventsForCurrentMonth(), models.count)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testColorsForDatesInCalendar() {
+        let models = getModels()
+        makeSUT(scheduledNotifications: models)
+        
+        let expectation = XCTestExpectation(description: "ViewController diplays right event colors for date on calendar")
+        
+        listenToStateChange { [weak self] state in
+            for model in models {
+                let color = UIColor(hex: model.colorHex)
+                XCTAssertTrue(self!.viewController.colorsForEvents(on: model.date).contains(color))
+            }
             expectation.fulfill()
         }
         
@@ -109,7 +127,14 @@ fileprivate extension HomeViewController {
     }
     
     func colorsForEvents(on date: Date) -> [UIColor] {
-        return calendar(calendarView, appearance: calendarView.appearance, eventDefaultColorsFor: date) ?? []
+        let eventDefaultColors = calendar(calendarView, appearance: calendarView.appearance, eventDefaultColorsFor: date) ?? []
+        let eventSelectionColors = calendar(calendarView, appearance: calendarView.appearance, eventSelectionColorsFor: date) ?? []
+        
+        if eventDefaultColors == eventSelectionColors {
+            return eventDefaultColors
+        }
+        
+        return []
     }
     
     func getDatesFromCurrentMonth() -> [Date] {
