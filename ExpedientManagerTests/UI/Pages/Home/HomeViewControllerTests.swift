@@ -8,6 +8,7 @@
 import Combine
 @testable import ExpedientManager
 import XCTest
+import FSCalendar
 
 final class HomeViewControllerTests: XCTestCase {
     
@@ -63,13 +64,22 @@ final class HomeViewControllerTests: XCTestCase {
     private func getModels() -> [ScheduledNotification] {
         var items: [ScheduledNotification] = []
 
-        for index in 1..<11 {
+        for index in 1..<6 {
             items.append(ScheduledNotification(uid: index.description,
                                                title: "Title \(index)",
                                                description: "Description \(index)",
                                                date: Date.customDate(day: index)!,
                                                scaleUid: "Scale UID \(index)",
                                                colorHex: UIColor.black.hex))
+        }
+        
+        for index in 6..<11 {
+            items.append(ScheduledNotification(uid: index.description,
+                                               title: "Title \(index)",
+                                               description: "Description \(index)",
+                                               date: Date.customDate(day: index)!,
+                                               scaleUid: "Scale UID \(index)",
+                                               colorHex: UIColor.blue.hex))
         }
         
         return items
@@ -96,6 +106,10 @@ fileprivate extension HomeViewController {
             totalEvents += calendarView.dataSource?.calendar?(calendarView, numberOfEventsFor: date) ?? 0
         }
         return totalEvents
+    }
+    
+    func colorsForEvents(on date: Date) -> [UIColor] {
+        return calendar(calendarView, appearance: calendarView.appearance, eventDefaultColorsFor: date) ?? []
     }
     
     func getDatesFromCurrentMonth() -> [Date] {
