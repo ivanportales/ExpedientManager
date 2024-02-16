@@ -38,6 +38,7 @@
 		AE7DE7B62B589BFF00F57E42 /* LocalStorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */; };
 		AE7DE7B82B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */; };
 		AE7FA9872B75B4250079E9FD /* LoadingShowableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FA9862B75B4250079E9FD /* LoadingShowableViewController.swift */; };
+		AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8593C42B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift */; };
 		AE888CC92B6D3F5D00068558 /* UserNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE888CC82B6D3F5D00068558 /* UserNotificationModel.swift */; };
 		AE8CB6EF2B784E6C00649368 /* CustomAlertTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6EE2B784E6C00649368 /* CustomAlertTransitionManager.swift */; };
 		AE8CB6F22B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6F12B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift */; };
@@ -164,6 +165,7 @@
 		AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepository.swift; sourceTree = "<group>"; };
 		AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE7FA9862B75B4250079E9FD /* LoadingShowableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShowableViewController.swift; sourceTree = "<group>"; };
+		AE8593C42B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetValueForKeyUseCaseStub.swift; sourceTree = "<group>"; };
 		AE888CC82B6D3F5D00068558 /* UserNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationModel.swift; sourceTree = "<group>"; };
 		AE8CB6EE2B784E6C00649368 /* CustomAlertTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertTransitionManager.swift; sourceTree = "<group>"; };
 		AE8CB6F12B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueForKeyUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				AE4548642B7D92D400C8343C /* DeeplinkRouterStub.swift */,
+				AE8593C42B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -1183,6 +1186,7 @@
 			files = (
 				AED2502D2B57552E00290E42 /* ExpedientManagerTests.swift in Sources */,
 				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
+				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
 				AE4548652B7D92D400C8343C /* DeeplinkRouterStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
