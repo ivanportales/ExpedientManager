@@ -15,6 +15,7 @@ final class HomeViewControllerTests: XCTestCase {
     private var viewModel: HomeViewModelStub!
     private var router: DeeplinkRouterStub!
     private var viewController: HomeViewController!
+    private let currentDateForTesting: Date = Date.customDate()!
     var subscribers: Set<AnyCancellable>!
 
     func testCallToFetchFunctionWhenViewControllerLoads() {
@@ -38,7 +39,6 @@ final class HomeViewControllerTests: XCTestCase {
     
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCase() {
         let models = getModels()
-        let colorsDict = Dictionary(grouping: models) { $0.colorHex }
         makeSUT(scheduledNotifications: models)
         
         let expectation = XCTestExpectation(description: "ViewController diplays event calendar with 10 events")
@@ -77,6 +77,7 @@ final class HomeViewControllerTests: XCTestCase {
         
         viewController.loadViewIfNeeded()
         viewController.viewWillAppear(false)
+        viewController.setDateForCurrentCalendarPage(currentDateForTesting)
     }
     
     private func getModels() -> [ScheduledNotification] {
@@ -117,9 +118,13 @@ final class HomeViewControllerTests: XCTestCase {
 // MARK: - Helper Extension
 
 fileprivate extension HomeViewController {
+    func setDateForCurrentCalendarPage(_ date: Date) {
+        calendarView.setCurrentPage(date, animated: false)
+    }
+    
     func numberOfEventsForCurrentMonth() -> Int {
         var totalEvents = 0
-        let dates = getDatesFromCurrentMonth()
+        let dates = getDatesFromCurrentCalendarDisplayedMonth()
         for date in dates {
             totalEvents += calendarView.dataSource?.calendar?(calendarView, numberOfEventsFor: date) ?? 0
         }
@@ -137,8 +142,8 @@ fileprivate extension HomeViewController {
         return []
     }
     
-    func getDatesFromCurrentMonth() -> [Date] {
-        let now = Date()
+    private func getDatesFromCurrentCalendarDisplayedMonth() -> [Date] {
+        let now = calendarView.currentPage
         let calendar = Calendar.current
         let currentYear = calendar.component(.year, from: now)
         let currentMonth = calendar.component(.month, from: now)
@@ -160,24 +165,22 @@ fileprivate extension HomeViewController {
     }
 }
 
-
 fileprivate extension Date {
-    static func customDate(day: Int = 1,
+    static func customDate(year: Int = 2023,
+                           month: Int = 1,
+                           day: Int = 1,
                            hour: Int = 1,
                            minute: Int = 1,
                            second: Int = 1) -> Date? {
-        let calendar = Calendar.current
-        let currentDateComponents = calendar.dateComponents([.year, .month], from: Date())
-        
         var dateComponents = DateComponents()
-        dateComponents.year = currentDateComponents.year
-        dateComponents.month = currentDateComponents.month
+        dateComponents.year = year
+        dateComponents.month = month
         dateComponents.day = day
         dateComponents.hour = hour
         dateComponents.minute = minute
         dateComponents.second = second
 
-        return calendar.date(from: dateComponents)
+        return Calendar.current.date(from: dateComponents)
     }
 }
 
