@@ -37,7 +37,15 @@ final class HomeViewControllerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "ViewController diplays empty event calendar")
         
         listenToStateChange { [weak self] state in
-            XCTAssertEqual(self!.viewController.numberOfEventsForCurrentMonth(), 0)
+            switch state {
+            case .content(let notificationsCount,
+                          let filteredNotifications):
+                XCTAssertEqual(self!.viewController.numberOfEventsForCurrentMonth(), 0)
+                XCTAssertEqual(notificationsCount, 0)
+                XCTAssertTrue(filteredNotifications.isEmpty)
+            default:
+                XCTFail()
+            }
             expectation.fulfill()
         }
         
@@ -51,7 +59,15 @@ final class HomeViewControllerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "ViewController diplays event calendar with 10 events")
         
         listenToStateChange { [weak self] state in
-            XCTAssertEqual(self!.viewController.numberOfEventsForCurrentMonth(), models.count)
+            switch state {
+            case .content(let notificationsCount,
+                          let filteredNotifications):
+                XCTAssertEqual(self!.viewController.numberOfEventsForCurrentMonth(), models.count)
+                XCTAssertEqual(notificationsCount, models.count)
+                XCTAssertFalse(filteredNotifications.isEmpty)
+            default:
+                XCTFail()
+            }
             expectation.fulfill()
         }
         
@@ -73,6 +89,17 @@ final class HomeViewControllerTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testChangeOfCurrentDisplayedMonthOnCalendar() {
+        makeSUT()
+        let nextMonthDate = currentDateForTesting.add(1, to: .month)
+        
+        viewController.setDateForCurrentCalendarPage(nextMonthDate)
+        viewController.calendarCurrentPageDidChange(viewController.calendarView)
+        
+        XCTAssertEqual(viewController.title,
+                       nextMonthDate.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased)
     }
 
     private func makeSUT(scheduledNotifications: [ScheduledNotification] = []) {
@@ -121,7 +148,7 @@ final class HomeViewControllerTests: XCTestCase {
 }
 
 
-// MARK: - Helper Extension
+// MARK: - Helper Extensions
 
 fileprivate extension HomeViewController {
     func setDateForCurrentCalendarPage(_ date: Date) {
@@ -187,6 +214,10 @@ fileprivate extension Date {
         dateComponents.second = second
 
         return Calendar.current.date(from: dateComponents)
+    }
+    
+    func add(_ value: Int, to component: Calendar.Component) -> Date {
+        return Calendar.current.date(byAdding: component, value: value, to: self)!
     }
 }
 
