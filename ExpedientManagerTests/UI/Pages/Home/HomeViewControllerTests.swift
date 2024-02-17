@@ -24,6 +24,13 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertTrue(viewModel.didCallFetchScheduledNotifications)
     }
     
+    func testNavigationTitleEqualsToCurrentMonthOnInitialization() {
+        makeSUT()
+        
+        XCTAssertEqual(viewController.title,
+                       currentDateForTesting.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased)
+    }
+    
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCaseIsEmpty() {
         makeSUT()
         
@@ -55,7 +62,7 @@ final class HomeViewControllerTests: XCTestCase {
         let models = getModels()
         makeSUT(scheduledNotifications: models)
         
-        let expectation = XCTestExpectation(description: "ViewController diplays right event colors for date on calendar")
+        let expectation = XCTestExpectation(description: "ViewController displays right event colors for date on calendar")
         
         listenToStateChange { [weak self] state in
             for model in models {
@@ -74,10 +81,9 @@ final class HomeViewControllerTests: XCTestCase {
         self.router = DeeplinkRouterStub()
         self.viewController = HomeViewController(viewModel: viewModel!,
                                                  router: router!)
-        
+        viewController.setDateForCurrentCalendarPage(currentDateForTesting)
         viewController.loadViewIfNeeded()
         viewController.viewWillAppear(false)
-        viewController.setDateForCurrentCalendarPage(currentDateForTesting)
     }
     
     private func getModels() -> [ScheduledNotification] {
