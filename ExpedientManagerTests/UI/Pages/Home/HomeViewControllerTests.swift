@@ -58,7 +58,7 @@ final class HomeViewControllerTests: XCTestCase {
     func testActivitiesListShouldBeInEmptyStateIfReturnFromUseCaseIsEmpty() {
         makeSUT()
         
-        let expectation = XCTestExpectation(description: "ViewController diplays empty event calendar")
+        let expectation = XCTestExpectation(description: "Activities list diplays empty state")
         
         listenToStateChange { [weak self] state in
             switch state {
@@ -125,7 +125,7 @@ final class HomeViewControllerTests: XCTestCase {
         let models = getModels()
         makeSUT(scheduledNotifications: models)
         
-        let expectation = XCTestExpectation(description: "ViewController diplays event calendar with 10 events")
+        let expectation = XCTestExpectation(description: "ViewController diplays event calendar with 10 events on total")
         
         listenToStateChange { [weak self] state in
             switch state {
@@ -142,6 +142,8 @@ final class HomeViewControllerTests: XCTestCase {
         
         wait(for: [expectation], timeout: 1.0)
     }
+    
+    
     
     func testColorsForDatesInCalendar() {
         let models = getModels()
@@ -174,7 +176,8 @@ final class HomeViewControllerTests: XCTestCase {
 
     private func makeSUT(scheduledNotifications: [ScheduledNotification] = []) {
         self.subscribers = Set<AnyCancellable>()
-        self.viewModel = HomeViewModelStub(scheduledNotifications: scheduledNotifications)
+        self.viewModel = HomeViewModelStub(scheduledNotifications: scheduledNotifications, 
+                                           currentSelectedDate: currentDateForTesting)
         self.router = DeeplinkRouterStub()
         self.viewController = HomeViewController(viewModel: viewModel!,
                                                  router: router!)
@@ -224,6 +227,9 @@ final class HomeViewControllerTests: XCTestCase {
 // MARK: - Helper Extensions
 
 fileprivate extension HomeViewController {
+    
+    // MARK: - Calendar View Helpers
+    
     func changeCurrentDisplayedMonthOnCalendar(to date: Date) {
         calendarView.setCurrentPage(date, animated: false)
         calendarCurrentPageDidChange(calendarView)
@@ -249,16 +255,6 @@ fileprivate extension HomeViewController {
         return []
     }
     
-    func isScheduledListInEmptyState() -> Bool {
-        guard activitiesListTableView.numberOfRows(inSection: 0) == 1 else {
-            return false
-        }
-        if let _ = activitiesListTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? EmptyTableViewCell {
-            return true
-        }
-        return false
-    }
-    
     func getDatesFromCurrentCalendarDisplayedMonth() -> [Date] {
         let now = calendarView.currentPage
         let calendar = Calendar.current
@@ -279,6 +275,18 @@ fileprivate extension HomeViewController {
         }
         
         return []
+    }
+    
+    // MARK: - Activities List Helpers
+    
+    func isScheduledListInEmptyState() -> Bool {
+        guard activitiesListTableView.numberOfRows(inSection: 0) == 1 else {
+            return false
+        }
+        if let _ = activitiesListTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? EmptyTableViewCell {
+            return true
+        }
+        return false
     }
 }
 
@@ -313,12 +321,15 @@ fileprivate final class HomeViewModelStub: HomeViewModelProtocol {
     var state: Published<HomeViewModelState>.Publisher { $statePublished }
     
     var scheduledNotifications: [ScheduledNotification]
+    var currentSelectedDate: Date
     var didCallFetchScheduledNotifications = false
     
     // MARK: - Init
     
-    init(scheduledNotifications: [ScheduledNotification]) {
+    init(scheduledNotifications: [ScheduledNotification],
+         currentSelectedDate: Date) {
         self.scheduledNotifications = scheduledNotifications
+        self.currentSelectedDate = currentSelectedDate
     }
     
     // MARK: - Protocol Functions
@@ -326,7 +337,7 @@ fileprivate final class HomeViewModelStub: HomeViewModelProtocol {
     func fetchScheduledNotifications() {
         didCallFetchScheduledNotifications = true
         statePublished = .content(notificationsCount: scheduledNotifications.count,
-                                  filteredNotifications: scheduledNotifications)
+                                  filteredNotifications: filterNotifications(with: currentSelectedDate))
     }
     
     func getFilteredScheduledDatesWith(date: Date) -> [ScheduledNotification] {
@@ -338,6 +349,7 @@ fileprivate final class HomeViewModelStub: HomeViewModelProtocol {
     }
     
     func filterScheduledDatesWith(date: Date) {
+        self.currentSelectedDate = date
         self.statePublished = .filterContent(filteredNotifications: filterNotifications(with: date))
     }
     
