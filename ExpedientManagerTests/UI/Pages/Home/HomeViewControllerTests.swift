@@ -76,6 +76,31 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
+    func testIfListNavigationBarButtonAppearsIfReturnFromUseCaseIsNotEmpty() {
+        let models = getModels()
+        makeSUT(scheduledNotifications: models)
+        
+        let expectation = XCTestExpectation(description: "List NavigationBarButto and AddScale button appears")
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .content(let notificationsCount,
+                         let filteredNotifications):
+                XCTAssertEqual(notificationsCount, models.count)
+                XCTAssertFalse(filteredNotifications.isEmpty)
+               
+                XCTAssertFalse(self!.viewController.navigationItem.rightBarButtonItems![0].isHidden)
+                XCTAssertFalse(self!.viewController.navigationItem.rightBarButtonItems![1].isHidden)
+            default:
+                XCTFail()
+            }
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+   }
+    
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCase() {
         let models = getModels()
         makeSUT(scheduledNotifications: models)
