@@ -178,30 +178,33 @@ final class HomeViewControllerTests: XCTestCase {
         self.router = DeeplinkRouterStub()
         self.viewController = HomeViewController(viewModel: viewModel!,
                                                  router: router!)
-        viewController.setDateForCurrentCalendarPage(currentDateForTesting)
+        viewController.changeCurrentDisplayedMonthOnCalendar(to: currentDateForTesting)
         viewController.loadViewIfNeeded()
         viewController.viewWillAppear(false)
     }
     
     private func getModels() -> [ScheduledNotification] {
         var items: [ScheduledNotification] = []
+        let colors = [
+            UIColor(hex: "#0000FF"),
+            UIColor(hex: "#FF2D55"),
+            UIColor(hex: "#00FF00"),
+            UIColor(hex: "#800080"),
+            UIColor(hex: "#FF8000"),
+            UIColor(hex: "#101138"),
+            UIColor(hex: "#0000FF"),
+            UIColor(hex: "#FF2D55"),
+            UIColor(hex: "#00FF00"),
+            UIColor(hex: "#800080")
+        ]
 
-        for index in 1..<6 {
+        for index in 0..<10 {
             items.append(ScheduledNotification(uid: index.description,
                                                title: "Title \(index)",
                                                description: "Description \(index)",
-                                               date: Date.customDate(day: index)!,
+                                               date: Date.customDate(day: index + 1)!,
                                                scaleUid: "Scale UID \(index)",
-                                               colorHex: UIColor.black.hex))
-        }
-        
-        for index in 6..<11 {
-            items.append(ScheduledNotification(uid: index.description,
-                                               title: "Title \(index)",
-                                               description: "Description \(index)",
-                                               date: Date.customDate(day: index)!,
-                                               scaleUid: "Scale UID \(index)",
-                                               colorHex: UIColor.blue.hex))
+                                               colorHex: colors[index].hex))
         }
         
         return items
@@ -221,12 +224,8 @@ final class HomeViewControllerTests: XCTestCase {
 // MARK: - Helper Extensions
 
 fileprivate extension HomeViewController {
-    func setDateForCurrentCalendarPage(_ date: Date) {
-        calendarView.setCurrentPage(date, animated: false)
-    }
-    
     func changeCurrentDisplayedMonthOnCalendar(to date: Date) {
-        setDateForCurrentCalendarPage(date)
+        calendarView.setCurrentPage(date, animated: false)
         calendarCurrentPageDidChange(calendarView)
     }
     
