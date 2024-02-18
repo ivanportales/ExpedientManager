@@ -55,6 +55,27 @@ final class HomeViewControllerTests: XCTestCase {
          wait(for: [expectation], timeout: 1.0)
     }
     
+    func testActivitiesListShouldBeInEmptyStateIfReturnFromUseCaseIsEmpty() {
+        makeSUT()
+        
+        let expectation = XCTestExpectation(description: "ViewController diplays empty event calendar")
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .content(let notificationsCount,
+                          let filteredNotifications):
+                XCTAssertEqual(notificationsCount, 0)
+                XCTAssertTrue(filteredNotifications.isEmpty)
+                XCTAssertTrue(self!.viewController.isScheduledListInEmptyState())
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCaseIsEmpty() {
         makeSUT()
         
@@ -94,7 +115,6 @@ final class HomeViewControllerTests: XCTestCase {
             default:
                 XCTFail()
             }
-            
             expectation.fulfill()
         }
         
@@ -139,17 +159,18 @@ final class HomeViewControllerTests: XCTestCase {
         
         wait(for: [expectation], timeout: 1.0)
     }
-    
+        
     func testChangeOfCurrentDisplayedMonthOnCalendar() {
         makeSUT()
         let nextMonthDate = currentDateForTesting.add(1, to: .month)
         
-        viewController.setDateForCurrentCalendarPage(nextMonthDate)
-        viewController.calendarCurrentPageDidChange(viewController.calendarView)
+        viewController.changeCurrentDisplayedMonthOnCalendar(to: nextMonthDate)
         
         XCTAssertEqual(viewController.title,
                        nextMonthDate.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased)
     }
+    
+    // MARK: - Helpers Functions
 
     private func makeSUT(scheduledNotifications: [ScheduledNotification] = []) {
         self.subscribers = Set<AnyCancellable>()
@@ -204,6 +225,11 @@ fileprivate extension HomeViewController {
         calendarView.setCurrentPage(date, animated: false)
     }
     
+    func changeCurrentDisplayedMonthOnCalendar(to date: Date) {
+        setDateForCurrentCalendarPage(date)
+        calendarCurrentPageDidChange(calendarView)
+    }
+    
     func numberOfEventsForCurrentMonth() -> Int {
         var totalEvents = 0
         let dates = getDatesFromCurrentCalendarDisplayedMonth()
@@ -222,6 +248,16 @@ fileprivate extension HomeViewController {
         }
         
         return []
+    }
+    
+    func isScheduledListInEmptyState() -> Bool {
+        guard activitiesListTableView.numberOfRows(inSection: 0) == 1 else {
+            return false
+        }
+        if let _ = activitiesListTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? EmptyTableViewCell {
+            return true
+        }
+        return false
     }
     
     func getDatesFromCurrentCalendarDisplayedMonth() -> [Date] {
