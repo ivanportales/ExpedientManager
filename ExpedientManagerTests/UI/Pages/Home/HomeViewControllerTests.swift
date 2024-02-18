@@ -31,6 +31,30 @@ final class HomeViewControllerTests: XCTestCase {
                        currentDateForTesting.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased)
     }
     
+    func testIfListNavigationBarButtonIsHiddenIfReturnFromUseCaseIsEmpty() {
+        makeSUT()
+         
+        let expectation = XCTestExpectation(description: "List NavigationBarButton is Hidden and AddScale button is not")
+         
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .content(let notificationsCount,
+                          let filteredNotifications):
+                XCTAssertEqual(notificationsCount, 0)
+                XCTAssertTrue(filteredNotifications.isEmpty)
+                
+                XCTAssertFalse(self!.viewController.navigationItem.rightBarButtonItems![0].isHidden)
+                XCTAssertTrue(self!.viewController.navigationItem.rightBarButtonItems![1].isHidden)
+            default:
+                XCTFail()
+            }
+             
+            expectation.fulfill()
+         }
+         
+         wait(for: [expectation], timeout: 1.0)
+    }
+    
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCaseIsEmpty() {
         makeSUT()
         
@@ -175,7 +199,7 @@ fileprivate extension HomeViewController {
         return []
     }
     
-    private func getDatesFromCurrentCalendarDisplayedMonth() -> [Date] {
+    func getDatesFromCurrentCalendarDisplayedMonth() -> [Date] {
         let now = calendarView.currentPage
         let calendar = Calendar.current
         let currentYear = calendar.component(.year, from: now)
