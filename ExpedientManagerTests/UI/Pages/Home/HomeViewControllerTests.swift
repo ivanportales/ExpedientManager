@@ -55,10 +55,34 @@ final class HomeViewControllerTests: XCTestCase {
          wait(for: [expectation], timeout: 1.0)
     }
     
+    func testIfListNavigationBarButtonAppearsIfReturnFromUseCaseIsNotEmpty() {
+        let models = getModels()
+        makeSUT(scheduledNotifications: models)
+        
+        let expectation = XCTestExpectation(description: "List NavigationBarButton and AddScale button appears")
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .content(let notificationsCount,
+                         let filteredNotifications):
+                XCTAssertEqual(notificationsCount, models.count)
+                XCTAssertFalse(filteredNotifications.isEmpty)
+               
+                XCTAssertFalse(self!.viewController.navigationItem.rightBarButtonItems![0].isHidden)
+                XCTAssertFalse(self!.viewController.navigationItem.rightBarButtonItems![1].isHidden)
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+   }
+    
     func testActivitiesListShouldBeInEmptyStateIfReturnFromUseCaseIsEmpty() {
         makeSUT()
         
-        let expectation = XCTestExpectation(description: "Activities list diplays empty state")
+        let expectation = XCTestExpectation(description: "ActivitiesList diplays empty state")
         
         listenToStateChange { [weak self] state in
             switch state {
@@ -111,7 +135,7 @@ final class HomeViewControllerTests: XCTestCase {
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCaseIsEmpty() {
         makeSUT()
         
-        let expectation = XCTestExpectation(description: "ViewController diplays empty event calendar")
+        let expectation = XCTestExpectation(description: "CalendarView diplays empty event calendar")
         
         listenToStateChange { [weak self] state in
             switch state {
@@ -129,35 +153,11 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testIfListNavigationBarButtonAppearsIfReturnFromUseCaseIsNotEmpty() {
-        let models = getModels()
-        makeSUT(scheduledNotifications: models)
-        
-        let expectation = XCTestExpectation(description: "List NavigationBarButto and AddScale button appears")
-        
-        listenToStateChange { [weak self] state in
-            switch state {
-            case .content(let notificationsCount,
-                         let filteredNotifications):
-                XCTAssertEqual(notificationsCount, models.count)
-                XCTAssertFalse(filteredNotifications.isEmpty)
-               
-                XCTAssertFalse(self!.viewController.navigationItem.rightBarButtonItems![0].isHidden)
-                XCTAssertFalse(self!.viewController.navigationItem.rightBarButtonItems![1].isHidden)
-            default:
-                XCTFail()
-            }
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 1.0)
-   }
-    
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCase() {
         let models = getModels()
         makeSUT(scheduledNotifications: models)
         
-        let expectation = XCTestExpectation(description: "ViewController diplays event calendar with 10 events on total")
+        let expectation = XCTestExpectation(description: "CalendarView diplays event calendar with 10 events on total")
         
         listenToStateChange { [weak self] state in
             switch state {
@@ -179,7 +179,7 @@ final class HomeViewControllerTests: XCTestCase {
         let models = getModels()
         makeSUT(scheduledNotifications: models)
         
-        let expectation = XCTestExpectation(description: "ViewController displays right event colors for date on calendar")
+        let expectation = XCTestExpectation(description: "CalendarView displays right event colors for date")
         
         listenToStateChange { [weak self] state in
             for model in models {
@@ -206,7 +206,7 @@ final class HomeViewControllerTests: XCTestCase {
 
     private func makeSUT(scheduledNotifications: [ScheduledNotification] = []) {
         self.subscribers = Set<AnyCancellable>()
-        self.viewModel = HomeViewModelStub(scheduledNotifications: scheduledNotifications, 
+        self.viewModel = HomeViewModelStub(scheduledNotifications: scheduledNotifications,
                                            currentSelectedDate: currentDateForTesting)
         self.router = DeeplinkRouterStub()
         self.viewController = HomeViewController(viewModel: viewModel!,
@@ -319,20 +319,6 @@ fileprivate extension HomeViewController {
         return false
     }
     
-    func displayedTitleOnActivitiesView(atIndex index: Int) -> String {
-        guard let cell = cellFor(index: index) else {
-            return ""
-        }
-        return cell.titleLabel.text ?? ""
-    }
-    
-    func displayedDescriptionOnActivitiesView(atIndex index: Int) -> String {
-        guard let cell = cellFor(index: index) else {
-            return ""
-        }
-        return cell.descriptionLabel.text ?? ""
-    }
-    
     func displayedDateOnActivitiesView(atIndex index: Int) -> String {
         guard let cell = cellFor(index: index) else {
             return ""
@@ -352,6 +338,20 @@ fileprivate extension HomeViewController {
             return .clear
         }
         return cell.scaleColorView.backgroundColor ?? .clear
+    }
+    
+    func displayedTitleOnActivitiesView(atIndex index: Int) -> String {
+        guard let cell = cellFor(index: index) else {
+            return ""
+        }
+        return cell.titleLabel.text ?? ""
+    }
+    
+    func displayedDescriptionOnActivitiesView(atIndex index: Int) -> String {
+        guard let cell = cellFor(index: index) else {
+            return ""
+        }
+        return cell.descriptionLabel.text ?? ""
     }
     
     func cellFor(index: Int) -> ScheduledScalesTableViewCell? {
