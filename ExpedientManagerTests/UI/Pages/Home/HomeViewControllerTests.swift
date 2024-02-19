@@ -143,8 +143,6 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    
-    
     func testColorsForDatesInCalendar() {
         let models = getModels()
         makeSUT(scheduledNotifications: models)
@@ -287,6 +285,45 @@ fileprivate extension HomeViewController {
             return true
         }
         return false
+    }
+    
+    func displayedTitleOnActivitiesView(atIndex index: Int) -> String {
+        guard let cell = cellFor(index: index) else {
+            return ""
+        }
+        return cell.titleLabel.text ?? ""
+    }
+    
+    func displayedDescriptionOnActivitiesView(atIndex index: Int) -> String {
+        guard let cell = cellFor(index: index) else {
+            return ""
+        }
+        return cell.descriptionLabel.text ?? ""
+    }
+    
+    func displayedDateOnActivitiesView(atIndex index: Int) -> String {
+        guard let cell = cellFor(index: index) else {
+            return ""
+        }
+        return cell.dayAndMonthLabel.text ?? ""
+    }
+    
+    func displayedTimenActivitiesView(atIndex index: Int) -> String {
+        guard let cell = cellFor(index: index) else {
+            return ""
+        }
+        return cell.hourLabel.text ?? ""
+    }
+    
+    func displayedColorOnActivitiesView(atIndex index: Int) -> UIColor {
+        guard let cell = cellFor(index: index) else {
+            return .clear
+        }
+        return cell.scaleColorView.backgroundColor ?? .clear
+    }
+    
+    func cellFor(index: Int) -> ScheduledScalesTableViewCell? {
+        return activitiesListTableView.cellForRow(at: IndexPath(item: index, section: 0)) as? ScheduledScalesTableViewCell
     }
 }
 
