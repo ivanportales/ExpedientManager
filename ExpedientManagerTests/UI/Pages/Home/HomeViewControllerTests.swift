@@ -76,6 +76,38 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
+    func testIfActivitiesListIsDisplayingTheRightInformation() {
+        let models = getModels()
+        makeSUT(scheduledNotifications: models)
+        
+        let expectation = XCTestExpectation(description: "ActivitiesList displays all the filteredNotifications")
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .content(let notificationsCount,
+                          let filteredNotifications):
+                for index in 0..<filteredNotifications.count {
+                    let notification = filteredNotifications[index]
+                    XCTAssertEqual(self!.viewController.displayedDateOnActivitiesView(atIndex: index),
+                                   notification.date.formateDate(withFormat: "d/MM"))
+                    XCTAssertEqual(self!.viewController.displayedTimeActivitiesView(atIndex: index),
+                                   notification.date.formatTime())
+                    XCTAssertEqual(self!.viewController.displayedColorOnActivitiesView(atIndex: index).hex,
+                                   notification.colorHex)
+                    XCTAssertEqual(self!.viewController.displayedTitleOnActivitiesView(atIndex: index),
+                                   notification.title)
+                    XCTAssertEqual(self!.viewController.displayedDescriptionOnActivitiesView(atIndex: index),
+                                   notification.description)
+                }
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCaseIsEmpty() {
         makeSUT()
         
@@ -308,7 +340,7 @@ fileprivate extension HomeViewController {
         return cell.dayAndMonthLabel.text ?? ""
     }
     
-    func displayedTimenActivitiesView(atIndex index: Int) -> String {
+    func displayedTimeActivitiesView(atIndex index: Int) -> String {
         guard let cell = cellFor(index: index) else {
             return ""
         }
