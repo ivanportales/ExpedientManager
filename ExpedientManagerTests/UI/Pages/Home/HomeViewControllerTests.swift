@@ -108,10 +108,45 @@ final class HomeViewControllerTests: XCTestCase {
         
         listenToStateChange { [weak self] state in
             switch state {
-            case .content(let notificationsCount,
+            case .content(_,
                           let filteredNotifications):
                 for index in 0..<filteredNotifications.count {
                     let notification = filteredNotifications[index]
+                    XCTAssertEqual(self!.viewController.displayedDateOnActivitiesView(atIndex: index),
+                                   notification.date.formateDate(withFormat: "d/MM"))
+                    XCTAssertEqual(self!.viewController.displayedTimeActivitiesView(atIndex: index),
+                                   notification.date.formatTime())
+                    XCTAssertEqual(self!.viewController.displayedColorOnActivitiesView(atIndex: index).hex,
+                                   notification.colorHex)
+                    XCTAssertEqual(self!.viewController.displayedTitleOnActivitiesView(atIndex: index),
+                                   notification.title)
+                    XCTAssertEqual(self!.viewController.displayedDescriptionOnActivitiesView(atIndex: index),
+                                   notification.description)
+                }
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testChangeCurrentSelectedDateShouldChangeStateToFilterContent() {
+        let models = getModels()
+        makeSUT(scheduledNotifications: models)
+        
+        let expectation = XCTestExpectation(description: "ActivitiesList displays all the filteredNotifications when state change to filterContent")
+        
+        let newSelectedDate = models[1].date
+        viewController.changeCurrentSelectedDate(to: newSelectedDate)
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .filterContent(let filteredNotifications):
+                for index in 0..<filteredNotifications.count {
+                    let notification = filteredNotifications[index]
+                    XCTAssertEqual(newSelectedDate, notification.date)
                     XCTAssertEqual(self!.viewController.displayedDateOnActivitiesView(atIndex: index),
                                    notification.date.formateDate(withFormat: "d/MM"))
                     XCTAssertEqual(self!.viewController.displayedTimeActivitiesView(atIndex: index),
@@ -265,6 +300,10 @@ fileprivate extension HomeViewController {
         calendarCurrentPageDidChange(calendarView)
     }
     
+    func changeCurrentSelectedDate(to date: Date) {
+        calendar(calendarView, didSelect: date, at: FSCalendarMonthPosition.current)
+    }
+    
     func numberOfEventsForCurrentMonth() -> Int {
         var totalEvents = 0
         let dates = getDatesFromCurrentCalendarDisplayedMonth()
@@ -272,8 +311,8 @@ fileprivate extension HomeViewController {
             totalEvents += calendarView.dataSource?.calendar?(calendarView, numberOfEventsFor: date) ?? 0
         }
         return totalEvents
-    }
-    
+   }
+       
     func colorsForEvents(on date: Date) -> [UIColor] {
         let eventDefaultColors = calendar(calendarView, appearance: calendarView.appearance, eventDefaultColorsFor: date) ?? []
         let eventSelectionColors = calendar(calendarView, appearance: calendarView.appearance, eventSelectionColorsFor: date) ?? []
