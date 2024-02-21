@@ -17,16 +17,18 @@ final class HomeViewModel: ObservableObject, HomeViewModelProtocol {
     // MARK: - Private Properties
     
     private var scheduledNotificationsDict: [String: [ScheduledNotification]] = [:]
-    private var dateOfFilter: Date = .init()
+    private var dateOfFilter: Date
     private let getScheduledNotificationsUseCase: GetScheduledNotificationsUseCaseProtocol
     private let getValueForKeyUseCase: GetValueForKeyUseCaseProtocol
     
     // MARK: - Init
     
     init(getScheduledNotificationsUseCase: GetScheduledNotificationsUseCaseProtocol,
-         getValueForKeyUseCase: GetValueForKeyUseCaseProtocol) {
+         getValueForKeyUseCase: GetValueForKeyUseCaseProtocol,
+         dateOfFilter: Date = .init()) {
         self.getScheduledNotificationsUseCase = getScheduledNotificationsUseCase
         self.getValueForKeyUseCase = getValueForKeyUseCase
+        self.dateOfFilter = dateOfFilter
     }
     
     // MARK: - Exposed Functions
