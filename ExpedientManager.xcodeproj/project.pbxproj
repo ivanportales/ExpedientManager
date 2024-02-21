@@ -21,6 +21,8 @@
 		AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */; };
 		AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */; };
 		AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */; };
+		AE5DC1182B85777D00F8388F /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC1172B85777D00F8388F /* HomeViewModelTests.swift */; };
+		AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC11A2B857A0D00F8388F /* Date+Extensions.swift */; };
 		AE5F19E32B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */; };
 		AE6731762B76E9D800169F66 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6731752B76E9D800169F66 /* LoadingView.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
@@ -149,6 +151,8 @@
 		AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseError.swift; sourceTree = "<group>"; };
 		AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCase.swift; sourceTree = "<group>"; };
+		AE5DC1172B85777D00F8388F /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		AE5DC11A2B857A0D00F8388F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationListTableView.swift; sourceTree = "<group>"; };
 		AE6731752B76E9D800169F66 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 		AE4548622B7D929400C8343C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				AE5DC1192B8579FB00F8388F /* Utils */,
 				AE4548632B7D929C00C8343C /* Stubs */,
 			);
 			path = Shared;
@@ -370,6 +375,14 @@
 			path = SaveOnDutyUseCase;
 			sourceTree = "<group>";
 		};
+		AE5DC1192B8579FB00F8388F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AE5DC11A2B857A0D00F8388F /* Date+Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		AE5F19DF2B6ADE380045C479 /* ScalesListTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				AE72749C2B7ADE2A009E479A /* HomeViewControllerTests.swift */,
+				AE5DC1172B85777D00F8388F /* HomeViewModelTests.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1189,7 +1203,9 @@
 			files = (
 				AED2502D2B57552E00290E42 /* ExpedientManagerTests.swift in Sources */,
 				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
+				AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */,
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
+				AE5DC1182B85777D00F8388F /* HomeViewModelTests.swift in Sources */,
 				AE4548652B7D92D400C8343C /* DeeplinkRouterStub.swift in Sources */,
 				AE8593C72B7EF6DF00EF72EF /* GetScheduledNotificationsUseCaseStub.swift in Sources */,
 			);
