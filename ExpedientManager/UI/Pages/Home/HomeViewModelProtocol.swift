@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HomeViewModelState {
+enum HomeViewModelState: Equatable {
     case initial
     case loading
     case content(notificationsCount: Int,

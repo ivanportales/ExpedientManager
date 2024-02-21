@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ScheduledNotification {
+struct ScheduledNotification: Equatable {
     var uid: String
     var title: String
     var description: String
