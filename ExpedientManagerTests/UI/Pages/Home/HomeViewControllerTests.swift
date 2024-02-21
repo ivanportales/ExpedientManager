@@ -56,7 +56,7 @@ final class HomeViewControllerTests: XCTestCase {
     }
     
     func testIfListNavigationBarButtonAppearsIfReturnFromUseCaseIsNotEmpty() {
-        let models = getModels()
+        let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models)
         
         let expectation = XCTestExpectation(description: "List NavigationBarButton and AddScale button appears")
@@ -101,7 +101,7 @@ final class HomeViewControllerTests: XCTestCase {
     }
     
     func testIfActivitiesListIsDisplayingTheRightInformation() {
-        let models = getModels()
+        let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models)
         
         let expectation = XCTestExpectation(description: "ActivitiesList displays all the filteredNotifications")
@@ -133,7 +133,7 @@ final class HomeViewControllerTests: XCTestCase {
     }
     
     func testChangeCurrentSelectedDateShouldChangeStateToFilterContent() {
-        let models = getModels()
+        let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models)
         
         let expectation = XCTestExpectation(description: "ActivitiesList displays all the filteredNotifications when state change to filterContent")
@@ -189,7 +189,7 @@ final class HomeViewControllerTests: XCTestCase {
     }
     
     func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCase() {
-        let models = getModels()
+        let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models)
         
         let expectation = XCTestExpectation(description: "CalendarView diplays event calendar with 10 events on total")
@@ -211,7 +211,7 @@ final class HomeViewControllerTests: XCTestCase {
     }
     
     func testColorsForDatesInCalendar() {
-        let models = getModels()
+        let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models)
         
         let expectation = XCTestExpectation(description: "CalendarView displays right event colors for date")
@@ -249,33 +249,6 @@ final class HomeViewControllerTests: XCTestCase {
         viewController.changeCurrentDisplayedMonthOnCalendar(to: currentDateForTesting)
         viewController.loadViewIfNeeded()
         viewController.viewWillAppear(false)
-    }
-    
-    private func getModels() -> [ScheduledNotification] {
-        var items: [ScheduledNotification] = []
-        let colors = [
-            UIColor(hex: "#0000FF"),
-            UIColor(hex: "#FF2D55"),
-            UIColor(hex: "#00FF00"),
-            UIColor(hex: "#800080"),
-            UIColor(hex: "#FF8000"),
-            UIColor(hex: "#101138"),
-            UIColor(hex: "#0000FF"),
-            UIColor(hex: "#FF2D55"),
-            UIColor(hex: "#00FF00"),
-            UIColor(hex: "#800080")
-        ]
-
-        for index in 0..<10 {
-            items.append(ScheduledNotification(uid: index.description,
-                                               title: "Title \(index)",
-                                               description: "Description \(index)",
-                                               date: Date.customDate(day: index + 1)!,
-                                               scaleUid: "Scale UID \(index)",
-                                               colorHex: colors[index].hex))
-        }
-        
-        return items
     }
     
     private func listenToStateChange(_ callback: @escaping (HomeViewModelState) -> Void) {
