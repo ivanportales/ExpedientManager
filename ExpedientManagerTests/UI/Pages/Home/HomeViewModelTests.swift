@@ -30,6 +30,22 @@ final class HomeViewModelTests: XCTestCase {
         
         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
     }
+    
+    func testFetchScheduledNotificationsWithNoNotificationScheduledForDate() {
+        let models = ScheduledNotification.getModels()
+        makeSUT(scheduledNotifications: models, dateOfFilter: Date.customDate(month: 3)!)
+       
+        let stateSpy = ViewModelPublisherSpy<HomeViewModelState>(publisher: viewModel.$statePublished)
+        let expectedPublishedStates: [HomeViewModelState] = [
+            .initial,
+            .loading,
+            .content(notificationsCount: 10, filteredNotifications: [])
+        ]
+       
+        viewModel.fetchScheduledNotifications()
+       
+        XCTAssertEqual(stateSpy.values, expectedPublishedStates)
+    }
 
     // MARK: - Helpers Functions
 
