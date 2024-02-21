@@ -55,6 +55,16 @@ final class HomeViewModelTests: XCTestCase {
         
         XCTAssertEqual(result, [])
     }
+    
+    func testGetFilteredScheduledDatesWithNotificationScheduledForDate() {
+        let models = ScheduledNotification.getModels()
+        makeSUT(scheduledNotifications: models, dateOfFilter: currentDateForTesting)
+       
+        viewModel.fetchScheduledNotifications()
+        let result = viewModel.getFilteredScheduledDatesWith(date: currentDateForTesting)
+       
+        XCTAssertEqual(result, [models[0]])
+   }
 
     // MARK: - Helpers Functions
 
