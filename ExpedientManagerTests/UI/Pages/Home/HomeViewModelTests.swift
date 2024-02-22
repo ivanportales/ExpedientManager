@@ -90,6 +90,17 @@ final class HomeViewModelTests: XCTestCase {
         
         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
     }
+    
+    func testVerifyFirstAccessOnAppToTrue() {
+        makeSUT(dateOfFilter: currentDateForTesting, valueToBeReturned: nil)
+        var didCallRouteToOnboardingCallback = false
+        
+        viewModel.verifyFirstAccessOnApp(routeToOnboardingCallback: {
+            didCallRouteToOnboardingCallback = true
+        })
+        
+        XCTAssertTrue(didCallRouteToOnboardingCallback)
+    }
 
     // MARK: - Helpers Functions
 
