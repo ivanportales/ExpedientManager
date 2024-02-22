@@ -65,6 +65,16 @@ final class HomeViewModelTests: XCTestCase {
        
         XCTAssertEqual(result, [models[0]])
    }
+    
+    func testGetMonthDescriptionOfCurrentDate() {
+       let models = ScheduledNotification.getModels()
+       makeSUT(scheduledNotifications: models, dateOfFilter: currentDateForTesting)
+       
+       viewModel.fetchScheduledNotifications()
+       let result = viewModel.getMonthDescriptionOf(date: currentDateForTesting)
+       
+       XCTAssertEqual(result, "Janeiro")
+   }
 
     // MARK: - Helpers Functions
 
