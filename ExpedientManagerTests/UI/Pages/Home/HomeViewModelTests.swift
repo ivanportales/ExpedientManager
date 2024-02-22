@@ -19,7 +19,7 @@ final class HomeViewModelTests: XCTestCase {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models, dateOfFilter: currentDateForTesting)
         
-        let stateSpy = ViewModelPublisherSpy<HomeViewModelState>(publisher: viewModel.$statePublished)
+        let stateSpy = ViewModelPublisherSpy(publisher: viewModel.$statePublished)
         let expectedPublishedStates: [HomeViewModelState] = [
             .initial,
             .loading,
@@ -35,7 +35,7 @@ final class HomeViewModelTests: XCTestCase {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models, dateOfFilter: Date.customDate(month: 3)!)
        
-        let stateSpy = ViewModelPublisherSpy<HomeViewModelState>(publisher: viewModel.$statePublished)
+        let stateSpy = ViewModelPublisherSpy(publisher: viewModel.$statePublished)
         let expectedPublishedStates: [HomeViewModelState] = [
             .initial,
             .loading,
@@ -75,6 +75,21 @@ final class HomeViewModelTests: XCTestCase {
        
        XCTAssertEqual(result, "Janeiro")
    }
+    
+    func testFilterScheduledDatesWithCurrentDate() {
+        let models = ScheduledNotification.getModels()
+        makeSUT(scheduledNotifications: models, dateOfFilter: currentDateForTesting)
+        
+        viewModel.fetchScheduledNotifications()
+        viewModel.filterScheduledDatesWith(date: Date.customDate(day: 3)!)
+        
+        let stateSpy = ViewModelPublisherSpy(publisher: viewModel.$statePublished)
+        let expectedPublishedStates: [HomeViewModelState] = [
+            .filterContent(filteredNotifications: [models[2]])
+        ]
+        
+        XCTAssertEqual(stateSpy.values, expectedPublishedStates)
+    }
 
     // MARK: - Helpers Functions
 
