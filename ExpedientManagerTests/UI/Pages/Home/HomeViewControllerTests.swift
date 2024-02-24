@@ -237,6 +237,16 @@ final class HomeViewControllerTests: XCTestCase {
                        nextMonthDate.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased)
     }
     
+    func testTapOnAddNavigationBarButton() {
+        makeSUT()
+        
+        if let barButton = self.viewController.navigationItem.rightBarButtonItems?[0] {
+            (barButton.customView as! ClosureButtonView).touchDownCompletion!((barButton.customView as! ClosureButtonView))
+        }
+       
+        XCTAssertEqual(router.sendedDeeplink?.rawValue, Deeplink.addScale.rawValue)
+    }
+    
     // MARK: - Helpers Functions
 
     private func makeSUT(scheduledNotifications: [ScheduledNotification] = []) {
