@@ -118,6 +118,8 @@
 		AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */; };
 		AEE16A432B5C7C2A0000F2C4 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */; };
 		AEE478D72B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */; };
+		AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478D92B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift */; };
+		AEE478DC2B8A9C61003E1EA0 /* ScalesListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478DB2B8A9C61003E1EA0 /* ScalesListViewModelProtocol.swift */; };
 		AEEC1A6F2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A6E2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift */; };
 		AEEC1A712B69D0BF00FA618E /* GetFixedScalesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A702B69D0BF00FA618E /* GetFixedScalesUseCase.swift */; };
 		AEEC1A742B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A732B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift */; };
@@ -255,6 +257,8 @@
 		AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScaleViewController.swift; sourceTree = "<group>"; };
 		AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
+		AEE478D92B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalesListViewControllerTests.swift; sourceTree = "<group>"; };
+		AEE478DB2B8A9C61003E1EA0 /* ScalesListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalesListViewModelProtocol.swift; sourceTree = "<group>"; };
 		AEEC1A6E2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFixedScalesUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AEEC1A702B69D0BF00FA618E /* GetFixedScalesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFixedScalesUseCase.swift; sourceTree = "<group>"; };
 		AEEC1A732B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -448,6 +452,7 @@
 		AE72749A2B7ADE08009E479A /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				AEE478D82B8A9B13003E1EA0 /* Scales List */,
 				AE72749B2B7ADE10009E479A /* Home */,
 			);
 			path = Pages;
@@ -769,6 +774,7 @@
 			children = (
 				AED250882B57558100290E42 /* ScaleListViewModel.swift */,
 				AED250892B57558100290E42 /* ScalesListViewController.swift */,
+				AEE478DB2B8A9C61003E1EA0 /* ScalesListViewModelProtocol.swift */,
 			);
 			path = "Scale List";
 			sourceTree = "<group>";
@@ -899,6 +905,14 @@
 				AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */,
 			);
 			path = ButtonView;
+			sourceTree = "<group>";
+		};
+		AEE478D82B8A9B13003E1EA0 /* Scales List */ = {
+			isa = PBXGroup;
+			children = (
+				AEE478D92B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift */,
+			);
+			path = "Scales List";
 			sourceTree = "<group>";
 		};
 		AEEC1A6D2B69D03D00FA618E /* GetFixedScalesUseCase */ = {
@@ -1211,6 +1225,7 @@
 				AE6E6D742B59F4CD00B2389B /* OnboardingCarouselItem.swift in Sources */,
 				AED250DC2B57558100290E42 /* OnDuty.swift in Sources */,
 				AE7DE7AB2B58814400F57E42 /* ClosureButtonView.swift in Sources */,
+				AEE478DC2B8A9C61003E1EA0 /* ScalesListViewModelProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1219,6 +1234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AED2502D2B57552E00290E42 /* ExpedientManagerTests.swift in Sources */,
+				AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */,
 				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
 				AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */,
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
