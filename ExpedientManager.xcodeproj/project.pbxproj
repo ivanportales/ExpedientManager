@@ -117,6 +117,7 @@
 		AED250E22B57558100290E42 /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A22B57558100290E42 /* UserNotificationsManager.swift */; };
 		AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */; };
 		AEE16A432B5C7C2A0000F2C4 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */; };
+		AEE478D72B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */; };
 		AEEC1A6F2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A6E2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift */; };
 		AEEC1A712B69D0BF00FA618E /* GetFixedScalesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A702B69D0BF00FA618E /* GetFixedScalesUseCase.swift */; };
 		AEEC1A742B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A732B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift */; };
@@ -253,6 +254,7 @@
 		AED250A22B57558100290E42 /* UserNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
 		AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScaleViewController.swift; sourceTree = "<group>"; };
 		AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
 		AEEC1A6E2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFixedScalesUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AEEC1A702B69D0BF00FA618E /* GetFixedScalesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFixedScalesUseCase.swift; sourceTree = "<group>"; };
 		AEEC1A732B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 			children = (
 				AE5DC11A2B857A0D00F8388F /* Date+Extensions.swift */,
 				AE5DC11F2B858C1700F8388F /* ScheduledNotification+Extensions.swift */,
+				AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1223,6 +1226,7 @@
 				AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */,
 				AE5DC1182B85777D00F8388F /* HomeViewModelTests.swift in Sources */,
 				AE4548652B7D92D400C8343C /* DeeplinkRouterStub.swift in Sources */,
+				AEE478D72B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift in Sources */,
 				AE8593C72B7EF6DF00EF72EF /* GetScheduledNotificationsUseCaseStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,8 +7,8 @@
 
 import Combine
 @testable import ExpedientManager
-import XCTest
 import FSCalendar
+import XCTest
 
 final class HomeViewControllerTests: XCTestCase {
     
@@ -77,7 +77,27 @@ final class HomeViewControllerTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 1.0)
-   }
+    }
+    
+    func testTapOnAddScaleButton() {
+        makeSUT()
+        
+        if let barButton = self.viewController.navigationItem.rightBarButtonItems?[0] {
+            barButton.testTap()
+        }
+       
+        XCTAssertEqual(router.sendedDeeplink?.rawValue, Deeplink.addScale.rawValue)
+    }
+    
+    func testTapOnScalesListButton() {
+        makeSUT()
+        
+        if let barButton = self.viewController.navigationItem.rightBarButtonItems?[1] {
+            barButton.testTap()
+        }
+       
+        XCTAssertEqual(router.sendedDeeplink?.rawValue, Deeplink.scaleList.rawValue)
+    }
     
     func testActivitiesListShouldBeInEmptyStateIfReturnFromUseCaseIsEmpty() {
         makeSUT()
@@ -235,26 +255,6 @@ final class HomeViewControllerTests: XCTestCase {
         
         XCTAssertEqual(viewController.title,
                        nextMonthDate.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased)
-    }
-    
-    func testTapOnAddNavigationBarButton() {
-        makeSUT()
-        
-        if let barButton = self.viewController.navigationItem.rightBarButtonItems?[0] {
-            (barButton.customView as! ClosureButtonView).touchDownCompletion!((barButton.customView as! ClosureButtonView))
-        }
-       
-        XCTAssertEqual(router.sendedDeeplink?.rawValue, Deeplink.addScale.rawValue)
-    }
-    
-    func testTapOnListNavigationBarButton() {
-        makeSUT()
-        
-        if let barButton = self.viewController.navigationItem.rightBarButtonItems?[1] {
-            (barButton.customView as! ClosureButtonView).touchDownCompletion!((barButton.customView as! ClosureButtonView))
-        }
-       
-        XCTAssertEqual(router.sendedDeeplink?.rawValue, Deeplink.scaleList.rawValue)
     }
     
     // MARK: - Helpers Functions
