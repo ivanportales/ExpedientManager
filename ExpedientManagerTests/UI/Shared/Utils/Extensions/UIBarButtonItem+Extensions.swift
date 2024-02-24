@@ -10,6 +10,8 @@ import UIKit
 
 extension UIBarButtonItem {
     func testTap() {
-        (customView as! ClosureButtonView).touchDownCompletion!((customView as! ClosureButtonView))
+        if let closureButton = customView as? ClosureButtonView {
+            closureButton.touchDownCompletion?(closureButton)
+        }
     }
 }
