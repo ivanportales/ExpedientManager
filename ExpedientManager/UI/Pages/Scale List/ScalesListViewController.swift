@@ -30,13 +30,13 @@ final class ScalesListViewController: UIViewController, LoadingShowableViewContr
     
     // MARK: - Private Properties
 
-    private let viewModel: ScalesListViewModel
+    private let viewModel: ScalesListViewModelProtocol
     private let router: DeeplinkRouterProtocol
     private var subscribers: Set<AnyCancellable> = []
     
     // MARK: - Inits
     
-    init(viewModel: ScalesListViewModel,
+    init(viewModel: ScalesListViewModelProtocol,
          router: DeeplinkRouterProtocol) {
         self.viewModel = viewModel
         self.router = router
@@ -94,7 +94,7 @@ extension ScalesListViewController {
     
     private func setupBindings() {
         viewModel
-            .$state
+            .state
             .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
@@ -113,7 +113,7 @@ extension ScalesListViewController {
             }.store(in: &subscribers)
         
         viewModel
-            .$selectedWorkScale
+            .selectedWorkScale
             .receive(on: DispatchQueue.main)
             .sink { [weak self] selectedWorkScale in
                 guard let self = self else { return }
@@ -127,15 +127,6 @@ extension ScalesListViewController {
 
 extension ScalesListViewController: ScheduledNotificationListTableViewDelegate {
     func didTapOnItem(_ view: ScheduledNotificationListTableView, item: ScheduledNotification, index: Int) {
-        let state: WorkScaleType = viewModel.selectedWorkScale
-
-         router.route(to: .scaleDetails,
-                      withParams: [
-                         "workScaleType": state,
-                         "selectedFixedScale": item,
-                         "selectedOnDuty": item
-                      ]
-         )
     }
 }
 
@@ -143,6 +134,6 @@ extension ScalesListViewController: ScheduledNotificationListTableViewDelegate {
 
 extension ScalesListViewController: WorkScaleTypeSegmentedControlDelegate {
     func didChangeSelectedIndex(_ view: WorkScaleTypeSegmentedControl, selectedWorkScale: WorkScaleType) {
-        viewModel.selectedWorkScale = selectedWorkScale
+        viewModel.change(selectedWorkScale: selectedWorkScale)
     }
 }

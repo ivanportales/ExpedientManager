@@ -7,24 +7,22 @@
 
 import Foundation
 
-enum ScalesListViewModelStates {
-    case initial
-    case loading
-    case content
-    case error(message: String)
-}
-
-final class ScalesListViewModel {
+final class ScalesListViewModel: ScalesListViewModelProtocol {
     
     // MARK: - Binding Properties
     
-    @Published private(set) var state: ScalesListViewModelStates = .initial
-    @Published var selectedWorkScale: WorkScaleType = .fixedScale
+    var state: Published<ScalesListViewModelStates>.Publisher { $statePublished }
+    var selectedWorkScale: Published<WorkScaleType>.Publisher { $selectedWorkScalePublished }
+    
+    // MARK: - Private Properties
+    
+    @Published private var statePublished: ScalesListViewModelStates = .initial
+    @Published private var selectedWorkScalePublished: WorkScaleType = .fixedScale
     
     // MARK: - Exposed Properties
     
     var scheduledNotifications: [ScheduledNotification] {
-        if selectedWorkScale == .fixedScale {
+        if selectedWorkScalePublished == .fixedScale {
             return fixedScales.map {
                 ScheduledNotification.from(fixedScale: $0, with: $0.initialDate ?? .init())
             }
@@ -52,7 +50,7 @@ final class ScalesListViewModel {
     // MARK: - Exposed Functions
     
     func getAllScales() {
-        state = .loading
+        statePublished = .loading
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
@@ -63,7 +61,7 @@ final class ScalesListViewModel {
             }
             switch result {
             case .failure(let error):
-                self.state = .error(message: error.localizedDescription)
+                self.statePublished = .error(message: error.localizedDescription)
             case .success(let scales):
                 self.fixedScales = scales
             }
@@ -77,7 +75,7 @@ final class ScalesListViewModel {
             }
             switch result {
             case .failure(let error):
-                self.state = .error(message: error.localizedDescription)
+                self.statePublished = .error(message: error.localizedDescription)
             case .success(let onDuties):
                 self.onDuties = onDuties
             }
@@ -85,7 +83,11 @@ final class ScalesListViewModel {
         
         dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-            self.state = .content
+            self.statePublished = .content
         }
+    }
+    
+    func change(selectedWorkScale: WorkScaleType) {
+        self.selectedWorkScalePublished = selectedWorkScale
     }
 }
