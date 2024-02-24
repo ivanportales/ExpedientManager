@@ -104,6 +104,25 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(router.sendedDeeplink?.rawValue, Deeplink.scaleList.rawValue)
     }
     
+    func testLoadingState() {
+        makeSUT()
+        viewModel.change(state: .loading)
+        
+        let expectation = XCTestExpectation(description: "Loading State diplays loading view")
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .loading:
+                XCTAssertTrue(self!.viewController.isLoadingViewDisplayed())
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
     func testActivitiesListShouldBeInEmptyStateIfReturnFromUseCaseIsEmpty() {
         makeSUT()
         
@@ -291,6 +310,12 @@ final class HomeViewControllerTests: XCTestCase {
 
 fileprivate extension HomeViewController {
     
+    // MARK: - Loading View Helper
+    
+    func isLoadingViewDisplayed() -> Bool {
+        return loadingView != nil
+    }
+    
     // MARK: - Calendar View Helpers
     
     func changeCurrentDisplayedMonthOnCalendar(to date: Date) {
@@ -308,6 +333,7 @@ fileprivate extension HomeViewController {
         for date in dates {
             totalEvents += calendarView.dataSource?.calendar?(calendarView, numberOfEventsFor: date) ?? 0
         }
+        
         return totalEvents
    }
        
