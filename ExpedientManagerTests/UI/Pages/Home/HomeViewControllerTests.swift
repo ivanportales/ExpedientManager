@@ -247,6 +247,16 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(router.sendedDeeplink?.rawValue, Deeplink.addScale.rawValue)
     }
     
+    func testTapOnListNavigationBarButton() {
+        makeSUT()
+        
+        if let barButton = self.viewController.navigationItem.rightBarButtonItems?[1] {
+            (barButton.customView as! ClosureButtonView).touchDownCompletion!((barButton.customView as! ClosureButtonView))
+        }
+       
+        XCTAssertEqual(router.sendedDeeplink?.rawValue, Deeplink.scaleList.rawValue)
+    }
+    
     // MARK: - Helpers Functions
 
     private func makeSUT(scheduledNotifications: [ScheduledNotification] = []) {
