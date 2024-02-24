@@ -24,6 +24,12 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertTrue(viewModel.didCallFetchScheduledNotifications)
     }
     
+    func testCallRouteToOnboardingPage() {
+        makeSUT()
+        
+        XCTAssertEqual(router.sendedDeeplink, .onboard)
+    }
+    
     func testNavigationTitleEqualsToCurrentMonthOnInitialization() {
         makeSUT()
         
@@ -48,7 +54,6 @@ final class HomeViewControllerTests: XCTestCase {
             default:
                 XCTFail()
             }
-             
             expectation.fulfill()
          }
          
