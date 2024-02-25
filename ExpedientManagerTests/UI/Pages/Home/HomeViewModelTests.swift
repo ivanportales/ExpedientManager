@@ -120,8 +120,14 @@ final class HomeViewModelTests: XCTestCase {
                          valueToBeReturned: Bool? = false,
                          error: Error? = nil) {
         self.subscribers = Set<AnyCancellable>()
-        self.viewModel = HomeViewModel(getScheduledNotificationsUseCase: GetScheduledNotificationsUseCaseStub(scheduledNotifications: scheduledNotifications, error: error),
+        self.viewModel = HomeViewModel(getScheduledNotificationsUseCase: GetStubUseCase(values: scheduledNotifications, error: error),
                                        getValueForKeyUseCase: GetValueForKeyUseCaseStub(returnedValue: valueToBeReturned),
                                        dateOfFilter: dateOfFilter)
+    }
+}
+
+extension GetStubUseCase<ScheduledNotification>: GetScheduledNotificationsUseCaseProtocol {
+    func getScheduledNotifications(completion: @escaping (Result<[ExpedientManager.ScheduledNotification], Error>) -> Void) {
+        get(completion: completion)
     }
 }
