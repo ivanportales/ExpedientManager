@@ -5,6 +5,7 @@
 //  Created by Gonzalo Ivan Santos Portales on 25/02/24.
 //
 
+@testable import ExpedientManager
 import UIKit
 
 extension UIColor {
