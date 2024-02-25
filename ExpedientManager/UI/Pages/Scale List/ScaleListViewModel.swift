@@ -35,40 +35,15 @@ final class ScalesListViewModel: ScalesListViewModelProtocol {
     
     func getAllScales() {
         statePublished = .loading
-        let dispatchGroup = DispatchGroup()
-        
-        dispatchGroup.enter()
         getFixedScalesUseCase.getFixedScales { [weak self] result in
             guard let self = self else { return }
-            defer {
-                dispatchGroup.leave()
-            }
             switch result {
             case .failure(let error):
                 self.statePublished = .error(message: error.localizedDescription)
             case .success(let scales):
                 self.fixedScales = scales
+                self.getOnDuties()
             }
-        }
-        
-        dispatchGroup.enter()
-        getOnDutyUseCase.getOnDuty { [weak self] result in
-            guard let self = self else { return }
-            defer {
-                dispatchGroup.leave()
-            }
-            switch result {
-            case .failure(let error):
-                self.statePublished = .error(message: error.localizedDescription)
-            case .success(let onDuties):
-                self.onDuties = onDuties
-            }
-        }
-        
-        dispatchGroup.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
-            self.statePublished = .content(scheduledNotifications: self.filteredScheduledNotifications(), 
-                                           selectedWorkScale: self.selectedWorkScalePublished)
         }
     }
     
@@ -79,6 +54,20 @@ final class ScalesListViewModel: ScalesListViewModelProtocol {
     }
     
     // MARK: - Private Functions
+    
+    private func getOnDuties() {
+        getOnDutyUseCase.getOnDuty { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .failure(let error):
+                self.statePublished = .error(message: error.localizedDescription)
+            case .success(let onDuties):
+                self.onDuties = onDuties
+                self.statePublished = .content(scheduledNotifications: self.filteredScheduledNotifications(),
+                                               selectedWorkScale: self.selectedWorkScalePublished)
+            }
+        }
+    }
     
     private func filteredScheduledNotifications() -> [ScheduledNotification] {
         if selectedWorkScalePublished == .fixedScale {
