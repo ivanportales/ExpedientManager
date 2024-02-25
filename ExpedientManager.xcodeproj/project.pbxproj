@@ -120,6 +120,8 @@
 		AEE478D72B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */; };
 		AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478D92B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift */; };
 		AEE478DC2B8A9C61003E1EA0 /* ScalesListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478DB2B8A9C61003E1EA0 /* ScalesListViewModelProtocol.swift */; };
+		AEE478DE2B8AE424003E1EA0 /* ScalesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478DD2B8AE424003E1EA0 /* ScalesListViewModelTests.swift */; };
+		AEE478E22B8AE4A1003E1EA0 /* GetFixedScalesUseCaseStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478E12B8AE4A1003E1EA0 /* GetFixedScalesUseCaseStub.swift */; };
 		AEEC1A6F2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A6E2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift */; };
 		AEEC1A712B69D0BF00FA618E /* GetFixedScalesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A702B69D0BF00FA618E /* GetFixedScalesUseCase.swift */; };
 		AEEC1A742B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEC1A732B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift */; };
@@ -259,6 +261,8 @@
 		AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
 		AEE478D92B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalesListViewControllerTests.swift; sourceTree = "<group>"; };
 		AEE478DB2B8A9C61003E1EA0 /* ScalesListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalesListViewModelProtocol.swift; sourceTree = "<group>"; };
+		AEE478DD2B8AE424003E1EA0 /* ScalesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalesListViewModelTests.swift; sourceTree = "<group>"; };
+		AEE478E12B8AE4A1003E1EA0 /* GetFixedScalesUseCaseStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFixedScalesUseCaseStub.swift; sourceTree = "<group>"; };
 		AEEC1A6E2B69D05A00FA618E /* GetFixedScalesUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFixedScalesUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AEEC1A702B69D0BF00FA618E /* GetFixedScalesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFixedScalesUseCase.swift; sourceTree = "<group>"; };
 		AEEC1A732B69D17C00FA618E /* GetOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -299,9 +303,8 @@
 		AE4548632B7D929C00C8343C /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
+				AEE478DF2B8AE474003E1EA0 /* UseCaseStubs */,
 				AE4548642B7D92D400C8343C /* DeeplinkRouterStub.swift */,
-				AE8593C42B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift */,
-				AE8593C62B7EF6DF00EF72EF /* GetScheduledNotificationsUseCaseStub.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -911,8 +914,19 @@
 			isa = PBXGroup;
 			children = (
 				AEE478D92B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift */,
+				AEE478DD2B8AE424003E1EA0 /* ScalesListViewModelTests.swift */,
 			);
 			path = "Scales List";
+			sourceTree = "<group>";
+		};
+		AEE478DF2B8AE474003E1EA0 /* UseCaseStubs */ = {
+			isa = PBXGroup;
+			children = (
+				AE8593C42B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift */,
+				AE8593C62B7EF6DF00EF72EF /* GetScheduledNotificationsUseCaseStub.swift */,
+				AEE478E12B8AE4A1003E1EA0 /* GetFixedScalesUseCaseStub.swift */,
+			);
+			path = UseCaseStubs;
 			sourceTree = "<group>";
 		};
 		AEEC1A6D2B69D03D00FA618E /* GetFixedScalesUseCase */ = {
@@ -1236,9 +1250,11 @@
 				AED2502D2B57552E00290E42 /* ExpedientManagerTests.swift in Sources */,
 				AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */,
 				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
+				AEE478DE2B8AE424003E1EA0 /* ScalesListViewModelTests.swift in Sources */,
 				AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */,
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
 				AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */,
+				AEE478E22B8AE4A1003E1EA0 /* GetFixedScalesUseCaseStub.swift in Sources */,
 				AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */,
 				AE5DC1182B85777D00F8388F /* HomeViewModelTests.swift in Sources */,
 				AE4548652B7D92D400C8343C /* DeeplinkRouterStub.swift in Sources */,
