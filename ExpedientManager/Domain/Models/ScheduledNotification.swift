@@ -29,7 +29,7 @@ struct ScheduledNotification: Equatable {
 
 extension ScheduledNotification {
     static func from(fixedScale: FixedScale, with currentDate: Date) -> ScheduledNotification {
-        return ScheduledNotification(uid: UUID().uuidString,
+        return ScheduledNotification(uid: fixedScale.id,
                                      title: fixedScale.title ?? "",
                                      description: fixedScale.annotation ?? "",
                                      date: currentDate,
@@ -38,7 +38,7 @@ extension ScheduledNotification {
     }
     
     static func from(onDuty: OnDuty) -> ScheduledNotification {
-        return ScheduledNotification(uid: UUID().uuidString,
+        return ScheduledNotification(uid: onDuty.id,
                                      title: onDuty.titlo,
                                      description: onDuty.annotation ?? "",
                                      date: onDuty.initialDate,
