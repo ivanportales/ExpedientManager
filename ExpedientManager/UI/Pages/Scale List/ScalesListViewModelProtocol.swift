@@ -7,17 +7,16 @@
 
 import Foundation
 
-enum ScalesListViewModelStates: Equatable {
+enum ScalesListViewModelState: Equatable {
     case initial
     case loading
-    case content
+    case content(scheduledNotifications: [ScheduledNotification],
+                 selectedWorkScale: WorkScaleType)
     case error(message: String)
 }
 
 protocol ScalesListViewModelProtocol {
-    var state: Published<ScalesListViewModelStates>.Publisher { get }
-    var selectedWorkScale: Published<WorkScaleType>.Publisher { get }
-    var scheduledNotifications: [ScheduledNotification] { get }
+    var state: Published<ScalesListViewModelState>.Publisher { get }
 
     func getAllScales()
     func change(selectedWorkScale: WorkScaleType)

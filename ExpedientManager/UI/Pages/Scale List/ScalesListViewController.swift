@@ -95,7 +95,6 @@ extension ScalesListViewController {
     private func setupBindings() {
         viewModel
             .state
-            .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self = self else { return }
@@ -105,20 +104,13 @@ extension ScalesListViewController {
                     break
                 case .loading:
                     self.showLoadingView()
-                case .content:
-                    self.scalesTableView.setup(scheduledNotifications: viewModel.scheduledNotifications)
+                case .content(let scheduledNotifications,
+                              let selectedWorkScale):
+                    self.title = selectedWorkScale.description
+                    self.scalesTableView.setup(scheduledNotifications: scheduledNotifications)
                 case .error(message: let message):
                     self.showAlertWith(title: LocalizedString.alertErrorTitle, andMesssage: message)
                 }
-            }.store(in: &subscribers)
-        
-        viewModel
-            .selectedWorkScale
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] selectedWorkScale in
-                guard let self = self else { return }
-                self.title = selectedWorkScale.description
-                self.scalesTableView.setup(scheduledNotifications: viewModel.scheduledNotifications)
             }.store(in: &subscribers)
     }
 }

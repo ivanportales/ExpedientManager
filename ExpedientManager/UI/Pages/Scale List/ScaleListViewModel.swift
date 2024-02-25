@@ -11,29 +11,13 @@ final class ScalesListViewModel: ScalesListViewModelProtocol {
     
     // MARK: - Binding Properties
     
-    var state: Published<ScalesListViewModelStates>.Publisher { $statePublished }
-    var selectedWorkScale: Published<WorkScaleType>.Publisher { $selectedWorkScalePublished }
+    var state: Published<ScalesListViewModelState>.Publisher { $statePublished }
+    
+    @Published private(set) var statePublished: ScalesListViewModelState = .initial
     
     // MARK: - Private Properties
     
-    @Published private var statePublished: ScalesListViewModelStates = .initial
-    @Published private var selectedWorkScalePublished: WorkScaleType = .fixedScale
-    
-    // MARK: - Exposed Properties
-    
-    var scheduledNotifications: [ScheduledNotification] {
-        if selectedWorkScalePublished == .fixedScale {
-            return fixedScales.map {
-                ScheduledNotification.from(fixedScale: $0, with: $0.initialDate ?? .init())
-            }
-        }
-        return onDuties.map {
-            ScheduledNotification.from(onDuty: $0)
-        }
-    }
-    
-    // MARK: - Private Properties
-    
+    private var selectedWorkScalePublished: WorkScaleType = .fixedScale
     private var fixedScales: [FixedScale] = []
     private var onDuties: [OnDuty] = []
     private let getFixedScalesUseCase: GetFixedScalesUseCaseProtocol
@@ -83,11 +67,27 @@ final class ScalesListViewModel: ScalesListViewModelProtocol {
         
         dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-            self.statePublished = .content
+            self.statePublished = .content(scheduledNotifications: self.filteredScheduledNotifications(), 
+                                           selectedWorkScale: self.selectedWorkScalePublished)
         }
     }
     
     func change(selectedWorkScale: WorkScaleType) {
         self.selectedWorkScalePublished = selectedWorkScale
+        self.statePublished = .content(scheduledNotifications: filteredScheduledNotifications(),
+                                       selectedWorkScale: selectedWorkScalePublished)
+    }
+    
+    // MARK: - Private Functions
+    
+    private func filteredScheduledNotifications() -> [ScheduledNotification] {
+        if selectedWorkScalePublished == .fixedScale {
+            return fixedScales.map {
+                ScheduledNotification.from(fixedScale: $0, with: $0.initialDate ?? .init())
+            }
+        }
+        return onDuties.map {
+            ScheduledNotification.from(onDuty: $0)
+        }
     }
 }
