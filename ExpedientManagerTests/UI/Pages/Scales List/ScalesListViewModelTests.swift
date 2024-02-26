@@ -64,6 +64,30 @@ final class ScalesListViewModelTests: XCTestCase {
         
         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
     }
+    
+    func testChangeSelectedWorkScale() {
+        let fixedScales = FixedScale.mockModels
+        let onDuties = OnDuty.mockModels
+        let fixedScalesScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
+        let onDutiesScheduledNotifications = onDuties.map { $0.toScheduledNotification() }
+
+        makeSUT(fixedScales: fixedScales, onDuties: onDuties)
+        
+        let stateSpy = ViewModelPublisherSpy(publisher: viewModel.$statePublished)
+        let expectedPublishedStates: [ScalesListViewModelState] = [
+            .initial,
+            .loading,
+            .content(scheduledNotifications: fixedScalesScheduledNotifications, selectedWorkScale: .fixedScale),
+            .content(scheduledNotifications: onDutiesScheduledNotifications, selectedWorkScale: .onDuty),
+            .content(scheduledNotifications: fixedScalesScheduledNotifications, selectedWorkScale: .fixedScale),
+        ]
+        
+        viewModel.getAllScales()
+        viewModel.change(selectedWorkScale: .onDuty)
+        viewModel.change(selectedWorkScale: .fixedScale)
+
+        XCTAssertEqual(stateSpy.values, expectedPublishedStates)
+    }
 
     // MARK: - Helpers Functions
 
