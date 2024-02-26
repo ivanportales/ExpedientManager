@@ -48,6 +48,22 @@ final class ScalesListViewModelTests: XCTestCase {
         
         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
     }
+    
+    func testGetAllScalesWithErrorOnOnDuties() {
+        let expectedError = NSError(domain: "Error", code: 0)
+        makeSUT(onDutiesError: expectedError)
+        
+        let stateSpy = ViewModelPublisherSpy(publisher: viewModel.$statePublished)
+        let expectedPublishedStates: [ScalesListViewModelState] = [
+            .initial,
+            .loading,
+            .error(message: expectedError.localizedDescription)
+        ]
+        
+        viewModel.getAllScales()
+        
+        XCTAssertEqual(stateSpy.values, expectedPublishedStates)
+    }
 
     // MARK: - Helpers Functions
 
