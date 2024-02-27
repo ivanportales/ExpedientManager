@@ -18,29 +18,28 @@ final class ScalesListViewControllerTests: XCTestCase {
     private let currentDateForTesting: Date = Date.customDate()!
     var subscribers: Set<AnyCancellable>!
     
-    func testIfActivitiesListIsDisplayingTheRightInformation() {
+    func testIfScalesTableViewIsDisplayingTheRightInformation() {
         let fixedScales = FixedScale.mockModels
-        let onDuties = OnDuty.mockModels
         let expectedScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
         makeSUT(scheduledNotifications: expectedScheduledNotifications)
         
         let expectation = XCTestExpectation(description: "ActivitiesList displays all the filteredNotifications")
         
         listenToStateChange { [weak self] state in
+            guard let self = self else { return }
             switch state {
-            case .content(let scheduledNotifications,
-                          let selectedWorkScale):
+            case .content(let scheduledNotifications,_):
                 for index in 0..<scheduledNotifications.count {
                     let notification = scheduledNotifications[index]
-                    XCTAssertEqual(self!.viewController.displayedDateOnActivitiesView(atIndex: index),
+                    XCTAssertEqual(self.viewController.displayedDateOnActivitiesView(atIndex: index),
                                    notification.date.formateDate(withFormat: "d/MM"))
-                    XCTAssertEqual(self!.viewController.displayedTimeActivitiesView(atIndex: index),
+                    XCTAssertEqual(self.viewController.displayedTimeActivitiesView(atIndex: index),
                                    notification.date.formatTime())
-                    XCTAssertEqual(self!.viewController.displayedColorOnActivitiesView(atIndex: index).hex,
+                    XCTAssertEqual(self.viewController.displayedColorOnActivitiesView(atIndex: index).hex,
                                    notification.colorHex)
-                    XCTAssertEqual(self!.viewController.displayedTitleOnActivitiesView(atIndex: index),
+                    XCTAssertEqual(self.viewController.displayedTitleOnActivitiesView(atIndex: index),
                                    notification.title)
-                    XCTAssertEqual(self!.viewController.displayedDescriptionOnActivitiesView(atIndex: index),
+                    XCTAssertEqual(self.viewController.displayedDescriptionOnActivitiesView(atIndex: index),
                                    notification.description)
                 }
             default:
@@ -51,7 +50,6 @@ final class ScalesListViewControllerTests: XCTestCase {
         
         wait(for: [expectation], timeout: 1.0)
     }
-
 
     // MARK: - Helpers Functions
 
@@ -78,6 +76,7 @@ final class ScalesListViewControllerTests: XCTestCase {
 }
 
 extension ScalesListViewController {
+
     // MARK: - Activities List Helpers
     
     func isScheduledListInEmptyState() -> Bool {
