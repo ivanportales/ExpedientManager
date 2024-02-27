@@ -17,7 +17,40 @@ final class ScalesListViewControllerTests: XCTestCase {
     private var viewController: ScalesListViewController!
     private let currentDateForTesting: Date = Date.customDate()!
     var subscribers: Set<AnyCancellable>!
-
+    
+    func testIfActivitiesListIsDisplayingTheRightInformation() {
+        let fixedScales = FixedScale.mockModels
+        let onDuties = OnDuty.mockModels
+        let expectedScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
+        makeSUT(scheduledNotifications: expectedScheduledNotifications)
+        
+        let expectation = XCTestExpectation(description: "ActivitiesList displays all the filteredNotifications")
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .content(let scheduledNotifications,
+                          let selectedWorkScale):
+                for index in 0..<scheduledNotifications.count {
+                    let notification = scheduledNotifications[index]
+                    XCTAssertEqual(self!.viewController.displayedDateOnActivitiesView(atIndex: index),
+                                   notification.date.formateDate(withFormat: "d/MM"))
+                    XCTAssertEqual(self!.viewController.displayedTimeActivitiesView(atIndex: index),
+                                   notification.date.formatTime())
+                    XCTAssertEqual(self!.viewController.displayedColorOnActivitiesView(atIndex: index).hex,
+                                   notification.colorHex)
+                    XCTAssertEqual(self!.viewController.displayedTitleOnActivitiesView(atIndex: index),
+                                   notification.title)
+                    XCTAssertEqual(self!.viewController.displayedDescriptionOnActivitiesView(atIndex: index),
+                                   notification.description)
+                }
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
 
 
     // MARK: - Helpers Functions
@@ -41,6 +74,34 @@ final class ScalesListViewControllerTests: XCTestCase {
                 callback(state)
             }
             .store(in: &subscribers)
+    }
+}
+
+extension ScalesListViewController {
+    // MARK: - Activities List Helpers
+    
+    func isScheduledListInEmptyState() -> Bool {
+        return scalesTableView.isScheduledListInEmptyState()
+    }
+    
+    func displayedDateOnActivitiesView(atIndex index: Int) -> String {
+        return scalesTableView.displayedDateOnActivitiesView(atIndex: index)
+    }
+    
+    func displayedTimeActivitiesView(atIndex index: Int) -> String {
+        return scalesTableView.displayedTimeActivitiesView(atIndex: index)
+    }
+    
+    func displayedColorOnActivitiesView(atIndex index: Int) -> UIColor {
+        return scalesTableView.displayedColorOnActivitiesView(atIndex: index)
+    }
+    
+    func displayedTitleOnActivitiesView(atIndex index: Int) -> String {
+        return scalesTableView.displayedTitleOnActivitiesView(atIndex: index)
+    }
+    
+    func displayedDescriptionOnActivitiesView(atIndex index: Int) -> String {
+        return scalesTableView.displayedDescriptionOnActivitiesView(atIndex: index)
     }
 }
 
