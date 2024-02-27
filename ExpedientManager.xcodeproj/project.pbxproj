@@ -29,6 +29,7 @@
 		AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC11C2B857BA600F8388F /* ViewModelStatePublisherSpy.swift */; };
 		AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC11F2B858C1700F8388F /* ScheduledNotification+Extensions.swift */; };
 		AE5F19E32B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */; };
+		AE63BE752B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE63BE742B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift */; };
 		AE6731762B76E9D800169F66 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6731752B76E9D800169F66 /* LoadingView.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */; };
@@ -168,6 +169,7 @@
 		AE5DC11C2B857BA600F8388F /* ViewModelStatePublisherSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelStatePublisherSpy.swift; sourceTree = "<group>"; };
 		AE5DC11F2B858C1700F8388F /* ScheduledNotification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduledNotification+Extensions.swift"; sourceTree = "<group>"; };
 		AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationListTableView.swift; sourceTree = "<group>"; };
+		AE63BE742B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduledNotificationListTableView+Extensions.swift"; sourceTree = "<group>"; };
 		AE6731752B76E9D800169F66 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerProtocol.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				AE5205292B8BDC1800A2179B /* FixedScale+Extensions.swift */,
 				AE52052B2B8BDC9700A2179B /* OnDuty+Extensions.swift */,
 				AE52052D2B8BDE0800A2179B /* UIColor+Extensions.swift */,
+				AE63BE742B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1253,6 +1256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE63BE752B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift in Sources */,
 				AED2502D2B57552E00290E42 /* ExpedientManagerTests.swift in Sources */,
 				AE52052E2B8BDE0800A2179B /* UIColor+Extensions.swift in Sources */,
 				AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */,

@@ -310,7 +310,7 @@ final class HomeViewControllerTests: XCTestCase {
 
 fileprivate extension HomeViewController {
     
-    // MARK: - Loading View Helper
+    // MARK: - Views Helpers
     
     func isLoadingViewDisplayed() -> Bool {
         return loadingView != nil
@@ -373,52 +373,27 @@ fileprivate extension HomeViewController {
     // MARK: - Activities List Helpers
     
     func isScheduledListInEmptyState() -> Bool {
-        guard activitiesListTableView.numberOfRows(inSection: 0) == 1 else {
-            return false
-        }
-        if let _ = activitiesListTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? EmptyTableViewCell {
-            return true
-        }
-        return false
+        return activitiesListTableView.isScheduledListInEmptyState()
     }
     
     func displayedDateOnActivitiesView(atIndex index: Int) -> String {
-        guard let cell = cellFor(index: index) else {
-            return ""
-        }
-        return cell.dayAndMonthLabel.text ?? ""
+        return activitiesListTableView.displayedDateOnActivitiesView(atIndex: index)
     }
     
     func displayedTimeActivitiesView(atIndex index: Int) -> String {
-        guard let cell = cellFor(index: index) else {
-            return ""
-        }
-        return cell.hourLabel.text ?? ""
+        return activitiesListTableView.displayedTimeActivitiesView(atIndex: index)
     }
     
     func displayedColorOnActivitiesView(atIndex index: Int) -> UIColor {
-        guard let cell = cellFor(index: index) else {
-            return .clear
-        }
-        return cell.scaleColorView.backgroundColor ?? .clear
+        return activitiesListTableView.displayedColorOnActivitiesView(atIndex: index)
     }
     
     func displayedTitleOnActivitiesView(atIndex index: Int) -> String {
-        guard let cell = cellFor(index: index) else {
-            return ""
-        }
-        return cell.titleLabel.text ?? ""
+        return activitiesListTableView.displayedTitleOnActivitiesView(atIndex: index)
     }
     
     func displayedDescriptionOnActivitiesView(atIndex index: Int) -> String {
-        guard let cell = cellFor(index: index) else {
-            return ""
-        }
-        return cell.descriptionLabel.text ?? ""
-    }
-    
-    func cellFor(index: Int) -> ScheduledScalesTableViewCell? {
-        return activitiesListTableView.cellForRow(at: IndexPath(item: index, section: 0)) as? ScheduledScalesTableViewCell
+        return activitiesListTableView.displayedDescriptionOnActivitiesView(atIndex: index)
     }
 }
 
