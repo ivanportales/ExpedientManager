@@ -14,11 +14,11 @@ final class ScalesListViewController: UIViewController, LoadingShowableViewContr
     
     var loadingView: LoadingView?
     
-    lazy var scaleTypeSegmentControll: WorkScaleTypeSegmentedControl = {
-        let segmentControll = WorkScaleTypeSegmentedControl()
-        segmentControll.delegate = self
+    lazy var scaleTypeSegmentControl: WorkScaleTypeSegmentedControl = {
+        let segmentControl = WorkScaleTypeSegmentedControl()
+        segmentControl.delegate = self
         
-        return segmentControll
+        return segmentControl
     }()
     
     lazy var scalesTableView: ScheduledNotificationListTableView = {
@@ -73,7 +73,7 @@ extension ScalesListViewController {
     }
     
     private func setupViewHierarchy() {
-        view.addSubview(scaleTypeSegmentControll)
+        view.addSubview(scaleTypeSegmentControl)
         view.addSubview(scalesTableView)
     }
     
@@ -81,11 +81,11 @@ extension ScalesListViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            scaleTypeSegmentControll.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 5),
-            scaleTypeSegmentControll.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-            scaleTypeSegmentControll.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
+            scaleTypeSegmentControl.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 5),
+            scaleTypeSegmentControl.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+            scaleTypeSegmentControl.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
             
-            scalesTableView.topAnchor.constraint(equalTo: scaleTypeSegmentControll.bottomAnchor, constant: 20),
+            scalesTableView.topAnchor.constraint(equalTo: scaleTypeSegmentControl.bottomAnchor, constant: 20),
             scalesTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
             scalesTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
             scalesTableView.bottomAnchor.constraint(greaterThanOrEqualTo: safeArea.bottomAnchor, constant: -8)
