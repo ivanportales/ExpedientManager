@@ -72,6 +72,30 @@ final class ScalesListViewControllerTests: XCTestCase {
         
         wait(for: [expectation], timeout: 1.0)
     }
+    
+    func testChangeSelectedScale() {
+        let fixedScales = FixedScale.mockModels
+        let expectedScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
+        makeSUT(scheduledNotifications: expectedScheduledNotifications)
+        
+        viewController.changeSelectedScale(to: .onDuty)
+        
+        let expectation = XCTestExpectation(description: "ActivitiesList displays all the filteredNotifications")
+        
+        listenToStateChange { [weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .content(_, let selectedWorkScale):
+                XCTAssertEqual(self.viewController.selectedWorkScaleLabel(), selectedWorkScale.description)
+                XCTAssertEqual(selectedWorkScale, .onDuty)
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
 
     // MARK: - Helpers Functions
 
