@@ -23,7 +23,7 @@ final class ScalesListViewControllerTests: XCTestCase {
         let expectedScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
         makeSUT(scheduledNotifications: expectedScheduledNotifications)
         
-        let expectation = XCTestExpectation(description: "ActivitiesList displays all the filteredNotifications")
+        let expectation = XCTestExpectation(description: "Scales View displays all the scheduledNotifications")
         
         listenToStateChange { [weak self] state in
             guard let self = self else { return }
@@ -42,6 +42,28 @@ final class ScalesListViewControllerTests: XCTestCase {
                     XCTAssertEqual(self.viewController.displayedDescriptionOnActivitiesView(atIndex: index),
                                    notification.description)
                 }
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testInitialSelectedScale() {
+        let fixedScales = FixedScale.mockModels
+        let expectedScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
+        makeSUT(scheduledNotifications: expectedScheduledNotifications)
+                
+        let expectation = XCTestExpectation(description: "selectedWorkScaleLabel is equal to selectedWorkScale.description")
+        
+        listenToStateChange { [weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .content(_, let selectedWorkScale):
+                XCTAssertEqual(self.viewController.selectedWorkScaleLabel(), selectedWorkScale.description)
+                XCTAssertEqual(selectedWorkScale, .fixedScale)
             default:
                 XCTFail()
             }
@@ -76,6 +98,18 @@ final class ScalesListViewControllerTests: XCTestCase {
 }
 
 extension ScalesListViewController {
+    
+    // MARK: - View Helpers
+        
+    func selectedWorkScaleLabel() -> String {
+        return title ?? ""
+    }
+    
+    // MARK: - Scales Options Helpers
+    
+    func changeSelectedScale(to selectedWorkScale: WorkScaleType) {
+        didChangeSelectedIndex(scaleTypeSegmentControl, selectedWorkScale: selectedWorkScale)
+    }
 
     // MARK: - Activities List Helpers
     
