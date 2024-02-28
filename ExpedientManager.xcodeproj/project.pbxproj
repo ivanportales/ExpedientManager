@@ -52,6 +52,7 @@
 		AE8CB6EF2B784E6C00649368 /* CustomAlertTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6EE2B784E6C00649368 /* CustomAlertTransitionManager.swift */; };
 		AE8CB6F22B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6F12B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift */; };
 		AE8CB6F42B78570100649368 /* SetValueForKeyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CB6F32B78570100649368 /* SetValueForKeyUseCase.swift */; };
+		AE8E10702B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8E106F2B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift */; };
 		AE9B5A262B670C9D00F6A561 /* SaveFixedScaleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */; };
 		AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */; };
 		AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C902B631E690070A9CE /* CalendarManager.swift */; };
@@ -192,6 +193,7 @@
 		AE8CB6EE2B784E6C00649368 /* CustomAlertTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertTransitionManager.swift; sourceTree = "<group>"; };
 		AE8CB6F12B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueForKeyUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE8CB6F32B78570100649368 /* SetValueForKeyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueForKeyUseCase.swift; sourceTree = "<group>"; };
+		AE8E106F2B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingShowableViewControllerProtocol+Extensions.swift"; sourceTree = "<group>"; };
 		AE9B5A252B670C9D00F6A561 /* SaveFixedScaleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCase.swift; sourceTree = "<group>"; };
 		AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AE9D5C902B631E690070A9CE /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				AE52052B2B8BDC9700A2179B /* OnDuty+Extensions.swift */,
 				AE52052D2B8BDE0800A2179B /* UIColor+Extensions.swift */,
 				AE63BE742B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift */,
+				AE8E106F2B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1267,6 +1270,7 @@
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
 				AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */,
 				AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */,
+				AE8E10702B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift in Sources */,
 				AE5DC1182B85777D00F8388F /* HomeViewModelTests.swift in Sources */,
 				AE4548652B7D92D400C8343C /* DeeplinkRouterStub.swift in Sources */,
 				AEE478D72B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift in Sources */,
