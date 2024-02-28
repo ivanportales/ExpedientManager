@@ -13,7 +13,7 @@ final class ScalesListViewModelTests: XCTestCase {
     
     private var viewModel: ScalesListViewModel!
     private let currentDateForTesting: Date = Date.customDate()!
-    var subscribers: Set<AnyCancellable>!
+    private var subscribers: Set<AnyCancellable>!
 
     func testGetAllScales() {
         let fixedScales = FixedScale.mockModels
@@ -98,15 +98,6 @@ final class ScalesListViewModelTests: XCTestCase {
         self.subscribers = Set<AnyCancellable>()
         self.viewModel = ScalesListViewModel(getFixedScalesUseCase: GetStubUseCase(values: fixedScales, error: fixedScalesError),
                                              getOnDutyUseCase:  GetStubUseCase(values: onDuties, error: onDutiesError))
-    }
-    
-    private func listenToStateChange(_ callback: @escaping (ScalesListViewModelState) -> Void) {
-        viewModel.state
-            .receive(on: DispatchQueue.main)
-            .sink { state in
-                callback(state)
-            }
-            .store(in: &subscribers)
     }
 }
 
