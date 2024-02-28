@@ -16,7 +16,7 @@ final class ScalesListViewControllerTests: XCTestCase {
     private var router: DeeplinkRouterStub!
     private var viewController: ScalesListViewController!
     private let currentDateForTesting: Date = Date.customDate()!
-    var subscribers: Set<AnyCancellable>!
+    private var subscribers: Set<AnyCancellable>!
     
     func testIfScalesTableViewIsDisplayingTheRightInformation() {
         let fixedScales = FixedScale.mockModels
@@ -88,6 +88,25 @@ final class ScalesListViewControllerTests: XCTestCase {
             case .content(_, let selectedWorkScale):
                 XCTAssertEqual(self.viewController.selectedWorkScaleLabel(), selectedWorkScale.description)
                 XCTAssertEqual(selectedWorkScale, .onDuty)
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testLoadingState() {
+        makeSUT()
+        viewModel.change(state: .loading)
+        
+        let expectation = XCTestExpectation(description: "Loading State diplays loading view")
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .loading:
+                XCTAssertTrue(self!.viewController.isLoadingViewDisplayed())
             default:
                 XCTFail()
             }
@@ -191,5 +210,11 @@ fileprivate class ScalesListViewModelStub: ScalesListViewModelProtocol {
         selectedWorkScalePublished = selectedWorkScale
         statePublished = .content(scheduledNotifications: scheduledNotifications,
                                   selectedWorkScale: selectedWorkScalePublished)
+    }
+    
+    // MARK: - Helper Functions for Testing
+    
+    func change(state newState: ScalesListViewModelState) {
+        self.statePublished = newState
     }
 }
