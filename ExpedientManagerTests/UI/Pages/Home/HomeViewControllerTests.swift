@@ -16,7 +16,7 @@ final class HomeViewControllerTests: XCTestCase {
     private var router: DeeplinkRouterStub!
     private var viewController: HomeViewController!
     private let currentDateForTesting: Date = Date.customDate()!
-    var subscribers: Set<AnyCancellable>!
+    private var subscribers: Set<AnyCancellable>!
 
     func testCallToFetchFunctionWhenViewControllerLoads() {
         makeSUT()
@@ -305,16 +305,9 @@ final class HomeViewControllerTests: XCTestCase {
     }
 }
 
-
 // MARK: - Helper Extensions
 
 fileprivate extension HomeViewController {
-    
-    // MARK: - Views Helpers
-    
-    func isLoadingViewDisplayed() -> Bool {
-        return loadingView != nil
-    }
     
     // MARK: - Calendar View Helpers
     
