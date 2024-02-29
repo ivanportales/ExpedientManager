@@ -13,9 +13,9 @@ final class HomeViewModelTests: XCTestCase {
     
     private var viewModel: HomeViewModel!
     private let currentDateForTesting: Date = Date.customDate()!
-    var subscribers: Set<AnyCancellable>!
+    private var subscribers: Set<AnyCancellable>!
 
-    func testFetchScheduledNotificationsWithOneNotificationScheduledForDate() {
+    func test_fetch_scheduled_notifications_with_one_notification_scheduled_for_date() {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models, dateOfFilter: currentDateForTesting)
         
@@ -31,7 +31,7 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
     }
     
-    func testFetchScheduledNotificationsWithNoNotificationScheduledForDate() {
+    func test_fetch_scheduled_notifications_with_no_notification_scheduled_for_date() {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models, dateOfFilter: Date.customDate(month: 3)!)
        
@@ -47,7 +47,7 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
     }
     
-    func testGetFilteredScheduledDatesWithNoNotificationScheduledForDate() {
+    func test_get_filtered_scheduled_dates_with_no_notification_scheduled_for_date() {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models, dateOfFilter: currentDateForTesting)
         
@@ -56,7 +56,7 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(result, [])
     }
     
-    func testGetFilteredScheduledDatesWithNotificationScheduledForDate() {
+    func test_get_filtered_scheduled_dates_with_notification_scheduled_for_date() {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models, dateOfFilter: currentDateForTesting)
        
@@ -66,7 +66,7 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(result, [models[0]])
    }
     
-    func testGetMonthDescriptionOfCurrentDate() {
+    func test_get_month_description_of_current_date() {
        let models = ScheduledNotification.getModels()
        makeSUT(scheduledNotifications: models, dateOfFilter: currentDateForTesting)
        
@@ -76,7 +76,7 @@ final class HomeViewModelTests: XCTestCase {
        XCTAssertEqual(result, "Janeiro")
    }
     
-    func testFilterScheduledDatesWithCurrentDate() {
+    func test_filter_scheduled_dates_with_current_date() {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models, dateOfFilter: currentDateForTesting)
         
@@ -91,7 +91,7 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
     }
     
-    func testVerifyFirstAccessOnAppToTrue() {
+    func test_verify_first_access_on_app_to_true() {
         makeSUT(dateOfFilter: currentDateForTesting, valueToBeReturned: nil)
         var didCallRouteToOnboardingCallback = false
         
@@ -102,7 +102,7 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertTrue(didCallRouteToOnboardingCallback)
     }
     
-    func testVerifyFirstAccessOnAppToFalse() {
+    func test_verify_first_access_on_app_to_false() {
         makeSUT(dateOfFilter: currentDateForTesting, valueToBeReturned: true)
         var didCallRouteToOnboardingCallback = false
         
