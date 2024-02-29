@@ -18,26 +18,26 @@ final class HomeViewControllerTests: XCTestCase {
     private let currentDateForTesting: Date = Date.customDate()!
     private var subscribers: Set<AnyCancellable>!
 
-    func testCallToFetchFunctionWhenViewControllerLoads() {
+    func test_call_to_fetch_function_when_view_controller_loads() {
         makeSUT()
         
         XCTAssertTrue(viewModel.didCallFetchScheduledNotifications)
     }
     
-    func testCallRouteToOnboardingPage() {
+    func test_call_route_to_onboarding_page() {
         makeSUT()
         
         XCTAssertEqual(router.sendedDeeplink, .onboard)
     }
     
-    func testNavigationTitleEqualsToCurrentMonthOnInitialization() {
+    func test_navigation_title_equals_to_current_month_on_initialization() {
         makeSUT()
         
         XCTAssertEqual(viewController.title,
                        currentDateForTesting.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased)
     }
     
-    func testIfListNavigationBarButtonIsHiddenIfReturnFromUseCaseIsEmpty() {
+    func test_if_list_navigation_bar_button_is_hidden_if_return_from_use_case_is_empty() {
         makeSUT()
          
         let expectation = XCTestExpectation(description: "List NavigationBarButton is Hidden and AddScale button is not")
@@ -60,7 +60,7 @@ final class HomeViewControllerTests: XCTestCase {
          wait(for: [expectation], timeout: 1.0)
     }
     
-    func testIfListNavigationBarButtonAppearsIfReturnFromUseCaseIsNotEmpty() {
+    func test_if_list_navigation_bar_button_appears_if_return_from_use_case_is_not_empty() {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models)
         
@@ -84,7 +84,7 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testTapOnAddScaleButton() {
+    func test_tap_on_add_scale_button() {
         makeSUT()
         
         if let barButton = self.viewController.navigationItem.rightBarButtonItems?[0] {
@@ -94,7 +94,7 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(router.sendedDeeplink?.rawValue, Deeplink.addScale.rawValue)
     }
     
-    func testTapOnScalesListButton() {
+    func test_tap_on_scales_list_button() {
         makeSUT()
         
         if let barButton = self.viewController.navigationItem.rightBarButtonItems?[1] {
@@ -104,7 +104,7 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(router.sendedDeeplink?.rawValue, Deeplink.scaleList.rawValue)
     }
     
-    func testLoadingState() {
+    func test_loading_state() {
         makeSUT()
         viewModel.change(state: .loading)
         
@@ -123,7 +123,7 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testActivitiesListShouldBeInEmptyStateIfReturnFromUseCaseIsEmpty() {
+    func test_activities_list_should_be_in_empty_state_if_return_from_use_case_is_empty() {
         makeSUT()
         
         let expectation = XCTestExpectation(description: "ActivitiesList diplays empty state")
@@ -144,7 +144,7 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testIfActivitiesListIsDisplayingTheRightInformation() {
+    func test_if_activities_list_is_displaying_the_right_information() {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models)
         
@@ -176,7 +176,7 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testChangeCurrentSelectedDateShouldChangeStateToFilterContent() {
+    func test_change_current_selected_date_should_change_state_to_filter_content() {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models)
         
@@ -211,7 +211,7 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCaseIsEmpty() {
+    func test_number_of_events_for_current_month_in_calendar_if_return_from_use_case_is_empty() {
         makeSUT()
         
         let expectation = XCTestExpectation(description: "CalendarView diplays empty event calendar")
@@ -232,7 +232,7 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testNumberOfEventsForCurrentMonthInCalendarIfReturnFromUseCase() {
+    func test_number_of_events_for_current_month_in_calendar_if_return_from_use_case() {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models)
         
@@ -254,7 +254,7 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testColorsForDatesInCalendar() {
+    func test_colors_for_dates_in_calendar() {
         let models = ScheduledNotification.getModels()
         makeSUT(scheduledNotifications: models)
         
@@ -271,7 +271,7 @@ final class HomeViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
         
-    func testChangeOfCurrentDisplayedMonthOnCalendar() {
+    func test_change_of_current_displayed_month_on_calendar() {
         makeSUT()
         let nextMonthDate = currentDateForTesting.add(1, to: .month)
         
