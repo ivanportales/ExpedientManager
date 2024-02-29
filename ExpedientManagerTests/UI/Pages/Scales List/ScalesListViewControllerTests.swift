@@ -51,6 +51,25 @@ final class ScalesListViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
+    func testScalesListViewShouldBeInEmptyStateIfReturnFromUseCaseIsEmpty() {
+        makeSUT()
+        
+        let expectation = XCTestExpectation(description: "ActivitiesList diplays empty state")
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .content(let scheduledNotifications,_):
+                XCTAssertEqual(scheduledNotifications.count, 0)
+                XCTAssertTrue(self!.viewController.isScheduledListInEmptyState())
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
     func testInitialSelectedScale() {
         let fixedScales = FixedScale.mockModels
         let expectedScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
