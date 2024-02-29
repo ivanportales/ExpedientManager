@@ -18,7 +18,7 @@ final class ScalesListViewControllerTests: XCTestCase {
     private let currentDateForTesting: Date = Date.customDate()!
     private var subscribers: Set<AnyCancellable>!
     
-    func testIfScalesTableViewIsDisplayingTheRightInformation() {
+    func test_if_scales_list_view_is_displaying_the_right_information() {
         let fixedScales = FixedScale.mockModels
         let expectedScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
         makeSUT(scheduledNotifications: expectedScheduledNotifications)
@@ -51,7 +51,7 @@ final class ScalesListViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testScalesListViewShouldBeInEmptyStateIfReturnFromUseCaseIsEmpty() {
+    func test_scales_list_view_should_be_in_empty_state_if_return_from_use_case_is_empty() {
         makeSUT()
         
         let expectation = XCTestExpectation(description: "ActivitiesList diplays empty state")
@@ -70,7 +70,8 @@ final class ScalesListViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testInitialSelectedScale() {
+    
+    func test_initial_selected_scale_of_work() {
         let fixedScales = FixedScale.mockModels
         let expectedScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
         makeSUT(scheduledNotifications: expectedScheduledNotifications)
@@ -92,7 +93,7 @@ final class ScalesListViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testChangeSelectedScale() {
+    func test_change_selected_scale_of_work() {
         let fixedScales = FixedScale.mockModels
         let expectedScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
         makeSUT(scheduledNotifications: expectedScheduledNotifications)
@@ -116,7 +117,7 @@ final class ScalesListViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testLoadingState() {
+    func test_loading_state() {
         makeSUT()
         viewModel.change(state: .loading)
         
@@ -140,7 +141,7 @@ final class ScalesListViewControllerTests: XCTestCase {
     private func makeSUT(scheduledNotifications: [ScheduledNotification] = [],
                          selectedWorkScalePublished: WorkScaleType = .fixedScale) {
         self.subscribers = Set<AnyCancellable>()
-        self.viewModel = ScalesListViewModelStub(scheduledNotifications: scheduledNotifications, 
+        self.viewModel = ScalesListViewModelStub(scheduledNotifications: scheduledNotifications,
                                                  selectedWorkScalePublished: selectedWorkScalePublished)
         self.router = DeeplinkRouterStub()
         self.viewController = ScalesListViewController(viewModel: viewModel!,
