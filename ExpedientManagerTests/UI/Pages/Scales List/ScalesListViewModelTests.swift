@@ -15,7 +15,7 @@ final class ScalesListViewModelTests: XCTestCase {
     private let currentDateForTesting: Date = Date.customDate()!
     private var subscribers: Set<AnyCancellable>!
 
-    func testGetAllScales() {
+    func test_get_all_scales() {
         let fixedScales = FixedScale.mockModels
         let onDuties = OnDuty.mockModels
         let expectedScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
@@ -33,7 +33,7 @@ final class ScalesListViewModelTests: XCTestCase {
         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
     }
     
-    func testGetAllScalesWithErrorOnFixedScales() {
+    func test_get_all_scales_with_error_on_fixed_scales() {
         let expectedError = NSError(domain: "Error", code: 0)
         makeSUT(fixedScalesError: expectedError)
         
@@ -49,7 +49,7 @@ final class ScalesListViewModelTests: XCTestCase {
         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
     }
     
-    func testGetAllScalesWithErrorOnOnDuties() {
+    func test_get_all_scales_with_error_on_on_duties() {
         let expectedError = NSError(domain: "Error", code: 0)
         makeSUT(onDutiesError: expectedError)
         
@@ -65,7 +65,7 @@ final class ScalesListViewModelTests: XCTestCase {
         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
     }
     
-    func testChangeSelectedWorkScale() {
+    func test_change_selected_work_scale() {
         let fixedScales = FixedScale.mockModels
         let onDuties = OnDuty.mockModels
         let fixedScalesScheduledNotifications = fixedScales.map { $0.toScheduledNotification() }
