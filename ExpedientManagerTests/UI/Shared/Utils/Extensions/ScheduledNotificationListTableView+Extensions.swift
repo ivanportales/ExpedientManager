@@ -54,7 +54,14 @@ extension ScheduledNotificationListTableView {
         return cell.descriptionLabel.text ?? ""
     }
     
-    func cellFor(index: Int) -> ScheduledScalesTableViewCell? {
+    private func cellFor(index: Int) -> ScheduledScalesTableViewCell? {
+        guard didCallReloadData() else {
+            return nil
+        }
         return tableView(self, cellForRowAt: IndexPath(item: index, section: 0)) as? ScheduledScalesTableViewCell
+    }
+    
+    private func didCallReloadData() -> Bool {
+        return visibleCells.count != 0
     }
 }
