@@ -10,13 +10,11 @@ import UIKit
 
 extension ScheduledNotificationListTableView {
     func isScheduledListInEmptyState() -> Bool {
-        guard numberOfRows(inSection: 0) == 1 else {
+        guard numberOfRows(inSection: 0) == 1,
+              cellForRow(at: IndexPath(item: 0, section: 0)) is EmptyTableViewCell else {
             return false
         }
-        if let _ = cellForRow(at: IndexPath(item: 0, section: 0)) as? EmptyTableViewCell {
-            return true
-        }
-        return false
+        return true
     }
     
     func displayedDateOnActivitiesView(atIndex index: Int) -> String {
