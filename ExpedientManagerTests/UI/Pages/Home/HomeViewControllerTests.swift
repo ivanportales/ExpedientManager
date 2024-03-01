@@ -276,8 +276,7 @@ final class HomeViewControllerTests: XCTestCase {
         
         viewController.changeCurrentDisplayedMonthOnCalendar(to: nextMonthDate)
         
-        XCTAssertEqual(viewController.title,
-                       nextMonthDate.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased)
+        XCTAssertEqual(viewController.title, "Fevereiro")
     }
     
     // MARK: - Helpers Functions
