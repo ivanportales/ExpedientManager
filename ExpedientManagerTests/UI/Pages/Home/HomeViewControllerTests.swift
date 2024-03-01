@@ -30,11 +30,10 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(router.sendedDeeplink, .onboard)
     }
     
-    func test_navigation_title_equals_to_current_month_on_initialization() {
+    func test_current_month_label_is_equal_to_current_month_on_initialization() {
         makeSUT()
         
-        XCTAssertEqual(viewController.title,
-                       currentDateForTesting.formateDate(withFormat: "MMMM", dateStyle: .full).firstUppercased)
+        XCTAssertEqual(viewController.currentMonthLabel(), "Janeiro")
     }
     
     func test_if_list_navigation_bar_button_is_hidden_if_return_from_use_case_is_empty() {
@@ -308,6 +307,12 @@ final class HomeViewControllerTests: XCTestCase {
 // MARK: - Helper Extensions
 
 fileprivate extension HomeViewController {
+    
+    // MARK: - View Helpers
+    
+    func currentMonthLabel() -> String {
+        return title ?? ""
+    }
     
     // MARK: - Calendar View Helpers
     
