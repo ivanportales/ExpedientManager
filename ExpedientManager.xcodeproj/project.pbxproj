@@ -24,6 +24,7 @@
 		AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */; };
 		AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */; };
 		AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */; };
+		AE5A7DA22B9388E200DEDD94 /* ScrollableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A7DA12B9388E200DEDD94 /* ScrollableViewController.swift */; };
 		AE5DC1182B85777D00F8388F /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC1172B85777D00F8388F /* HomeViewModelTests.swift */; };
 		AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC11A2B857A0D00F8388F /* Date+Extensions.swift */; };
 		AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC11C2B857BA600F8388F /* ViewModelStatePublisherSpy.swift */; };
@@ -165,6 +166,7 @@
 		AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseError.swift; sourceTree = "<group>"; };
 		AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCase.swift; sourceTree = "<group>"; };
+		AE5A7DA12B9388E200DEDD94 /* ScrollableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableViewController.swift; sourceTree = "<group>"; };
 		AE5DC1172B85777D00F8388F /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		AE5DC11A2B857A0D00F8388F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AE5DC11C2B857BA600F8388F /* ViewModelStatePublisherSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelStatePublisherSpy.swift; sourceTree = "<group>"; };
@@ -394,6 +396,14 @@
 				AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */,
 			);
 			path = SaveOnDutyUseCase;
+			sourceTree = "<group>";
+		};
+		AE5A7DA02B9388C800DEDD94 /* ScrollableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AE5A7DA12B9388E200DEDD94 /* ScrollableViewController.swift */,
+			);
+			path = ScrollableViewController;
 			sourceTree = "<group>";
 		};
 		AE5DC1192B8579FB00F8388F /* Utils */ = {
@@ -896,6 +906,7 @@
 		AEE16A3F2B5C7BEC0000F2C4 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				AE5A7DA02B9388C800DEDD94 /* ScrollableViewController */,
 				AE6731742B76E9C400169F66 /* LoadingView */,
 				AE5F19DF2B6ADE380045C479 /* ScalesListTableView */,
 				AE5477ED2B649402000679AC /* CollectionView */,
@@ -1186,6 +1197,7 @@
 				AE7FA9872B75B4250079E9FD /* LoadingShowableViewController.swift in Sources */,
 				AED250BE2B57558100290E42 /* HomeViewModel.swift in Sources */,
 				AED250BA2B57558100290E42 /* ScrollToKeyboardAvoiding.swift in Sources */,
+				AE5A7DA22B9388E200DEDD94 /* ScrollableViewController.swift in Sources */,
 				AED250162B57552C00290E42 /* AppDelegate.swift in Sources */,
 				AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */,
 				AE5F19E32B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift in Sources */,
