@@ -39,6 +39,14 @@ final class AddScaleViewControllerTests: XCTestCase {
         XCTAssertEqual(viewController.selectedEndingDate(), viewModel.savedFixedScale!.finalDate)
         XCTAssertEqual(viewController.selectedColor().hex, viewModel.savedFixedScale!.colorHex)
     }
+    
+    func test_change_selected_scale_type() {
+        makeSUT()
+       
+        viewController.changeSelectedScale(to: .onDuty)
+       
+        XCTAssertEqual(viewController.selectedWorkScale(), .onDuty)
+    }
 
     // MARK: - Helpers Functions
 
