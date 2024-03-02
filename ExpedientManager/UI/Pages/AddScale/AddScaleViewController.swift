@@ -1,5 +1,5 @@
 //
-//  BaseScaleViewController.swift
+//  AddScaleViewController.swift
 //  ExpedientManager
 //
 //  Created by Gonzalo Ivan Santos Portales on 10/11/23.
@@ -8,7 +8,7 @@
 import Combine
 import UIKit
 
-class BaseScaleViewController: ScrollableViewController, LoadingShowableViewControllerProtocol {
+class AddScaleViewController: ScrollableViewController, LoadingShowableViewControllerProtocol {
     
     // MARK: - UI
     
@@ -248,7 +248,7 @@ class BaseScaleViewController: ScrollableViewController, LoadingShowableViewCont
 
 // MARK: - Setup Extensions
 
-extension BaseScaleViewController {
+extension AddScaleViewController {
     func setupNavigationBar() {
         title = LocalizedString.addTitle
         setupNavigationBarItemOn(position: .right,
@@ -282,7 +282,7 @@ extension BaseScaleViewController {
 
 // MARK: - WorkScaleTypeSegmentedControlDelegate
 
-extension BaseScaleViewController: WorkScaleTypeSegmentedControlDelegate {
+extension AddScaleViewController: WorkScaleTypeSegmentedControlDelegate {
     func didChangeSelectedIndex(_ view: WorkScaleTypeSegmentedControl, selectedWorkScale: WorkScaleType) {
         scaleSelectTypeView.selectedWorkScale = selectedWorkScale
         endingDurationView.set(isEditable: selectedWorkScale == .fixedScale)

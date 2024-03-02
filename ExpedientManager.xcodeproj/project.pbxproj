@@ -122,7 +122,7 @@
 		AED250E02B57558100290E42 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2509F2B57558100290E42 /* UIColor+Extensions.swift */; };
 		AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A02B57558100290E42 /* Calendar+Extensions.swift */; };
 		AED250E22B57558100290E42 /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A22B57558100290E42 /* UserNotificationsManager.swift */; };
-		AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */; };
+		AEDC564D2B5F39CD00939629 /* AddScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC564C2B5F39CD00939629 /* AddScaleViewController.swift */; };
 		AEE16A432B5C7C2A0000F2C4 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */; };
 		AEE478D72B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */; };
 		AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478D92B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift */; };
@@ -269,7 +269,7 @@
 		AED2509F2B57558100290E42 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AED250A02B57558100290E42 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		AED250A22B57558100290E42 /* UserNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
-		AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScaleViewController.swift; sourceTree = "<group>"; };
+		AEDC564C2B5F39CD00939629 /* AddScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScaleViewController.swift; sourceTree = "<group>"; };
 		AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
 		AEE478D92B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalesListViewControllerTests.swift; sourceTree = "<group>"; };
@@ -408,6 +408,13 @@
 			path = ScrollableViewController;
 			sourceTree = "<group>";
 		};
+		AE5A7DA82B93A8E600DEDD94 /* Add Scale */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Add Scale";
+			sourceTree = "<group>";
+		};
 		AE5DC1192B8579FB00F8388F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +487,7 @@
 		AE72749A2B7ADE08009E479A /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				AE5A7DA82B93A8E600DEDD94 /* Add Scale */,
 				AEE478D82B8A9B13003E1EA0 /* Scales List */,
 				AE72749B2B7ADE10009E479A /* Home */,
 			);
@@ -745,7 +753,7 @@
 			children = (
 				AED250762B57558000290E42 /* Views */,
 				AED250742B57558000290E42 /* AddScaleViewModel.swift */,
-				AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */,
+				AEDC564C2B5F39CD00939629 /* AddScaleViewController.swift */,
 				AE5A7DA62B939EC900DEDD94 /* AddScaleViewModelProtocol.swift */,
 			);
 			path = AddScale;
@@ -1217,7 +1225,7 @@
 				AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */,
 				AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */,
 				AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */,
-				AEDC564D2B5F39CD00939629 /* BaseScaleViewController.swift in Sources */,
+				AEDC564D2B5F39CD00939629 /* AddScaleViewController.swift in Sources */,
 				AE8CB6F22B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift in Sources */,
 				AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */,
 				AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */,

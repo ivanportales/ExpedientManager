@@ -37,7 +37,7 @@ final class ViewControllersFactory {
         return HomeViewController(viewModel: viewModel, router: router)
     }
     
-    func makeAddScaleViewController() -> BaseScaleViewController {
+    func makeAddScaleViewController() -> AddScaleViewController {
         let scheduledNotificationsRepository = CoreDataScheduledNotificationsRepository()
         let notificationManager = UserNotificationsManager()
         let saveFixedScaleUseCase = SaveFixedScaleUseCase(fixedScaleRepository: CoreDataFixedScaleRepository(),
@@ -51,7 +51,7 @@ final class ViewControllersFactory {
                                           saveFixedScaleUseCase: saveFixedScaleUseCase,
                                           saveOnDutyUseCase: saveOnDutyUseCase)
 
-        return BaseScaleViewController(viewModel: viewModel, router: router)
+        return AddScaleViewController(viewModel: viewModel, router: router)
     }
     
     func makeScalesListViewController() -> ScalesListViewController {
