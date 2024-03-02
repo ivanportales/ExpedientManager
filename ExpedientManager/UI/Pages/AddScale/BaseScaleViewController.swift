@@ -8,27 +8,11 @@
 import Combine
 import UIKit
 
-class BaseScaleViewController: UIViewController, LoadingShowableViewControllerProtocol {
+class BaseScaleViewController: ScrollableViewController, LoadingShowableViewControllerProtocol {
     
     // MARK: - UI
     
     var loadingView: LoadingView?
-    
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .white
-
-        return scrollView
-    }()
-    
-    lazy var contentView: UIView = {
-        let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .white
-        
-        return contentView
-    }()
     
     lazy var scaleTypeSegmentControll: WorkScaleTypeSegmentedControl = {
         let segmentControll = WorkScaleTypeSegmentedControl()
@@ -190,23 +174,9 @@ class BaseScaleViewController: UIViewController, LoadingShowableViewControllerPr
                 ))
         }
     }
-}
-
-// MARK: - Setup Extensions
-
-extension BaseScaleViewController {
-    func setupNavigationBar() {
-        title = LocalizedString.addTitle
-        setupNavigationBarItemOn(position: .right,
-                                 withTitle: LocalizedString.saveButton,
-                                 color: .appDarkBlue) { [weak self] _ in
-            self?.saveScale()
-        }
-    }
     
-    func setupViewHierarchy() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
+    override func setupViewHierarchy() {
+        super.setupViewHierarchy()
         contentView.addSubview(scaleTypeSegmentControll)
         contentView.addSubview(titleLabel)
         contentView.addSubview(titleTextField)
@@ -222,17 +192,9 @@ extension BaseScaleViewController {
         contentView.addSubview(scaleSetColorView)
     }
     
-    func setupConstraints() {
-        scrollView.constraintViewToSuperview()
-        contentView.constraintViewToSuperview()
-        
-        let contentViewHeightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
-        contentViewHeightAnchor.priority = .defaultLow
-        
+    override func setupConstraints() {
+        super.setupConstraints()
         NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentViewHeightAnchor,
-            
             scaleTypeSegmentControll.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             scaleTypeSegmentControll.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             scaleTypeSegmentControll.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
@@ -279,6 +241,19 @@ extension BaseScaleViewController {
             
             scaleSetColorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
         ])
+    }
+}
+
+// MARK: - Setup Extensions
+
+extension BaseScaleViewController {
+    func setupNavigationBar() {
+        title = LocalizedString.addTitle
+        setupNavigationBarItemOn(position: .right,
+                                 withTitle: LocalizedString.saveButton,
+                                 color: .appDarkBlue) { [weak self] _ in
+            self?.saveScale()
+        }
     }
     
     func setupBindings() {
