@@ -17,6 +17,28 @@ final class AddScaleViewControllerTests: XCTestCase {
     private var viewController: AddScaleViewController!
     private let currentDateForTesting: Date = Date.customDate()!
     private var subscribers: Set<AnyCancellable>!
+    
+    func test_save_scale() {
+        makeSUT()
+        
+        viewController.set(scaleTitle: "title")
+        viewController.set(scaleNotes: "description")
+        
+        if let saveButton = self.viewController.navigationItem.rightBarButtonItems?[0] {
+            saveButton.testTap()
+        }
+        
+        XCTAssertNotNil(viewModel.savedFixedScale!)
+        XCTAssertEqual(viewController.selectedWorkScale(), .fixedScale)
+        XCTAssertEqual(viewController.titleInputedText(), viewModel.savedFixedScale!.title)
+        XCTAssertEqual(viewController.notesInputedText(), viewModel.savedFixedScale!.annotation)
+        XCTAssertEqual(viewController.selectedWorkDuration(), viewModel.savedFixedScale!.scale?.scaleOfWork)
+        XCTAssertEqual(viewController.selectedWorkRestDuration(), viewModel.savedFixedScale!.scale?.scaleOfRest)
+        XCTAssertEqual(viewController.selectedScaleType(), viewModel.savedFixedScale!.scale?.type)
+        XCTAssertEqual(viewController.selectedBegginingDate(), viewModel.savedFixedScale!.initialDate)
+        XCTAssertEqual(viewController.selectedEndingDate(), viewModel.savedFixedScale!.finalDate)
+        XCTAssertEqual(viewController.selectedColor().hex, viewModel.savedFixedScale!.colorHex)
+    }
 
     // MARK: - Helpers Functions
 
@@ -43,20 +65,24 @@ final class AddScaleViewControllerTests: XCTestCase {
 // MARK: - Helper Extensions
 
 extension AddScaleViewController {
-    
+
     // MARK: - View Helpers
+    
+    func set(scaleTitle: String) {
+        titleTextField.text = scaleTitle
+    }
+    
+    func set(scaleNotes: String) {
+        notesTextView.text = scaleNotes
+    }
         
     func selectedWorkScaleLabel() -> String {
         return title ?? ""
     }
     
-    // MARK: - Scales Options Helpers
-    
     func changeSelectedScale(to selectedWorkScale: WorkScaleType) {
         didChangeSelectedIndex(scaleTypeSegmentControll, selectedWorkScale: selectedWorkScale)
     }
-
-    // MARK: - Activities List Helpers
     
     func titleInputedText() -> String {
         return titleTextField.text ?? ""
@@ -86,7 +112,7 @@ extension AddScaleViewController {
         return begginingDurationView.date
     }
     
-    func endingBegginingDate() -> Date {
+    func selectedEndingDate() -> Date {
         return endingDurationView.date
     }
     
