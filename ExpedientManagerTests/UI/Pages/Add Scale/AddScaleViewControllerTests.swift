@@ -1,0 +1,128 @@
+//
+//  AddScaleViewControllerTests.swift
+//  ExpedientManagerTests
+//
+//  Created by Gonzalo Ivan Santos Portales on 02/03/24.
+//
+
+import Combine
+@testable import ExpedientManager
+import XCTest
+import UIKit
+
+final class AddScaleViewControllerTests: XCTestCase {
+    
+    private var viewModel: AddScaleViewModelStub!
+    private var router: DeeplinkRouterStub!
+    private var viewController: AddScaleViewController!
+    private let currentDateForTesting: Date = Date.customDate()!
+    private var subscribers: Set<AnyCancellable>!
+
+    // MARK: - Helpers Functions
+
+    private func makeSUT() {
+        self.subscribers = Set<AnyCancellable>()
+        self.viewModel = AddScaleViewModelStub()
+        self.router = DeeplinkRouterStub()
+        self.viewController = AddScaleViewController(viewModel: viewModel!,
+                                                     router: router!)
+        viewController.loadViewIfNeeded()
+        viewController.viewWillAppear(false)
+    }
+
+    private func listenToStateChange(_ callback: @escaping (AddScaleViewModelState) -> Void) {
+        viewModel.state
+            .receive(on: DispatchQueue.main)
+            .sink { state in
+                callback(state)
+            }
+            .store(in: &subscribers)
+    }
+}
+
+// MARK: - Helper Extensions
+
+extension AddScaleViewController {
+    
+    // MARK: - View Helpers
+        
+    func selectedWorkScaleLabel() -> String {
+        return title ?? ""
+    }
+    
+    // MARK: - Scales Options Helpers
+    
+    func changeSelectedScale(to selectedWorkScale: WorkScaleType) {
+        didChangeSelectedIndex(scaleTypeSegmentControll, selectedWorkScale: selectedWorkScale)
+    }
+
+    // MARK: - Activities List Helpers
+    
+    func titleInputedText() -> String {
+        return titleTextField.text ?? ""
+    }
+    
+    func notesInputedText() -> String {
+        return notesTextView.text ?? ""
+    }
+    
+    func selectedWorkScale() -> WorkScaleType {
+        return scaleSelectTypeView.selectedWorkScale
+    }
+    
+    func selectedWorkDuration() -> Int {
+        return scaleSelectTypeView.workDuration
+    }
+    
+    func selectedWorkRestDuration() -> Int {
+        return scaleSelectTypeView.restDuration
+    }
+    
+    func selectedScaleType() -> ScaleType {
+        return scaleSelectTypeView.selectedScaleType
+    }
+    
+    func selectedBegginingDate() -> Date {
+        return begginingDurationView.date
+    }
+    
+    func endingBegginingDate() -> Date {
+        return endingDurationView.date
+    }
+    
+    func selectedColor() -> UIColor {
+        return scaleSetColorView.selectedColor
+    }
+}
+
+fileprivate class AddScaleViewModelStub: AddScaleViewModelProtocol {
+
+    // MARK: - Exposed Properties
+
+    @Published private(set) var statePublished: AddScaleViewModelState = .initial
+    var state: Published<AddScaleViewModelState>.Publisher { $statePublished }
+
+    var didCallRequestAuthorizationToSendNotifications = false
+    var savedFixedScale: FixedScale?
+    var savedOnDuty: OnDuty?
+    
+    // MARK: - Protocol Functions
+    
+    func save(fixedScale: FixedScale) {
+        self.savedFixedScale = fixedScale
+    }
+    
+    func save(onDuty: OnDuty) {
+        self.savedOnDuty = onDuty
+    }
+    
+    func requestAuthorizationToSendNotifications() {
+        didCallRequestAuthorizationToSendNotifications = true
+    }
+    
+    // MARK: - Helper Functions for Testing
+    
+    func change(state newState: AddScaleViewModelState) {
+        self.statePublished = newState
+    }
+}
