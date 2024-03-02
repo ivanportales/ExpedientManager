@@ -7,19 +7,13 @@
 
 import Foundation
 
-enum AddScaleViewModelState {
-    case initial
-    case loading
-    case errorSavingScale(message: String)
-    case successSavingScale
-}
-
-final class AddScaleViewModel: ObservableObject {
+final class AddScaleViewModel: ObservableObject, AddScaleViewModelProtocol {
     
     // MARK: - Bindings Properties
     
-    @Published private(set) var state: AddScaleViewModelState = .initial
-    
+    @Published private(set) var publishedState: AddScaleViewModelState = .initial
+    var state: Published<AddScaleViewModelState>.Publisher { $publishedState }
+
     // MARK: - Private Properties
     
     private let notificationManager: UserNotificationsManagerProtocol
@@ -47,27 +41,27 @@ final class AddScaleViewModel: ObservableObject {
 //    }
     
     func save(fixedScale: FixedScale) {
-        state = .loading
+        publishedState = .loading
         saveFixedScaleUseCase.save(fixedScale: fixedScale) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .failure(let error):
-                self.state = .errorSavingScale(message: error.localizedDescription)
+                self.publishedState = .errorSavingScale(message: error.localizedDescription)
             case .success(_):
-                self.state = .successSavingScale
+                self.publishedState = .successSavingScale
             }
         }
     }
     
     func save(onDuty: OnDuty) {
-        state = .loading
+        publishedState = .loading
         saveOnDutyUseCase.save(onDuty: onDuty) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .failure(let error):
-                self.state = .errorSavingScale(message: error.localizedDescription)
+                self.publishedState = .errorSavingScale(message: error.localizedDescription)
             case .success(_):
-                self.state = .successSavingScale
+                self.publishedState = .successSavingScale
             }
         }
     }

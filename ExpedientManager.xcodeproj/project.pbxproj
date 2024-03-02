@@ -25,6 +25,7 @@
 		AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */; };
 		AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */; };
 		AE5A7DA22B9388E200DEDD94 /* ScrollableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A7DA12B9388E200DEDD94 /* ScrollableViewController.swift */; };
+		AE5A7DA72B939EC900DEDD94 /* AddScaleViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A7DA62B939EC900DEDD94 /* AddScaleViewModelProtocol.swift */; };
 		AE5DC1182B85777D00F8388F /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC1172B85777D00F8388F /* HomeViewModelTests.swift */; };
 		AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC11A2B857A0D00F8388F /* Date+Extensions.swift */; };
 		AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC11C2B857BA600F8388F /* ViewModelStatePublisherSpy.swift */; };
@@ -167,6 +168,7 @@
 		AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE595AA02B68787F00B439CE /* SaveOnDutyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCase.swift; sourceTree = "<group>"; };
 		AE5A7DA12B9388E200DEDD94 /* ScrollableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableViewController.swift; sourceTree = "<group>"; };
+		AE5A7DA62B939EC900DEDD94 /* AddScaleViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScaleViewModelProtocol.swift; sourceTree = "<group>"; };
 		AE5DC1172B85777D00F8388F /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		AE5DC11A2B857A0D00F8388F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AE5DC11C2B857BA600F8388F /* ViewModelStatePublisherSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelStatePublisherSpy.swift; sourceTree = "<group>"; };
@@ -744,6 +746,7 @@
 				AED250762B57558000290E42 /* Views */,
 				AED250742B57558000290E42 /* AddScaleViewModel.swift */,
 				AEDC564C2B5F39CD00939629 /* BaseScaleViewController.swift */,
+				AE5A7DA62B939EC900DEDD94 /* AddScaleViewModelProtocol.swift */,
 			);
 			path = AddScale;
 			sourceTree = "<group>";
@@ -1242,6 +1245,7 @@
 				AED250D72B57558100290E42 /* FixedScaleRepositoryProtocol.swift in Sources */,
 				AED250C12B57558100290E42 /* EmptyTableViewCell.swift in Sources */,
 				AED250C92B57558100290E42 /* ScaleSelectType.swift in Sources */,
+				AE5A7DA72B939EC900DEDD94 /* AddScaleViewModelProtocol.swift in Sources */,
 				AED250DA2B57558100290E42 /* CoreDataOnDutyRepository.swift in Sources */,
 				AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */,
 				AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */,

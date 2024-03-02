@@ -96,13 +96,13 @@ class BaseScaleViewController: ScrollableViewController, LoadingShowableViewCont
     
     // MARK: - Private Properties
     
-    private let viewModel: AddScaleViewModel
+    private let viewModel: AddScaleViewModelProtocol
     private let router: DeeplinkRouterProtocol
     private var subscribers = Set<AnyCancellable>()
     
     // MARK: - Inits
 
-    init(viewModel: AddScaleViewModel,
+    init(viewModel: AddScaleViewModelProtocol,
          router: DeeplinkRouterProtocol) {
         self.viewModel = viewModel
         self.router = router
@@ -174,6 +174,8 @@ class BaseScaleViewController: ScrollableViewController, LoadingShowableViewCont
                 ))
         }
     }
+    
+    // MARK: - Override Funtions
     
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
@@ -258,7 +260,7 @@ extension BaseScaleViewController {
     
     func setupBindings() {
         viewModel
-            .$state
+            .state
             .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
