@@ -66,6 +66,25 @@ final class AddScaleViewControllerTests: XCTestCase {
         
         wait(for: [expectation], timeout: 1.0)
     }
+    
+    func test_success_saving_scale_state() {
+        makeSUT()
+        viewModel.change(state: .successSavingScale)
+        
+        let expectation = XCTestExpectation(description: "Success State should call router.pop()")
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .successSavingScale:
+                XCTAssertTrue(self!.router.didCallPop)
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
 
     // MARK: - Helpers Functions
 
