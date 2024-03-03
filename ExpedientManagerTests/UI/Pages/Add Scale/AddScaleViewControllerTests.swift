@@ -47,6 +47,25 @@ final class AddScaleViewControllerTests: XCTestCase {
        
         XCTAssertEqual(viewController.selectedWorkScale(), .onDuty)
     }
+    
+    func test_loading_state() {
+        makeSUT()
+        viewModel.change(state: .loading)
+        
+        let expectation = XCTestExpectation(description: "Loading State diplays loading view")
+        
+        listenToStateChange { [weak self] state in
+            switch state {
+            case .loading:
+                XCTAssertTrue(self!.viewController.isLoadingViewDisplayed())
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
 
     // MARK: - Helpers Functions
 
