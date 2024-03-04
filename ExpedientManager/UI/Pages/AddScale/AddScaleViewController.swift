@@ -8,7 +8,7 @@
 import Combine
 import UIKit
 
-class AddScaleViewController: ScrollableViewController, LoadingShowableViewControllerProtocol {
+final class AddScaleViewController: ScrollableViewController, LoadingShowableViewControllerProtocol {
     
     // MARK: - UI
     

@@ -34,6 +34,8 @@
 		AE5F19E32B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */; };
 		AE63BE752B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE63BE742B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift */; };
 		AE6731762B76E9D800169F66 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6731752B76E9D800169F66 /* LoadingView.swift */; };
+		AE68217B2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE68217A2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift */; };
+		AE68217D2B96962400838993 /* AskForNotificationPermissionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE68217C2B96962400838993 /* AskForNotificationPermissionUseCase.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
@@ -178,6 +180,8 @@
 		AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationListTableView.swift; sourceTree = "<group>"; };
 		AE63BE742B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduledNotificationListTableView+Extensions.swift"; sourceTree = "<group>"; };
 		AE6731752B76E9D800169F66 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		AE68217A2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForNotificationPermissionUseCaseProtocol.swift; sourceTree = "<group>"; };
+		AE68217C2B96962400838993 /* AskForNotificationPermissionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForNotificationPermissionUseCase.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
@@ -460,6 +464,15 @@
 			path = LoadingView;
 			sourceTree = "<group>";
 		};
+		AE6821792B9695B400838993 /* AskForNotificationPermissionUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AE68217A2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift */,
+				AE68217C2B96962400838993 /* AskForNotificationPermissionUseCase.swift */,
+			);
+			path = AskForNotificationPermissionUseCase;
+			sourceTree = "<group>";
+		};
 		AE6E6D6F2B59F43600B2389B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,19 +561,20 @@
 			path = Transitions;
 			sourceTree = "<group>";
 		};
-		AE8CB6F02B78568B00649368 /* SetValueForKeyUseCaseProtocol */ = {
+		AE8CB6F02B78568B00649368 /* SetValueForKeyUseCase */ = {
 			isa = PBXGroup;
 			children = (
 				AE8CB6F12B78569D00649368 /* SetValueForKeyUseCaseProtocol.swift */,
 				AE8CB6F32B78570100649368 /* SetValueForKeyUseCase.swift */,
 			);
-			path = SetValueForKeyUseCaseProtocol;
+			path = SetValueForKeyUseCase;
 			sourceTree = "<group>";
 		};
 		AE9B5A232B670A1800F6A561 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				AE8CB6F02B78568B00649368 /* SetValueForKeyUseCaseProtocol */,
+				AE6821792B9695B400838993 /* AskForNotificationPermissionUseCase */,
+				AE8CB6F02B78568B00649368 /* SetValueForKeyUseCase */,
 				AE4B4D072B72F92C0034B971 /* GetValueForKeyUseCase */,
 				AE4B4D022B72F0800034B971 /* GetScheduledNotificationsUseCase */,
 				AEEC1A722B69D16200FA618E /* GetOnDutyUseCase */,
@@ -1224,6 +1238,8 @@
 				AED250DD2B57558100290E42 /* Scale.swift in Sources */,
 				AED250E02B57558100290E42 /* UIColor+Extensions.swift in Sources */,
 				AE4B4D0A2B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift in Sources */,
+				AE68217D2B96962400838993 /* AskForNotificationPermissionUseCase.swift in Sources */,
+				AE68217B2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift in Sources */,
 				AE4BF7242B62D38900CC69D7 /* UIView+Extensions.swift in Sources */,
 				AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */,
 				AE595AA12B68787F00B439CE /* SaveOnDutyUseCase.swift in Sources */,

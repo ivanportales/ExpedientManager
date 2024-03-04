@@ -40,6 +40,7 @@ final class ViewControllersFactory {
     func makeAddScaleViewController() -> AddScaleViewController {
         let scheduledNotificationsRepository = CoreDataScheduledNotificationsRepository()
         let notificationManager = UserNotificationsManager()
+        let askForNotificationPermissionUseCase = AskForNotificationPermissionUseCase(notificationsManager: notificationManager)
         let saveFixedScaleUseCase = SaveFixedScaleUseCase(fixedScaleRepository: CoreDataFixedScaleRepository(),
                                                           scheduledNotificationsRepository: scheduledNotificationsRepository,
                                                           notificationManager: notificationManager,
@@ -47,7 +48,7 @@ final class ViewControllersFactory {
         let saveOnDutyUseCase = SaveOnDutyUseCase(onDutyRepository: CoreDataOnDutyRepository(), 
                                                   scheduledNotificationsRepository: scheduledNotificationsRepository,
                                                   notificationManager: notificationManager)
-        let viewModel = AddScaleViewModel(notificationManager: notificationManager,
+        let viewModel = AddScaleViewModel(askForNotificationPermissionUseCase: askForNotificationPermissionUseCase,
                                           saveFixedScaleUseCase: saveFixedScaleUseCase,
                                           saveOnDutyUseCase: saveOnDutyUseCase)
 

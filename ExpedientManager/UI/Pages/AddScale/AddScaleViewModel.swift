@@ -16,16 +16,16 @@ final class AddScaleViewModel: ObservableObject, AddScaleViewModelProtocol {
 
     // MARK: - Private Properties
     
-    private let notificationManager: UserNotificationsManagerProtocol
+    private let askForNotificationPermissionUseCase: AskForNotificationPermissionUseCaseProtocol
     private let saveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol
     private let saveOnDutyUseCase: SaveOnDutyUseCaseProtocol
     
     // MARK: - Init
     
-    init(notificationManager: UserNotificationsManagerProtocol,
+    init(askForNotificationPermissionUseCase: AskForNotificationPermissionUseCaseProtocol,
          saveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol,
          saveOnDutyUseCase: SaveOnDutyUseCaseProtocol) {
-        self.notificationManager = notificationManager
+        self.askForNotificationPermissionUseCase = askForNotificationPermissionUseCase
         self.saveFixedScaleUseCase = saveFixedScaleUseCase
         self.saveOnDutyUseCase = saveOnDutyUseCase
     }
@@ -33,7 +33,7 @@ final class AddScaleViewModel: ObservableObject, AddScaleViewModelProtocol {
     // MARK: - Exposed Properties
     
     func requestAuthorizationToSendNotifications() {
-        notificationManager.askUserNotificationPermission()
+        askForNotificationPermissionUseCase.askForNotificationPermission()
     }
     
 //    func calculateFinalDutyDateFrom(date: Date, withDuration duration: Int) {
