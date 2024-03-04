@@ -14,5 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Get first available simulator
+      id: get_simulator
+      run: echo "::set-output name=simulator::$(xcrun simctl list devices available | grep -m 1 -o '[0-9A-Za-z\.\-]* (com\.apple\.CoreSimulator\.SimRuntime\.iOS-[0-9\-]*, Booted)')"
+
     - name: Build and test
-      run: xcodebuild clean build test -project ExpedientManager.xcworkspace -scheme "ExpedientManagerTests" -sdk iphonesimulator -destination "platform=iOS Simulator,name=Any iOS Simulator Device" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+      run: xcodebuild clean build test -project ExpedientManager.xcodeproj -scheme "ExpedientManagerTests" -sdk iphonesimulator -destination "platform=iOS Simulator,name=${{ steps.get_simulator.outputs.simulator }}" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
