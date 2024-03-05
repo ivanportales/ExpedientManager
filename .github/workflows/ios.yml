@@ -13,7 +13,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - name: Install bundler
+        run: gem install bundler
+      - name: Bundle install
+        run: bundle install
+      - name: Install fastlane
+        run: bundle exec fastlane install_plugins
       - name: Test
         run: |
-          xcodebuild test-without-building -scheme "ExpedientManagerTests" -workspace "ExpedientManager.xcworkspace" -destination "platform=iOS Simulator,id=dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder"
+          xcodebuild test-without-building -scheme "ExpedientManagerTests" -workspace "ExpedientManager.xcworkspace" -destination "platform=iOS Simulator,name=iPhone 8"
           echo "Test completed"
