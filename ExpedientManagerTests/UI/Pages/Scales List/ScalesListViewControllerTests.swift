@@ -160,6 +160,8 @@ final class ScalesListViewControllerTests: XCTestCase {
     }
 }
 
+// MARK: - Helper Extensions
+
 extension ScalesListViewController {
     
     // MARK: - View Helpers

@@ -11,8 +11,8 @@ final class AddScaleViewModel: ObservableObject, AddScaleViewModelProtocol {
     
     // MARK: - Bindings Properties
     
-    @Published private(set) var publishedState: AddScaleViewModelState = .initial
-    var state: Published<AddScaleViewModelState>.Publisher { $publishedState }
+    @Published private(set) var statePublished: AddScaleViewModelState = .initial
+    var state: Published<AddScaleViewModelState>.Publisher { $statePublished }
 
     // MARK: - Private Properties
     
@@ -41,27 +41,27 @@ final class AddScaleViewModel: ObservableObject, AddScaleViewModelProtocol {
 //    }
     
     func save(fixedScale: FixedScale) {
-        publishedState = .loading
+        statePublished = .loading
         saveFixedScaleUseCase.save(fixedScale: fixedScale) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .failure(let error):
-                self.publishedState = .errorSavingScale(message: error.localizedDescription)
+                self.statePublished = .errorSavingScale(message: error.localizedDescription)
             case .success(_):
-                self.publishedState = .successSavingScale
+                self.statePublished = .successSavingScale
             }
         }
     }
     
     func save(onDuty: OnDuty) {
-        publishedState = .loading
+        statePublished = .loading
         saveOnDutyUseCase.save(onDuty: onDuty) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .failure(let error):
-                self.publishedState = .errorSavingScale(message: error.localizedDescription)
+                self.statePublished = .errorSavingScale(message: error.localizedDescription)
             case .success(_):
-                self.publishedState = .successSavingScale
+                self.statePublished = .successSavingScale
             }
         }
     }
