@@ -13,16 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6
-      - name: Install bundler
-        run: gem install bundler -v 2.4.22
-      - name: Bundle install
-        run: bundle install
-      - name: Install fastlane
-        run: bundle exec fastlane install_plugins
       - name: Test
         run: |
           xcodebuild test-without-building -scheme "ExpedientManagerTests" -workspace "ExpedientManager.xcworkspace" -destination "platform=iOS Simulator,name=iPhone 8"
