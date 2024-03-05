@@ -15,6 +15,14 @@ final class AddScaleViewModelTests: XCTestCase {
     private var askForNotificationPermissionUseCase: AskForNotificationPermissionUseCaseStub!
     private var subscribers: Set<AnyCancellable>!
 
+    func test_request_authorization_to_send_notifications() {
+        makeSUT()
+        
+        viewModel.requestAuthorizationToSendNotifications()
+        
+        XCTAssertTrue(askForNotificationPermissionUseCase.didCallAskForNotificationPermission)
+    }
+
     // MARK: - Helpers Functions
 
     private func makeSUT(fixedScale: FixedScale? = nil,
