@@ -15,7 +15,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test
         run: |
-          device=$(xcrun xctrace list devices | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
-          echo $device
-          xcodebuild test-without-building -scheme "ExpedientManagerTests" "-workspace" "ExpedientManager.xcworkspace" -destination "platform=iOS Simulator,name=$device"
+          xcodebuild test-without-building -scheme "ExpedientManagerTests" "-workspace" "ExpedientManager.xcworkspace" -destination "platform=iOS Simulator,name=Simulator"
           echo "Test completed"
