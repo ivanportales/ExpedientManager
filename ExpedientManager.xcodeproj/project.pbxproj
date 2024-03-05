@@ -36,6 +36,8 @@
 		AE6731762B76E9D800169F66 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6731752B76E9D800169F66 /* LoadingView.swift */; };
 		AE68217B2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE68217A2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift */; };
 		AE68217D2B96962400838993 /* AskForNotificationPermissionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE68217C2B96962400838993 /* AskForNotificationPermissionUseCase.swift */; };
+		AE68217F2B96974E00838993 /* AddScaleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE68217E2B96974E00838993 /* AddScaleViewModelTests.swift */; };
+		AE6821812B96982900838993 /* SaveStubUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6821802B96982900838993 /* SaveStubUseCase.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
@@ -182,6 +184,8 @@
 		AE6731752B76E9D800169F66 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AE68217A2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForNotificationPermissionUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE68217C2B96962400838993 /* AskForNotificationPermissionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForNotificationPermissionUseCase.swift; sourceTree = "<group>"; };
+		AE68217E2B96974E00838993 /* AddScaleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScaleViewModelTests.swift; sourceTree = "<group>"; };
+		AE6821802B96982900838993 /* SaveStubUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStubUseCase.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				AE5A7DA92B93A97A00DEDD94 /* AddScaleViewControllerTests.swift */,
+				AE68217E2B96974E00838993 /* AddScaleViewModelTests.swift */,
 			);
 			path = "Add Scale";
 			sourceTree = "<group>";
@@ -976,6 +981,7 @@
 			children = (
 				AE8593C42B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift */,
 				AE8593C62B7EF6DF00EF72EF /* GetStubUseCase.swift */,
+				AE6821802B96982900838993 /* SaveStubUseCase.swift */,
 			);
 			path = UseCaseStubs;
 			sourceTree = "<group>";
@@ -1308,8 +1314,10 @@
 				AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */,
 				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
 				AE52052A2B8BDC1800A2179B /* FixedScale+Extensions.swift in Sources */,
+				AE6821812B96982900838993 /* SaveStubUseCase.swift in Sources */,
 				AEE478DE2B8AE424003E1EA0 /* ScalesListViewModelTests.swift in Sources */,
 				AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */,
+				AE68217F2B96974E00838993 /* AddScaleViewModelTests.swift in Sources */,
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
 				AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */,
 				AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */,
