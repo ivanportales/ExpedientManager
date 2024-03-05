@@ -15,5 +15,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test
         run: |
-          xcodebuild test-without-building -scheme "ExpedientManagerTests" "-workspace" "ExpedientManager.xcworkspace" -destination "platform=iOS Simulator,name=Simulator"
+          xcodebuild test-without-building -scheme "ExpedientManagerTests" "-workspace" "ExpedientManager.xcworkspace" -destination "platform=iOS Simulator,name=Any iOS Device"
           echo "Test completed"
