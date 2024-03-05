@@ -8,19 +8,18 @@
 import Foundation
 
 class SaveStubUseCase<T> {
-    let value: T?
+    var value: T?
     let error: Error?
     
-    init(value: T? = nil,
-         error: Error? = nil) {
-        self.value = value
+    init(error: Error? = nil) {
         self.error = error
     }
     
-    func save(completion: @escaping (Result<Bool, Error>) -> Void) {
+    func save(value: T?, completion: @escaping (Result<Bool, Error>) -> Void) {
         if let error = error {
             completion(.failure(error))
         } else {
+            self.value = value
             completion(.success(true))
         }
     }

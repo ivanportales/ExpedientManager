@@ -32,8 +32,8 @@ final class AddScaleViewModelTests: XCTestCase {
         self.subscribers = Set<AnyCancellable>()
         self.askForNotificationPermissionUseCase = AskForNotificationPermissionUseCaseStub()
         self.viewModel = AddScaleViewModel(askForNotificationPermissionUseCase: askForNotificationPermissionUseCase,
-                                           saveFixedScaleUseCase: SaveStubUseCase(value: fixedScale, error: fixedScaleError),
-                                           saveOnDutyUseCase: SaveStubUseCase(value: onDuty, error: onDutyError))
+                                           saveFixedScaleUseCase: SaveStubUseCase(error: fixedScaleError),
+                                           saveOnDutyUseCase: SaveStubUseCase(error: onDutyError))
     }
 }
 
@@ -48,12 +48,12 @@ final class AskForNotificationPermissionUseCaseStub: AskForNotificationPermissio
 
 extension SaveStubUseCase<FixedScale>: SaveFixedScaleUseCaseProtocol {
     func save(fixedScale: ExpedientManager.FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        save(completion: completionHandler)
+        save(value: fixedScale, completion: completionHandler)
     }
 }
 
 extension SaveStubUseCase<OnDuty>: SaveOnDutyUseCaseProtocol {
     func save(onDuty: ExpedientManager.OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        save(completion: completionHandler)
+        save(value: onDuty, completion: completionHandler)
     }
 }
