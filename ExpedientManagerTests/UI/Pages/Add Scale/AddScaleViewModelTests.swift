@@ -86,6 +86,23 @@ final class AddScaleViewModelTests: XCTestCase {
         XCTAssertEqual(saveOnDutyUseCase.value?.hoursDuration, onDuty.hoursDuration)
         XCTAssertEqual(saveOnDutyUseCase.value?.colorHex, onDuty.colorHex)
     }
+    
+    func test_save_on_duty_with_error() {
+        let onDuty = OnDuty.mockModels.first!
+        let onDutyError = NSError(domain: "Error Message", code: 0)
+        makeSUT(onDutyError: onDutyError)
+        
+        let stateSpy = ViewModelPublisherSpy(publisher: viewModel.$statePublished)
+         let expectedPublishedStates: [AddScaleViewModelState] = [
+             .initial,
+             .loading,
+             .errorSavingScale(message: onDutyError.localizedDescription)
+         ]
+        
+         viewModel.save(onDuty: onDuty)
+        
+         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
+    }
 
     // MARK: - Helpers Functions
 
