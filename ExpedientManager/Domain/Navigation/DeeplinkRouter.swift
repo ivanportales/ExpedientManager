@@ -12,7 +12,6 @@ enum Deeplink: String {
     case home = "expedientManager://home"
     case addScale = "expedientManager://add_scale"
     case scaleList = "expedientManager://scale_list"
-    case scaleDetails = "expedientManager://scale_details"
 }
 
 protocol DeeplinkRouterProtocol {
@@ -49,8 +48,6 @@ final class DeeplinkRouter: DeeplinkRouterProtocol {
             showAddScaleScreen()
         case .scaleList:
             showScalesListScreen()
-        case .scaleDetails:
-            showScalesDetailsScreen(params: params)
         }
     }
     
@@ -77,20 +74,6 @@ final class DeeplinkRouter: DeeplinkRouterProtocol {
     
     private func showScalesListScreen() {
         guard let viewController = factory?.makeScalesListViewController() else { return }
-        navigationController.pushViewController(viewController, animated: true)
-    }
-    
-    private func showScalesDetailsScreen(params: [String: Any]) {
-        guard let workScaleType = params["workScaleType"] as? WorkScaleType else { return }
-        let selectedFixedScale = params["selectedFixedScale"] as? FixedScale
-        let selectedOnDuty = params["selectedOnDuty"] as? OnDuty
-    
-        guard let viewController = factory?.makeScalesDetailViewController(workScaleType: workScaleType,
-                                                                           selectedFixedScale: selectedFixedScale,
-                                                                           selectedOnDuty: selectedOnDuty) else {
-            return
-        }
-        
         navigationController.pushViewController(viewController, animated: true)
     }
     

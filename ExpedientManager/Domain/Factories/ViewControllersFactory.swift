@@ -66,21 +66,6 @@ final class ViewControllersFactory {
                                         router: router)
     }
     
-    func makeScalesDetailViewController(workScaleType: WorkScaleType,
-                                        selectedFixedScale: FixedScale?,
-                                        selectedOnDuty: OnDuty?) -> ScaleDetailsViewController {
-        let viewModel = ScaleDetailsViewModel(state: workScaleType,
-                                              selectedFixedScale: selectedFixedScale,
-                                              selectedOnDuty: selectedOnDuty,
-                                              scheduler: UserNotificationsManager(),
-                                              scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository(),
-                                              fixedScaleRepository: CoreDataFixedScaleRepository(),
-                                              onDutyRepository: CoreDataOnDutyRepository())
-
-        return ScaleDetailsViewController(viewModel: viewModel,
-                                          router: router)
-    }
-    
     func makeWebView(with url: URL) -> SFSafariViewController {
         return SFSafariViewController(url: url)
     }
