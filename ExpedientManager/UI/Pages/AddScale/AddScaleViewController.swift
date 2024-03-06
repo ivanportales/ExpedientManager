@@ -154,7 +154,6 @@ final class AddScaleViewController: ScrollableViewController, LoadingShowableVie
         if selectedWorkScale == .fixedScale {
             viewModel.save(
                 fixedScale: FixedScale(
-                    id: UUID().uuidString,
                     title: title,
                     scale: .init(type: scaleType, scaleOfWork: scaleOfWork, scaleOfRest: scaleOfRest),
                     initialDate: initialDate,
@@ -165,7 +164,6 @@ final class AddScaleViewController: ScrollableViewController, LoadingShowableVie
         } else {
             viewModel.save(
                 onDuty: OnDuty(
-                    id: UUID().uuidString,
                     title: title,
                     initialDate: initialDate,
                     hoursDuration: scaleOfWork,

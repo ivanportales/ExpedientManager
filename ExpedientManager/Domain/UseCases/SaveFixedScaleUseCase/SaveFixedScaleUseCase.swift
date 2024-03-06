@@ -31,7 +31,7 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
     // MARK: - Exposed Functions
     
     func save(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        fixedScaleRepository.save(fixedScale: fixedScale) { [weak self] result in
+        fixedScaleRepository.save(fixedScale: fixedScale.toData()) { [weak self] result in
             switch result {
             case .failure(let error):
                 completionHandler(.failure(error))
@@ -154,5 +154,31 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
                                              completion: completion)
             }
         }
+    }
+}
+
+// MARK: - Private Mapping Extensions
+
+fileprivate extension FixedScale {
+    func toData() -> FixedScaleModel {
+        return FixedScaleModel(
+            id: id,
+            title: title ?? "",
+            scale: scale!.toData(),
+            initialDate: initialDate!,
+            finalDate: finalDate!,
+            annotation: annotation!,
+            colorHex: colorHex!
+        )
+    }
+}
+
+fileprivate extension Scale {
+    func toData() -> ScaleModel {
+        return ScaleModel(
+            type: type.rawValue,
+            scaleOfWork: scaleOfWork,
+            scaleOfRest: scaleOfRest
+        )
     }
 }

@@ -28,7 +28,7 @@ final class SaveOnDutyUseCase: SaveOnDutyUseCaseProtocol {
     // MARK: - Exposed Functions
     
     func save(onDuty: OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        onDutyRepository.save(onDuty: onDuty) { [weak self] result in
+        onDutyRepository.save(onDuty: onDuty.toData()) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error):
@@ -54,5 +54,20 @@ final class SaveOnDutyUseCase: SaveOnDutyUseCaseProtocol {
                                              completion: completion)
             }
         }
+    }
+}
+
+// MARK: - Private Mapping Extensions
+
+fileprivate extension OnDuty {
+    func toData() -> OnDutyModel {
+        return OnDutyModel(
+            id: id,
+            title: titlo,
+            initialDate: initialDate,
+            hoursDuration: hoursDuration,
+            annotation: annotation!,
+            colorHex: colorHex!
+        )
     }
 }

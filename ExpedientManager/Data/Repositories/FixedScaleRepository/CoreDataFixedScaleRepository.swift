@@ -20,10 +20,10 @@ final class CoreDataFixedScaleRepository: CoreDataRepository, FixedScaleReposito
     
     // MARK: - Exposed Functions
     
-    func save(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+    func save(fixedScale: FixedScaleModel, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let mapperClosure: (CDFixedScale) -> Void = { newFixedScale in
             newFixedScale.id = fixedScale.id
-            newFixedScale.scale =  try! JSONEncoder().encode(fixedScale.scale)
+            newFixedScale.scale =  try? JSONEncoder().encode(fixedScale.scale)
             newFixedScale.initialDate = fixedScale.initialDate
             newFixedScale.finalDate = fixedScale.finalDate
             newFixedScale.title = fixedScale.title
@@ -34,12 +34,12 @@ final class CoreDataFixedScaleRepository: CoreDataRepository, FixedScaleReposito
         save(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func getAllFixedScales(completionHandler: @escaping (Result<[FixedScale], Error>) -> ()) {
-        let mapperClosure: (CDFixedScale) -> FixedScale = { cdFixedScale in
-            return FixedScale(
+    func getAllFixedScales(completionHandler: @escaping (Result<[FixedScaleModel], Error>) -> ()) {
+        let mapperClosure: (CDFixedScale) -> FixedScaleModel = { cdFixedScale in
+            return FixedScaleModel(
                 id: cdFixedScale.id!,
                 title: cdFixedScale.title!,
-                scale: try! JSONDecoder().decode(Scale.self, from: cdFixedScale.scale!),
+                scale: try! JSONDecoder().decode(ScaleModel.self, from: cdFixedScale.scale!),
                 initialDate: cdFixedScale.initialDate!,
                 finalDate: cdFixedScale.finalDate!,
                 annotation: cdFixedScale.annotation!,
@@ -50,7 +50,7 @@ final class CoreDataFixedScaleRepository: CoreDataRepository, FixedScaleReposito
         getAllModels(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func update(fixedScale: FixedScale,
+    func update(fixedScale: FixedScaleModel,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let fetchRequest = makeFetchRequestFor(fixedScale: fixedScale)
         
@@ -69,7 +69,7 @@ final class CoreDataFixedScaleRepository: CoreDataRepository, FixedScaleReposito
                completionHandler: completionHandler)
     }
     
-    func delete(fixedScale: FixedScale,
+    func delete(fixedScale: FixedScaleModel,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let fetchRequest = makeFetchRequestFor(fixedScale: fixedScale)
                 
@@ -78,7 +78,7 @@ final class CoreDataFixedScaleRepository: CoreDataRepository, FixedScaleReposito
     
     // MARK: - Private Functions
     
-    private func makeFetchRequestFor(fixedScale: FixedScale) -> NSFetchRequest<CDFixedScale> {
+    private func makeFetchRequestFor(fixedScale: FixedScaleModel) -> NSFetchRequest<CDFixedScale> {
         let fetchRequest = NSFetchRequest<CDFixedScale>(entityName: typeIdentifier)
         fetchRequest.predicate = NSPredicate(format:"initialDate = %@ AND id = %@", fixedScale.initialDate! as NSDate, fixedScale.id)
         

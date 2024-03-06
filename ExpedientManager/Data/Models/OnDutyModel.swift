@@ -1,13 +1,13 @@
 //
-//  OnDuty.swift
+//  OnDutyModel.swift
 //  ExpedientManager
 //
-//  Created by Gonzalo Ivan Santos Portales on 22/01/24.
+//  Created by Gonzalo Ivan Santos Portales on 06/03/24.
 //
 
 import Foundation
 
-struct OnDuty {
+final class OnDutyModel {
     var id: String
     var titlo: String
     var initialDate: Date
@@ -15,7 +15,7 @@ struct OnDuty {
     var annotation: String?
     var colorHex: String?
     
-    init(id: String = UUID().uuidString,
+    init(id: String, 
          title: String,
          initialDate: Date,
          hoursDuration: Int,

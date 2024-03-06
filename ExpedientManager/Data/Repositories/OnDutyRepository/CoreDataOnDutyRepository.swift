@@ -20,7 +20,7 @@ final class CoreDataOnDutyRepository: CoreDataRepository, OnDutyRepositoryProtoc
     
     // MARK: - Exposed Functions
     
-    func save(onDuty: OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+    func save(onDuty: OnDutyModel, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let mapperClosure: (CDOnDuty) -> Void = { newOnDuty in
             newOnDuty.id = onDuty.id
             newOnDuty.title = onDuty.titlo
@@ -33,9 +33,9 @@ final class CoreDataOnDutyRepository: CoreDataRepository, OnDutyRepositoryProtoc
         save(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func getAllOnDuty(completionHandler: @escaping (Result<[OnDuty], Error>) -> ()) {
-        let mapperClosure: (CDOnDuty) -> OnDuty = { cdOnDuty in
-            return OnDuty(
+    func getAllOnDuty(completionHandler: @escaping (Result<[OnDutyModel], Error>) -> ()) {
+        let mapperClosure: (CDOnDuty) -> OnDutyModel = { cdOnDuty in
+            return OnDutyModel(
                 id: cdOnDuty.id!,
                 title: cdOnDuty.title!,
                 initialDate: cdOnDuty.initialDate!,
@@ -48,7 +48,7 @@ final class CoreDataOnDutyRepository: CoreDataRepository, OnDutyRepositoryProtoc
         getAllModels(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func update(onDuty: OnDuty,
+    func update(onDuty: OnDutyModel,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let fetchRequest = makeFetchRequestFor(onDuty: onDuty)
         
@@ -66,7 +66,7 @@ final class CoreDataOnDutyRepository: CoreDataRepository, OnDutyRepositoryProtoc
                completionHandler: completionHandler)
     }
     
-    func delete(onDuty: OnDuty,
+    func delete(onDuty: OnDutyModel,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let fetchRequest = makeFetchRequestFor(onDuty: onDuty)
         
@@ -75,7 +75,7 @@ final class CoreDataOnDutyRepository: CoreDataRepository, OnDutyRepositoryProtoc
     
     // MARK: - Private Functions
     
-    private func makeFetchRequestFor(onDuty: OnDuty) -> NSFetchRequest<CDOnDuty> {
+    private func makeFetchRequestFor(onDuty: OnDutyModel) -> NSFetchRequest<CDOnDuty> {
         let fetchRequest = NSFetchRequest<CDOnDuty>(entityName: typeIdentifier)
         fetchRequest.predicate = NSPredicate(format: "initialDate = %@ AND id = %@", onDuty.initialDate as NSDate, onDuty.id)
         

@@ -22,6 +22,41 @@ final class GetFixedScalesUseCase: GetFixedScalesUseCaseProtocol {
     // MARK: - Exposed Functions
     
     func getFixedScales(completionHandler: @escaping (Result<[FixedScale], Error>) -> ()) {
-        fixedScaleRepository.getAllFixedScales(completionHandler: completionHandler)
+        let innerCompletion: (Result<[FixedScaleModel], Error>) -> () = { result in
+            switch result {
+            case .success(let fixedScalesModels):
+                let domainFixedScales = fixedScalesModels.map({ $0.toDomain() })
+                completionHandler(.success(domainFixedScales))
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        }
+        fixedScaleRepository.getAllFixedScales(completionHandler: innerCompletion)
+    }
+}
+
+// MARK: - Private Mapping Extensions
+
+fileprivate extension FixedScaleModel {
+    func toDomain() -> FixedScale {
+        return FixedScale(
+            id: id,
+            title: title ?? "",
+            scale: scale!.toDomain(),
+            initialDate: initialDate!,
+            finalDate: finalDate!,
+            annotation: annotation!,
+            colorHex: colorHex!
+        )
+    }
+}
+
+fileprivate extension ScaleModel {
+    func toDomain() -> Scale {
+        return Scale(
+            type: ScaleType(rawValue: type) ?? ScaleType.hour,
+            scaleOfWork: scaleOfWork,
+            scaleOfRest: scaleOfRest
+        )
     }
 }

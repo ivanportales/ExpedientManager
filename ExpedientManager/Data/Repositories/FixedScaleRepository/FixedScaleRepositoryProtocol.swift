@@ -8,8 +8,8 @@
 import Foundation
 
 protocol FixedScaleRepositoryProtocol {
-    func save(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ())
-    func getAllFixedScales(completionHandler: @escaping (Result<[FixedScale], Error>) -> ())
-    func update(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ())
-    func delete(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ())
+    func save(fixedScale: FixedScaleModel, completionHandler: @escaping (Result<Bool, Error>) -> ())
+    func getAllFixedScales(completionHandler: @escaping (Result<[FixedScaleModel], Error>) -> ())
+    func update(fixedScale: FixedScaleModel, completionHandler: @escaping (Result<Bool, Error>) -> ())
+    func delete(fixedScale: FixedScaleModel, completionHandler: @escaping (Result<Bool, Error>) -> ())
 }
