@@ -48,6 +48,23 @@ final class AddScaleViewModelTests: XCTestCase {
         XCTAssertEqual(saveFixedScaleUseCase.value?.scale?.scaleOfWork, fixedScale.scale?.scaleOfWork)
         XCTAssertEqual(saveFixedScaleUseCase.value?.scale?.scaleOfRest, fixedScale.scale?.scaleOfRest)
     }
+    
+    func test_save_fixed_scale_with_error() {
+         let fixedScale = FixedScale.mockModels.first!
+         let fixedScaleError = NSError(domain: "Error Message", code: 0)
+         makeSUT(fixedScaleError: fixedScaleError)
+        
+         let stateSpy = ViewModelPublisherSpy(publisher: viewModel.$statePublished)
+         let expectedPublishedStates: [AddScaleViewModelState] = [
+             .initial,
+             .loading,
+             .errorSavingScale(message: fixedScaleError.localizedDescription)
+         ]
+        
+         viewModel.save(fixedScale: fixedScale)
+        
+         XCTAssertEqual(stateSpy.values, expectedPublishedStates)
+    }
 
     // MARK: - Helpers Functions
 
