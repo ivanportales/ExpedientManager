@@ -14,7 +14,9 @@ struct ScheduledNotification: Equatable {
     var date: Date
     var scaleUid: String
     var colorHex: String
+}
 
+extension ScheduledNotification: UserNotificationModel {
     func toJson() -> [String: Any] {
         return [
             "uid": self.uid ,
@@ -46,5 +48,3 @@ extension ScheduledNotification {
                                      colorHex: onDuty.colorHex!)
     }
 }
-
-extension ScheduledNotification: UserNotificationModel {}
