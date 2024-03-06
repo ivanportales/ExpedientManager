@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-enum AddScaleViewModelState {
+enum AddScaleViewModelState: Equatable {
     case initial
     case loading
     case errorSavingScale(message: String)

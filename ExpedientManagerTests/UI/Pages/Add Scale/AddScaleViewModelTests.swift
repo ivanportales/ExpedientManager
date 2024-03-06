@@ -13,6 +13,8 @@ final class AddScaleViewModelTests: XCTestCase {
     
     private var viewModel: AddScaleViewModel!
     private var askForNotificationPermissionUseCase: AskForNotificationPermissionUseCaseStub!
+    private var saveFixedScaleUseCase: SaveStubUseCase<FixedScale>!
+    private var saveOnDutyUseCase: SaveStubUseCase<OnDuty>!
     private var subscribers: Set<AnyCancellable>!
 
     func test_request_authorization_to_send_notifications() {
@@ -21,6 +23,30 @@ final class AddScaleViewModelTests: XCTestCase {
         viewModel.requestAuthorizationToSendNotifications()
         
         XCTAssertTrue(askForNotificationPermissionUseCase.didCallAskForNotificationPermission)
+    }
+    
+    func test_save_fixed_scale() {
+        let fixedScale = FixedScale.mockModels.first!
+        makeSUT(fixedScale: fixedScale)
+       
+        let stateSpy = ViewModelPublisherSpy(publisher: viewModel.$statePublished)
+        let expectedPublishedStates: [AddScaleViewModelState] = [
+            .initial,
+            .loading,
+            .successSavingScale
+        ]
+       
+        viewModel.save(fixedScale: fixedScale)
+       
+        XCTAssertEqual(stateSpy.values, expectedPublishedStates)
+        XCTAssertEqual(saveFixedScaleUseCase.value?.title, fixedScale.title)
+        XCTAssertEqual(saveFixedScaleUseCase.value?.annotation, fixedScale.annotation)
+        XCTAssertEqual(saveFixedScaleUseCase.value?.initialDate, fixedScale.initialDate)
+        XCTAssertEqual(saveFixedScaleUseCase.value?.finalDate, fixedScale.finalDate)
+        XCTAssertEqual(saveFixedScaleUseCase.value?.colorHex, fixedScale.colorHex)
+        XCTAssertEqual(saveFixedScaleUseCase.value?.scale?.type, fixedScale.scale?.type)
+        XCTAssertEqual(saveFixedScaleUseCase.value?.scale?.scaleOfWork, fixedScale.scale?.scaleOfWork)
+        XCTAssertEqual(saveFixedScaleUseCase.value?.scale?.scaleOfRest, fixedScale.scale?.scaleOfRest)
     }
 
     // MARK: - Helpers Functions
@@ -31,9 +57,11 @@ final class AddScaleViewModelTests: XCTestCase {
                          onDutyError: Error? = nil) {
         self.subscribers = Set<AnyCancellable>()
         self.askForNotificationPermissionUseCase = AskForNotificationPermissionUseCaseStub()
+        self.saveFixedScaleUseCase = SaveStubUseCase(error: fixedScaleError)
+        self.saveOnDutyUseCase = SaveStubUseCase(error: onDutyError)
         self.viewModel = AddScaleViewModel(askForNotificationPermissionUseCase: askForNotificationPermissionUseCase,
-                                           saveFixedScaleUseCase: SaveStubUseCase(error: fixedScaleError),
-                                           saveOnDutyUseCase: SaveStubUseCase(error: onDutyError))
+                                           saveFixedScaleUseCase: saveFixedScaleUseCase,
+                                           saveOnDutyUseCase: saveOnDutyUseCase)
     }
 }
 
