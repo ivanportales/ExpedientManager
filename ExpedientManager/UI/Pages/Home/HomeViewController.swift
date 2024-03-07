@@ -25,9 +25,9 @@ final class HomeViewController: UIViewController, LoadingShowableViewControllerP
         calendarView.appearance.weekdayTextColor = .appDarkBlue
         calendarView.appearance.weekdayFont = .poppinsMediumOf(size: 16)
         calendarView.appearance.borderSelectionColor = .appDarkBlue
-        calendarView.appearance.titleSelectionColor = .textColor
+        calendarView.appearance.titleSelectionColor = .textAddShift
         calendarView.appearance.selectionColor = .clear
-        calendarView.appearance.titleDefaultColor = .textColor
+        calendarView.appearance.titleDefaultColor = .textAddShift
         calendarView.appearance.todayColor = .clear
         calendarView.appearance.titleTodayColor = .appDarkBlue
         calendarView.appearance.titleFont = .poppinsSemiboldOf(size: 15)

@@ -8,12 +8,6 @@
 import UIKit
 
 extension UIColor {
-    static var appDdarkBlue: UIColor { UIColor(named: "appDarkBlue")! }
-    static var applLightBlue: UIColor { UIColor(named: "appLightBlue")! }
-    static var textColor: UIColor { UIColor(named: "textAddShiftColor")! }
-}
-
-extension UIColor {
     private func float2String(_ float : CGFloat) -> String {
         return String(format:"%02X", Int(round(float * 255)))
     }

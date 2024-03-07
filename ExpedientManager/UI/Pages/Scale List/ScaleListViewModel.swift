@@ -11,9 +11,8 @@ final class ScalesListViewModel: ScalesListViewModelProtocol {
     
     // MARK: - Binding Properties
     
-    var state: Published<ScalesListViewModelState>.Publisher { $statePublished }
-    
     @Published private(set) var statePublished: ScalesListViewModelState = .initial
+    var state: Published<ScalesListViewModelState>.Publisher { $statePublished }
     
     // MARK: - Private Properties
     
