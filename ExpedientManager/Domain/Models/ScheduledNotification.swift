@@ -31,7 +31,7 @@ extension ScheduledNotification: UserNotificationModel {
 
 extension ScheduledNotification {
     static func from(fixedScale: FixedScale, with currentDate: Date) -> ScheduledNotification {
-        return ScheduledNotification(uid: fixedScale.id,
+        return ScheduledNotification(uid: UUID().uuidString,
                                      title: fixedScale.title ?? "",
                                      description: fixedScale.annotation ?? "",
                                      date: currentDate,
