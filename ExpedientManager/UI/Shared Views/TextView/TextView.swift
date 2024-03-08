@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextView: UITextView {
+final class TextView: UITextView {
     
     // MARK: - Private Properties
 
@@ -23,7 +23,7 @@ class TextView: UITextView {
          placeholderTextColor: UIColor = .lightGray,
          font: UIFont = .poppinsRegularOf(size: 16),
          textColor: UIColor,
-         backgroundColor: UIColor = .card,
+         backgroundColor: UIColor = .background2,
          padding: UIEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)) {
         self.placeholder = placeholder
         self.placeholderTextColor = placeholderTextColor

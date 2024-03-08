@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScaleDurationView" customModule="RotinaApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScaleDurationView" customModule="ExpedientManager" customModuleProvider="target">
             <connections>
                 <outlet property="dateTextField" destination="WVM-a7-LxJ" id="CwK-pE-ayi"/>
                 <outlet property="label" destination="jqX-Qp-KtU" id="AmY-uu-Bd2"/>
@@ -27,11 +28,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Iy0-z6-rdd">
-                    <rect key="frame" x="12.5" y="10" width="128" height="86.5"/>
+                    <rect key="frame" x="10.5" y="15" width="132" height="76"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eTH-6C-qDl">
                             <rect key="frame" x="0.0" y="1" width="30" height="27.5"/>
-                            <color key="tintColor" red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" name="textAddShiftColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="eTH-6C-qDl" secondAttribute="height" multiplier="1:1" id="ldh-69-FSe"/>
                                 <constraint firstAttribute="height" constant="30" id="ukD-bg-U9e"/>
@@ -46,22 +47,22 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Dgi-bZ-1KM">
-                            <rect key="frame" x="40" y="0.0" width="88" height="86.5"/>
+                            <rect key="frame" x="40" y="0.0" width="92" height="76"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="19 Nov 2021" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WVM-a7-LxJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="88" height="24"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="92" height="20.5"/>
                                     <color key="textColor" name="brandingColor"/>
                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3:18 PM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EV7-VX-7d9">
-                                    <rect key="frame" x="0.0" y="32" width="88" height="24"/>
+                                    <rect key="frame" x="0.0" y="28.5" width="92" height="20.5"/>
                                     <color key="textColor" name="brandingColor"/>
                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Início" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqX-Qp-KtU">
-                                    <rect key="frame" x="0.0" y="64" width="88" height="22.5"/>
+                                    <rect key="frame" x="0.0" y="57" width="92" height="19"/>
                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="textColor" name="textAddShiftColor"/>
                                     <nil key="highlightedColor"/>
@@ -69,10 +70,11 @@
                             </subviews>
                         </stackView>
                     </subviews>
+                    <color key="backgroundColor" name="background2Color"/>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" name="cardColor"/>
+            <color key="backgroundColor" name="background2Color"/>
             <constraints>
                 <constraint firstItem="Iy0-z6-rdd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Tpp-xD-9MR"/>
                 <constraint firstItem="Iy0-z6-rdd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="YRA-dh-WAn"/>
@@ -87,12 +89,12 @@
         </view>
     </objects>
     <resources>
-        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="calendar" catalog="system" width="128" height="107"/>
+        <namedColor name="background2Color">
+            <color red="0.10196078431372549" green="0.17254901960784313" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="brandingColor">
             <color red="0.0" green="0.76099997758865356" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="cardColor">
-            <color red="0.95300000905990601" green="0.96899998188018799" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textAddShiftColor">
             <color red="0.34900000691413879" green="0.34900000691413879" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

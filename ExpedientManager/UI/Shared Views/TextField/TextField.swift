@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextField: UITextField {
+final class TextField: UITextField {
     
     // MARK: - Private Properties
 
@@ -18,7 +18,7 @@ class TextField: UITextField {
     init(placeholder: String = "",
          font: UIFont = .poppinsRegularOf(size: 16),
          textColor: UIColor,
-         backgroundColor: UIColor = .card,
+         backgroundColor: UIColor = .background2,
          padding: UIEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)) {
         self.padding = padding
         super.init(frame: .zero)
@@ -36,15 +36,15 @@ class TextField: UITextField {
     
     // MARK: - Override Functions
     
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+    override public func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
 
-    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+    override public func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
 
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+    override public func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
 }

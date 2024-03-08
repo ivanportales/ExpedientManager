@@ -81,7 +81,7 @@ final class ScaleColorSelectionView: UICollectionView {
 
 private extension ScaleColorSelectionView {
     func setupView() {
-        backgroundColor = .card
+        backgroundColor = .background2
         layer.cornerRadius = 10
         delegate = self
         dataSource = self

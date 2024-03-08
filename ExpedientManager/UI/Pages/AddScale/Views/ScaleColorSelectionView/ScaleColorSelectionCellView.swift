@@ -27,7 +27,7 @@ final class ScaleColorSelectionCellView: SelfSizedCollectionViewCell {
         didSet {
             if isSelected {
                 self.layer.borderWidth = 3
-                self.layer.borderColor = UIColor.appDarkBlue.cgColor
+                self.layer.borderColor = UIColor.white.cgColor
             } else {
                 self.layer.borderWidth = 0
                 self.layer.borderColor = UIColor.clear.cgColor

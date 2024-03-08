@@ -40,7 +40,7 @@ final class HomeViewController: UIViewController, LoadingShowableViewControllerP
     lazy var activityLabelView: UILabel = {
         return UIView.makeLabelWith(text: LocalizedString.activitiesLabel,
                                     font: .poppinsSemiboldOf(size: 19),
-                                    color: .black)
+                                    color: .card)
     }()
     
     lazy var activitiesListTableView: ScheduledNotificationListTableView = {
