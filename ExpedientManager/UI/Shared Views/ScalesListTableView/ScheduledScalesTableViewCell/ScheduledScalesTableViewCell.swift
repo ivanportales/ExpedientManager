@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScheduledScalesTableViewCell: UITableViewCell {
+final class ScheduledScalesTableViewCell: UITableViewCell {
     
     static let cellIdentifier = "scheduledScalesTableViewCell"
     
@@ -61,5 +61,12 @@ class ScheduledScalesTableViewCell: UITableViewCell {
         titleLabel.text = scheduledNotification.title
         descriptionLabel.text = scheduledNotification.description
         scaleColorView.backgroundColor = UIColor(hex: scheduledNotification.colorHex)
+    }
+    
+    // MARK: - Override Functions
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        layer.cornerRadius = 10
     }
 }

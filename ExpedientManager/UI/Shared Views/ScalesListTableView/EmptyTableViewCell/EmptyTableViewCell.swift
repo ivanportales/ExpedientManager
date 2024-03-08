@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmptyTableViewCell: UITableViewCell {
+final class EmptyTableViewCell: UITableViewCell {
     
     static let cellIdentifier = "emptyTableViewCell"
     
@@ -37,6 +37,6 @@ class EmptyTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = .systemBackground
+        layer.cornerRadius = 10
     }
 }
