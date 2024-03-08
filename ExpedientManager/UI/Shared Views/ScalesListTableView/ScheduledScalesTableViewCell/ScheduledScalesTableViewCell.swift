@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ScheduledScalesTableViewCell: UITableViewCell {
+class ScheduledScalesTableViewCell: UITableViewCell {
     
     static let cellIdentifier = "scheduledScalesTableViewCell"
     

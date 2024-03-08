@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EmptyTableViewCell: UITableViewCell {
+class EmptyTableViewCell: UITableViewCell {
     
     static let cellIdentifier = "emptyTableViewCell"
     
