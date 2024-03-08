@@ -58,7 +58,7 @@ final class WorkScaleTypeSegmentedControl: UISegmentedControl {
 private extension WorkScaleTypeSegmentedControl {
     private func setupViewAppearence() {
         tintColor = UIColor.white
-        backgroundColor = UIColor.white
+        backgroundColor = .background
         layer.cornerRadius = 20
         layer.masksToBounds = true
         clipsToBounds = true

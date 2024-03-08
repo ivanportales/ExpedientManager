@@ -70,7 +70,7 @@ final class HomeViewController: UIViewController, LoadingShowableViewControllerP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .background
         setupNavigationBar()
         setupViewHierarchy()
         setupConstraints()

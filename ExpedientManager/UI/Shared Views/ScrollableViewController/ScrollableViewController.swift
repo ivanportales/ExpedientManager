@@ -14,7 +14,7 @@ class ScrollableViewController: UIViewController {
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = .background
 
         return scrollView
     }()
@@ -22,7 +22,7 @@ class ScrollableViewController: UIViewController {
     lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .background
         
         return contentView
     }()
