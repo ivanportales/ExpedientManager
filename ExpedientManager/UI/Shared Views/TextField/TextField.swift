@@ -28,6 +28,8 @@ final class TextField: UITextField {
         self.font = font
         self.textColor = textColor
         layer.cornerRadius = 10
+        attributedPlaceholder = NSAttributedString(string: placeholder,
+                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     required init?(coder: NSCoder) {
