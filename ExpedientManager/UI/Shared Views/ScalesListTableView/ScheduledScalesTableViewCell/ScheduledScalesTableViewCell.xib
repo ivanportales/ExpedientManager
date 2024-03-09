@@ -26,10 +26,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcQ-Nz-nbw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="sgf-C8-hGU">
-                                <rect key="frame" x="16" y="17.5" width="288" height="75"/>
+                                <rect key="frame" x="16" y="12.5" width="288" height="75"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GpV-uM-wHs">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="75"/>
@@ -123,9 +123,9 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="background2Color"/>
+                <color key="backgroundColor" name="backgroundColor"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="EcQ-Nz-nbw" secondAttribute="bottom" id="10X-eV-Rnp"/>
+                    <constraint firstAttribute="bottom" secondItem="EcQ-Nz-nbw" secondAttribute="bottom" constant="10" id="10X-eV-Rnp"/>
                     <constraint firstAttribute="trailing" secondItem="EcQ-Nz-nbw" secondAttribute="trailing" id="8Uf-NN-iAu"/>
                     <constraint firstItem="EcQ-Nz-nbw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WfQ-h7-Pyb"/>
                     <constraint firstItem="EcQ-Nz-nbw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iH6-vf-iZX"/>
@@ -146,19 +146,22 @@
     </objects>
     <resources>
         <namedColor name="background2Color">
-            <color red="0.13333333333333333" green="0.14901960784313725" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10196078431372549" green="0.17254901960784313" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="background3Color">
-            <color red="0.32264373768593546" green="0.33874241472294098" blue="0.38703844583395752" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.21568627450980393" green="0.25490196078431371" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="backgroundColor">
+            <color red="0.054901960784313725" green="0.098039215686274508" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="cardColor">
-            <color red="0.95300000905990601" green="0.96899998188018799" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.95294117647058818" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
