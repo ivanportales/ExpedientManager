@@ -73,7 +73,7 @@ private extension WorkScaleTypeSegmentedControl {
         setup(textColor: .white, for: .selected)
         
         selectedSegmentIndex = 0
-        selectedSegmentTintColor = .appLightBlue
+        selectedSegmentTintColor = .brand2
     }
     
     private func setup(textColor: UIColor,

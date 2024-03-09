@@ -24,23 +24,23 @@ final class AddScaleViewController: ScrollableViewController, LoadingShowableVie
     lazy var titleLabel: UILabel = {
         return UIView.makeLabelWith(text: LocalizedString.titleLabel,
                                     font: .poppinsSemiboldOf(size: 16),
-                                    color: .textAddShift)
+                                    color: .text2)
     }()
     
     lazy var titleTextField: TextField = {
         return TextField(placeholder: LocalizedString.nameLabel, 
-                         textColor: .textAddShift)
+                         textColor: .text2)
     }()
     
     lazy var notesLabel: UILabel = {
         return UIView.makeLabelWith(text: LocalizedString.notesLabel,
                                     font: .poppinsSemiboldOf(size: 16),
-                                    color: .textAddShift)
+                                    color: .text2)
     }()
     
     lazy var notesTextView: TextView = {
         let textView = TextView(placeholder: LocalizedString.describeHerePlaceholder,
-                                textColor: .textAddShift)
+                                textColor: .text2)
         textView.constraintView(height: 85)
         
         return textView
@@ -49,7 +49,7 @@ final class AddScaleViewController: ScrollableViewController, LoadingShowableVie
     lazy var durationLabel: UILabel = {
         return UIView.makeLabelWith(text: LocalizedString.durationLabel,
                                     font: .poppinsSemiboldOf(size: 16),
-                                    color: .textAddShift)
+                                    color: .text2)
     }()
     
     lazy var scaleSelectTypeView: ScaleSelectType = {
@@ -59,7 +59,7 @@ final class AddScaleViewController: ScrollableViewController, LoadingShowableVie
     lazy var shiftLabel: UILabel = {
         return UIView.makeLabelWith(text: LocalizedString.periodLabel,
                                     font: .poppinsSemiboldOf(size: 16),
-                                    color: .textAddShift)
+                                    color: .text2)
     }()
     
     lazy var scalesSelectionStackContainer: UIStackView = {
@@ -85,7 +85,7 @@ final class AddScaleViewController: ScrollableViewController, LoadingShowableVie
     lazy var colorSelectionLabel: UILabel = {
         return UIView.makeLabelWith(text: LocalizedString.colorLabel,
                                     font: .poppinsSemiboldOf(size: 16),
-                                    color: .textAddShift)
+                                    color: .text2)
     }()
     
     lazy var scaleSetColorView: ScaleColorSelectionView = {
@@ -251,7 +251,7 @@ extension AddScaleViewController {
         title = LocalizedString.addTitle
         setupNavigationBarItemOn(position: .right,
                                  withTitle: LocalizedString.saveButton,
-                                 color: .appDarkBlue) { [weak self] _ in
+                                 color: .brand) { [weak self] _ in
             self?.saveScale()
         }
     }

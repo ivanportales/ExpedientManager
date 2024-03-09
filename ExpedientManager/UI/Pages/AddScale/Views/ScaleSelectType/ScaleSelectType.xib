@@ -48,7 +48,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="24" placeholder="12" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJS-0b-M9N">
                                             <rect key="frame" x="117" y="0.0" width="117" height="0.0"/>
-                                            <color key="textColor" name="appLightBlue"/>
+                                            <color key="textColor" name="brandColor"/>
                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <userDefinedRuntimeAttributes>
@@ -59,7 +59,7 @@
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Hora(s)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iyi-hi-ng5">
                                             <rect key="frame" x="234" y="0.0" width="117" height="0.0"/>
-                                            <color key="textColor" name="appLightBlue"/>
+                                            <color key="textColor" name="brandColor"/>
                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -83,7 +83,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="48" placeholder="36" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mag-mE-Nkx">
                                             <rect key="frame" x="117" y="0.0" width="117" height="6"/>
-                                            <color key="textColor" name="appLightBlue"/>
+                                            <color key="textColor" name="brandColor"/>
                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <userDefinedRuntimeAttributes>
@@ -129,11 +129,11 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="appLightBlue">
-            <color red="0.27058823529411763" green="0.36078431372549019" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="background2Color">
             <color red="0.10196078431372549" green="0.17254901960784313" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="brandColor">
+            <color red="0.27058823529411763" green="0.36078431372549019" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="lineseparator">
             <color red="0.85900002717971802" green="0.86299997568130493" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

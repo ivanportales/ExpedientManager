@@ -83,14 +83,14 @@ final class DeeplinkRouter: DeeplinkRouterProtocol {
         navigationBarAppearance.backgroundColor = .background
         navigationBarAppearance.largeTitleTextAttributes = [
             .font: UIFont.poppinsSemiboldOf(size: 34),
-            .foregroundColor: UIColor.card,
+            .foregroundColor: UIColor.text,
         ]
         navigationBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.card,
+            .foregroundColor: UIColor.text,
         ]
         navigationController.navigationBar.standardAppearance = navigationBarAppearance
         navigationController.navigationBar.compactAppearance = navigationBarAppearance
         navigationController.navigationBar.scrollEdgeAppearance = navigationBarAppearance
-        navigationController.navigationBar.tintColor = .appDarkBlue
+        navigationController.navigationBar.tintColor = .brand
     }
 }

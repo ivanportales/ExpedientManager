@@ -22,14 +22,14 @@ final class HomeViewController: UIViewController, LoadingShowableViewControllerP
         calendarView.delegate = self
         calendarView.dataSource = self
         
-        calendarView.appearance.weekdayTextColor = .appDarkBlue
+        calendarView.appearance.weekdayTextColor = .brand
         calendarView.appearance.weekdayFont = .poppinsMediumOf(size: 16)
-        calendarView.appearance.borderSelectionColor = .appDarkBlue
-        calendarView.appearance.titleSelectionColor = .textAddShift
+        calendarView.appearance.borderSelectionColor = .brand
+        calendarView.appearance.titleSelectionColor = .text2
         calendarView.appearance.selectionColor = .clear
-        calendarView.appearance.titleDefaultColor = .textAddShift
+        calendarView.appearance.titleDefaultColor = .text2
         calendarView.appearance.todayColor = .clear
-        calendarView.appearance.titleTodayColor = .appDarkBlue
+        calendarView.appearance.titleTodayColor = .brand
         calendarView.appearance.titleFont = .poppinsSemiboldOf(size: 15)
 
         calendarView.headerHeight = 0
@@ -40,7 +40,7 @@ final class HomeViewController: UIViewController, LoadingShowableViewControllerP
     lazy var activityLabelView: UILabel = {
         return UIView.makeLabelWith(text: LocalizedString.activitiesLabel,
                                     font: .poppinsSemiboldOf(size: 19),
-                                    color: .card)
+                                    color: .text)
     }()
     
     lazy var activitiesListTableView: ScheduledNotificationListTableView = {
@@ -119,13 +119,13 @@ private extension HomeViewController {
                 
         setupNavigationBarItemOn(position: .right,
                                  withIcon: UIImage(systemName: "plus"),
-                                 color: .appLightBlue) { [weak self] _ in
+                                 color: .brand2) { [weak self] _ in
             self?.showAddScaleScreen()
         }
         
         setupNavigationBarItemOn(position: .right,
                                  withIcon: UIImage(systemName: "list.bullet"),
-                                 color: .appLightBlue) { [weak self] _ in
+                                 color: .brand2) { [weak self] _ in
             self?.showScalesListScreen()
         }
     }

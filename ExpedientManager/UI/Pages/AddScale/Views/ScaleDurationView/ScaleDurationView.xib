@@ -51,13 +51,13 @@
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="19 Nov 2021" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WVM-a7-LxJ">
                                     <rect key="frame" x="0.0" y="0.0" width="92" height="20.5"/>
-                                    <color key="textColor" name="brandingColor"/>
+                                    <color key="textColor" name="brandColor"/>
                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3:18 PM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EV7-VX-7d9">
                                     <rect key="frame" x="0.0" y="28.5" width="92" height="20.5"/>
-                                    <color key="textColor" name="brandingColor"/>
+                                    <color key="textColor" name="brandColor"/>
                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -93,11 +93,11 @@
         <namedColor name="background2Color">
             <color red="0.10196078431372549" green="0.17254901960784313" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="brandingColor">
-            <color red="0.0" green="0.76099997758865356" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="brandColor">
+            <color red="0.27058823529411763" green="0.36078431372549019" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textAddShiftColor">
-            <color red="0.34900000691413879" green="0.34900000691413879" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.95294117647058818" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
