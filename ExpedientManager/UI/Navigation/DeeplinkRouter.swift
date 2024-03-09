@@ -79,6 +79,9 @@ final class DeeplinkRouter: DeeplinkRouterProtocol {
     
     private func setupNavigationBar() {
         navigationController.navigationBar.tintColor = .appDarkBlue
+        navigationController.navigationBar.titleTextAttributes =  [
+            .foregroundColor: UIColor.card,
+        ]
         navigationController.navigationBar.largeTitleTextAttributes = [
             .font: UIFont.poppinsSemiboldOf(size: 34),
             .foregroundColor: UIColor.card,
