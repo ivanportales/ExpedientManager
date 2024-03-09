@@ -35,13 +35,13 @@ final class ScaleColorSelectionView: UICollectionView {
     
     private let viewWithSameSizeAsContent: Bool
     
-    private let colors = [
-        UIColor(hex: "#0000FF"),
-        UIColor(hex: "#FF2D55"),
-        UIColor(hex: "#00FF00"),
-        UIColor(hex: "#800080"),
-        UIColor(hex: "#FF8000"),
-        UIColor(hex: "#101138"),
+    private let colors: [UIColor] = [
+        .selectionRed,
+        .selectionOrange,
+        .selectionGreen,
+        .selectionPurple,
+        .selectionGray,
+        .selectionBlue,
     ]
     
     // MARK: - Inits
