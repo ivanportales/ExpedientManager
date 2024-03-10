@@ -36,7 +36,7 @@
 "noText" = "Não";
 
 //Onboarding
-"onboardingMsg1" = "O iShift é um app simplificado para monitorar e notificar sobre suas escalas e plantões.";
+"onboardingMsg1" = "O Gerenciador de Escalas é um app simplificado para monitorar e notificar sobre suas escalas e plantões de trabalho.";
 "onboardingMsg2" = "Para criar uma escala fixa ou plantão extra, clique em '+' no canto superior direito.";
 "onboardingMsg3" = "Com os dados preenchidos, clique em 'Salvar' e bom uso!";
 "nextButton" = "Próximo";

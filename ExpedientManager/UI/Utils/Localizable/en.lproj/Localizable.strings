@@ -36,7 +36,7 @@
 "noText" = "No";
 
 //Onboarding
-"onboardingMsg1" = "IShift is a simplified app for monitoring and notifying about yours shifts.";
+"onboardingMsg1" = "Expedient Manager is a simplified app for monitoring and notifying about yours shifts.";
 "onboardingMsg2" = "To create a fixed shift or onduty, click on '+' at the top right corner.";
 "onboardingMsg3" = "With the data filled in, click on 'Save'and good use!";
 "nextButton" = "Next";
