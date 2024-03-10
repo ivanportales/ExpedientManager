@@ -26,6 +26,7 @@ final class ImageCellView: UICollectionViewCell {
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.textAlignment = .center
         textLabel.font = UIFont.poppinsRegularOf(size: 16)
+        textLabel.textColor = .text
         textLabel.numberOfLines = 0
         
         return textLabel

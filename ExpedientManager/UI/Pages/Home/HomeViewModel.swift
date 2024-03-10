@@ -64,9 +64,9 @@ final class HomeViewModel: ObservableObject, HomeViewModelProtocol {
     }
     
     func verifyFirstAccessOnApp(routeToOnboardingCallback: @escaping (() -> Void)) {
-        if getValueForKeyUseCase.getValue(forKey: .hasOnboarded) == nil {
+       // if getValueForKeyUseCase.getValue(forKey: .hasOnboarded) == nil {
             routeToOnboardingCallback()
-        }
+       // }
     }
     
     // MARK: - Private Functions

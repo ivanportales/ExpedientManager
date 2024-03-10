@@ -24,6 +24,7 @@ final class CarouselView: UIView {
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isUserInteractionEnabled = userInteractionIsEnabled
+        collectionView.backgroundColor = .clear
         collectionView.register(ImageCellView.self,
                                 forCellWithReuseIdentifier: ImageCellView.reuseIdentifier)
         
