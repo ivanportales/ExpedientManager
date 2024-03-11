@@ -159,7 +159,7 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
 
 // MARK: - Private Mapping Extensions
 
-fileprivate extension FixedScale {
+extension FixedScale {
     func toData() -> FixedScaleModel {
         return FixedScaleModel(
             id: id,
@@ -173,7 +173,7 @@ fileprivate extension FixedScale {
     }
 }
 
-fileprivate extension Scale {
+extension Scale {
     func toData() -> ScaleModel {
         return ScaleModel(
             type: type.rawValue,
