@@ -32,6 +32,10 @@
 		AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC11C2B857BA600F8388F /* ViewModelStatePublisherSpy.swift */; };
 		AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5DC11F2B858C1700F8388F /* ScheduledNotification+Extensions.swift */; };
 		AE5F19E32B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */; };
+		AE6320742B9FC54F00A4BA0F /* DeleteFixedScaleUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6320732B9FC54F00A4BA0F /* DeleteFixedScaleUseCaseProtocol.swift */; };
+		AE6320762B9FC57500A4BA0F /* DeleteFixedScaleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6320752B9FC57500A4BA0F /* DeleteFixedScaleUseCase.swift */; };
+		AE6320792B9FCC3E00A4BA0F /* DeleteOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6320782B9FCC3E00A4BA0F /* DeleteOnDutyUseCaseProtocol.swift */; };
+		AE63207B2B9FCC6500A4BA0F /* DeleteOnDutyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE63207A2B9FCC6500A4BA0F /* DeleteOnDutyUseCase.swift */; };
 		AE63BE752B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE63BE742B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift */; };
 		AE6731762B76E9D800169F66 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6731752B76E9D800169F66 /* LoadingView.swift */; };
 		AE68217B2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE68217A2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift */; };
@@ -182,6 +186,10 @@
 		AE5DC11C2B857BA600F8388F /* ViewModelStatePublisherSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelStatePublisherSpy.swift; sourceTree = "<group>"; };
 		AE5DC11F2B858C1700F8388F /* ScheduledNotification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduledNotification+Extensions.swift"; sourceTree = "<group>"; };
 		AE5F19E22B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationListTableView.swift; sourceTree = "<group>"; };
+		AE6320732B9FC54F00A4BA0F /* DeleteFixedScaleUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFixedScaleUseCaseProtocol.swift; sourceTree = "<group>"; };
+		AE6320752B9FC57500A4BA0F /* DeleteFixedScaleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFixedScaleUseCase.swift; sourceTree = "<group>"; };
+		AE6320782B9FCC3E00A4BA0F /* DeleteOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
+		AE63207A2B9FCC6500A4BA0F /* DeleteOnDutyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteOnDutyUseCase.swift; sourceTree = "<group>"; };
 		AE63BE742B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduledNotificationListTableView+Extensions.swift"; sourceTree = "<group>"; };
 		AE6731752B76E9D800169F66 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AE68217A2B9695F300838993 /* AskForNotificationPermissionUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForNotificationPermissionUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -465,6 +473,24 @@
 			path = ScalesListTableView;
 			sourceTree = "<group>";
 		};
+		AE6320722B9FC51E00A4BA0F /* DeleteFixedScaleUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AE6320732B9FC54F00A4BA0F /* DeleteFixedScaleUseCaseProtocol.swift */,
+				AE6320752B9FC57500A4BA0F /* DeleteFixedScaleUseCase.swift */,
+			);
+			path = DeleteFixedScaleUseCase;
+			sourceTree = "<group>";
+		};
+		AE6320772B9FCC0900A4BA0F /* DeleteOnDutyUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AE6320782B9FCC3E00A4BA0F /* DeleteOnDutyUseCaseProtocol.swift */,
+				AE63207A2B9FCC6500A4BA0F /* DeleteOnDutyUseCase.swift */,
+			);
+			path = DeleteOnDutyUseCase;
+			sourceTree = "<group>";
+		};
 		AE6731742B76E9C400169F66 /* LoadingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,6 +629,8 @@
 		AE9B5A232B670A1800F6A561 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				AE6320772B9FCC0900A4BA0F /* DeleteOnDutyUseCase */,
+				AE6320722B9FC51E00A4BA0F /* DeleteFixedScaleUseCase */,
 				AE6821792B9695B400838993 /* AskForNotificationPermissionUseCase */,
 				AE8CB6F02B78568B00649368 /* SetValueForKeyUseCase */,
 				AE4B4D072B72F92C0034B971 /* GetValueForKeyUseCase */,
@@ -1242,6 +1270,7 @@
 				AED250B72B57558100290E42 /* String+Extensions.swift in Sources */,
 				AE9B5A262B670C9D00F6A561 /* SaveFixedScaleUseCase.swift in Sources */,
 				AED250DF2B57558100290E42 /* UIViewController+Extensions.swift in Sources */,
+				AE6320742B9FC54F00A4BA0F /* DeleteFixedScaleUseCaseProtocol.swift in Sources */,
 				AE7FA9872B75B4250079E9FD /* LoadingShowableViewController.swift in Sources */,
 				AED250BE2B57558100290E42 /* HomeViewModel.swift in Sources */,
 				AED250BA2B57558100290E42 /* ScrollToKeyboardAvoiding.swift in Sources */,
@@ -1274,6 +1303,7 @@
 				AE9D5C8D2B631A070070A9CE /* Date+Extensions.swift in Sources */,
 				AED250D32B57558100290E42 /* ScalesListViewController.swift in Sources */,
 				AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */,
+				AE6320762B9FC57500A4BA0F /* DeleteFixedScaleUseCase.swift in Sources */,
 				AEEC1A762B69D1A500FA618E /* GetOnDutyUseCase.swift in Sources */,
 				AED250C62B57558100290E42 /* AddScaleViewModel.swift in Sources */,
 				AEEC1A712B69D0BF00FA618E /* GetFixedScalesUseCase.swift in Sources */,
@@ -1291,12 +1321,14 @@
 				AE7DE7B32B58946F00F57E42 /* AppMainFactory.swift in Sources */,
 				AED250BD2B57558100290E42 /* LocalizedString.swift in Sources */,
 				AED250D72B57558100290E42 /* FixedScaleRepositoryProtocol.swift in Sources */,
+				AE6320792B9FCC3E00A4BA0F /* DeleteOnDutyUseCaseProtocol.swift in Sources */,
 				AED250C12B57558100290E42 /* EmptyTableViewCell.swift in Sources */,
 				AED250C92B57558100290E42 /* ScaleSelectType.swift in Sources */,
 				AE5A7DA72B939EC900DEDD94 /* AddScaleViewModelProtocol.swift in Sources */,
 				AED250DA2B57558100290E42 /* CoreDataOnDutyRepository.swift in Sources */,
 				AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */,
 				AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */,
+				AE63207B2B9FCC6500A4BA0F /* DeleteOnDutyUseCase.swift in Sources */,
 				AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */,
 				AED250D62B57558100290E42 /* ExpedientManager.xcdatamodeld in Sources */,
 				AE8CB6EF2B784E6C00649368 /* CustomAlertTransitionManager.swift in Sources */,

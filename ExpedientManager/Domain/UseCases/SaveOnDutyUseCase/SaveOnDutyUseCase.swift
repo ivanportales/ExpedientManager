@@ -59,7 +59,7 @@ final class SaveOnDutyUseCase: SaveOnDutyUseCaseProtocol {
 
 // MARK: - Private Mapping Extensions
 
-fileprivate extension OnDuty {
+extension OnDuty {
     func toData() -> OnDutyModel {
         return OnDutyModel(
             id: id,
