@@ -28,7 +28,7 @@ final class SaveOnDutyUseCase: SaveOnDutyUseCaseProtocol {
     // MARK: - Exposed Functions
     
     func save(onDuty: OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        onDutyRepository.save(onDuty: onDuty.toData()) { [weak self] result in
+        onDutyRepository.save(onDuty: onDuty) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error):

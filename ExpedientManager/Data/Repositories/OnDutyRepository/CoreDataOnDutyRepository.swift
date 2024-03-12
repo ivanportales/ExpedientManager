@@ -20,21 +20,22 @@ final class CoreDataOnDutyRepository: CoreDataRepository, OnDutyRepositoryProtoc
     
     // MARK: - Exposed Functions
     
-    func save(onDuty: OnDutyModel, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+    func save(onDuty: OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+        let onDutyModel = onDuty.toData()
         let mapperClosure: (CDOnDuty) -> Void = { newOnDuty in
-            newOnDuty.id = onDuty.id
-            newOnDuty.title = onDuty.titlo
-            newOnDuty.initialDate = onDuty.initialDate
-            newOnDuty.hoursDuration = Int32(onDuty.hoursDuration)
-            newOnDuty.annotation = onDuty.annotation
-            newOnDuty.colorHex = onDuty.colorHex
+            newOnDuty.id = onDutyModel.id
+            newOnDuty.title = onDutyModel.titlo
+            newOnDuty.initialDate = onDutyModel.initialDate
+            newOnDuty.hoursDuration = Int32(onDutyModel.hoursDuration)
+            newOnDuty.annotation = onDutyModel.annotation
+            newOnDuty.colorHex = onDutyModel.colorHex
         }
         
         save(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func getAllOnDuty(completionHandler: @escaping (Result<[OnDutyModel], Error>) -> ()) {
-        let mapperClosure: (CDOnDuty) -> OnDutyModel = { cdOnDuty in
+    func getAllOnDuty(completionHandler: @escaping (Result<[OnDuty], Error>) -> ()) {
+        let mapperClosure: (CDOnDuty) -> OnDuty = { cdOnDuty in
             return OnDutyModel(
                 id: cdOnDuty.id!,
                 title: cdOnDuty.title!,
@@ -42,23 +43,24 @@ final class CoreDataOnDutyRepository: CoreDataRepository, OnDutyRepositoryProtoc
                 hoursDuration: Int(cdOnDuty.hoursDuration),
                 annotation: cdOnDuty.annotation!,
                 colorHex: cdOnDuty.colorHex
-            )
+            ).toDomain()
         }
         
         getAllModels(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func update(onDuty: OnDutyModel,
+    func update(onDuty: OnDuty,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let fetchRequest = makeFetchRequestFor(onDuty: onDuty)
+        let onDutyModel = onDuty.toData()
+        let fetchRequest = makeFetchRequestFor(onDuty: onDutyModel)
         
         let mapperClosure: (CDOnDuty) -> Void = { onDutyToBeUpdated in
-            onDutyToBeUpdated.id = onDuty.id
-            onDutyToBeUpdated.title = onDuty.titlo
-            onDutyToBeUpdated.annotation = onDuty.annotation
-            onDutyToBeUpdated.initialDate = onDuty.initialDate
-            onDutyToBeUpdated.hoursDuration = Int32(onDuty.hoursDuration)
-            onDutyToBeUpdated.colorHex = onDuty.colorHex
+            onDutyToBeUpdated.id = onDutyModel.id
+            onDutyToBeUpdated.title = onDutyModel.titlo
+            onDutyToBeUpdated.annotation = onDutyModel.annotation
+            onDutyToBeUpdated.initialDate = onDutyModel.initialDate
+            onDutyToBeUpdated.hoursDuration = Int32(onDutyModel.hoursDuration)
+            onDutyToBeUpdated.colorHex = onDutyModel.colorHex
         }
         
         update(withFetchRequest: fetchRequest,
@@ -66,9 +68,10 @@ final class CoreDataOnDutyRepository: CoreDataRepository, OnDutyRepositoryProtoc
                completionHandler: completionHandler)
     }
     
-    func delete(onDuty: OnDutyModel,
+    func delete(onDuty: OnDuty,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let fetchRequest = makeFetchRequestFor(onDuty: onDuty)
+        let onDutyModel = onDuty.toData()
+        let fetchRequest = makeFetchRequestFor(onDuty: onDutyModel)
         
         delete(withFetchRequest: fetchRequest, completionHandler: completionHandler)
     }

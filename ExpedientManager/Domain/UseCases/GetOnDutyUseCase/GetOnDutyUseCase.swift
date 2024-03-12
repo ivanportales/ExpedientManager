@@ -22,15 +22,6 @@ final class GetOnDutyUseCase: GetOnDutyUseCaseProtocol {
     // MARK: - Exposed Functions
     
     func getOnDuty(completionHandler: @escaping (Result<[OnDuty], Error>) -> ()) {
-        let innerCompletion: (Result<[OnDutyModel], Error>) -> () = { result in
-            switch result {
-            case .success(let onDutiesModels):
-                let domainOnDuties = onDutiesModels.map({ $0.toDomain() })
-                completionHandler(.success(domainOnDuties))
-            case .failure(let error):
-                completionHandler(.failure(error))
-            }
-        }
-        onDutyRepository.getAllOnDuty(completionHandler: innerCompletion)
+        onDutyRepository.getAllOnDuty(completionHandler: completionHandler)
     }
 }

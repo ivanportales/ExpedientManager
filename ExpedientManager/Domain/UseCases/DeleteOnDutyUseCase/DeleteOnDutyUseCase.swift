@@ -22,6 +22,6 @@ final class DeleteOnDutyUseCase: DeleteOnDutyUseCaseProtocol {
     // MARK: - Exposed Functions
     
     func delete(onDuty: OnDuty, completion: @escaping (Result<Bool, Error>) -> ()) {
-        onDutyRepository.delete(onDuty: onDuty.toData(), completionHandler: completion)
+        onDutyRepository.delete(onDuty: onDuty, completionHandler: completion)
     }
 }
