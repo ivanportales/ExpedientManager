@@ -31,7 +31,7 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
     // MARK: - Exposed Functions
     
     func save(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        fixedScaleRepository.save(fixedScale: fixedScale.toData()) { [weak self] result in
+        fixedScaleRepository.save(fixedScale: fixedScale) { [weak self] result in
             switch result {
             case .failure(let error):
                 completionHandler(.failure(error))

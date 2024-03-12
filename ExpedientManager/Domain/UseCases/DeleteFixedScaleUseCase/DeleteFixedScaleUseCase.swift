@@ -22,6 +22,6 @@ final class DeleteFixedScaleUseCase: DeleteFixedScaleUseCaseProtocol {
     // MARK: - Exposed Functions
     
     func delete(fixedScale: FixedScale, completion: @escaping (Result<Bool, Error>) -> ()) {
-        fixedScaleRepository.delete(fixedScale: fixedScale.toData(), completionHandler: completion)
+        fixedScaleRepository.delete(fixedScale: fixedScale, completionHandler: completion)
     }
 }

@@ -20,22 +20,23 @@ final class CoreDataFixedScaleRepository: CoreDataRepository, FixedScaleReposito
     
     // MARK: - Exposed Functions
     
-    func save(fixedScale: FixedScaleModel, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+    func save(fixedScale: FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+        let fixedScaleModel = fixedScale.toData()
         let mapperClosure: (CDFixedScale) -> Void = { newFixedScale in
-            newFixedScale.id = fixedScale.id
-            newFixedScale.scale =  try? JSONEncoder().encode(fixedScale.scale)
-            newFixedScale.initialDate = fixedScale.initialDate
-            newFixedScale.finalDate = fixedScale.finalDate
-            newFixedScale.title = fixedScale.title
-            newFixedScale.annotation = fixedScale.annotation
-            newFixedScale.colorHex = fixedScale.colorHex
+            newFixedScale.id = fixedScaleModel.id
+            newFixedScale.scale =  try? JSONEncoder().encode(fixedScaleModel.scale)
+            newFixedScale.initialDate = fixedScaleModel.initialDate
+            newFixedScale.finalDate = fixedScaleModel.finalDate
+            newFixedScale.title = fixedScaleModel.title
+            newFixedScale.annotation = fixedScaleModel.annotation
+            newFixedScale.colorHex = fixedScaleModel.colorHex
         }
         
         save(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func getAllFixedScales(completionHandler: @escaping (Result<[FixedScaleModel], Error>) -> ()) {
-        let mapperClosure: (CDFixedScale) -> FixedScaleModel = { cdFixedScale in
+    func getAllFixedScales(completionHandler: @escaping (Result<[FixedScale], Error>) -> ()) {
+        let mapperClosure: (CDFixedScale) -> FixedScale = { cdFixedScale in
             return FixedScaleModel(
                 id: cdFixedScale.id!,
                 title: cdFixedScale.title!,
@@ -44,24 +45,25 @@ final class CoreDataFixedScaleRepository: CoreDataRepository, FixedScaleReposito
                 finalDate: cdFixedScale.finalDate!,
                 annotation: cdFixedScale.annotation!,
                 colorHex: cdFixedScale.colorHex!
-            )
+            ).toDomain()
         }
         
         getAllModels(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func update(fixedScale: FixedScaleModel,
+    func update(fixedScale: FixedScale,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let fetchRequest = makeFetchRequestFor(fixedScale: fixedScale)
+        let fixedScaleModel = fixedScale.toData()
+        let fetchRequest = makeFetchRequestFor(fixedScale: fixedScaleModel)
         
         let mapperClosure: (CDFixedScale) -> Void = { shiftToBeUpdated in
-            shiftToBeUpdated.id = fixedScale.id
-            shiftToBeUpdated.title = fixedScale.title
-            shiftToBeUpdated.scale = try! JSONEncoder().encode(fixedScale.scale)
-            shiftToBeUpdated.initialDate = fixedScale.initialDate
+            shiftToBeUpdated.id = fixedScaleModel.id
+            shiftToBeUpdated.title = fixedScaleModel.title
+            shiftToBeUpdated.scale = try! JSONEncoder().encode(fixedScaleModel.scale)
+            shiftToBeUpdated.initialDate = fixedScaleModel.initialDate
             shiftToBeUpdated.finalDate = shiftToBeUpdated.finalDate
-            shiftToBeUpdated.annotation = fixedScale.annotation
-            shiftToBeUpdated.colorHex = fixedScale.colorHex
+            shiftToBeUpdated.annotation = fixedScaleModel.annotation
+            shiftToBeUpdated.colorHex = fixedScaleModel.colorHex
         }
         
         update(withFetchRequest: fetchRequest,
@@ -69,9 +71,10 @@ final class CoreDataFixedScaleRepository: CoreDataRepository, FixedScaleReposito
                completionHandler: completionHandler)
     }
     
-    func delete(fixedScale: FixedScaleModel,
+    func delete(fixedScale: FixedScale,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let fetchRequest = makeFetchRequestFor(fixedScale: fixedScale)
+        let fixedScaleModel = fixedScale.toData()
+        let fetchRequest = makeFetchRequestFor(fixedScale: fixedScaleModel)
                 
         delete(withFetchRequest: fetchRequest, completionHandler: completionHandler)
     }

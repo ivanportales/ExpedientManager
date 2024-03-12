@@ -22,15 +22,6 @@ final class GetFixedScalesUseCase: GetFixedScalesUseCaseProtocol {
     // MARK: - Exposed Functions
     
     func getFixedScales(completionHandler: @escaping (Result<[FixedScale], Error>) -> ()) {
-        let innerCompletion: (Result<[FixedScaleModel], Error>) -> () = { result in
-            switch result {
-            case .success(let fixedScalesModels):
-                let domainFixedScales = fixedScalesModels.map({ $0.toDomain() })
-                completionHandler(.success(domainFixedScales))
-            case .failure(let error):
-                completionHandler(.failure(error))
-            }
-        }
-        fixedScaleRepository.getAllFixedScales(completionHandler: innerCompletion)
+        fixedScaleRepository.getAllFixedScales(completionHandler: completionHandler)
     }
 }
