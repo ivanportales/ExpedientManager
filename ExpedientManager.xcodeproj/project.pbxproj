@@ -20,6 +20,7 @@
 		AE52052E2B8BDE0800A2179B /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52052D2B8BDE0800A2179B /* UIColor+Extensions.swift */; };
 		AE5410532B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5410522B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift */; };
 		AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */; };
+		AE5665432BA0E76A0024F1DF /* ButtonView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5665422BA0E76A0024F1DF /* ButtonView+Extensions.swift */; };
 		AE595A982B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */; };
 		AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */; };
 		AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */; };
@@ -181,6 +182,7 @@
 		AE52052D2B8BDE0800A2179B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		AE5410522B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkScaleTypeSegmentedControl.swift; sourceTree = "<group>"; };
 		AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedCollectionViewCell.swift; sourceTree = "<group>"; };
+		AE5665422BA0E76A0024F1DF /* ButtonView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonView+Extensions.swift"; sourceTree = "<group>"; };
 		AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseError.swift; sourceTree = "<group>"; };
 		AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				AE52052D2B8BDE0800A2179B /* UIColor+Extensions.swift */,
 				AE63BE742B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift */,
 				AE8E106F2B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift */,
+				AE5665422BA0E76A0024F1DF /* ButtonView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1412,6 +1415,7 @@
 				AE68217F2B96974E00838993 /* AddScaleViewModelTests.swift in Sources */,
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
 				AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */,
+				AE5665432BA0E76A0024F1DF /* ButtonView+Extensions.swift in Sources */,
 				AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */,
 				AE5A7DAA2B93A97A00DEDD94 /* AddScaleViewControllerTests.swift in Sources */,
 				AE8E10702B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift in Sources */,
