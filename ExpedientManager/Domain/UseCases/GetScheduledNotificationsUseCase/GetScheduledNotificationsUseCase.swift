@@ -34,14 +34,3 @@ final class GetScheduledNotificationsUseCase: GetScheduledNotificationsUseCasePr
         scheduledNotificationsRepository.getAllScheduledNotifications(completionHandler: innerCompletion)
     }
 }
-
-extension ScheduledNotificationModel {
-    func toDomain() -> ScheduledNotification {
-        ScheduledNotification(uid: uid,
-                                   title: title,
-                                   description: description,
-                                   date: date,
-                                   scaleUid: scaleUid,
-                                   colorHex: colorHex)
-    }
-}

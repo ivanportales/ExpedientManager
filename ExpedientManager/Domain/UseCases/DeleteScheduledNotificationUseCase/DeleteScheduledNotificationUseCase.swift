@@ -24,14 +24,3 @@ final class DeleteScheduledNotificationUseCase: DeleteScheduledNotificationUseCa
                                                 completionHandler: completion)
     }
 }
-
-extension ScheduledNotification {
-    func toData() -> ScheduledNotificationModel {
-        ScheduledNotificationModel(uid: uid,
-                                   title: title,
-                                   description: description,
-                                   date: date,
-                                   scaleUid: scaleUid,
-                                   colorHex: colorHex)
-    }
-}
