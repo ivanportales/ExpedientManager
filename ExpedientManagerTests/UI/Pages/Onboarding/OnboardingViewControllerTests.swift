@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-class OnboardingViewControllerTests: XCTestCase {
+final class OnboardingViewControllerTests: XCTestCase {
     
     var viewController: OnboardingViewController!
     var router: DeeplinkRouterStub!
