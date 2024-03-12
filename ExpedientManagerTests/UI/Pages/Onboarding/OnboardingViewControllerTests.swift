@@ -15,6 +15,15 @@ class OnboardingViewControllerTests: XCTestCase {
     var router: DeeplinkRouterStub!
     var setValueForKeyUseCase: SetValueForKeyUseCaseStub!
     
+    func test_initialState() {
+        makeSUT()
+        
+        XCTAssertEqual(viewController.currentDisplayedMessage(), LocalizedString.onboardingMsg1)
+        XCTAssertFalse(router.didCallPop)
+        XCTAssertNil(setValueForKeyUseCase.lastSavedKey)
+        XCTAssertNil(setValueForKeyUseCase.lastSavedValue)
+    }
+    
     // MARK: - Helpers Functions
 
     private func makeSUT() {
