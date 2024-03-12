@@ -33,6 +33,18 @@ class OnboardingViewControllerTests: XCTestCase {
         viewController.advanceButton.testTap()
         XCTAssertEqual(viewController.currentDisplayedMessage(), LocalizedString.onboardingMsg3)
     }
+    
+    func test_tapOnContinueButton_afterLastMessage_callsPopAndSave() {
+        makeSUT()
+        
+        viewController.advanceButton.testTap()
+        viewController.advanceButton.testTap()
+        viewController.advanceButton.testTap()
+        
+        XCTAssertTrue(router.didCallPop)
+        XCTAssertEqual(setValueForKeyUseCase.lastSavedKey, .hasOnboarded)
+        XCTAssertEqual((setValueForKeyUseCase.lastSavedValue as? Bool), true)
+    }
      
     // MARK: - Helpers Functions
 
@@ -46,7 +58,12 @@ class OnboardingViewControllerTests: XCTestCase {
     }
 }
 
+// MARK: - Helper Extensions
+
 extension OnboardingViewController {
+    
+    // MARK: - View Helpers
+    
     func currentDisplayedMessage() -> String {
         let index = carouselView.currentShowedItemIndex
         return carouselView.models[index].message
