@@ -34,18 +34,3 @@ final class GetOnDutyUseCase: GetOnDutyUseCaseProtocol {
         onDutyRepository.getAllOnDuty(completionHandler: innerCompletion)
     }
 }
-
-// MARK: - Private Mapping Extensions
-
-fileprivate extension OnDutyModel {
-    func toDomain() -> OnDuty {
-        return OnDuty(
-            id: id,
-            title: titlo,
-            initialDate: initialDate,
-            hoursDuration: hoursDuration,
-            annotation: annotation!,
-            colorHex: colorHex!
-        )
-    }
-}

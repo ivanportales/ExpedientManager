@@ -156,29 +156,3 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
         }
     }
 }
-
-// MARK: - Private Mapping Extensions
-
-extension FixedScale {
-    func toData() -> FixedScaleModel {
-        return FixedScaleModel(
-            id: id,
-            title: title ?? "",
-            scale: scale!.toData(),
-            initialDate: initialDate!,
-            finalDate: finalDate!,
-            annotation: annotation!,
-            colorHex: colorHex!
-        )
-    }
-}
-
-extension Scale {
-    func toData() -> ScaleModel {
-        return ScaleModel(
-            type: type.rawValue,
-            scaleOfWork: scaleOfWork,
-            scaleOfRest: scaleOfRest
-        )
-    }
-}

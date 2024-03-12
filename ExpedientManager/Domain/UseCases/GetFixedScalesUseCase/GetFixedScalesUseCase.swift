@@ -34,29 +34,3 @@ final class GetFixedScalesUseCase: GetFixedScalesUseCaseProtocol {
         fixedScaleRepository.getAllFixedScales(completionHandler: innerCompletion)
     }
 }
-
-// MARK: - Private Mapping Extensions
-
-fileprivate extension FixedScaleModel {
-    func toDomain() -> FixedScale {
-        return FixedScale(
-            id: id,
-            title: title ?? "",
-            scale: scale!.toDomain(),
-            initialDate: initialDate!,
-            finalDate: finalDate!,
-            annotation: annotation!,
-            colorHex: colorHex!
-        )
-    }
-}
-
-fileprivate extension ScaleModel {
-    func toDomain() -> Scale {
-        return Scale(
-            type: ScaleType(rawValue: type) ?? ScaleType.hour,
-            scaleOfWork: scaleOfWork,
-            scaleOfRest: scaleOfRest
-        )
-    }
-}

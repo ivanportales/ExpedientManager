@@ -56,18 +56,3 @@ final class SaveOnDutyUseCase: SaveOnDutyUseCaseProtocol {
         }
     }
 }
-
-// MARK: - Private Mapping Extensions
-
-extension OnDuty {
-    func toData() -> OnDutyModel {
-        return OnDutyModel(
-            id: id,
-            title: titlo,
-            initialDate: initialDate,
-            hoursDuration: hoursDuration,
-            annotation: annotation!,
-            colorHex: colorHex!
-        )
-    }
-}
