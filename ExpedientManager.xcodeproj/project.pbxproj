@@ -21,6 +21,7 @@
 		AE5410532B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5410522B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift */; };
 		AE5477EF2B64940E000679AC /* SelfSizedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */; };
 		AE5665432BA0E76A0024F1DF /* ButtonView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5665422BA0E76A0024F1DF /* ButtonView+Extensions.swift */; };
+		AE5665452BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5665442BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift */; };
 		AE595A982B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */; };
 		AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */; };
 		AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */; };
@@ -183,6 +184,7 @@
 		AE5410522B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkScaleTypeSegmentedControl.swift; sourceTree = "<group>"; };
 		AE5477EE2B64940E000679AC /* SelfSizedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedCollectionViewCell.swift; sourceTree = "<group>"; };
 		AE5665422BA0E76A0024F1DF /* ButtonView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonView+Extensions.swift"; sourceTree = "<group>"; };
+		AE5665442BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueForKeyUseCaseStub.swift; sourceTree = "<group>"; };
 		AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseError.swift; sourceTree = "<group>"; };
 		AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -1064,6 +1066,7 @@
 				AE8593C42B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift */,
 				AE8593C62B7EF6DF00EF72EF /* GetStubUseCase.swift */,
 				AE6821802B96982900838993 /* SaveStubUseCase.swift */,
+				AE5665442BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift */,
 			);
 			path = UseCaseStubs;
 			sourceTree = "<group>";
@@ -1411,6 +1414,7 @@
 				AE52052A2B8BDC1800A2179B /* FixedScale+Extensions.swift in Sources */,
 				AE6821812B96982900838993 /* SaveStubUseCase.swift in Sources */,
 				AEE478DE2B8AE424003E1EA0 /* ScalesListViewModelTests.swift in Sources */,
+				AE5665452BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift in Sources */,
 				AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */,
 				AE68217F2B96974E00838993 /* AddScaleViewModelTests.swift in Sources */,
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
