@@ -20,7 +20,7 @@ final class CoreDataScheduledNotificationsRepository: CoreDataRepository, Schedu
     
     // MARK: - Exposed Functions
     
-    func save(scheduledNotification: ScheduledNotification, 
+    func save(scheduledNotification: ScheduledNotificationModel,
               completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         
         let mapperClosure: (CDScheduledNotification) -> Void = { newScheduledNotification in
@@ -35,20 +35,20 @@ final class CoreDataScheduledNotificationsRepository: CoreDataRepository, Schedu
         save(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func getAllScheduledNotifications(completionHandler: @escaping (Result<[ScheduledNotification], Error>) -> ()) {
-        let mapperClosure: (CDScheduledNotification) -> ScheduledNotification = { scheduledNotification in
-            return ScheduledNotification(uid: scheduledNotification.uid!,
-                                         title: scheduledNotification.title!,
-                                         description: scheduledNotification.descriptions!,
-                                         date: scheduledNotification.date!,
-                                         scaleUid: scheduledNotification.scaleUid!,
-                                         colorHex: scheduledNotification.colorHex!)
+    func getAllScheduledNotifications(completionHandler: @escaping (Result<[ScheduledNotificationModel], Error>) -> ()) {
+        let mapperClosure: (CDScheduledNotification) -> ScheduledNotificationModel = { scheduledNotification in
+            return ScheduledNotificationModel(uid: scheduledNotification.uid!,
+                                              title: scheduledNotification.title!,
+                                              description: scheduledNotification.descriptions!,
+                                              date: scheduledNotification.date!,
+                                              scaleUid: scheduledNotification.scaleUid!,
+                                              colorHex: scheduledNotification.colorHex!)
         }
         
         getAllModels(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func update(scheduledNotification: ScheduledNotification,
+    func update(scheduledNotification: ScheduledNotificationModel,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let fetchRequest = makeFetchRequestFor(scheduledNotification: scheduledNotification)
         
@@ -66,7 +66,7 @@ final class CoreDataScheduledNotificationsRepository: CoreDataRepository, Schedu
                completionHandler: completionHandler)
     }
     
-    func delete(scheduledNotification: ScheduledNotification,
+    func delete(scheduledNotification: ScheduledNotificationModel,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let fetchRequest = makeFetchRequestFor(scheduledNotification: scheduledNotification)
         
@@ -84,7 +84,7 @@ final class CoreDataScheduledNotificationsRepository: CoreDataRepository, Schedu
     
     // MARK: - Private Functions
     
-    private func makeFetchRequestFor(scheduledNotification: ScheduledNotification) -> NSFetchRequest<CDScheduledNotification> {
+    private func makeFetchRequestFor(scheduledNotification: ScheduledNotificationModel) -> NSFetchRequest<CDScheduledNotification> {
         let fetchRequest = NSFetchRequest<CDScheduledNotification>(entityName: typeIdentifier)
         fetchRequest.predicate = NSPredicate(format:"date = %@ AND uid = %@", scheduledNotification.date as NSDate, scheduledNotification.uid)
         
