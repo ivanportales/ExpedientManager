@@ -55,7 +55,7 @@
 		AE6BBAF22B9930380002F6DB /* FixedScaleTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6BBAF12B9930380002F6DB /* FixedScaleTransformer.swift */; };
 		AE6BBAF42B9930990002F6DB /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6BBAF32B9930990002F6DB /* Scale.swift */; };
 		AE6BBAF62B9930B80002F6DB /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6BBAF52B9930B80002F6DB /* ScaleType.swift */; };
-		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */; };
+		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
 		AE6E6D712B59F49400B2389B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D702B59F49400B2389B /* CarouselView.swift */; };
@@ -216,7 +216,7 @@
 		AE6BBAF12B9930380002F6DB /* FixedScaleTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedScaleTransformer.swift; sourceTree = "<group>"; };
 		AE6BBAF32B9930990002F6DB /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		AE6BBAF52B9930B80002F6DB /* ScaleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleType.swift; sourceTree = "<group>"; };
-		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationsRepositoryProtocol.swift; sourceTree = "<group>"; };
+		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
 		AE6E6D702B59F49400B2389B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
@@ -975,7 +975,7 @@
 			isa = PBXGroup;
 			children = (
 				AED250982B57558100290E42 /* ScheduledNotificationsRepository.swift */,
-				AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift */,
+				AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationRepositoryProtocol.swift */,
 			);
 			path = ScheduledNotificationsRepository;
 			sourceTree = "<group>";
@@ -1349,7 +1349,7 @@
 				AEEC1A762B69D1A500FA618E /* GetOnDutyUseCase.swift in Sources */,
 				AED250C62B57558100290E42 /* AddScaleViewModel.swift in Sources */,
 				AEEC1A712B69D0BF00FA618E /* GetFixedScalesUseCase.swift in Sources */,
-				AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationsRepositoryProtocol.swift in Sources */,
+				AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationRepositoryProtocol.swift in Sources */,
 				AED250C02B57558100290E42 /* ScheduledScalesTableViewCell.swift in Sources */,
 				AED250C82B57558100290E42 /* ScaleDurationView.swift in Sources */,
 				AE4B4D0C2B72F9830034B971 /* GetValueForKeyUseCase.swift in Sources */,

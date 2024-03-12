@@ -12,13 +12,13 @@ final class SaveOnDutyUseCase: SaveOnDutyUseCaseProtocol {
     // MARK: - Private Properties
     
     private let onDutyRepository: OnDutyRepositoryProtocol
-    private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
+    private let scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol
     private let notificationManager: UserNotificationsManagerProtocol
     
     // MARK: - Init
     
     init(onDutyRepository: OnDutyRepositoryProtocol,
-         scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
+         scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol,
          notificationManager: UserNotificationsManagerProtocol) {
         self.onDutyRepository = onDutyRepository
         self.scheduledNotificationsRepository = scheduledNotificationsRepository
@@ -44,7 +44,7 @@ final class SaveOnDutyUseCase: SaveOnDutyUseCaseProtocol {
     
     private func set(scheduledNotification: ScheduledNotification,
                      completion: @escaping (Result<Bool, Error>) -> ()) {
-        scheduledNotificationsRepository.save(scheduledNotification: scheduledNotification.toData()) { [weak self] result in
+        scheduledNotificationsRepository.save(scheduledNotification: scheduledNotification) { [weak self] result in
             switch result {
             case .failure(let error):
                 completion(.failure(error))

@@ -9,18 +9,18 @@ final class DeleteScheduledNotificationUseCase: DeleteScheduledNotificationUseCa
 
     // MARK: - Private Properties
     
-    private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
+    private let scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol
     
     // MARK: - Init
     
-    init(scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol) {
+    init(scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol) {
         self.scheduledNotificationsRepository = scheduledNotificationsRepository
     }
     
     // MARK: - Exposed Functions
  
     func delete(scheduledNotification: ScheduledNotification, completion: @escaping (Result<Bool, Error>) -> ()) {
-        scheduledNotificationsRepository.delete(scheduledNotification: scheduledNotification.toData(),
+        scheduledNotificationsRepository.delete(scheduledNotification: scheduledNotification,
                                                 completionHandler: completion)
     }
 }

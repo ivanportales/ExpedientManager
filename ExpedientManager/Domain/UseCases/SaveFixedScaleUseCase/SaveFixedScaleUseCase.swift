@@ -12,14 +12,14 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
     // MARK: - Private Properties
     
     private let fixedScaleRepository: FixedScaleRepositoryProtocol
-    private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
+    private let scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol
     private let calendarManager: CalendarManagerProtocol
     private let notificationManager: UserNotificationsManagerProtocol
     
     // MARK: - Init
     
     init(fixedScaleRepository: FixedScaleRepositoryProtocol,
-         scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol,
+         scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol,
          notificationManager: UserNotificationsManagerProtocol,
          calendarManager: CalendarManagerProtocol) {
         self.fixedScaleRepository = fixedScaleRepository
@@ -144,7 +144,7 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
     
     private func set(scheduledNotification: ScheduledNotification,
                      completion: @escaping (Result<Bool, Error>) -> ()) {
-        scheduledNotificationsRepository.save(scheduledNotification: scheduledNotification.toData()) { [weak self] result in
+        scheduledNotificationsRepository.save(scheduledNotification: scheduledNotification) { [weak self] result in
             switch result {
             case .failure(let error):
                 completion(.failure(error))

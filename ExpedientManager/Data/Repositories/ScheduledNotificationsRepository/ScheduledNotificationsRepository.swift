@@ -1,5 +1,5 @@
 //
-//  ScheduledNotificationsRepository.swift
+//  CoreDataScheduledNotificationRepository.swift
 //  ExpedientManager
 //
 //  Created by Gonzalo Ivan Santos Portales on 10/11/24.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-final class CoreDataScheduledNotificationsRepository: CoreDataRepository, ScheduledNotificationsRepositoryProtocol {
+final class CoreDataScheduledNotificationRepository: CoreDataRepository, ScheduledNotificationRepositoryProtocol {
     
     // MARK: - Inits
     
@@ -20,45 +20,46 @@ final class CoreDataScheduledNotificationsRepository: CoreDataRepository, Schedu
     
     // MARK: - Exposed Functions
     
-    func save(scheduledNotification: ScheduledNotificationModel,
+    func save(scheduledNotification: ScheduledNotification,
               completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        
+        let scheduledNotificationModel = scheduledNotification.toData()
         let mapperClosure: (CDScheduledNotification) -> Void = { newScheduledNotification in
-            newScheduledNotification.uid = scheduledNotification.uid
-            newScheduledNotification.scaleUid = scheduledNotification.scaleUid
-            newScheduledNotification.title = scheduledNotification.title
-            newScheduledNotification.descriptions = scheduledNotification.description
-            newScheduledNotification.date = scheduledNotification.date
-            newScheduledNotification.colorHex = scheduledNotification.colorHex
+            newScheduledNotification.uid = scheduledNotificationModel.uid
+            newScheduledNotification.scaleUid = scheduledNotificationModel.scaleUid
+            newScheduledNotification.title = scheduledNotificationModel.title
+            newScheduledNotification.descriptions = scheduledNotificationModel.description
+            newScheduledNotification.date = scheduledNotificationModel.date
+            newScheduledNotification.colorHex = scheduledNotificationModel.colorHex
         }
         
         save(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func getAllScheduledNotifications(completionHandler: @escaping (Result<[ScheduledNotificationModel], Error>) -> ()) {
-        let mapperClosure: (CDScheduledNotification) -> ScheduledNotificationModel = { scheduledNotification in
+    func getAllScheduledNotifications(completionHandler: @escaping (Result<[ScheduledNotification], Error>) -> ()) {
+        let mapperClosure: (CDScheduledNotification) -> ScheduledNotification = { scheduledNotification in
             return ScheduledNotificationModel(uid: scheduledNotification.uid!,
                                               title: scheduledNotification.title!,
                                               description: scheduledNotification.descriptions!,
                                               date: scheduledNotification.date!,
                                               scaleUid: scheduledNotification.scaleUid!,
-                                              colorHex: scheduledNotification.colorHex!)
+                                              colorHex: scheduledNotification.colorHex!).toDomain()
         }
         
         getAllModels(mapperClosure: mapperClosure, completionHandler: completionHandler)
     }
     
-    func update(scheduledNotification: ScheduledNotificationModel,
+    func update(scheduledNotification: ScheduledNotification,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let fetchRequest = makeFetchRequestFor(scheduledNotification: scheduledNotification)
+        let scheduledNotificationModel = scheduledNotification.toData()
+        let fetchRequest = makeFetchRequestFor(scheduledNotification: scheduledNotificationModel)
         
         let mapperClosure: (CDScheduledNotification) -> Void = { newScheduledNotification in
-            newScheduledNotification.uid = scheduledNotification.uid
-            newScheduledNotification.scaleUid = scheduledNotification.scaleUid
-            newScheduledNotification.title = scheduledNotification.title
-            newScheduledNotification.descriptions = scheduledNotification.description
-            newScheduledNotification.date = scheduledNotification.date
-            newScheduledNotification.colorHex = scheduledNotification.colorHex
+            newScheduledNotification.uid = scheduledNotificationModel.uid
+            newScheduledNotification.scaleUid = scheduledNotificationModel.scaleUid
+            newScheduledNotification.title = scheduledNotificationModel.title
+            newScheduledNotification.descriptions = scheduledNotificationModel.description
+            newScheduledNotification.date = scheduledNotificationModel.date
+            newScheduledNotification.colorHex = scheduledNotificationModel.colorHex
         }
         
         update(withFetchRequest: fetchRequest,
@@ -66,9 +67,10 @@ final class CoreDataScheduledNotificationsRepository: CoreDataRepository, Schedu
                completionHandler: completionHandler)
     }
     
-    func delete(scheduledNotification: ScheduledNotificationModel,
+    func delete(scheduledNotification: ScheduledNotification,
                 completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        let fetchRequest = makeFetchRequestFor(scheduledNotification: scheduledNotification)
+        let scheduledNotificationModel = scheduledNotification.toData()
+        let fetchRequest = makeFetchRequestFor(scheduledNotification: scheduledNotificationModel)
         
         delete(withFetchRequest: fetchRequest, completionHandler: completionHandler)
     }

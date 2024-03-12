@@ -29,7 +29,7 @@ final class ViewControllersFactory {
     }
     
     func makeHomeViewController() -> HomeViewController {
-        let getScheduledNotificationsUseCase = GetScheduledNotificationsUseCase(scheduledNotificationsRepository: CoreDataScheduledNotificationsRepository())
+        let getScheduledNotificationsUseCase = GetScheduledNotificationsUseCase(scheduledNotificationsRepository: CoreDataScheduledNotificationRepository())
         let getValueForKeyUseCase = GetValueForKeyUseCase(storage: UserDefaults.standard)
         let viewModel = HomeViewModel(getScheduledNotificationsUseCase: getScheduledNotificationsUseCase,
                                       getValueForKeyUseCase: getValueForKeyUseCase)
@@ -38,7 +38,7 @@ final class ViewControllersFactory {
     }
     
     func makeAddScaleViewController() -> AddScaleViewController {
-        let scheduledNotificationsRepository = CoreDataScheduledNotificationsRepository()
+        let scheduledNotificationsRepository = CoreDataScheduledNotificationRepository()
         let notificationManager = UserNotificationsManager()
         let askForNotificationPermissionUseCase = AskForNotificationPermissionUseCase(notificationsManager: notificationManager)
         let saveFixedScaleUseCase = SaveFixedScaleUseCase(fixedScaleRepository: CoreDataFixedScaleRepository(),

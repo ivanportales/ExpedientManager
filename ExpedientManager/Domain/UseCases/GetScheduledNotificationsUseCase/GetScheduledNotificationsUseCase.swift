@@ -11,26 +11,17 @@ final class GetScheduledNotificationsUseCase: GetScheduledNotificationsUseCasePr
 
     // MARK: - Private Properties
     
-    private let scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol
+    private let scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol
     
     // MARK: - Init
     
-    init(scheduledNotificationsRepository: ScheduledNotificationsRepositoryProtocol) {
+    init(scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol) {
         self.scheduledNotificationsRepository = scheduledNotificationsRepository
     }
     
     // MARK: - Exposed Functions
  
     func getScheduledNotifications(completion: @escaping (Result<[ScheduledNotification], Error>) -> Void) {
-        let innerCompletion: (Result<[ScheduledNotificationModel], Error>) -> () = { result in
-            switch result {
-            case .success(let scheduledNotificationsModels):
-                let scheduledNotifications = scheduledNotificationsModels.map({ $0.toDomain() })
-                completion(.success(scheduledNotifications))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-        scheduledNotificationsRepository.getAllScheduledNotifications(completionHandler: innerCompletion)
+        scheduledNotificationsRepository.getAllScheduledNotifications(completionHandler: completion)
     }
 }
