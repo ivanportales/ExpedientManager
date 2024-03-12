@@ -34,10 +34,10 @@ final class CarouselView: UIView {
     // MARK: - Exposed Properties
     
     private(set) var currentShowedItemIndex = 0
+    let models: [OnboardingCarouselItem]
 
     // MARK: - Private Properties
     
-    private let models: [OnboardingCarouselItem]
     private let userInteractionIsEnabled: Bool
     
     // MARK: - Inits
