@@ -24,6 +24,16 @@ class OnboardingViewControllerTests: XCTestCase {
         XCTAssertNil(setValueForKeyUseCase.lastSavedValue)
     }
     
+    func test_tapOnContinueButton_changesDisplayedMessage() {
+        makeSUT()
+         
+        viewController.advanceButton.testTap()
+        XCTAssertEqual(viewController.currentDisplayedMessage(), LocalizedString.onboardingMsg2)
+         
+        viewController.advanceButton.testTap()
+        XCTAssertEqual(viewController.currentDisplayedMessage(), LocalizedString.onboardingMsg3)
+    }
+     
     // MARK: - Helpers Functions
 
     private func makeSUT() {
