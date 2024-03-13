@@ -37,17 +37,17 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z8Y-eO-Yx7">
                             <rect key="frame" x="12" y="12" width="351" height="27"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aIQ-Om-UoC">
-                                    <rect key="frame" x="0.0" y="0.0" width="351" height="0.0"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aIQ-Om-UoC">
+                                    <rect key="frame" x="0.0" y="0.0" width="351" height="3"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Trabalho por" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gle-Mb-GEW">
-                                            <rect key="frame" x="0.0" y="0.0" width="117" height="0.0"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trabalho por" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gle-Mb-GEW">
+                                            <rect key="frame" x="0.0" y="0.0" width="117" height="3"/>
                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                             <color key="textColor" name="textAddShiftColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="24" placeholder="12" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJS-0b-M9N">
-                                            <rect key="frame" x="117" y="0.0" width="117" height="0.0"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="24" placeholder="12" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJS-0b-M9N">
+                                            <rect key="frame" x="117" y="0.0" width="117" height="3"/>
                                             <color key="textColor" name="brandColor"/>
                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -57,32 +57,32 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Hora(s)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iyi-hi-ng5">
-                                            <rect key="frame" x="234" y="0.0" width="117" height="0.0"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Hora(s)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iyi-hi-ng5">
+                                            <rect key="frame" x="234" y="0.0" width="117" height="3"/>
                                             <color key="textColor" name="brandColor"/>
                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
                                 </stackView>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DPO-0S-apx" userLabel="lineSeparatorView">
-                                    <rect key="frame" x="0.0" y="10" width="351" height="1"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPO-0S-apx" userLabel="lineSeparatorView">
+                                    <rect key="frame" x="0.0" y="13" width="351" height="1"/>
                                     <color key="backgroundColor" name="lineseparator"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.80000000000000004" id="x3r-Bt-p51"/>
                                     </constraints>
                                 </view>
-                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZSg-dh-Q4O">
-                                    <rect key="frame" x="0.0" y="21" width="351" height="6"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZSg-dh-Q4O">
+                                    <rect key="frame" x="0.0" y="24" width="351" height="3"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Descanso por" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRc-Yl-HU9">
-                                            <rect key="frame" x="0.0" y="0.0" width="117" height="6"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descanso por" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRc-Yl-HU9">
+                                            <rect key="frame" x="0.0" y="0.0" width="117" height="3"/>
                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                             <color key="textColor" name="textAddShiftColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="48" placeholder="36" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mag-mE-Nkx">
-                                            <rect key="frame" x="117" y="0.0" width="117" height="6"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="48" placeholder="36" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mag-mE-Nkx">
+                                            <rect key="frame" x="117" y="0.0" width="117" height="3"/>
                                             <color key="textColor" name="brandColor"/>
                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -92,8 +92,8 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hora(s)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pB6-Gd-mxc" userLabel="Dias">
-                                            <rect key="frame" x="234" y="0.0" width="117" height="6"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hora(s)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pB6-Gd-mxc" userLabel="Dias">
+                                            <rect key="frame" x="234" y="0.0" width="117" height="3"/>
                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                             <color key="textColor" name="textAddShiftColor"/>
                                             <nil key="highlightedColor"/>
@@ -101,6 +101,9 @@
                                     </subviews>
                                 </stackView>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="DPO-0S-apx" firstAttribute="centerY" secondItem="z8Y-eO-Yx7" secondAttribute="centerY" id="0Up-J0-A04"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" name="background2Color"/>
