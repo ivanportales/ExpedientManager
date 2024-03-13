@@ -119,13 +119,13 @@ private extension HomeViewController {
                 
         setupNavigationBarItemOn(position: .right,
                                  withIcon: UIImage(systemName: "plus"),
-                                 color: .brand2) { [weak self] _ in
+                                 color: .brand) { [weak self] _ in
             self?.showAddScaleScreen()
         }
         
         setupNavigationBarItemOn(position: .right,
                                  withIcon: UIImage(systemName: "list.bullet"),
-                                 color: .brand2) { [weak self] _ in
+                                 color: .brand) { [weak self] _ in
             self?.showScalesListScreen()
         }
     }
