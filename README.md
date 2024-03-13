@@ -9,8 +9,8 @@ Expedient Manager is a simplified app for monitoring and notifying about yours w
 - [x] Onboarding Page
 - [x] Home Page
 - [x] Schedule Page
-- [x] List of Scheduled Work
-- [ ] Edit Scheduled Work
+- [x] List of Scheduled Work Page
+- [ ] Edit Scheduled Work Page
 - [ ] Release Beta version
 
 ## Technologies Used in the project
