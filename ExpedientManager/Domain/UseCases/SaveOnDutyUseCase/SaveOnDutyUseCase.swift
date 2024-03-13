@@ -12,17 +12,14 @@ final class SaveOnDutyUseCase: SaveOnDutyUseCaseProtocol {
     // MARK: - Private Properties
     
     private let onDutyRepository: OnDutyRepositoryProtocol
-    private let scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol
-    private let notificationManager: UserNotificationsManagerProtocol
+    private let saveScheduledNotificationUseCase: SaveScheduledNotificationUseCaseProtocol
     
     // MARK: - Init
     
     init(onDutyRepository: OnDutyRepositoryProtocol,
-         scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol,
-         notificationManager: UserNotificationsManagerProtocol) {
+         saveScheduledNotificationUseCase: SaveScheduledNotificationUseCaseProtocol) {
         self.onDutyRepository = onDutyRepository
-        self.scheduledNotificationsRepository = scheduledNotificationsRepository
-        self.notificationManager = notificationManager
+        self.saveScheduledNotificationUseCase = saveScheduledNotificationUseCase
     }
     
     // MARK: - Exposed Functions
@@ -34,24 +31,8 @@ final class SaveOnDutyUseCase: SaveOnDutyUseCaseProtocol {
             case .failure(let error):
                 completionHandler(.failure(error))
             case .success(_):
-                self.set(scheduledNotification: ScheduledNotification.from(onDuty: onDuty),
-                        completion: completionHandler)
-            }
-        }
-    }
-    
-    // MARK: - Private Properties
-    
-    private func set(scheduledNotification: ScheduledNotification,
-                     completion: @escaping (Result<Bool, Error>) -> ()) {
-        scheduledNotificationsRepository.save(scheduledNotification: scheduledNotification) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                completion(.failure(error))
-            case .success(_):
-                guard let self = self else { return }
-                self.notificationManager.set(scheduledNotification: scheduledNotification,
-                                             completion: completion)
+                self.saveScheduledNotificationUseCase.save(scheduledNotification: ScheduledNotification.from(onDuty: onDuty),
+                                                           completion: completionHandler)
             }
         }
     }
