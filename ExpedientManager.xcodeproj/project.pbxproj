@@ -85,6 +85,8 @@
 		AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C902B631E690070A9CE /* CalendarManager.swift */; };
 		AE9D5C932B6328550070A9CE /* ScaleColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */; };
 		AE9D5C952B632A430070A9CE /* ScaleColorSelectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */; };
+		AEA4BD9D2BA1E3D80029F487 /* SaveScheduledNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA4BD9C2BA1E3D80029F487 /* SaveScheduledNotificationUseCase.swift */; };
+		AEA4BD9F2BA1E3E10029F487 /* SaveScheduledNotificationUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA4BD9E2BA1E3E10029F487 /* SaveScheduledNotificationUseCaseProtocol.swift */; };
 		AEBEE2952B6F351B005A0D73 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBEE2942B6F351B005A0D73 /* CoreDataRepository.swift */; };
 		AECC38462B607D9200439C97 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38452B607D9200439C97 /* TextField.swift */; };
 		AECC38492B60808800439C97 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38482B60808800439C97 /* TextView.swift */; };
@@ -248,6 +250,8 @@
 		AE9D5C902B631E690070A9CE /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleColorSelectionView.swift; sourceTree = "<group>"; };
 		AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleColorSelectionCellView.swift; sourceTree = "<group>"; };
+		AEA4BD9C2BA1E3D80029F487 /* SaveScheduledNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScheduledNotificationUseCase.swift; sourceTree = "<group>"; };
+		AEA4BD9E2BA1E3E10029F487 /* SaveScheduledNotificationUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScheduledNotificationUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AEBEE2942B6F351B005A0D73 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		AECC38452B607D9200439C97 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		AECC38482B60808800439C97 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -679,6 +683,7 @@
 		AE9B5A232B670A1800F6A561 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				AEA4BD9B2BA1E3C50029F487 /* SaveScheduledNotificationUseCase */,
 				AE63207C2B9FCCE800A4BA0F /* DeleteScheduledNotificationUseCase */,
 				AE6320772B9FCC0900A4BA0F /* DeleteOnDutyUseCase */,
 				AE6320722B9FC51E00A4BA0F /* DeleteFixedScaleUseCase */,
@@ -710,6 +715,15 @@
 				AE9D5C902B631E690070A9CE /* CalendarManager.swift */,
 			);
 			path = CalendarManager;
+			sourceTree = "<group>";
+		};
+		AEA4BD9B2BA1E3C50029F487 /* SaveScheduledNotificationUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AEA4BD9C2BA1E3D80029F487 /* SaveScheduledNotificationUseCase.swift */,
+				AEA4BD9E2BA1E3E10029F487 /* SaveScheduledNotificationUseCaseProtocol.swift */,
+			);
+			path = SaveScheduledNotificationUseCase;
 			sourceTree = "<group>";
 		};
 		AEBEE2932B6F34F8005A0D73 /* CoreDataRepository */ = {
@@ -1330,7 +1344,9 @@
 				AED250BA2B57558100290E42 /* ScrollToKeyboardAvoiding.swift in Sources */,
 				AE5A7DA22B9388E200DEDD94 /* ScrollableViewController.swift in Sources */,
 				AED250162B57552C00290E42 /* AppDelegate.swift in Sources */,
+				AEA4BD9D2BA1E3D80029F487 /* SaveScheduledNotificationUseCase.swift in Sources */,
 				AED250D22B57558100290E42 /* ScaleListViewModel.swift in Sources */,
+				AEA4BD9F2BA1E3E10029F487 /* SaveScheduledNotificationUseCaseProtocol.swift in Sources */,
 				AE5F19E32B6ADE7D0045C479 /* ScheduledNotificationListTableView.swift in Sources */,
 				AE6BBAF62B9930B80002F6DB /* ScaleType.swift in Sources */,
 				AED250BF2B57558100290E42 /* HomeViewController.swift in Sources */,
