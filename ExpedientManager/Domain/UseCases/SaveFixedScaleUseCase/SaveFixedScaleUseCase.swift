@@ -12,19 +12,16 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
     // MARK: - Private Properties
     
     private let fixedScaleRepository: FixedScaleRepositoryProtocol
-    private let scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol
+    private let saveScheduledNotificationUseCase: SaveScheduledNotificationUseCaseProtocol
     private let calendarManager: CalendarManagerProtocol
-    private let notificationManager: UserNotificationsManagerProtocol
     
     // MARK: - Init
     
     init(fixedScaleRepository: FixedScaleRepositoryProtocol,
-         scheduledNotificationsRepository: ScheduledNotificationRepositoryProtocol,
-         notificationManager: UserNotificationsManagerProtocol,
+         saveScheduledNotificationUseCase: SaveScheduledNotificationUseCaseProtocol,
          calendarManager: CalendarManagerProtocol) {
         self.fixedScaleRepository = fixedScaleRepository
-        self.scheduledNotificationsRepository = scheduledNotificationsRepository
-        self.notificationManager = notificationManager
+        self.saveScheduledNotificationUseCase = saveScheduledNotificationUseCase
         self.calendarManager = calendarManager
     }
     
@@ -62,7 +59,7 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
     }
     
     private func setNotifications(for scheduledNotifications: [ScheduledNotification],
-                                      completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+                                  completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         let dispatchGroup = DispatchGroup()
         var hasError = false
         
@@ -71,7 +68,7 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
             if hasError {
                 break
             }
-            set(scheduledNotification: scheduledNotification) { result in
+            saveScheduledNotificationUseCase.save(scheduledNotification: scheduledNotification) { result in
                 switch result {
                 case .failure(let error):
                     hasError = true
@@ -140,19 +137,5 @@ final class SaveFixedScaleUseCase: SaveFixedScaleUseCaseProtocol {
         }
         
         return scheduledNotifications
-    }
-    
-    private func set(scheduledNotification: ScheduledNotification,
-                     completion: @escaping (Result<Bool, Error>) -> ()) {
-        scheduledNotificationsRepository.save(scheduledNotification: scheduledNotification) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                completion(.failure(error))
-            case .success(_):
-                guard let self = self else { return }
-                self.notificationManager.set(scheduledNotification: scheduledNotification,
-                                             completion: completion)
-            }
-        }
     }
 }
