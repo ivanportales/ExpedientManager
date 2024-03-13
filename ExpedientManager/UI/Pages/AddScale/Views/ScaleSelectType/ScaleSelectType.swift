@@ -106,7 +106,7 @@ class ScaleSelectType: UIView {
             restLineStackContainer.isHidden = true
             
             workDurationTypeTxtField.isEnabled = false
-            workDurationTypeTxtField.textColor = .text2
+            workDurationTypeTxtField.textColor = .text
             workDurationTypeTxtField.text = LocalizedString.hoursLabel
             
             lineSeparatorView.isHidden = true

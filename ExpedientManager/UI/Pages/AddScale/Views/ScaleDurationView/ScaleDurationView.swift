@@ -119,17 +119,17 @@ private extension ScaleDurationView {
     
     func setupDateTextField() {
         dateTextField.isEnabled = isEditable
-        dateTextField.textColor = isEditable ? .brand : .text2
+        dateTextField.textColor = isEditable ? .brand : .text
     }
     
     func setupTimeTextField() {
         switch durationType {
         case .startingTime:
             timeTextField.isEnabled = isEditable
-            timeTextField.textColor = isEditable ? .brand : .text2
+            timeTextField.textColor = isEditable ? .brand : .text
         case .endingTime:
             timeTextField.isEnabled = false
-            timeTextField.textColor = .text2
+            timeTextField.textColor = .text
         }
     }
     
