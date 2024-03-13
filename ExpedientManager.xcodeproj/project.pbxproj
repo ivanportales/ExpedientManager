@@ -837,6 +837,7 @@
 		AED2505D2B57558000290E42 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AED2509C2B57558100290E42 /* Extensions */,
 				AE8CB6ED2B784E5600649368 /* Transitions */,
 				AE7FA9852B75B4140079E9FD /* Helper Protocols */,
 				AED250612B57558000290E42 /* ScrollToKeyboardAvoiding.swift */,
@@ -948,7 +949,6 @@
 			children = (
 				AE9B5A232B670A1800F6A561 /* UseCases */,
 				AED250992B57558100290E42 /* Models */,
-				AED2509C2B57558100290E42 /* Extensions */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1016,7 +1016,8 @@
 				AE4BF7232B62D38900CC69D7 /* UIView+Extensions.swift */,
 				AE9D5C8C2B631A070070A9CE /* Date+Extensions.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
+			path = ../../Domain/Extensions;
 			sourceTree = "<group>";
 		};
 		AED250A12B57558100290E42 /* Services */ = {
