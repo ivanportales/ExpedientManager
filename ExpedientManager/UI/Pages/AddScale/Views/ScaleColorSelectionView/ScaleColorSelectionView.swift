@@ -71,6 +71,7 @@ final class ScaleColorSelectionView: UICollectionView {
         guard let index = colors.firstIndex(of: selectedColor) else {
             return
         }
+        self.selectedColor = selectedColor
         selectItem(at: .init(item: index, section: 0),
                     animated: false,
                     scrollPosition: .centeredHorizontally)
