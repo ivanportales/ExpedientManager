@@ -113,7 +113,6 @@
 		AED250B52B57558100290E42 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AED2505B2B57558000290E42 /* Poppins-Italic.ttf */; };
 		AED250B62B57558100290E42 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AED2505C2B57558000290E42 /* Poppins-MediumItalic.ttf */; };
 		AED250B72B57558100290E42 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2505E2B57558000290E42 /* String+Extensions.swift */; };
-		AED250BA2B57558100290E42 /* ScrollToKeyboardAvoiding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250612B57558000290E42 /* ScrollToKeyboardAvoiding.swift */; };
 		AED250BC2B57558100290E42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AED250642B57558000290E42 /* Localizable.strings */; };
 		AED250BD2B57558100290E42 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250662B57558000290E42 /* LocalizedString.swift */; };
 		AED250BE2B57558100290E42 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2506A2B57558000290E42 /* HomeViewModel.swift */; };
@@ -280,7 +279,6 @@
 		AED2505B2B57558000290E42 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		AED2505C2B57558000290E42 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		AED2505E2B57558000290E42 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		AED250612B57558000290E42 /* ScrollToKeyboardAvoiding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollToKeyboardAvoiding.swift; sourceTree = "<group>"; };
 		AED250652B57558000290E42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AED250662B57558000290E42 /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		AED250672B57558000290E42 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -843,7 +841,6 @@
 			children = (
 				AED2509C2B57558100290E42 /* Extensions */,
 				AE7FA9852B75B4140079E9FD /* Helper Protocols */,
-				AED250612B57558000290E42 /* ScrollToKeyboardAvoiding.swift */,
 				AED250632B57558000290E42 /* Localizable */,
 			);
 			path = Utils;
@@ -1330,7 +1327,6 @@
 				AE7FA9872B75B4250079E9FD /* LoadingShowableViewController.swift in Sources */,
 				AE6320872B9FD54B00A4BA0F /* Scale+Extensions.swift in Sources */,
 				AED250BE2B57558100290E42 /* HomeViewModel.swift in Sources */,
-				AED250BA2B57558100290E42 /* ScrollToKeyboardAvoiding.swift in Sources */,
 				AE5A7DA22B9388E200DEDD94 /* ScrollableViewController.swift in Sources */,
 				AED250162B57552C00290E42 /* AppDelegate.swift in Sources */,
 				AEA4BD9D2BA1E3D80029F487 /* SaveScheduledNotificationUseCaseProtocol.swift in Sources */,
