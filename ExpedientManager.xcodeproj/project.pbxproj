@@ -379,12 +379,12 @@
 			path = GetValueForKeyUseCase;
 			sourceTree = "<group>";
 		};
-		AE5410512B617B0D0039BD11 /* SelectionSegmentedControl */ = {
+		AE5410512B617B0D0039BD11 /* WorkScaleTypeSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
 				AE5410522B617B3D0039BD11 /* WorkScaleTypeSegmentedControl.swift */,
 			);
-			path = SelectionSegmentedControl;
+			path = WorkScaleTypeSegmentedControl;
 			sourceTree = "<group>";
 		};
 		AE5477ED2B649402000679AC /* CollectionView */ = {
@@ -890,7 +890,6 @@
 		AED250762B57558000290E42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AE5410512B617B0D0039BD11 /* SelectionSegmentedControl */,
 				AED250772B57558000290E42 /* ScaleDurationView */,
 				AED2507A2B57558000290E42 /* ScaleSelectType */,
 				AED250802B57558000290E42 /* ScaleColorSelectionView */,
@@ -1032,6 +1031,7 @@
 		AEE16A3F2B5C7BEC0000F2C4 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				AE5410512B617B0D0039BD11 /* WorkScaleTypeSegmentedControl */,
 				AE5A7DA02B9388C800DEDD94 /* ScrollableViewController */,
 				AE6731742B76E9C400169F66 /* LoadingView */,
 				AE5F19DF2B6ADE380045C479 /* ScalesListTableView */,
