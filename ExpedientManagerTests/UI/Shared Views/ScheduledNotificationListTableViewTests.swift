@@ -12,7 +12,8 @@ final class ScheduledNotificationListTableViewTests: XCTestCase {
     
     private var tableView: ScheduledNotificationListTableView!
     private let emptyListMessage = "No notifications"
-    
+    private var delegate: MockTableViewDelegate!
+
     func test_setup_scheduledNotifications() {
         makeSUT()
         
@@ -24,17 +25,37 @@ final class ScheduledNotificationListTableViewTests: XCTestCase {
     
     func test_empty_state() {
         makeSUT()
-        tableView.setup(scheduledNotifications: [])
         
-        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 1)
+        tableView.setup(scheduledNotifications: [])
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EmptyTableViewCell
         
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 1)
         XCTAssertNotNil(cell)
         XCTAssertEqual(cell?.messageLabel.text, emptyListMessage)
     }
     
+    func test_didSelectRow_callsDelegateMethod() {
+        makeSUT()
+        
+        let mockNotifications = ScheduledNotification.getModels()
+        tableView.setup(scheduledNotifications: mockNotifications)
+        tableView.delegate?.tableView?(tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+        
+        XCTAssertTrue(delegate.didTapOnItemCalled)
+    }
+    
     func makeSUT() {
-        tableView = ScheduledNotificationListTableView(scheduledNotifications: [], 
-                                                       emptyListMessage: "No notifications")
+        delegate = MockTableViewDelegate()
+        tableView = ScheduledNotificationListTableView(scheduledNotifications: [],
+                                                               emptyListMessage: emptyListMessage)
+        tableView.viewDelegate = delegate
+    }
+}
+
+fileprivate class MockTableViewDelegate: ScheduledNotificationListTableViewDelegate {
+    var didTapOnItemCalled = false
+    
+    func didTapOnItem(_ view: ScheduledNotificationListTableView, item: ScheduledNotification, index: Int) {
+        didTapOnItemCalled = true
     }
 }
