@@ -66,6 +66,7 @@
 		AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */; };
 		AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE72749C2B7ADE2A009E479A /* HomeViewControllerTests.swift */; };
 		AE72749F2B7AFC1C009E479A /* HomeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE72749E2B7AFC1C009E479A /* HomeViewModelProtocol.swift */; };
+		AE7C01D32BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C01D22BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift */; };
 		AE7DE7AB2B58814400F57E42 /* ClosureButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */; };
 		AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */; };
 		AE7DE7B22B58946F00F57E42 /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */; };
@@ -229,6 +230,7 @@
 		AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellView.swift; sourceTree = "<group>"; };
 		AE72749C2B7ADE2A009E479A /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		AE72749E2B7AFC1C009E479A /* HomeViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelProtocol.swift; sourceTree = "<group>"; };
+		AE7C01D22BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationListTableViewTests.swift; sourceTree = "<group>"; };
 		AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureButtonView.swift; sourceTree = "<group>"; };
 		AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkRouter.swift; sourceTree = "<group>"; };
 		AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 		AE7274992B7ADE00009E479A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AE7C01D12BD0B40400D92940 /* Shared Views */,
 				AE4548622B7D929400C8343C /* Shared */,
 				AE72749A2B7ADE08009E479A /* Pages */,
 			);
@@ -623,6 +626,14 @@
 				AE5DC1172B85777D00F8388F /* HomeViewModelTests.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		AE7C01D12BD0B40400D92940 /* Shared Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE7C01D22BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift */,
+			);
+			path = "Shared Views";
 			sourceTree = "<group>";
 		};
 		AE7DE7AC2B58946700F57E42 /* Navigation */ = {
@@ -1427,6 +1438,7 @@
 				AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */,
 				AE68217F2B96974E00838993 /* AddScaleViewModelTests.swift in Sources */,
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
+				AE7C01D32BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift in Sources */,
 				AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */,
 				AE5665432BA0E76A0024F1DF /* ButtonView+Extensions.swift in Sources */,
 				AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */,
