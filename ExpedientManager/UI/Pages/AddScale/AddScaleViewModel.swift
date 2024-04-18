@@ -36,10 +36,6 @@ final class AddScaleViewModel: ObservableObject, AddScaleViewModelProtocol {
         askForNotificationPermissionUseCase.askForNotificationPermission()
     }
     
-//    func calculateFinalDutyDateFrom(date: Date, withDuration duration: Int) {
-//        finalDutyDate = Calendar.current.date(byAdding: .hour, value: duration, to: date) ?? Date()
-//    }
-    
     func save(fixedScale: FixedScale) {
         statePublished = .loading
         saveFixedScaleUseCase.save(fixedScale: fixedScale) { [weak self] result in
