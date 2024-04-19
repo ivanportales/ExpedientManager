@@ -34,6 +34,21 @@ final class ScheduledNotificationListTableViewTests: XCTestCase {
         XCTAssertEqual(cell?.messageLabel.text, emptyListMessage)
     }
     
+    func test_cell_content() {
+        makeSUT()
+        
+        let mockNotification = ScheduledNotification.getModels().first!
+        tableView.setup(scheduledNotifications: [mockNotification])
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ScheduledScalesTableViewCell
+        
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 1)
+        XCTAssertEqual(cell?.dayAndMonthLabel.text, mockNotification.date.formateDate(withFormat: "d/MM"))
+        XCTAssertEqual(cell?.hourLabel.text, mockNotification.date.formatTime())
+        XCTAssertEqual(cell?.titleLabel.text, mockNotification.title)
+        XCTAssertEqual(cell?.descriptionLabel.text, mockNotification.description)
+        XCTAssertEqual(cell?.scaleColorView.backgroundColor?.hex, mockNotification.colorHex)
+    }
+    
     func test_didSelectRow_callsDelegateMethod() {
         makeSUT()
         
@@ -47,7 +62,7 @@ final class ScheduledNotificationListTableViewTests: XCTestCase {
     func makeSUT() {
         delegate = MockTableViewDelegate()
         tableView = ScheduledNotificationListTableView(scheduledNotifications: [],
-                                                               emptyListMessage: emptyListMessage)
+                                                       emptyListMessage: emptyListMessage)
         tableView.viewDelegate = delegate
     }
 }
