@@ -87,6 +87,7 @@
 		AE9D5C952B632A430070A9CE /* ScaleColorSelectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */; };
 		AEA4BD9D2BA1E3D80029F487 /* SaveScheduledNotificationUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA4BD9C2BA1E3D80029F487 /* SaveScheduledNotificationUseCaseProtocol.swift */; };
 		AEA4BD9F2BA1E3E10029F487 /* SaveScheduledNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA4BD9E2BA1E3E10029F487 /* SaveScheduledNotificationUseCase.swift */; };
+		AEAC801F2BD1FBA600B4717B /* ClosureButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAC801E2BD1FBA600B4717B /* ClosureButtonViewTests.swift */; };
 		AEBEE2952B6F351B005A0D73 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBEE2942B6F351B005A0D73 /* CoreDataRepository.swift */; };
 		AECC38462B607D9200439C97 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38452B607D9200439C97 /* TextField.swift */; };
 		AECC38492B60808800439C97 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38482B60808800439C97 /* TextView.swift */; };
@@ -251,6 +252,7 @@
 		AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleColorSelectionCellView.swift; sourceTree = "<group>"; };
 		AEA4BD9C2BA1E3D80029F487 /* SaveScheduledNotificationUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScheduledNotificationUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AEA4BD9E2BA1E3E10029F487 /* SaveScheduledNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScheduledNotificationUseCase.swift; sourceTree = "<group>"; };
+		AEAC801E2BD1FBA600B4717B /* ClosureButtonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureButtonViewTests.swift; sourceTree = "<group>"; };
 		AEBEE2942B6F351B005A0D73 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		AECC38452B607D9200439C97 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		AECC38482B60808800439C97 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -632,6 +634,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7C01D22BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift */,
+				AEAC801E2BD1FBA600B4717B /* ClosureButtonViewTests.swift */,
 			);
 			path = "Shared Views";
 			sourceTree = "<group>";
@@ -1436,6 +1439,7 @@
 				AEE478DE2B8AE424003E1EA0 /* ScalesListViewModelTests.swift in Sources */,
 				AE5665452BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift in Sources */,
 				AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */,
+				AEAC801F2BD1FBA600B4717B /* ClosureButtonViewTests.swift in Sources */,
 				AE68217F2B96974E00838993 /* AddScaleViewModelTests.swift in Sources */,
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
 				AE7C01D32BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift in Sources */,
