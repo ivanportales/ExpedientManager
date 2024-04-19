@@ -29,6 +29,15 @@ final class ClosureButtonViewTests: XCTestCase {
         XCTAssertEqual(button.titleLabel?.text, buttonTitle)
     }
     
+    func test_changeText_updatesButtonTitle() {
+        makeSUT()
+        let newText = "New Text"
+      
+        button.change(text: newText)
+      
+        XCTAssertEqual(button.titleLabel?.text, newText)
+    }
+    
     func makeSUT(buttonTitle: String = "Test",
                  touchDownCompletion: ((ClosureButtonView) -> Void)? = nil) {
         button = ClosureButtonView(title: buttonTitle, touchDownCompletion: touchDownCompletion)
