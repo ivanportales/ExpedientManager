@@ -21,6 +21,14 @@ final class ClosureButtonViewTests: XCTestCase {
         XCTAssertTrue(completionCalled)
     }
     
+    func test_buttonTitle_init_injected() {
+        let buttonTitle = "Button Title"
+
+        makeSUT(buttonTitle: buttonTitle)
+            
+        XCTAssertEqual(button.titleLabel?.text, buttonTitle)
+    }
+    
     func makeSUT(buttonTitle: String = "Test",
                  touchDownCompletion: ((ClosureButtonView) -> Void)? = nil) {
         button = ClosureButtonView(title: buttonTitle, touchDownCompletion: touchDownCompletion)
