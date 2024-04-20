@@ -21,6 +21,19 @@ final class ClosureButtonViewTests: XCTestCase {
         XCTAssertTrue(completionCalled)
     }
     
+    func test_touchDownCompletion_parameter_injected_calledWhenButtonPressed() {
+        var previousCompletionCalled = false
+        var newCompletionCalled = false
+
+        makeSUT(touchDownCompletion: { _ in previousCompletionCalled = true })
+        
+        button.touchDownCompletion = { _ in newCompletionCalled = true }
+        button.sendActions(for: .touchDown)
+        
+        XCTAssertFalse(previousCompletionCalled)
+        XCTAssertTrue(newCompletionCalled)
+    }
+    
     func test_buttonTitle_init_injected() {
         let buttonTitle = "Button Title"
 
@@ -37,6 +50,8 @@ final class ClosureButtonViewTests: XCTestCase {
       
         XCTAssertEqual(button.titleLabel?.text, newText)
     }
+    
+    // test enabled and disabled states
     
     func makeSUT(buttonTitle: String = "Test",
                  touchDownCompletion: ((ClosureButtonView) -> Void)? = nil) {
