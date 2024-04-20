@@ -13,6 +13,13 @@ final class WorkScaleTypeSegmentedControlTests: XCTestCase {
     private var control: WorkScaleTypeSegmentedControl!
     private var delegate: MockWorkScaleTypeSegmentedControlDelegate!
     
+    func test_didChangeSelectedIndex_calledWhenSelectedIndexChanges() {
+        makeSUT()
+        control.sendActions(for: .valueChanged)
+        
+        XCTAssertTrue(delegate.didChangeSelectedIndexCalled)
+    }
+    
     func test_setup_correctlySetsUpSegmentedControl() {
         makeSUT()
         let expectedTitles = WorkScaleType.allDescriptions
