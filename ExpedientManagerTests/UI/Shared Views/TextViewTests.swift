@@ -17,7 +17,15 @@ final class TextViewTests: XCTestCase {
         XCTAssertEqual(textView.text, "Placeholder")
         XCTAssertEqual(textView.textColor, .lightGray)
     }
-
+    
+    func test_placeholder_isRemovedWhenTextViewBeginsEditing() {
+        makeSUT()
+        textView.textViewDidBeginEditing(textView)
+        
+        XCTAssertEqual(textView.text, "")
+        XCTAssertEqual(textView.textColor, .black)
+    }
+    
     func makeSUT() {
         textView = TextView(placeholder: "Placeholder", textColor: .black)
     }
