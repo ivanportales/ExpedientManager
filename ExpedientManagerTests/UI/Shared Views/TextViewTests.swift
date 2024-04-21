@@ -34,6 +34,14 @@ final class TextViewTests: XCTestCase {
         XCTAssertEqual(textView.text, "Placeholder")
         XCTAssertEqual(textView.textColor, .lightGray)
     }
+
+    func test_backgroundColor_isSetWhenTextViewIsCreated() {
+        makeSUT()
+        let backgroundColor = UIColor.red
+        textView = TextView(placeholder: "Placeholder", textColor: .black, backgroundColor: backgroundColor)
+        
+        XCTAssertEqual(textView.backgroundColor, backgroundColor)
+    }
     
     func makeSUT() {
         textView = TextView(placeholder: "Placeholder", textColor: .black)
