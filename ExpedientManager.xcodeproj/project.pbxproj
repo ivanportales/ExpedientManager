@@ -66,6 +66,7 @@
 		AE6E6D762B59F4EF00B2389B /* ImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */; };
 		AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE72749C2B7ADE2A009E479A /* HomeViewControllerTests.swift */; };
 		AE72749F2B7AFC1C009E479A /* HomeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE72749E2B7AFC1C009E479A /* HomeViewModelProtocol.swift */; };
+		AE73A95A2BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73A9592BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift */; };
 		AE7C01D32BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C01D22BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift */; };
 		AE7DE7AB2B58814400F57E42 /* ClosureButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */; };
 		AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */; };
@@ -74,6 +75,7 @@
 		AE7DE7B62B589BFF00F57E42 /* LocalStorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */; };
 		AE7DE7B82B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */; };
 		AE7FA9872B75B4250079E9FD /* LoadingShowableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FA9862B75B4250079E9FD /* LoadingShowableViewController.swift */; };
+		AE8334822BD4A3FC0004761D /* TextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8334812BD4A3FC0004761D /* TextViewTests.swift */; };
 		AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8593C42B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift */; };
 		AE8593C72B7EF6DF00EF72EF /* GetStubUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8593C62B7EF6DF00EF72EF /* GetStubUseCase.swift */; };
 		AE888CC92B6D3F5D00068558 /* UserNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE888CC82B6D3F5D00068558 /* UserNotificationModel.swift */; };
@@ -231,6 +233,7 @@
 		AE6E6D752B59F4EF00B2389B /* ImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellView.swift; sourceTree = "<group>"; };
 		AE72749C2B7ADE2A009E479A /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		AE72749E2B7AFC1C009E479A /* HomeViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelProtocol.swift; sourceTree = "<group>"; };
+		AE73A9592BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkScaleTypeSegmentedControlTests.swift; sourceTree = "<group>"; };
 		AE7C01D22BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationListTableViewTests.swift; sourceTree = "<group>"; };
 		AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureButtonView.swift; sourceTree = "<group>"; };
 		AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkRouter.swift; sourceTree = "<group>"; };
@@ -239,6 +242,7 @@
 		AE7DE7B52B589BFF00F57E42 /* LocalStorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepository.swift; sourceTree = "<group>"; };
 		AE7DE7B72B589DB900F57E42 /* LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE7FA9862B75B4250079E9FD /* LoadingShowableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShowableViewController.swift; sourceTree = "<group>"; };
+		AE8334812BD4A3FC0004761D /* TextViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTests.swift; sourceTree = "<group>"; };
 		AE8593C42B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetValueForKeyUseCaseStub.swift; sourceTree = "<group>"; };
 		AE8593C62B7EF6DF00EF72EF /* GetStubUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStubUseCase.swift; sourceTree = "<group>"; };
 		AE888CC82B6D3F5D00068558 /* UserNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationModel.swift; sourceTree = "<group>"; };
@@ -635,6 +639,8 @@
 			children = (
 				AE7C01D22BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift */,
 				AEAC801E2BD1FBA600B4717B /* ClosureButtonViewTests.swift */,
+				AE73A9592BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift */,
+				AE8334812BD4A3FC0004761D /* TextViewTests.swift */,
 			);
 			path = "Shared Views";
 			sourceTree = "<group>";
@@ -1435,6 +1441,7 @@
 				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
 				AE52052A2B8BDC1800A2179B /* FixedScale+Extensions.swift in Sources */,
 				AE6821812B96982900838993 /* SaveStubUseCase.swift in Sources */,
+				AE73A95A2BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift in Sources */,
 				AE5665482BA0E83C0024F1DF /* OnboardingViewControllerTests.swift in Sources */,
 				AEE478DE2B8AE424003E1EA0 /* ScalesListViewModelTests.swift in Sources */,
 				AE5665452BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift in Sources */,
@@ -1445,6 +1452,7 @@
 				AE7C01D32BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift in Sources */,
 				AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */,
 				AE5665432BA0E76A0024F1DF /* ButtonView+Extensions.swift in Sources */,
+				AE8334822BD4A3FC0004761D /* TextViewTests.swift in Sources */,
 				AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */,
 				AE5A7DAA2B93A97A00DEDD94 /* AddScaleViewControllerTests.swift in Sources */,
 				AE8E10702B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift in Sources */,
