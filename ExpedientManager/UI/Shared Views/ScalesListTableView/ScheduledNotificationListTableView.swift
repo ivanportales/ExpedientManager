@@ -99,6 +99,24 @@ extension ScheduledNotificationListTableView: UITableViewDataSource {
         let index = indexPath.item
         viewDelegate?.didTapOnItem(self, item: scheduledNotifications[index], index: index)
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            self.scheduledNotifications.remove(at: indexPath.row)
+            if self.scheduledNotifications.isEmpty {
+                tableView.reloadData()
+            } else {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            completionHandler(true)
+        }
+        
+        deleteAction.image = UIImage(systemName: "trash")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
 }
 
 // MARK: - UITableViewDelegate

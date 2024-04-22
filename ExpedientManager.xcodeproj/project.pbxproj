@@ -10,6 +10,7 @@
 		1ABCAF6551EA9E1C9F9F5103 /* Pods_ExpedientManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */; };
 		718C3D3D2B73F7C372F63ED4 /* Pods_ExpedientManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C776B4F2AA026570D49D477C /* Pods_ExpedientManagerTests.framework */; };
 		AE4548652B7D92D400C8343C /* DeeplinkRouterStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4548642B7D92D400C8343C /* DeeplinkRouterStub.swift */; };
+		AE46C0762BD5E9E000ECD0B3 /* TextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46C0752BD5E9E000ECD0B3 /* TextFieldTests.swift */; };
 		AE4B4D042B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B4D032B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift */; };
 		AE4B4D062B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B4D052B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift */; };
 		AE4B4D0A2B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B4D092B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift */; };
@@ -177,6 +178,7 @@
 		A2D3FEAB6F17EE2CF67D70B3 /* Pods_ExpedientManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpedientManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A834456D8495583D56D1EE96 /* Pods-ExpedientManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpedientManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-ExpedientManagerTests/Pods-ExpedientManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE4548642B7D92D400C8343C /* DeeplinkRouterStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkRouterStub.swift; sourceTree = "<group>"; };
+		AE46C0752BD5E9E000ECD0B3 /* TextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTests.swift; sourceTree = "<group>"; };
 		AE4B4D032B72F09B0034B971 /* GetScheduledNotificationsUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScheduledNotificationsUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE4B4D052B72F2B10034B971 /* GetScheduledNotificationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScheduledNotificationsUseCase.swift; sourceTree = "<group>"; };
 		AE4B4D092B72F9560034B971 /* GetValueForKeyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetValueForKeyUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -641,6 +643,7 @@
 				AEAC801E2BD1FBA600B4717B /* ClosureButtonViewTests.swift */,
 				AE73A9592BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift */,
 				AE8334812BD4A3FC0004761D /* TextViewTests.swift */,
+				AE46C0752BD5E9E000ECD0B3 /* TextFieldTests.swift */,
 			);
 			path = "Shared Views";
 			sourceTree = "<group>";
@@ -1458,6 +1461,7 @@
 				AE8E10702B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift in Sources */,
 				AE5DC1182B85777D00F8388F /* HomeViewModelTests.swift in Sources */,
 				AE4548652B7D92D400C8343C /* DeeplinkRouterStub.swift in Sources */,
+				AE46C0762BD5E9E000ECD0B3 /* TextFieldTests.swift in Sources */,
 				AEE478D72B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift in Sources */,
 				AE52052C2B8BDC9700A2179B /* OnDuty+Extensions.swift in Sources */,
 				AE8593C72B7EF6DF00EF72EF /* GetStubUseCase.swift in Sources */,
