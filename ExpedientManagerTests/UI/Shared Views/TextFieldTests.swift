@@ -14,6 +14,14 @@ final class TextFieldTests: XCTestCase {
         makeSUT()
         XCTAssertEqual(textField.textColor, .black)
     }
+    
+    func test_textRect_isInsetByPadding() {
+        makeSUT()
+        let bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let expectedRect = bounds.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+       
+        XCTAssertEqual(textField.textRect(forBounds: bounds), expectedRect)
+    }
         
     func makeSUT() {
         textField = TextField(placeholder: "Placeholder", textColor: .black)
