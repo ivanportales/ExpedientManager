@@ -9,7 +9,12 @@ final class TextFieldTests: XCTestCase {
         makeSUT()
         XCTAssertEqual(textField.placeholder, "Placeholder")
     }
-
+    
+    func test_textColor_isSetWhenTextFieldIsCreated() {
+        makeSUT()
+        XCTAssertEqual(textField.textColor, .black)
+    }
+        
     func makeSUT() {
         textField = TextField(placeholder: "Placeholder", textColor: .black)
     }
