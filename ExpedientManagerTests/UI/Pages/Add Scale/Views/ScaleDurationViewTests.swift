@@ -5,8 +5,8 @@
 //  Created by Gonzalo Ivan Santos Portales on 22/04/24.
 //
 
-import XCTest
 @testable import ExpedientManager
+import XCTest
 
 final class ScaleDurationViewTests: XCTestCase {
     
@@ -35,6 +35,16 @@ final class ScaleDurationViewTests: XCTestCase {
         scaleDurationView.set(isEditable: false)
         
         XCTAssertFalse(scaleDurationView.dateTextField.isEnabled)
+    }
+    
+    func test_dateAndTime_areUpdatedWhenDatePickerDoneTapped() {
+        makeSUT()
+        let newDate = Date().addingTimeInterval(60 * 60 * 24)
+        scaleDurationView.datePicker.date = newDate
+        scaleDurationView.datePickerDoneTapped()
+        
+        XCTAssertEqual(scaleDurationView.date.formateDate(), newDate.formateDate())
+        XCTAssertTrue(mockDelegate.dateChangedCalled)
     }
     
     func makeSUT() {
