@@ -47,6 +47,17 @@ final class ScaleDurationViewTests: XCTestCase {
         XCTAssertTrue(mockDelegate.dateChangedCalled)
     }
     
+    func test_dateAndTime_areUpdatedWhenTimePickerDoneTapped() {
+        makeSUT()
+
+        let newTime = Date().addingTimeInterval(60 * 60)
+        scaleDurationView.timePicker.date = newTime
+        scaleDurationView.timePickerDoneTapped()
+        
+        XCTAssertEqual(scaleDurationView.date.formatTime(), newTime.formatTime())
+        XCTAssertTrue(mockDelegate.hourChangedCalled)
+    }
+    
     func makeSUT() {
         mockDelegate = MockScaleDurationViewDelegate()
         scaleDurationView = ScaleDurationView(durationType: .startingTime, isEditable: true, initialTime: Date())
