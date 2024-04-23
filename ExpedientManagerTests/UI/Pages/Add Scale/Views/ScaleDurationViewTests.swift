@@ -21,6 +21,14 @@ final class ScaleDurationViewTests: XCTestCase {
         XCTAssertEqual(scaleDurationView.date.formatTime(), date.formatTime())
     }
     
+    func test_dateTextField_isEditableWhenIsEditableIsTrue() {
+        makeSUT()
+        
+        scaleDurationView.set(isEditable: true)
+        
+        XCTAssertTrue(scaleDurationView.dateTextField.isEnabled)
+    }
+    
     func makeSUT() {
         mockDelegate = MockScaleDurationViewDelegate()
         scaleDurationView = ScaleDurationView(durationType: .startingTime, isEditable: true, initialTime: Date())
