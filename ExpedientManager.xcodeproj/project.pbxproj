@@ -59,6 +59,7 @@
 		AE6BBAF22B9930380002F6DB /* FixedScaleTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6BBAF12B9930380002F6DB /* FixedScaleTransformer.swift */; };
 		AE6BBAF42B9930990002F6DB /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6BBAF32B9930990002F6DB /* Scale.swift */; };
 		AE6BBAF62B9930B80002F6DB /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6BBAF52B9930B80002F6DB /* ScaleType.swift */; };
+		AE6D003A2BD73A9700B9B932 /* ScaleDurationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D00392BD73A9700B9B932 /* ScaleDurationViewTests.swift */; };
 		AE6D4BCB2B59CDFD00C18696 /* ScheduledNotificationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationRepositoryProtocol.swift */; };
 		AE6D4BCD2B59D54200C18696 /* UserNotificationsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */; };
 		AE6D4BCF2B59D56E00C18696 /* ScheduledNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */; };
@@ -227,6 +228,7 @@
 		AE6BBAF12B9930380002F6DB /* FixedScaleTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedScaleTransformer.swift; sourceTree = "<group>"; };
 		AE6BBAF32B9930990002F6DB /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		AE6BBAF52B9930B80002F6DB /* ScaleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleType.swift; sourceTree = "<group>"; };
+		AE6D00392BD73A9700B9B932 /* ScaleDurationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleDurationViewTests.swift; sourceTree = "<group>"; };
 		AE6D4BCA2B59CDFD00C18696 /* ScheduledNotificationRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCC2B59D54200C18696 /* UserNotificationsManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerProtocol.swift; sourceTree = "<group>"; };
 		AE6D4BCE2B59D56E00C18696 /* ScheduledNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotification.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 		AE5A7DA82B93A8E600DEDD94 /* Add Scale */ = {
 			isa = PBXGroup;
 			children = (
+				AE6D00382BD73A8A00B9B932 /* Views */,
 				AE5A7DA92B93A97A00DEDD94 /* AddScaleViewControllerTests.swift */,
 				AE68217E2B96974E00838993 /* AddScaleViewModelTests.swift */,
 			);
@@ -586,6 +589,14 @@
 				AE6320812B9FCFE600A4BA0F /* ScheduledNotificationModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AE6D00382BD73A8A00B9B932 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE6D00392BD73A9700B9B932 /* ScaleDurationViewTests.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AE6E6D6F2B59F43600B2389B /* Views */ = {
@@ -1445,6 +1456,7 @@
 				AE52052A2B8BDC1800A2179B /* FixedScale+Extensions.swift in Sources */,
 				AE6821812B96982900838993 /* SaveStubUseCase.swift in Sources */,
 				AE73A95A2BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift in Sources */,
+				AE6D003A2BD73A9700B9B932 /* ScaleDurationViewTests.swift in Sources */,
 				AE5665482BA0E83C0024F1DF /* OnboardingViewControllerTests.swift in Sources */,
 				AEE478DE2B8AE424003E1EA0 /* ScalesListViewModelTests.swift in Sources */,
 				AE5665452BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift in Sources */,
