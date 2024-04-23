@@ -159,16 +159,20 @@ private extension ScaleDurationView {
         
         return toolBar
     }
-    
-    @objc func datePickerDoneTapped() {
+}
+
+// MARK: - Actions
+
+@objc extension ScaleDurationView {
+    func datePickerDoneTapped() {
         date = calendarManager.combineTimeFrom(timePicker.date,
                                                andDateFrom: datePicker.date)
         dateTextField.resignFirstResponder()
         delegate?.dateChangedTo(date: date)
     }
     
-    @objc func timePickerDoneTapped(){
-        date = calendarManager.combineTimeFrom(timePicker.date, 
+    func timePickerDoneTapped(){
+        date = calendarManager.combineTimeFrom(timePicker.date,
                                                andDateFrom: datePicker.date)
         timeTextField.resignFirstResponder()
         delegate?.hourChangedTo(date: date)
