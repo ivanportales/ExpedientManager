@@ -33,7 +33,7 @@ final class HomeViewControllerTests: XCTestCase {
     func test_current_month_label_is_equal_to_current_month_on_initialization() {
         makeSUT()
         
-        XCTAssertEqual(viewController.currentMonthLabel(), "Janeiro")
+        XCTAssertEqual(viewController.currentMonthLabel(), "January")
     }
     
     func test_if_list_navigation_bar_button_is_hidden_if_return_from_use_case_is_empty() {
@@ -276,7 +276,7 @@ final class HomeViewControllerTests: XCTestCase {
         
         viewController.changeCurrentDisplayedMonthOnCalendar(to: nextMonthDate)
         
-        XCTAssertEqual(viewController.title, "Fevereiro")
+        XCTAssertEqual(viewController.title, "February")
     }
     
     // MARK: - Helpers Functions
