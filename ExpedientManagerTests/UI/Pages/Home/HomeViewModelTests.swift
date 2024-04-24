@@ -73,7 +73,7 @@ final class HomeViewModelTests: XCTestCase {
        viewModel.fetchScheduledNotifications()
        let result = viewModel.getMonthDescriptionOf(date: currentDateForTesting)
        
-       XCTAssertEqual(result, "Janeiro")
+       XCTAssertEqual(result, "January")
    }
     
     func test_filter_scheduled_dates_with_current_date() {
