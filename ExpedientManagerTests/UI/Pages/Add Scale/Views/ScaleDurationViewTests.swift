@@ -60,6 +60,16 @@ final class ScaleDurationViewTests: XCTestCase {
         XCTAssertEqual(mockDelegate.changedDate!.formateDate(), newTime.formateDate())
     }
     
+    func test_datePickerEnforcesMinimumDate() {
+        makeSUT()
+
+        let pastDate = Date().addingTimeInterval(-60 * 60 * 24)
+        scaleDurationView.datePicker.date = pastDate
+        scaleDurationView.datePickerDoneTapped()
+
+        XCTAssertNotEqual(scaleDurationView.date.formateDate(), pastDate.formateDate())
+    }
+    
     func makeSUT() {
         mockDelegate = MockScaleDurationViewDelegate()
         scaleDurationView = ScaleDurationView(durationType: .startingTime, isEditable: true, initialTime: Date())
