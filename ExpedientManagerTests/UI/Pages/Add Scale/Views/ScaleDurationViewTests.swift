@@ -45,6 +45,7 @@ final class ScaleDurationViewTests: XCTestCase {
         
         XCTAssertEqual(scaleDurationView.date.formateDate(), newDate.formateDate())
         XCTAssertTrue(mockDelegate.dateChangedCalled)
+        XCTAssertEqual(mockDelegate.changedDate!.formateDate(), newDate.formateDate())
     }
     
     func test_dateAndTime_areUpdatedWhenTimePickerDoneTapped() {
