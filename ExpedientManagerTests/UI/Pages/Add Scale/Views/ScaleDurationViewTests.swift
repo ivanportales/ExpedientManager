@@ -68,12 +68,15 @@ final class ScaleDurationViewTests: XCTestCase {
 final class MockScaleDurationViewDelegate: ScaleDurationViewDelegate {
     var dateChangedCalled = false
     var hourChangedCalled = false
+    var changedDate: Date?
     
     func dateChangedTo(date: Date) {
         dateChangedCalled = true
+        changedDate = date
     }
     
     func hourChangedTo(date: Date) {
         hourChangedCalled = true
+        changedDate = date
     }
 }
