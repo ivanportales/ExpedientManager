@@ -70,9 +70,9 @@ final class ScaleDurationViewTests: XCTestCase {
         XCTAssertNotEqual(scaleDurationView.date.formateDate(), pastDate.formateDate())
     }
     
-    func makeSUT() {
+    func makeSUT(durationType: ScaleDurationType = .startingTime) {
         mockDelegate = MockScaleDurationViewDelegate()
-        scaleDurationView = ScaleDurationView(durationType: .startingTime, isEditable: true, initialTime: Date())
+        scaleDurationView = ScaleDurationView(durationType: durationType, isEditable: true, initialTime: Date())
         scaleDurationView.delegate = mockDelegate
     }
 }
