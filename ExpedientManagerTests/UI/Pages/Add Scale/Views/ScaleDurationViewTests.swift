@@ -88,6 +88,12 @@ final class ScaleDurationViewTests: XCTestCase {
         XCTAssertEqual(scaleDurationView.label.text, LocalizedString.startLabel)
     }
     
+    func test_labelTextIsEndLabelWhenDurationTypeIsEndingTime() {
+        makeSUT(durationType: .endingTime)
+
+        XCTAssertEqual(scaleDurationView.label.text, LocalizedString.endLabel)
+    }
+    
     func makeSUT(durationType: ScaleDurationType = .startingTime) {
         mockDelegate = MockScaleDurationViewDelegate()
         scaleDurationView = ScaleDurationView(durationType: durationType, isEditable: true, initialTime: Date())
