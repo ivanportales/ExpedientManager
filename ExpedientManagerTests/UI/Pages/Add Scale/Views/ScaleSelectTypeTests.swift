@@ -36,6 +36,14 @@ class ScaleSelectTypeTests: XCTestCase {
         XCTAssertFalse(sut.restLineStackContainer.isHidden)
     }
     
+    func test_workDurationValueChanged() {
+        makeSUT()
+        
+        sut.workDurantionTxtField.text = "5"
+
+        XCTAssertEqual(sut.workDuration, 5)
+    }
+    
     func makeSUT() {
         sut = ScaleSelectType()
         delegate = MockScaleSelectTypeDelegate()
