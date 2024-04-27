@@ -28,6 +28,14 @@ class ScaleSelectTypeTests: XCTestCase {
         XCTAssertTrue(sut.restLineStackContainer.isHidden)
     }
 
+    func test_fixedScaleShowsRestLineStackContainer() {
+        makeSUT()
+        
+        sut.selectedWorkScale = .fixedScale
+
+        XCTAssertFalse(sut.restLineStackContainer.isHidden)
+    }
+    
     func makeSUT() {
         sut = ScaleSelectType()
         delegate = MockScaleSelectTypeDelegate()
