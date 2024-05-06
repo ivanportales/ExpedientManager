@@ -30,12 +30,8 @@ final class ScaleColorSelectionView: UICollectionView {
     // MARK: - Exposed Properties
     
     private(set) var selectedColor: UIColor = .clear
-
-    // MARK: - Private Properties
     
-    private let viewWithSameSizeAsContent: Bool
-    
-    private let colors: [UIColor] = [
+    let colors: [UIColor] = [
         .selectionRed,
         .selectionOrange,
         .selectionGreen,
@@ -43,6 +39,10 @@ final class ScaleColorSelectionView: UICollectionView {
         .selectionGray,
         .selectionBlue,
     ]
+
+    // MARK: - Private Properties
+    
+    private let viewWithSameSizeAsContent: Bool
     
     // MARK: - Inits
     
