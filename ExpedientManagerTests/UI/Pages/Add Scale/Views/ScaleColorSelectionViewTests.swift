@@ -44,6 +44,14 @@ class ScaleColorSelectionViewTests: XCTestCase {
 
         XCTAssertEqual(cell!.colorView.backgroundColor, sut.colors[indexPath.item])
     }
+    
+    func test_numberOfItemsInSection() {
+        makeSUT()
+        
+        let numberOfItems = sut.collectionView(sut, numberOfItemsInSection: 0)
+
+        XCTAssertEqual(numberOfItems, sut.colors.count)
+    }
 
     private func makeSUT() {
         sut = ScaleColorSelectionView()
