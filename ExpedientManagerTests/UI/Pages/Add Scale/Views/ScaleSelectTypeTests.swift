@@ -37,6 +37,9 @@ class ScaleSelectTypeTests: XCTestCase {
         sut.selectedWorkScale = .fixedScale
 
         XCTAssertFalse(sut.restLineStackContainer.isHidden)
+        XCTAssertTrue(sut.workDurationTypeTxtField.isEnabled)
+        XCTAssertEqual(sut.workDurationTypeTxtField.textColor, UIColor.brand)
+        XCTAssertFalse(sut.lineSeparatorView.isHidden)
     }
     
     func test_workDurationValueChanged() {
