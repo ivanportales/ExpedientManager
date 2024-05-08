@@ -394,6 +394,8 @@ fileprivate extension HomeViewController {
     }
 }
 
+// MARK: - Helper Classes
+
 fileprivate final class HomeViewModelStub: HomeViewModelProtocol {
     
     // MARK: - Exposed Properties

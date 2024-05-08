@@ -203,6 +203,8 @@ extension ScalesListViewController {
     }
 }
 
+// MARK: - Helper Classes
+
 fileprivate class ScalesListViewModelStub: ScalesListViewModelProtocol {
     
     // MARK: - Exposed Properties

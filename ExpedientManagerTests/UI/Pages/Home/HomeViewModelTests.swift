@@ -126,6 +126,8 @@ final class HomeViewModelTests: XCTestCase {
     }
 }
 
+// MARK: - Protocol Adoptance Extensions
+
 extension GetStubUseCase<ScheduledNotification>: GetScheduledNotificationsUseCaseProtocol {
     func getScheduledNotifications(completion: @escaping (Result<[ExpedientManager.ScheduledNotification], Error>) -> Void) {
         get(completion: completion)

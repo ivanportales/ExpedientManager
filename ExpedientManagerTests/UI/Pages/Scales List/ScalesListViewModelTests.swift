@@ -101,6 +101,8 @@ final class ScalesListViewModelTests: XCTestCase {
     }
 }
 
+// MARK: - Protocol Adoptance Extensions
+
 extension GetStubUseCase<FixedScale>: GetFixedScalesUseCaseProtocol {
     func getFixedScales(completionHandler: @escaping (Result<[FixedScale], Error>) -> ()) {
         get(completion: completionHandler)

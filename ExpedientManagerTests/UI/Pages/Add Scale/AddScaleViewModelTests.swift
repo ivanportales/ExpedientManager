@@ -120,7 +120,9 @@ final class AddScaleViewModelTests: XCTestCase {
     }
 }
 
-final class AskForNotificationPermissionUseCaseStub: AskForNotificationPermissionUseCaseProtocol {
+// MARK: - Helper Classes
+
+fileprivate class AskForNotificationPermissionUseCaseStub: AskForNotificationPermissionUseCaseProtocol {
     
     var didCallAskForNotificationPermission = false
     
@@ -128,6 +130,8 @@ final class AskForNotificationPermissionUseCaseStub: AskForNotificationPermissio
         didCallAskForNotificationPermission = true
     }
 }
+
+// MARK: - Protocol Adoptance Extensions
 
 extension SaveStubUseCase<FixedScale>: SaveFixedScaleUseCaseProtocol {
     func save(fixedScale: ExpedientManager.FixedScale, completionHandler: @escaping (Result<Bool, Error>) -> ()) {

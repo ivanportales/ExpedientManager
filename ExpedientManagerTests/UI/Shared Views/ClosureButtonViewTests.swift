@@ -51,8 +51,6 @@ final class ClosureButtonViewTests: XCTestCase {
         XCTAssertEqual(button.titleLabel?.text, newText)
     }
     
-    // test enabled and disabled states
-    
     func makeSUT(buttonTitle: String = "Test",
                  touchDownCompletion: ((ClosureButtonView) -> Void)? = nil) {
         button = ClosureButtonView(title: buttonTitle, touchDownCompletion: touchDownCompletion)
