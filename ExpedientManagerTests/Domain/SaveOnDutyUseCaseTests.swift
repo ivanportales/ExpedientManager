@@ -35,7 +35,7 @@ class SaveOnDutyUseCaseTests: XCTestCase {
     func test_saveOnDuty_failure() {
         let onDutyError = NSError(domain: "Error Message", code: 0)
 
-        makeSUT(error: onDutyError)
+        makeSUT(onDutyRepositoryError: onDutyError)
         let onDuty = OnDuty.mockModels.first!
         let expectation = self.expectation(description: "SaveOnDutyUseCase fails to save on duty")
 
@@ -53,9 +53,10 @@ class SaveOnDutyUseCaseTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
     
-    func makeSUT(error: Error? = nil) {
-        mockOnDutyRepository = MockOnDutyRepository(error: error)
-        mockSaveScheduledNotificationUseCase = MockSaveScheduledNotificationUseCase()
+    func makeSUT(onDutyRepositoryError: Error? = nil,
+                 saveNotificationUseCaseError: Error? = nil) {
+        mockOnDutyRepository = MockOnDutyRepository(error: onDutyRepositoryError)
+        mockSaveScheduledNotificationUseCase = MockSaveScheduledNotificationUseCase(error: saveNotificationUseCaseError)
         sut = SaveOnDutyUseCase(onDutyRepository: mockOnDutyRepository,
                                 saveScheduledNotificationUseCase: mockSaveScheduledNotificationUseCase)
     }
@@ -92,7 +93,17 @@ class MockOnDutyRepository: OnDutyRepositoryProtocol {
 }
 
 class MockSaveScheduledNotificationUseCase: SaveScheduledNotificationUseCaseProtocol {
+    var error: Error?
+    
+    init(error: Error? = nil) {
+        self.error = error
+    }
+    
     func save(scheduledNotification: ScheduledNotification, completion: @escaping (Result<Bool, Error>) -> ()) {
-        completion(.success(true))
+        if let error = error {
+            completion(.failure(error))
+        } else {
+            completion(.success(true))
+        }
     }
 }
