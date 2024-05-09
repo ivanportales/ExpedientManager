@@ -53,6 +53,7 @@
 		AE68217D2B96962400838993 /* AskForNotificationPermissionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE68217C2B96962400838993 /* AskForNotificationPermissionUseCase.swift */; };
 		AE68217F2B96974E00838993 /* AddScaleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE68217E2B96974E00838993 /* AddScaleViewModelTests.swift */; };
 		AE6821812B96982900838993 /* SaveStubUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6821802B96982900838993 /* SaveStubUseCase.swift */; };
+		AE6A5E122BED7D89005C5D08 /* OnDutyRepositoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A5E112BED7D89005C5D08 /* OnDutyRepositoryStub.swift */; };
 		AE6BBAEC2B9920EA0002F6DB /* FixedScaleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6BBAEB2B9920EA0002F6DB /* FixedScaleModel.swift */; };
 		AE6BBAEE2B9922400002F6DB /* OnDutyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6BBAED2B9922400002F6DB /* OnDutyModel.swift */; };
 		AE6BBAF02B9930210002F6DB /* ScaleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6BBAEF2B9930210002F6DB /* ScaleModel.swift */; };
@@ -225,6 +226,7 @@
 		AE68217C2B96962400838993 /* AskForNotificationPermissionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForNotificationPermissionUseCase.swift; sourceTree = "<group>"; };
 		AE68217E2B96974E00838993 /* AddScaleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScaleViewModelTests.swift; sourceTree = "<group>"; };
 		AE6821802B96982900838993 /* SaveStubUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStubUseCase.swift; sourceTree = "<group>"; };
+		AE6A5E112BED7D89005C5D08 /* OnDutyRepositoryStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDutyRepositoryStub.swift; sourceTree = "<group>"; };
 		AE6BBAEB2B9920EA0002F6DB /* FixedScaleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedScaleModel.swift; sourceTree = "<group>"; };
 		AE6BBAED2B9922400002F6DB /* OnDutyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDutyModel.swift; sourceTree = "<group>"; };
 		AE6BBAEF2B9930210002F6DB /* ScaleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleModel.swift; sourceTree = "<group>"; };
@@ -574,6 +576,30 @@
 			path = AskForNotificationPermissionUseCase;
 			sourceTree = "<group>";
 		};
+		AE6A5E0E2BED7D6F005C5D08 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AE6A5E0F2BED7D75005C5D08 /* Utils */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		AE6A5E0F2BED7D75005C5D08 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AE6A5E102BED7D7B005C5D08 /* Stubs */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AE6A5E102BED7D7B005C5D08 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				AE6A5E112BED7D89005C5D08 /* OnDutyRepositoryStub.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
 		AE6BBAE92B991EEA0002F6DB /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,6 +684,7 @@
 		AE73BBED2BEC18D600BB248E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				AE6A5E0E2BED7D6F005C5D08 /* Shared */,
 				AE73BBEE2BEC18E700BB248E /* SaveOnDutyUseCaseTests.swift */,
 			);
 			path = Domain;
@@ -1469,6 +1496,7 @@
 				AE63BE752B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift in Sources */,
 				AE52052E2B8BDE0800A2179B /* UIColor+Extensions.swift in Sources */,
 				AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */,
+				AE6A5E122BED7D89005C5D08 /* OnDutyRepositoryStub.swift in Sources */,
 				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
 				AE52052A2B8BDC1800A2179B /* FixedScale+Extensions.swift in Sources */,
 				AE6821812B96982900838993 /* SaveStubUseCase.swift in Sources */,

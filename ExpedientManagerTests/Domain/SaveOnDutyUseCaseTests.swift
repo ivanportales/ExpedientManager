@@ -10,8 +10,8 @@ import XCTest
 
 class SaveOnDutyUseCaseTests: XCTestCase {
     var sut: SaveOnDutyUseCase!
-    var mockOnDutyRepository: MockOnDutyRepository!
-    var mockSaveScheduledNotificationUseCase: MockSaveScheduledNotificationUseCase!
+    var mockOnDutyRepository: OnDutyRepositoryStub!
+    var mockSaveScheduledNotificationUseCase: SaveScheduledNotificationUseCaseStub!
 
     func test_saveOnDuty_success() {
         makeSUT()
@@ -76,8 +76,8 @@ class SaveOnDutyUseCaseTests: XCTestCase {
     
     func makeSUT(onDutyRepositoryError: Error? = nil,
                  saveNotificationUseCaseError: Error? = nil) {
-        mockOnDutyRepository = MockOnDutyRepository(error: onDutyRepositoryError)
-        mockSaveScheduledNotificationUseCase = MockSaveScheduledNotificationUseCase(error: saveNotificationUseCaseError)
+        mockOnDutyRepository = OnDutyRepositoryStub(error: onDutyRepositoryError)
+        mockSaveScheduledNotificationUseCase = SaveScheduledNotificationUseCaseStub(error: saveNotificationUseCaseError)
         sut = SaveOnDutyUseCase(onDutyRepository: mockOnDutyRepository,
                                 saveScheduledNotificationUseCase: mockSaveScheduledNotificationUseCase)
     }
@@ -85,35 +85,7 @@ class SaveOnDutyUseCaseTests: XCTestCase {
 
 // MARK: - Helper Classes
 
-class MockOnDutyRepository: OnDutyRepositoryProtocol {
-    var error: Error?
-    
-    init(error: Error? = nil) {
-        self.error = error
-    }
-    
-    func save(onDuty: OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        if let error = error {
-            completionHandler(.failure(error))
-        } else {
-            completionHandler(.success(true))
-        }
-    }
-
-    func getAllOnDuty(completionHandler: @escaping (Result<[ExpedientManager.OnDuty], any Error>) -> ()) {
-        // TODO: Implement function
-    }
-    
-    func delete(onDuty: ExpedientManager.OnDuty, completionHandler: @escaping (Result<Bool, any Error>) -> ()) {
-        // TODO: Implement function
-    }
-    
-    func update(onDuty: ExpedientManager.OnDuty, completionHandler: @escaping (Result<Bool, any Error>) -> ()) {
-        // TODO: Implement function
-    }
-}
-
-class MockSaveScheduledNotificationUseCase: SaveScheduledNotificationUseCaseProtocol {
+class SaveScheduledNotificationUseCaseStub: SaveScheduledNotificationUseCaseProtocol {
     var error: Error?
     
     init(error: Error? = nil) {
