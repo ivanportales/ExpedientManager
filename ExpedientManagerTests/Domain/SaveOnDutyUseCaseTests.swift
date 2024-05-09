@@ -42,7 +42,28 @@ class SaveOnDutyUseCaseTests: XCTestCase {
 
         sut.save(onDuty: onDuty) { result in
             switch result {
-            case .success(let success):
+            case .success(_):
+                XCTFail("SaveOnDutyUseCase succeeded unexpectedly")
+            case .failure(let error):
+                XCTAssertEqual(onDutyError.localizedDescription, error.localizedDescription)
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    func test_saveOnDuty_with_scheduledNotificationUseCase_failure() {
+        let onDutyError = NSError(domain: "Error Message", code: 0)
+
+        makeSUT(saveNotificationUseCaseError: onDutyError)
+        let onDuty = OnDuty.mockModels.first!
+        let expectation = self.expectation(description: "SaveScheduledNotificationUseCase fails to save on duty")
+
+
+        sut.save(onDuty: onDuty) { result in
+            switch result {
+            case .success(_):
                 XCTFail("SaveOnDutyUseCase succeeded unexpectedly")
             case .failure(let error):
                 XCTAssertEqual(onDutyError.localizedDescription, error.localizedDescription)
