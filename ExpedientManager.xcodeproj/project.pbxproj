@@ -24,6 +24,7 @@
 		AE5665432BA0E76A0024F1DF /* ButtonView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5665422BA0E76A0024F1DF /* ButtonView+Extensions.swift */; };
 		AE5665452BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5665442BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift */; };
 		AE5665482BA0E83C0024F1DF /* OnboardingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5665472BA0E83C0024F1DF /* OnboardingViewControllerTests.swift */; };
+		AE56EBF82BEF10BD00C11121 /* GetOnDutyUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56EBF72BEF10BD00C11121 /* GetOnDutyUseCaseTests.swift */; };
 		AE595A982B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */; };
 		AE595A9B2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */; };
 		AE595A9F2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */; };
@@ -197,6 +198,7 @@
 		AE5665422BA0E76A0024F1DF /* ButtonView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonView+Extensions.swift"; sourceTree = "<group>"; };
 		AE5665442BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueForKeyUseCaseStub.swift; sourceTree = "<group>"; };
 		AE5665472BA0E83C0024F1DF /* OnboardingViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewControllerTests.swift; sourceTree = "<group>"; };
+		AE56EBF72BEF10BD00C11121 /* GetOnDutyUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOnDutyUseCaseTests.swift; sourceTree = "<group>"; };
 		AE595A972B686DE300B439CE /* SaveFixedScaleUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AE595A9A2B686E0200B439CE /* SaveFixedScaleUseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFixedScaleUseCaseError.swift; sourceTree = "<group>"; };
 		AE595A9E2B68780B00B439CE /* SaveOnDutyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 			children = (
 				AE6A5E0E2BED7D6F005C5D08 /* Shared */,
 				AE73BBEE2BEC18E700BB248E /* SaveOnDutyUseCaseTests.swift */,
+				AE56EBF72BEF10BD00C11121 /* GetOnDutyUseCaseTests.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1509,6 +1512,7 @@
 				AE5665452BA0E7BE0024F1DF /* SetValueForKeyUseCaseStub.swift in Sources */,
 				AE5DC11B2B857A0D00F8388F /* Date+Extensions.swift in Sources */,
 				AEAC801F2BD1FBA600B4717B /* ClosureButtonViewTests.swift in Sources */,
+				AE56EBF82BEF10BD00C11121 /* GetOnDutyUseCaseTests.swift in Sources */,
 				AE68217F2B96974E00838993 /* AddScaleViewModelTests.swift in Sources */,
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
 				AE7C01D32BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift in Sources */,
