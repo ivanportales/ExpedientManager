@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OnDuty {
+struct OnDuty: Equatable {
     var id: String
     var titlo: String
     var initialDate: Date
