@@ -29,6 +29,24 @@ class GetOnDutyUseCaseTests: XCTestCase {
 
         waitForExpectations(timeout: 1, handler: nil)
     }
+
+    func test_getOnDuty_failure() {
+        let onDutyError = NSError(domain: "Error Message", code: 0)
+        makeSUT(error: onDutyError)
+        let expectation = self.expectation(description: "GetOnDutyUseCase fails to get on duty")
+
+        sut.getOnDuty { result in
+            switch result {
+            case .success(let onDuty):
+                XCTFail("GetOnDutyUseCase succeeded unexpectedly")
+            case .failure(let error):
+                XCTAssertNotNil(error)
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
+    }
     
     func makeSUT(error: Error? = nil,
                  onDuties: [OnDuty] = []) {
