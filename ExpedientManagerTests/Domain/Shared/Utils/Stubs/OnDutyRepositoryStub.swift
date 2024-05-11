@@ -8,10 +8,13 @@
 @testable import ExpedientManager
 
 class OnDutyRepositoryStub: OnDutyRepositoryProtocol {
-    var error: Error?
+    let error: Error?
+    let onDuties: [OnDuty]
     
-    init(error: Error? = nil) {
+    init(error: Error? = nil,
+         onDuties: [OnDuty] = []) {
         self.error = error
+        self.onDuties = onDuties
     }
     
     func save(onDuty: OnDuty, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
@@ -23,7 +26,11 @@ class OnDutyRepositoryStub: OnDutyRepositoryProtocol {
     }
 
     func getAllOnDuty(completionHandler: @escaping (Result<[ExpedientManager.OnDuty], any Error>) -> ()) {
-        // TODO: Implement function
+        if let error = error {
+            completionHandler(.failure(error))
+        } else {
+            completionHandler(.success(onDuties))
+        }
     }
     
     func delete(onDuty: ExpedientManager.OnDuty, completionHandler: @escaping (Result<Bool, any Error>) -> ()) {
