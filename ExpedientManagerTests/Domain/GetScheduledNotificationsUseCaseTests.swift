@@ -29,6 +29,24 @@ class GetScheduledNotificationsUseCaseTests: XCTestCase {
 
         waitForExpectations(timeout: 1, handler: nil)
     }
+
+    func test_getScheduledNotifications_failure() {
+        let error = NSError(domain: "Error Message", code: 0)
+        makeSUT(error: error)
+        let expectation = self.expectation(description: "GetScheduledNotificationsUseCase fails to get on duty")
+
+        sut.getScheduledNotifications { result in
+            switch result {
+            case .success(_):
+                XCTFail("GetScheduledNotificationsUseCase succeeded unexpectedly")
+            case .failure(let error):
+                XCTAssertNotNil(error)
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
+    }
     
     func makeSUT(error: Error? = nil,
                  scheduledNotifications: [ScheduledNotification] = []) {
