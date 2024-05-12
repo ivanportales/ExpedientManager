@@ -94,6 +94,8 @@
 		AE9D5C912B631E690070A9CE /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C902B631E690070A9CE /* CalendarManager.swift */; };
 		AE9D5C932B6328550070A9CE /* ScaleColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */; };
 		AE9D5C952B632A430070A9CE /* ScaleColorSelectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */; };
+		AEA33CAF2BF03DE500915143 /* GetScheduledNotificationsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA33CAE2BF03DE500915143 /* GetScheduledNotificationsUseCaseTests.swift */; };
+		AEA33CB12BF03EA300915143 /* ScheduledNotificationRepositoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA33CB02BF03EA300915143 /* ScheduledNotificationRepositoryStub.swift */; };
 		AEA4BD9D2BA1E3D80029F487 /* SaveScheduledNotificationUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA4BD9C2BA1E3D80029F487 /* SaveScheduledNotificationUseCaseProtocol.swift */; };
 		AEA4BD9F2BA1E3E10029F487 /* SaveScheduledNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA4BD9E2BA1E3E10029F487 /* SaveScheduledNotificationUseCase.swift */; };
 		AEAC801F2BD1FBA600B4717B /* ClosureButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAC801E2BD1FBA600B4717B /* ClosureButtonViewTests.swift */; };
@@ -268,6 +270,8 @@
 		AE9D5C902B631E690070A9CE /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		AE9D5C922B6328550070A9CE /* ScaleColorSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleColorSelectionView.swift; sourceTree = "<group>"; };
 		AE9D5C942B632A430070A9CE /* ScaleColorSelectionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleColorSelectionCellView.swift; sourceTree = "<group>"; };
+		AEA33CAE2BF03DE500915143 /* GetScheduledNotificationsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetScheduledNotificationsUseCaseTests.swift; sourceTree = "<group>"; };
+		AEA33CB02BF03EA300915143 /* ScheduledNotificationRepositoryStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationRepositoryStub.swift; sourceTree = "<group>"; };
 		AEA4BD9C2BA1E3D80029F487 /* SaveScheduledNotificationUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScheduledNotificationUseCaseProtocol.swift; sourceTree = "<group>"; };
 		AEA4BD9E2BA1E3E10029F487 /* SaveScheduledNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScheduledNotificationUseCase.swift; sourceTree = "<group>"; };
 		AEAC801E2BD1FBA600B4717B /* ClosureButtonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureButtonViewTests.swift; sourceTree = "<group>"; };
@@ -598,6 +602,7 @@
 			isa = PBXGroup;
 			children = (
 				AE6A5E112BED7D89005C5D08 /* OnDutyRepositoryStub.swift */,
+				AEA33CB02BF03EA300915143 /* ScheduledNotificationRepositoryStub.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -689,6 +694,7 @@
 				AE6A5E0E2BED7D6F005C5D08 /* Shared */,
 				AE73BBEE2BEC18E700BB248E /* SaveOnDutyUseCaseTests.swift */,
 				AE56EBF72BEF10BD00C11121 /* GetOnDutyUseCaseTests.swift */,
+				AEA33CAE2BF03DE500915143 /* GetScheduledNotificationsUseCaseTests.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1514,6 +1520,7 @@
 				AEAC801F2BD1FBA600B4717B /* ClosureButtonViewTests.swift in Sources */,
 				AE56EBF82BEF10BD00C11121 /* GetOnDutyUseCaseTests.swift in Sources */,
 				AE68217F2B96974E00838993 /* AddScaleViewModelTests.swift in Sources */,
+				AEA33CAF2BF03DE500915143 /* GetScheduledNotificationsUseCaseTests.swift in Sources */,
 				AE8593C52B7EF68800EF72EF /* GetValueForKeyUseCaseStub.swift in Sources */,
 				AE7C01D32BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift in Sources */,
 				AE5DC11D2B857BA600F8388F /* ViewModelStatePublisherSpy.swift in Sources */,
@@ -1521,6 +1528,7 @@
 				AE8334822BD4A3FC0004761D /* TextViewTests.swift in Sources */,
 				AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */,
 				AE5A7DAA2B93A97A00DEDD94 /* AddScaleViewControllerTests.swift in Sources */,
+				AEA33CB12BF03EA300915143 /* ScheduledNotificationRepositoryStub.swift in Sources */,
 				AE8E10702B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift in Sources */,
 				AE5DC1182B85777D00F8388F /* HomeViewModelTests.swift in Sources */,
 				AE4548652B7D92D400C8343C /* DeeplinkRouterStub.swift in Sources */,
