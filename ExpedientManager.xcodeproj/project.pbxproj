@@ -73,6 +73,7 @@
 		AE73A95A2BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73A9592BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift */; };
 		AE73BBEF2BEC18E700BB248E /* SaveOnDutyUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73BBEE2BEC18E700BB248E /* SaveOnDutyUseCaseTests.swift */; };
 		AE7C01D32BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C01D22BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift */; };
+		AE7CAE3A2BF5503200772593 /* FixedScaleRepositoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7CAE392BF5503200772593 /* FixedScaleRepositoryStub.swift */; };
 		AE7DE7AB2B58814400F57E42 /* ClosureButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */; };
 		AE7DE7AE2B58946700F57E42 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */; };
 		AE7DE7B22B58946F00F57E42 /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */; };
@@ -249,6 +250,7 @@
 		AE73A9592BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkScaleTypeSegmentedControlTests.swift; sourceTree = "<group>"; };
 		AE73BBEE2BEC18E700BB248E /* SaveOnDutyUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOnDutyUseCaseTests.swift; sourceTree = "<group>"; };
 		AE7C01D22BD0B47C00D92940 /* ScheduledNotificationListTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledNotificationListTableViewTests.swift; sourceTree = "<group>"; };
+		AE7CAE392BF5503200772593 /* FixedScaleRepositoryStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedScaleRepositoryStub.swift; sourceTree = "<group>"; };
 		AE7DE7AA2B58814400F57E42 /* ClosureButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureButtonView.swift; sourceTree = "<group>"; };
 		AE7DE7AD2B58946700F57E42 /* DeeplinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeeplinkRouter.swift; sourceTree = "<group>"; };
 		AE7DE7B02B58946F00F57E42 /* ViewControllersFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 			children = (
 				AE6A5E112BED7D89005C5D08 /* OnDutyRepositoryStub.swift */,
 				AEA33CB02BF03EA300915143 /* ScheduledNotificationRepositoryStub.swift */,
+				AE7CAE392BF5503200772593 /* FixedScaleRepositoryStub.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -1537,6 +1540,7 @@
 				AE52052C2B8BDC9700A2179B /* OnDuty+Extensions.swift in Sources */,
 				AE8024392BE972FB00230769 /* ScaleColorSelectionViewTests.swift in Sources */,
 				AE8593C72B7EF6DF00EF72EF /* GetStubUseCase.swift in Sources */,
+				AE7CAE3A2BF5503200772593 /* FixedScaleRepositoryStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
