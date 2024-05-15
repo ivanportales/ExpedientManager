@@ -29,6 +29,25 @@ class GetFixedScalesUseCaseTests: XCTestCase {
 
         waitForExpectations(timeout: 1, handler: nil)
     }
+
+    func test_getFixedScales_failure() {
+        let fixedScalesError = NSError(domain: "Error Message", code: 0)
+        makeSUT(error: fixedScalesError)
+        
+        let expectation = self.expectation(description: "GetFixedScalesUseCase fails to get fixed scales")
+
+        sut.getFixedScales { result in
+            switch result {
+            case .success(let fixedScales):
+                XCTFail("GetFixedScalesUseCase succeeded unexpectedly")
+            case .failure(let error):
+                XCTAssertEqual(error.localizedDescription, fixedScalesError.localizedDescription)
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
+    }
     
     func makeSUT(error: Error? = nil,
                  fixedScales: [FixedScale] = [])  {
