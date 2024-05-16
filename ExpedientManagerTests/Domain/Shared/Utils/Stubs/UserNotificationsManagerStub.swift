@@ -7,7 +7,7 @@
 
 @testable import ExpedientManager
 
-class UserNotificationsManagerStub: ScheduledNotificationRepositoryProtocol {
+class UserNotificationsManagerStub: UserNotificationsManagerProtocol {
     
     let error: Error?
     let scheduledNotification: [ScheduledNotification]
@@ -18,29 +18,31 @@ class UserNotificationsManagerStub: ScheduledNotificationRepositoryProtocol {
         self.scheduledNotification = scheduledNotification
     }
     
-    var shouldFailOnSave = false
-
-    func save(scheduledNotification: ScheduledNotification, completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+    func setNotificationIn(minutes: Int) {
+        // TODO: Implement function
+    }
+    
+    func set(scheduledNotification: any ExpedientManager.UserNotificationModel, completion: @escaping (Result<Bool, any Error>) -> ()) {
         if let error = error {
-            completionHandler(.failure(error))
+            completion(.failure(error))
         } else {
-            completionHandler(.success(true))
+            completion(.success(true))
         }
     }
     
-    func getAllScheduledNotifications(completionHandler: @escaping (Result<[ExpedientManager.ScheduledNotification], any Error>) -> ()) {
+    func getAllScheduledNotifications(mapperClosure: @escaping (([String : Any]) -> any ExpedientManager.UserNotificationModel), completion: @escaping ([any ExpedientManager.UserNotificationModel]) -> ()) {
         // TODO: Implement function
     }
     
-    func update(scheduledNotification: ExpedientManager.ScheduledNotification, completionHandler: @escaping (Result<Bool, any Error>) -> ()) {
+    func removeAllPendingNotifications() {
         // TODO: Implement function
     }
     
-    func delete(scheduledNotification: ExpedientManager.ScheduledNotification, completionHandler: @escaping (Result<Bool, any Error>) -> ()) {
+    func removeAllPendingNotificationsWith(uid: String) {
         // TODO: Implement function
     }
     
-    func deleteAllScheduledNotificationsWhere(scaleUid: String, completionHandler: @escaping (Result<Bool, any Error>) -> ()) {
+    func askUserNotificationPermission() {
         // TODO: Implement function
     }
 }
