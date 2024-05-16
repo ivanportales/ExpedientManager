@@ -158,6 +158,8 @@
 		AED250E12B57558100290E42 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A02B57558100290E42 /* Calendar+Extensions.swift */; };
 		AED250E22B57558100290E42 /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250A22B57558100290E42 /* UserNotificationsManager.swift */; };
 		AEDC564D2B5F39CD00939629 /* AddScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC564C2B5F39CD00939629 /* AddScaleViewController.swift */; };
+		AEDF99CD2BF67E0D0070E544 /* UserNotificationsManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF99CC2BF67E0D0070E544 /* UserNotificationsManagerStub.swift */; };
+		AEDF99CF2BF67F1E0070E544 /* SaveScheduledNotificationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF99CE2BF67F1E0070E544 /* SaveScheduledNotificationUseCaseTests.swift */; };
 		AEE16A432B5C7C2A0000F2C4 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */; };
 		AEE478D72B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */; };
 		AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE478D92B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift */; };
@@ -340,6 +342,8 @@
 		AED250A02B57558100290E42 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		AED250A22B57558100290E42 /* UserNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
 		AEDC564C2B5F39CD00939629 /* AddScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScaleViewController.swift; sourceTree = "<group>"; };
+		AEDF99CC2BF67E0D0070E544 /* UserNotificationsManagerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManagerStub.swift; sourceTree = "<group>"; };
+		AEDF99CE2BF67F1E0070E544 /* SaveScheduledNotificationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScheduledNotificationUseCaseTests.swift; sourceTree = "<group>"; };
 		AEE16A422B5C7C2A0000F2C4 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		AEE478D62B8A8780003E1EA0 /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
 		AEE478D92B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalesListViewControllerTests.swift; sourceTree = "<group>"; };
@@ -608,6 +612,7 @@
 				AE6A5E112BED7D89005C5D08 /* OnDutyRepositoryStub.swift */,
 				AEA33CB02BF03EA300915143 /* ScheduledNotificationRepositoryStub.swift */,
 				AE7CAE392BF5503200772593 /* FixedScaleRepositoryStub.swift */,
+				AEDF99CC2BF67E0D0070E544 /* UserNotificationsManagerStub.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -701,6 +706,7 @@
 				AE56EBF72BEF10BD00C11121 /* GetOnDutyUseCaseTests.swift */,
 				AEA33CAE2BF03DE500915143 /* GetScheduledNotificationsUseCaseTests.swift */,
 				AE7CAE3B2BF550EA00772593 /* GetFixedScalesUseCaseTests.swift */,
+				AEDF99CE2BF67F1E0070E544 /* SaveScheduledNotificationUseCaseTests.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1513,6 +1519,7 @@
 				AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */,
 				AE6A5E122BED7D89005C5D08 /* OnDutyRepositoryStub.swift in Sources */,
 				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
+				AEDF99CD2BF67E0D0070E544 /* UserNotificationsManagerStub.swift in Sources */,
 				AE52052A2B8BDC1800A2179B /* FixedScale+Extensions.swift in Sources */,
 				AE6821812B96982900838993 /* SaveStubUseCase.swift in Sources */,
 				AE73A95A2BD357FC00E7449D /* WorkScaleTypeSegmentedControlTests.swift in Sources */,
@@ -1535,6 +1542,7 @@
 				AE5DC1202B858C1700F8388F /* ScheduledNotification+Extensions.swift in Sources */,
 				AE5A7DAA2B93A97A00DEDD94 /* AddScaleViewControllerTests.swift in Sources */,
 				AE7CAE3C2BF550EA00772593 /* GetFixedScalesUseCaseTests.swift in Sources */,
+				AEDF99CF2BF67F1E0070E544 /* SaveScheduledNotificationUseCaseTests.swift in Sources */,
 				AEA33CB12BF03EA300915143 /* ScheduledNotificationRepositoryStub.swift in Sources */,
 				AE8E10702B8EAFBD00E295EE /* LoadingShowableViewControllerProtocol+Extensions.swift in Sources */,
 				AE5DC1182B85777D00F8388F /* HomeViewModelTests.swift in Sources */,

@@ -20,7 +20,11 @@ final class ScheduledNotificationRepositoryStub: ScheduledNotificationRepository
     
     
     func save(scheduledNotification: ExpedientManager.ScheduledNotification, completionHandler: @escaping (Result<Bool, any Error>) -> ()) {
-        // TODO: Implement function
+        if let error = error {
+            completionHandler(.failure(error))
+        } else {
+            completionHandler(.success(true))
+        }
     }
     
     func getAllScheduledNotifications(completionHandler: @escaping (Result<[ExpedientManager.ScheduledNotification], any Error>) -> ()) {
