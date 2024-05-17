@@ -37,7 +37,7 @@ class SaveScheduledNotificationUseCaseTests: XCTestCase {
         makeSUT(repositoryError: repositoryError)
         
         let scheduledNotification = ScheduledNotification.getModels().first!
-        let expectation = self.expectation(description: "SaveScheduledNotificationUseCase fails to save scheduled notification")
+        let expectation = self.expectation(description: "SaveScheduledNotificationUseCase fails on repository to save scheduled notification")
 
         sut.save(scheduledNotification: scheduledNotification) { result in
             switch result {
@@ -57,7 +57,7 @@ class SaveScheduledNotificationUseCaseTests: XCTestCase {
         makeSUT(managerError: managerError)
         
         let scheduledNotification = ScheduledNotification.getModels().first!
-        let expectation = self.expectation(description: "SaveScheduledNotificationUseCase fails to save scheduled notification")
+        let expectation = self.expectation(description: "SaveScheduledNotificationUseCase fails on notificationManager to save scheduled notification")
 
         sut.save(scheduledNotification: scheduledNotification) { result in
             switch result {
