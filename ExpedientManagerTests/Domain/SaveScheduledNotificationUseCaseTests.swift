@@ -31,6 +31,46 @@ class SaveScheduledNotificationUseCaseTests: XCTestCase {
 
         waitForExpectations(timeout: 1, handler: nil)
     }
+
+    func test_saveScheduledNotification_repository_failure() {
+        let repositoryError = NSError(domain: "Error Message", code: 0)
+        makeSUT(repositoryError: repositoryError)
+        
+        let scheduledNotification = ScheduledNotification.getModels().first!
+        let expectation = self.expectation(description: "SaveScheduledNotificationUseCase fails to save scheduled notification")
+
+        sut.save(scheduledNotification: scheduledNotification) { result in
+            switch result {
+            case .success(let success):
+                XCTFail("SaveScheduledNotificationUseCase succeeded unexpectedly")
+            case .failure(let error):
+                XCTAssertEqual(repositoryError.localizedDescription, error.localizedDescription)
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    func test_saveScheduledNotification_notificationManager_failure() {
+        let managerError = NSError(domain: "Error Message", code: 0)
+        makeSUT(managerError: managerError)
+        
+        let scheduledNotification = ScheduledNotification.getModels().first!
+        let expectation = self.expectation(description: "SaveScheduledNotificationUseCase fails to save scheduled notification")
+
+        sut.save(scheduledNotification: scheduledNotification) { result in
+            switch result {
+            case .success(let success):
+                XCTFail("SaveScheduledNotificationUseCase succeeded unexpectedly")
+            case .failure(let error):
+                XCTAssertEqual(managerError.localizedDescription, error.localizedDescription)
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
+    }
     
     func makeSUT(repositoryError: Error? = nil,
                  managerError: Error? = nil) {
