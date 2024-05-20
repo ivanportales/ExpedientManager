@@ -34,7 +34,11 @@ class OnDutyRepositoryStub: OnDutyRepositoryProtocol {
     }
     
     func delete(onDuty: ExpedientManager.OnDuty, completionHandler: @escaping (Result<Bool, any Error>) -> ()) {
-        // TODO: Implement function
+        if let error = error {
+            completionHandler(.failure(error))
+        } else {
+            completionHandler(.success(true))
+        }
     }
     
     func update(onDuty: ExpedientManager.OnDuty, completionHandler: @escaping (Result<Bool, any Error>) -> ()) {
