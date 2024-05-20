@@ -102,6 +102,7 @@
 		AEA4BD9F2BA1E3E10029F487 /* SaveScheduledNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA4BD9E2BA1E3E10029F487 /* SaveScheduledNotificationUseCase.swift */; };
 		AEAC801F2BD1FBA600B4717B /* ClosureButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAC801E2BD1FBA600B4717B /* ClosureButtonViewTests.swift */; };
 		AEBEE2952B6F351B005A0D73 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBEE2942B6F351B005A0D73 /* CoreDataRepository.swift */; };
+		AEC1895B2BFB962000E2F632 /* DeleteOnDutyUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC1895A2BFB962000E2F632 /* DeleteOnDutyUseCaseTests.swift */; };
 		AECC38462B607D9200439C97 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38452B607D9200439C97 /* TextField.swift */; };
 		AECC38492B60808800439C97 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC38482B60808800439C97 /* TextView.swift */; };
 		AED250162B57552C00290E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED250152B57552C00290E42 /* AppDelegate.swift */; };
@@ -282,6 +283,7 @@
 		AEA4BD9E2BA1E3E10029F487 /* SaveScheduledNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScheduledNotificationUseCase.swift; sourceTree = "<group>"; };
 		AEAC801E2BD1FBA600B4717B /* ClosureButtonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureButtonViewTests.swift; sourceTree = "<group>"; };
 		AEBEE2942B6F351B005A0D73 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		AEC1895A2BFB962000E2F632 /* DeleteOnDutyUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteOnDutyUseCaseTests.swift; sourceTree = "<group>"; };
 		AECC38452B607D9200439C97 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		AECC38482B60808800439C97 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		AED250122B57552C00290E42 /* ExpedientManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpedientManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -707,6 +709,7 @@
 				AEA33CAE2BF03DE500915143 /* GetScheduledNotificationsUseCaseTests.swift */,
 				AE7CAE3B2BF550EA00772593 /* GetFixedScalesUseCaseTests.swift */,
 				AEDF99CE2BF67F1E0070E544 /* SaveScheduledNotificationUseCaseTests.swift */,
+				AEC1895A2BFB962000E2F632 /* DeleteOnDutyUseCaseTests.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1517,6 +1520,7 @@
 				AE63BE752B8D5F3300066736 /* ScheduledNotificationListTableView+Extensions.swift in Sources */,
 				AE52052E2B8BDE0800A2179B /* UIColor+Extensions.swift in Sources */,
 				AEE478DA2B8A9B4C003E1EA0 /* ScalesListViewControllerTests.swift in Sources */,
+				AEC1895B2BFB962000E2F632 /* DeleteOnDutyUseCaseTests.swift in Sources */,
 				AE6A5E122BED7D89005C5D08 /* OnDutyRepositoryStub.swift in Sources */,
 				AE72749D2B7ADE2A009E479A /* HomeViewControllerTests.swift in Sources */,
 				AEDF99CD2BF67E0D0070E544 /* UserNotificationsManagerStub.swift in Sources */,

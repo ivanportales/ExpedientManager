@@ -30,6 +30,26 @@ class DeleteOnDutyUseCaseTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
     
+    func test_deleteOnDuty_failure() {
+        let error = NSError(domain: "TestError", code: 0, userInfo: nil)
+        makeSUT(error: error)
+        let onDuty = OnDuty.mockModels.first!
+
+        let expectation = self.expectation(description: "DeleteOnDutyUseCase fails to delete on duty")
+        
+        sut.delete(onDuty: onDuty) { result in
+            switch result {
+            case .success(_):
+                XCTFail("DeleteOnDutyUseCase succeeded unexpectedly")
+            case .failure(let receivedError):
+                XCTAssertEqual(receivedError.localizedDescription, error.localizedDescription)
+            }
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
     func makeSUT(error: Error? = nil) {
         mockOnDutyRepository = OnDutyRepositoryStub(error: error)
         sut = DeleteOnDutyUseCase(onDutyRepository: mockOnDutyRepository)
